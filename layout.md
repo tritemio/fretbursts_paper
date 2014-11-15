@@ -1,2 +1,1 @@
 untitled.tex
-figures/anaconda_qtconsole/anaconda_qtconsole.png
