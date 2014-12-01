@@ -1,0 +1,49 @@
+\section{smFRET data analysis}
+
+\subsection{Background estimation}
+\begin{itemize}
+\item Background as a function of time
+\end{itemize}
+
+\subsubsection{Choice of the threshold}
+\begin{itemize}
+\item heuristic
+\item brute force
+\end{itemize}
+
+\subsection{Burst search}
+
+Description of burst-search algorithms and why the m-photons sliding windows is exactly the same as fixed-time sliding window. Maybe a picture will help.
+
+\begin{itemize}
+\item Adaptive threshold as a function of background
+\item Chosing different photon streams
+\item AND-Gate
+\end{itemize}
+
+\subsection{Burst selection}
+
+How to select bursts according to different criteria (size, width, E, S, topN, etc...).
+
+How to define a new criterium.
+
+
+\subsection{Population fit}
+
+\begin{itemize}
+\item Histogram fit: chose a model, constraints, methods, accuracy
+\item KDE: find the maximum
+\end{itemize}
+
+\subsubsection{Correction coefficients}
+
+\begin{itemize}
+\item Fit D-only and A-only population.
+\item Fit gamma factor.
+\end{itemize}
+
+
+\subsubsection{Accurate FRET}
+
+Apply corrections to the bursts vs apply corrections after the fit.
+
