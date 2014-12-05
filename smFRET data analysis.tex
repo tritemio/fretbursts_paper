@@ -30,6 +30,9 @@ In the previous example, we set the timestamp unit (`clk_p`) to 10 ns and we spe
 On MS Windows, it is good practice to use RAW strings for file names (for example: \verb|r'C:\Data\smFRET\example.hdf5'|, note the prepending \textit{r}) in order to avoid substitutions of special escape sequences like \verb|\t| (that would be replaced with TAB in a normal string).
 
 \subsection{Background estimation}
+
+The first step of smFRET analysis involves estimating the background level. In fact due to detectors dark counting rates (DCR), samples scattering and autofluorescence there is a always a minimum level of counts even when no molecule is crossing the excitation volume and emitting photons. Figure X shows the typical distribution of timestamps delays (waiting times between two subsequent timestamps). The "tail" of the distribution (a line in semi-log scale) correspond to exponetially-distributed delays, indicating that we have Poisson proccess generating background counts.
+
 \begin{itemize}
 \item Background as a function of time
 \end{itemize}
