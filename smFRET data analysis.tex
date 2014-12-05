@@ -1,19 +1,19 @@
 \section{smFRET data analysis}
 
-In the following we provide a high-level description of FRETbursts usage. Normally, especially when FRETbursts is combined with other packages, we suggest to import FRETBursts with:
+In the following we provide a high-level description of FRETbursts usage. In general, we suggest to import FRETbursts with the expression:
 
 \verb|import fretbursts as fb|
 
-In this article, however, to save some typing we assume that FRETBursts is imported with:
+that will make available all the FRETBursts functions with a concise `fb.` prefix. In this article, however, we assume that FRETBursts is imported with the shortcut form:
 
 \verb|from fretbursts import *|
 
-In this way we can avoid to use the \verb|fb.| prefix to access FRETBursts functions. Note also that the previous import will also import numpy, pandas, matplotlib.pyplot (as \verb|np|, \verb|pd| and \verb|plt| respectively).
+In this way we can skip the \verb|fb.| prefix. Note that the previous import also imports common numeric libraries (numpy, pandas, matplotlib.pyplot as \verb|np|, \verb|pd| and \verb|plt| respectively).
 
 \subsection{Loading the data}
-Currently FRETBursts supports loading data from a few file formats: SM files (a binary format saved by a common LabVIEW program used in smFRET setups), SPC a binary format used by TCSPC Becker & Hickl cards and HDF5-Ph-Data an open binary format single-molecule data based on HDF5.
+Currently, FRETBursts supports loading data from a few file formats: SM files (a binary format saved by a common LabVIEW program used in smFRET setups), SPC (a binary format used by TCSPC Becker & Hickl cards) and HDF5-Ph-Data an open binary format single-molecule data based on HDF5.
 
-We encourage adopting HDF5-Ph-Data format beacuse it is simple, scalable, well documented, space efficient and very fast. All the FRETBursts example data files are in HDF5-Ph-Data. An additional file-set can be found here[multi-spot paper data files].
+We encourage adopting HDF5-Ph-Data format beacuse it is relatively simple, scalable, well documented, space efficient and very fast[Link]. All the FRETBursts example data files are in HDF5-Ph-Data. An additional file-set can be found here[multi-spot paper data files].
 
 Functions to load data files are defined in the \verb|loader| module. In particular, to load an HDF5-Ph-Data file use:
 
