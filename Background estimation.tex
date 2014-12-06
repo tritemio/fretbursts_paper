@@ -7,7 +7,7 @@ In practice we need to estimate the background for all the different photon stre
 In FRETBursts we call \textit{background period} the time duration for each background estimation. For example, to compute the background every 30s, using a threshold of 2 ms for all the photon streams we execute:
 
 \begin{verbatim}
-    d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
+d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
 \end{verbatim}
 
 Here, the first argument is the actual fitting function used to fit the
