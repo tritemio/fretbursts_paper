@@ -59,5 +59,8 @@ Even when no molecule is crossing the excitation volume, there are “background
 
 In practice, for burst search and burst correction, the background rates for all the different photon streams are needed. Furthermore, since the background rate can typically change during the measurement on time scales of tens of seconds or minutes, we want to estimate it periodically. FRETBursts splits the data in uniform time slices called \textit{background periods} and compute the background rates for each of these slices (see section~\ref{sec:bg_calc}). The slicing in background periods is also used during burst search to compute a background-dependent threshold and to apply the burst correction (section~\ref{sec:burstsearch}).
 
-
 \subsection{The \texttt{Data} object}
+\label{sec:data_intro}
+
+The \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data} class} is the main container for smFRET measurements. It contains timestamps, detectors and all the results of data processing such as background estimation, burst data, fitted FRET and so on.
+
