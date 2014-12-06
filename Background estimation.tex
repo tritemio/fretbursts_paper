@@ -6,17 +6,30 @@ To estimate the background rate, (i.e. the exponential time constant) we need to
 In practice we need to estimate the background for all the different photon streams. Furthermore, since the background rate can typically change during the measurement on time scales of tens of seconds or minutes, we want to estimate it periodically. 
 In FRETBursts we call \textit{background period} the time duration for each background estimation. For example, to compute the background every 30s, using a threshold of 2 ms for all the photon streams we execute:
 
-\verb|d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)|
+\begin{verbatim}
+    d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
+\end{verbatim}
 
-Here, the first argument is the actual fitting function used to fit the background in each period and for each photon stream. The function \verb|bg.exp_fit| fits the background using a Maximum Likelihood Estimation (MLE) of the delays distribution. More fitting functions are avaliable in \verb|bg| namespace (see the \href{http://fretbursts.readthedocs.org/en/latest/background.html}{\verb|background| module}). The second argument, \verb|time_s|, is the background period and the third argument is the threshold above which the distribution is supposed to be exponential. It is possible to use a different threshold for each photon stream passing a tuple as tail_min_us (instead that a scalar). For an ALEX measurement the tuple needs to have 5 values corresponting to thresholds for the 5 photon streams. The list of photon streams for a \verb|Data| object can be found in the \verb|ph_streams| attribute (in the present example \verb|d.ph_streams|). Finally, is possible to use a heuristic estimation of the threshold using \verb|tail_min_us='auto'|. For more details refer to the \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.calc_bg}{\verb|calc_bg| documentation}.
-
-\verb|d.calc_bg(bg.exp_fit, time_s=1000, tail_min_us='auto', F_bg=1.7)|
-
-\verb|d.calc_bg(bg.exp_fit, time_s=1000, tail_min_us='auto', F_bg=1.7)|
+Here, the first argument is the actual fitting function used to fit the
+background in each period and for each photon stream. The function 
+\verb|bg.exp_fit| fits the background using a Maximum Likelihood Estimation 
+(MLE) of the delays distribution. More fitting functions are available in 
+\verb|bg| namespace (see the 
+\href{http://fretbursts.readthedocs.org/en/latest/background.html}
+{\texttt{background} module}). The second argument, \verb|time_s|, is the background 
+period and the third argument is the threshold above which the distribution 
+is supposed to be exponential. It is possible to use a different threshold 
+for each photon stream passing a tuple as \verb|tail_min_us| (instead 
+of a scalar). For an ALEX measurement the tuple needs to have 5 values 
+corresponding to thresholds for the 5 photon streams. The list of photon 
+streams for a \verb|Data| object can be found in the \verb|ph_streams| 
+attribute (in the present example \verb|d.ph_streams|). Finally, is 
+possible to use a heuristic estimation of the threshold using 
+\verb|tail_min_us='auto'|. For more details refer to the 
+\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.calc_bg}{\texttt{calc\_bg} documentation}.
 
 \subsubsection{Choice of the threshold}
 \begin{itemize}
 \item heuristic
 \item brute force
 \end{itemize}
-
