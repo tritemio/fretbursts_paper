@@ -1,19 +1,10 @@
 \subsection{Loading the data}
-Currently, FRETBursts supports loading data from a few file formats: SM files (a binary format saved by a common LabVIEW program used in smFRET setups), SPC (a binary format used by TCSPC Becker & Hickl cards) and \href{https://github.com/tritemio/FRETBursts/wiki/HDF5-Ph-Data-format-0.2-Draft}{HDF5-Ph-Data}  an open binary format single-molecule data based on HDF5.
+Currently, FRETBursts supports loading data from a few file formats: SM files (a binary format saved by a common LabVIEW program used in smFRET setups), SPC (a binary format used by TCSPC Becker \& Hickl cards) and \href{https://github.com/tritemio/FRETBursts/wiki/HDF5-Ph-Data-format-0.2-Draft}{HDF5-Ph-Data}  an open binary format single-molecule data based on HDF5.
 
 We encourage adopting the \href{https://github.com/tritemio/FRETBursts/wiki/HDF5-Ph-Data-format-0.2-Draft}{HDF5-Ph-Data} format because it is relatively simple, scalable, well documented, space efficient and very fast (a more expanded explanation \href{http://fretbursts.readthedocs.org/en/latest/HDF5_format.html}{here}). All the FRETBursts example data files are in HDF5-Ph-Data. An additional file-set can be found here[multi-spot paper data files].
 
-All the functions to load the different file formats are defined in the \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\verb|loader| module}. In particular, to load an HDF5-Ph-Data file use:
+All the functions to load the different file formats are defined in the \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module}. In particular, to load an HDF5-Ph-Data file use:
 
-\verb|d = loader.hdf5(file_name)|
-
-where \verb|file_name| is a string containing the file path. In the previous command, the variable `d` (of type `Data`) is the fundamental object in FRETBursts that contains the measurement data and several methods to process it.
-
-In case the data is available in a format not directly supported it is possible to manually create a `Data` variable. For example, for non-ALEX smFRET data, two arrays of same length are needed: the timestamps and the acceptor-mask. The timestamps is an int64 numpy array containing the recorded photon timestamps in arbitrary units (usually dictated by the acquisition hardware clock period). The acceptor-mask is a numpy boolean array that is True when the corresponding timestamps comes from the acceptor channel and False when it comes from the donor channel. Once you have these arrays you can manually create a `Data` object with:
-
-\verb|d = Data(ph_times_m=[timestamps], A_em=[acceptor_mask], clk_p=10e-9, ALEX=False)|
-
-In the previous example, we set the timestamp unit (`clk_p`) to 10 ns and we specify that the data is not from an ALEX measurements. Creating Data objects for ALEX and nsALEX measurements follows the same lines. We point the interested readers to the loader module for the details.
-
-On MS Windows, it is good practice to use RAW strings for file names (for example: \verb|r'C:\Data\smFRET\example.hdf5'|, note the prepending \textit{r}) in order to avoid substitutions of special escape sequences like \verb|\t| (that would be replaced with TAB in a normal string).
-
+\begin{verbatim}
+d = loader.hdf5(file_name)
+\end{verbatim}
