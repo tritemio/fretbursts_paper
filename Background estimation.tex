@@ -4,7 +4,7 @@ The first step of smFRET analysis involves estimating the background level. In f
 To estimate the background rate, (i.e. the exponential time constant) we need to select a minimum threshold above which the distribution can be considered exponential. 
 
 In practice we need to estimate the background for all the different photon streams. Furthermore, since the background rate can typically change during the measurement on time scales of tens of seconds or minutes, we want to estimate it periodically. 
-In FRETBursts we call \textit{backgroun period} the time duration for each background estimation. For example, to compute the background every 30s, using a threshold of 2 ms for all the photon streams we execute:
+In FRETBursts we call \textit{background period} the time duration for each background estimation. For example, to compute the background every 30s, using a threshold of 2 ms for all the photon streams we execute:
 
 \verb|d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)|
 
