@@ -25,9 +25,7 @@ Each timestamps array contains timestamps from both the donor (D) and the accept
 
 The \verb|Ph_sel| class allows to express any combination of photon streams. For example, in ALEX measurements, the D-emission during A-excitation stream does not contain any useful signal because the donor fluorophore cannot be excited by the longer wavelength used during acceptor excitation. To exclude this photon stream we can use \verb|Ph_sel(Dex='DAem', Aex='Aem')|, that means literally: select donor and acceptor photons during donor excitation and only acceptor photons during acceptor excitation.
 
-
 \begin{table}
-\centering
 \begin{tabular}{l|l}
   Photon selection  & code \\
   \hline
@@ -39,7 +37,6 @@ The \verb|Ph_sel| class allows to express any combination of photon streams. For
 \end{table}
 
 \begin{table}
-\centering
 \begin{tabular}{l|l}
   Photon selection  & code \\
   \hline
