@@ -15,14 +15,14 @@ background in each period and for each photon stream~\ref{sec:bg_intro}. The fun
 \href{http://fretbursts.readthedocs.org/en/latest/background.html}
 {\texttt{background} module}). The second argument, \verb|time_s|, is the 
 \textit{background period} (section~\ref{sec:bg_intro}) and the third argument is the threshold above which the distribution is exponential. 
-It is possible to use a different threshold 
-for each photon stream passing a tuple as \verb|tail_min_us| (instead 
+It is possible to use a different thresholds 
+for each photon stream passing a \href{https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences}{tuple} as \verb|tail_min_us| (instead 
 of a scalar). For an ALEX measurement the tuple needs to have 5 values 
 corresponding to thresholds for the 5 photon streams. The list of photon 
 streams for a \verb|Data| object can be found in the \verb|ph_streams| 
 attribute (in the present example \verb|d.ph_streams|). 
 
-Finally, is 
+Finally, it is 
 possible to use a heuristic estimation of the threshold using 
 \verb|tail_min_us='auto'|. For more details refer to the 
 \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.calc_bg}{\texttt{calc\_bg} documentation}.
