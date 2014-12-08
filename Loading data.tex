@@ -3,13 +3,14 @@ Currently, FRETBursts supports loading data from a few file formats: SM files (a
 
 We encourage adopting the \href{https://github.com/tritemio/FRETBursts/wiki/HDF5-Ph-Data-format-0.2-Draft}{HDF5-Ph-Data} format because it is relatively simple, scalable, well documented, space efficient and very fast (a more expanded explanation \href{http://fretbursts.readthedocs.org/en/latest/HDF5_format.html}{here}). All the FRETBursts example data files are in HDF5-Ph-Data. An additional file-set can be found here[multi-spot paper data files].
 
-All the functions to load the different file formats are defined in the \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module}. In particular, to load an HDF5-Ph-Data file use:
+The \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module}
+contains all the functions to load the different file formats. In particular, to load an HDF5-Ph-Data file use:
 
 \begin{verbatim}
 d = loader.hdf5(file_name)
 \end{verbatim}
 
-where \verb|file_name| is a string containing the file path. In the previous command, the variable `d` (of type `Data`) is the fundamental object in FRETBursts that contains the measurement data and several methods to process it.
+where \verb|file_name| is a string containing the file path. In the previous command, the variable \verb|d| (of type \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}}) is the fundamental object in FRETBursts that contains the measurement data and several methods to process it (see section~\ref{sec:data_intro}).
 
 In case the data is available in a format not directly supported it is possible to manually create a \verb|Data| variable. For example, for non-ALEX smFRET data, two arrays of same length are needed: the timestamps and the acceptor-mask. The timestamps is an int64 numpy array containing the recorded photon timestamps in arbitrary units (usually dictated by the acquisition hardware clock period). The acceptor-mask is a numpy boolean array that is True when the corresponding timestamps comes from the acceptor channel and False when it comes from the donor channel. Having these arrays a \verb|Data| object can be manually created with:
 
