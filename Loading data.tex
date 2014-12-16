@@ -15,7 +15,7 @@ where \verb|file_name| is a string containing the file path. The function \verb|
 In case the data is available in a format not directly supported it is possible to manually create a \verb|Data| variable. For example, for non-ALEX smFRET data, two arrays of same length are needed: the timestamps and the acceptor-mask. The timestamps is an int64 numpy array containing the recorded photon timestamps in arbitrary units (usually dictated by the acquisition hardware clock period). The acceptor-mask is a numpy boolean array that is \verb|True| when the corresponding timestamps comes from the acceptor channel and \verb|False| when it comes from the donor channel. Having these arrays a \verb|Data| object can be manually created with:
 
 \begin{verbatim}
-d2 = Data(ph_times_m=[timestamps], A_em=[acceptor_mask], 
+d = Data(ph_times_m=[timestamps], A_em=[acceptor_mask], 
          clk_p=10e-9, ALEX=False, nch=1, fname='file_name')
 \end{verbatim}
 
