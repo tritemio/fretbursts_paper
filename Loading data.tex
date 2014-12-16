@@ -4,7 +4,7 @@ Currently, FRETBursts supports loading data from a few file formats: SM files (a
 We encourage adopting the  \href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5} format because it assure long-term accessibility to the data, ease data sharing  between different programs, while at the same time being a fast and space efficient format. All the FRETBursts example data files are in Photon-HDF5. An additional file-set can be found here[multi-spot paper data files].
 
 The \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module}
-contains all the functions to load the different file formats. In particular, to load an HDF5-Ph-Data file use:
+contains all the functions to load the different file formats. In particular, to load a Photon-HDF5 file use:
 
 \begin{verbatim}
 d = loader.hdf5(file_name)
