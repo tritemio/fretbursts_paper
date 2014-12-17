@@ -12,10 +12,25 @@ A second important aspect of burst search is which photon stream is processed. U
 Finally, Nir~\text{et al.} proposed a refined burst search (AND-gate burst search) that is able to avoid artifacts due to photophysical effects such as blinking. In this case a search is perfomer independently on two photon streams and bursts are marked only when both photon streams exibit a rate higher then the threshold.
 
 \subsubsection{Burst search in FRETBursts}
+\label{sec:burstsearch_intro}
+
 In FRETBursts the burst search is performed calling the \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search_t}{\verb|burst_search_t| method}.
 
+\begin{verbatim}
+d.burst_search_t(F=6, m=10, ph_sel=Ph_sel('all'))
+\end{verbatim}
 
+The previous command perfoms a burst search on all photons (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the background rate (\verb|F=6|) and using 10 consecutive photons to compute the local rate (\verb|m=10|).
+These parameters are generally a good starting point for smFRET analisys but can be tweaked in specific cases.
 
+When there is a need to perform a burst-search using a fixed threshold (independent from the background rate), 
+the \verb|min_rate| argument can be used as follows (considering a minimun rate threshold of 50~kHz):
+
+\begin{verbatim}
+d.burst_search_t(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
+\end{verbatim}
+
+Finally, to perfom an AND-gate burst search (see~\section{sec:burstsearch_intro}) the plugin function \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} can be used.
 
 \subsection{Burst selection}
 
