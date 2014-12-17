@@ -27,8 +27,9 @@ possible to use a heuristic estimation of the threshold using
 \verb|tail_min_us='auto'|. For more details refer to the 
 \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.calc_bg}{\texttt{calc\_bg} documentation}.
 
-\subsubsection{Optimal threshold}
-\begin{itemize}
-\item Kolgomorov-Smirnov
-\item Cramer von Mise
-\end{itemize}
+\subsubsection{Error metric and optimal threshold}
+
+The functions that fits the background also returns an estimation of the quality of fit computed as the distance between the empirical \href{http://en.wikipedia.org/wiki/Cumulative_distribution_function}{cumulative distribution function} (CDF) and fitted CDF. Two different distance metrics can be returned. The first is  
+\href{http://en.wikipedia.org/wiki/Kolmogorov\%E2\%80\%93Smirnov_test}{Kolgomorov-Smirnov} statistics (the maximum of the difference between the empirical and the fitted CDF) and the second is the \href{http://en.wikipedia.org/wiki/Cram\%C3\%A9r\%E2\%80\%93von_Mises_criterion}{Cramer von Mises} statistics corresponding to the integral of the squared residuals (see the code \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/background.py#L40}{here}).
+
+In principle we can find the threshold as the value that minimize the error metric. This approach is implemente by the function \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.calc_bg_brute}{calc\_bg\_brute} in the \href{http://fretbursts.readthedocs.org/en/latest/plugins.html}{burstlib\_ext module}. For more infor see this notebook[TODO].
