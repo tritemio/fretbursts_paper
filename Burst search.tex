@@ -7,9 +7,13 @@ in which $m$ consecutive photons are within a minimum time lag $\Delta t$. In ot
 
 A more general approach consist in taking into accout the background rate of the specific measurements and in choosing a rate threshold that is $F$ times larger than the background rate. This approach assures that the resulting bursts all have a single-to-background ratio (SBR) larger than $(F-1)$~(\cite{Michalet_2012}). A consisten criterium to choose the threshold is very important when comparing different measurements with different background rates, when the background significantly changes during the measurements or in multi-spot measurements where each spot has a different background rates.
 
-A second important aspect of burst search is which photon stream is processed. Usually, when indentifying FRET populations, we want to apply the burst search to all the photons. Other times, when focusing on donor-only or acceptor only population is better to use only the donor or acceptor signal. In general we want to be able to apply the burst search to an arbitrary selection of photons. In FRETBursts this can be achieved passing the appropriate Ph_sel object to the burst search method (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
+A second important aspect of burst search is which photon stream is processed. Usually, when indentifying FRET populations, we want to apply the burst search to all the photons. Other times, when focusing on donor-only or acceptor only population is better to use only the donor or acceptor signal. In general we want to be able to apply the burst search to an arbitrary selection of photons. In FRETBursts this can be achieved passing the appropriate \verb|Ph\_sel| object to the burst search method (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
-Description of burst-search algorithms and why the m-photons sliding windows is exactly the same as fixed-time sliding window. Maybe a picture will help.
+Finally, Nir~\text{et al.} proposed a refined burst search (AND-gate burst search) that is able to avoid artifacts due to photophysical effects such as blinking. In this case a search is perfomer independently on two photon streams and bursts are marked only when both photon streams exibit a rate higher then the threshold.
+
+\subsubsection{Burst search in FRETBursts}
+In FRETBursts the burst search is performed calling the \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search_t}{\verb|burst_search_t| method}
+
 
 \begin{itemize}
 \item Adaptive threshold as a function of background
