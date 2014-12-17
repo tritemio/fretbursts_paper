@@ -12,14 +12,18 @@ d = loader.hdf5(file_name)
 
 where \verb|file_name| is a string containing the file path. The function \verb|load.hdf5| returns an object \verb|d| of type \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}}) containing all the measurement info (see section~\ref{sec:data_intro}).
 
-In case the data is available in a format not directly supported it is possible to manually create a \verb|Data| variable. For example, for non-ALEX smFRET data, two arrays of same length are needed: the timestamps and the acceptor-mask. The timestamps is an int64 numpy array containing the recorded photon timestamps in arbitrary units (usually dictated by the acquisition hardware clock period). The acceptor-mask is a numpy boolean array that is \verb|True| when the corresponding timestamps comes from the acceptor channel and \verb|False| when it comes from the donor channel. Having these arrays a \verb|Data| object can be manually created with:
+Similar functions in the \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module} allows to load the other supported file formats.
+
+\subsubsection{Load data manually}
+
+In case the data is available in a format not directly supported by FRETBursts it is possible to manually create a \verb|Data| variable. For example, for non-ALEX smFRET data, two arrays of same length are needed: the timestamps and the acceptor-mask. The timestamps needs to be an int64 numpy array containing the recorded photon timestamps in arbitrary units (usually dictated by the acquisition hardware clock period). The acceptor-mask needs to be a numpy boolean array that is \verb|True| when the corresponding timestamps comes from the acceptor channel and \verb|False| when it comes from the donor channel. Having these arrays a \verb|Data| object can be manually created with:
 
 \begin{verbatim}
 d = Data(ph_times_m=[timestamps], A_em=[acceptor_mask], 
          clk_p=10e-9, ALEX=False, nch=1, fname='file_name')
 \end{verbatim}
 
-In the previous example, we set the timestamp unit (\verb|clk_p|) to 10~ns and we specify that the data is not from an ALEX measurements. Creating Data objects for ALEX and nsALEX measurements follows the same lines. We point the interested readers to the \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py}{loader module} for the details.
+In the previous example, we set the timestamp unit (\verb|clk_p|) to 10~ns and we specify that the data is not from an ALEX measurements. Creating Data objects for ALEX and nsALEX measurements follows the same lines. We point the interested readers to the \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py}{loader module source code} for other examples. 
 
 \begin{quote}
 On MS Windows, it is good practice to use \href{https://docs.python.org/2/tutorial/introduction.html#strings}{RAW strings} for file names (for example: \verb|r'C:\Data\smFRET\example.hdf5'|, note the prepending \textit{r}) in order to avoid substitutions of special escape sequences like \verb|\t| (that would be replaced with TAB in a normal string).
