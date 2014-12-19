@@ -2,6 +2,8 @@
 \label{sec:burstsearch}
 
 \subsubsection{Introduction to burst search}
+\label{sec:burstsearch_intro}
+
 After background estimation, the burst search is the next fundamental step of the analysis. The core "sliding window" algorithm, proposed by Eggeling~\textit{et al.} in 1998~\cite{Eggeling_1998}, involves searching for bursts of photons
 in which $m$ consecutive photons are within a minimum time lag $\Delta t$. In other words, the bursts are the portions of the photon stream where the local a rate (computed using $m$ photons) is above a minimum rate chosen as a threshold. Eggeling did not provide any criteria on how to choose the rate threshold and the number of photons $m$ and as therefore it has become a common practice to manually tweak those parameters for each specific measurement. 
 
