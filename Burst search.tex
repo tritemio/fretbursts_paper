@@ -9,19 +9,23 @@ A more general approach consist in taking into account the background rate of th
 
 A second important aspect of burst search is which photon stream is processed. Usually, when identifying FRET populations, we want to apply the burst search to all the photons. Other times, when focusing on donor-only or acceptor only population, is better to use only the donor or acceptor signal. In general we want to be able to apply the burst search to an arbitrary selection of photons. In FRETBursts this can be achieved passing the appropriate \verb|Ph_sel| object to the burst search method (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
-Finally, Nir~\textit{et al.} proposed a refined burst search (AND-gate burst search) that is able to avoid artifacts due to photo-physical effects such as blinking. In this case a search is performer independently on two photon streams and bursts are marked only when both photon streams exhibit a rate higher than the threshold.
+Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a dual-channel burst search (DCBS) that allows to mitigate artifacts due to photo-physical effects such as blinking. In this case a search is performer independently on two photon streams and bursts are marked only when both photon streams exhibit a rate higher than the threshold, 
+implementing a kind of AND-gate logic. 
+Usually, the term DCBS is refers to a burst search where the two photon streams are all the photons 
+during donor excitation (\verb|Ph_sel(Dex='DAem')|) and acceptor channel photons during acceptor 
+excitation (\verb|Ph_sel(Aex='Aem')|).
 
 \subsubsection{Burst search in FRETBursts}
 \label{sec:burstsearch-intro}
 
-In FRETBursts the burst search is performed calling the \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search_t}{\verb|burst_search_t| method}.
+In FRETBursts the standard burst search is performed calling the \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search_t}{\verb|burst_search_t| method}.
 
 \begin{verbatim}
 d.burst_search_t(F=6, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
 The previous command perfoms a burst search on all photons (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the background rate (\verb|F=6|) and using 10 consecutive photons to compute the local rate (\verb|m=10|).
-These parameters are generally a good starting point for smFRET analysis but can be tweaked in specific cases.
+A different photon selection, threshold ($F$) or number of photons for rate computation $m$ can be selected by passing a different value. These parameters are generally a good starting point for smFRET analysis but can be tweaked in specific cases.
 
 When there is a need to perform a burst-search using a fixed threshold (independent from the background rate), 
 the \verb|min_rate| argument can be used as follows (considering a minimum rate threshold of 50~kHz):
@@ -30,7 +34,13 @@ the \verb|min_rate| argument can be used as follows (considering a minimum rate 
 d.burst_search_t(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
-Finally, to perform an AND-gate burst search (see section~\ref{sec:burstsearch-intro}) the plugin function \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} can be used.
+Finally, to perform a DCBS burst search (or in general an AND-gate burst search, see section~\ref{sec:burstsearch-intro}) the plugin function \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} can be used. For example:
+
+\begin{verbatim}
+d.burst_search_t(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
+\end{verbatim}
+
+The optinal arguments \verb|ph_sel1| and \verb|ph_sel2| default to the photons streams for DCBS. Any other AND-gate burst search can be performed between two photon streams simply passing a different photon selection.
 
 \subsection{Burst selection}
 
