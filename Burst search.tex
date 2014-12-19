@@ -40,7 +40,11 @@ Finally, to perform a DCBS burst search (or in general an AND-gate burst search,
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 \end{verbatim}
 
-Note that in this case a new \verb|Data| variable is returned (\verb|d_dcbp|) containing all the data and the results of the new burst search. In order to save RAM, FRETBursts shares the timestamps and detectors arrays between different copies of a \verb|Data| object (for example \verb|d| and \verb|d_dcbs|). The function \verb|burst_search_and_gate| accepts additional arguments \verb|ph_sel1| and \verb|ph_sel2| default to the photons streams for DCBS. Any other AND-gate burst search can be performed between two photon streams by simply passing different photon selections to \verb|ph_sel1| and \verb|ph_sel2|.
+Note that in this case a new \verb|Data| variable is returned (\verb|d_dcbp|) containing all the data and the results of the new burst search. In order to save RAM, FRETBursts shares the timestamps and detectors arrays between different copies of a \verb|Data| object (for example \verb|d| and \verb|d_dcbs|), while all the other data (including background and burst data) is copied. 
+
+The function \verb|burst_search_and_gate| accepts additional arguments \verb|ph_sel1| and \verb|ph_sel2| 
+that can be used to specify different photons streams. The default values are the pstreams for the DCBS 
+(see section~\ref{sec:burstsearch_intro}).
 
 \subsection{Burst selection}
 
