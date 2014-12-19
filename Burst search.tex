@@ -3,13 +3,13 @@
 
 \subsubsection{Introduction to burst search}
 After background estimation, the burst search is the next fundamental step of the analysis. The core "sliding window" algorithm, proposed by Eggeling~\textit{et al.} in 1998~\cite{Eggeling_1998}, involves searching for bursts of photons
-in which $m$ consecutive photons are within a minimum time lag $\Delta t$. In other words, the bursts are the the portions of the photon stream where the local a rate (computed using $m$ photons) is above a minimum rate choosen as a threshold. Eggeling did not provide any criteria on how to chose the rate threshold and the number of photons $m$ and as therefore it has become a common practice to manually tweak those parameters for each specific measurement. 
+in which $m$ consecutive photons are within a minimum time lag $\Delta t$. In other words, the bursts are the portions of the photon stream where the local a rate (computed using $m$ photons) is above a minimum rate chosen as a threshold. Eggeling did not provide any criteria on how to choose the rate threshold and the number of photons $m$ and as therefore it has become a common practice to manually tweak those parameters for each specific measurement. 
 
-A more general approach consist in taking into accout the background rate of the specific measurements and in choosing a rate threshold that is $F$ times larger than the background rate. This approach assures that the resulting bursts all have a single-to-background ratio (SBR) larger than $(F-1)$~\cite{Michalet_2012}. A consisten criterium to choose the threshold is very important when comparing different measurements with different background rates, when the background significantly changes during the measurements or in multi-spot measurements where each spot has a different background rates.
+A more general approach consist in taking into account the background rate of the specific measurements and in choosing a rate threshold that is $F$ times larger than the background rate. This approach assures that the resulting bursts all have a single-to-background ratio (SBR) larger than $(F-1)$~\cite{Michalet_2012}. A consistent criterium to choose the threshold is very important when comparing different measurements with different background rates, when the background significantly changes during the measurements or in multi-spot measurements where each spot has a different background rates.
 
-A second important aspect of burst search is which photon stream is processed. Usually, when indentifying FRET populations, we want to apply the burst search to all the photons. Other times, when focusing on donor-only or acceptor only population is better to use only the donor or acceptor signal. In general we want to be able to apply the burst search to an arbitrary selection of photons. In FRETBursts this can be achieved passing the appropriate \verb|Ph_sel| object to the burst search method (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
+A second important aspect of burst search is which photon stream is processed. Usually, when identifying FRET populations, we want to apply the burst search to all the photons. Other times, when focusing on donor-only or acceptor only population, is better to use only the donor or acceptor signal. In general we want to be able to apply the burst search to an arbitrary selection of photons. In FRETBursts this can be achieved passing the appropriate \verb|Ph_sel| object to the burst search method (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
-Finally, Nir~\text{et al.} proposed a refined burst search (AND-gate burst search) that is able to avoid artifacts due to photophysical effects such as blinking. In this case a search is perfomer independently on two photon streams and bursts are marked only when both photon streams exibit a rate higher then the threshold.
+Finally, Nir~\textit{et al.} proposed a refined burst search (AND-gate burst search) that is able to avoid artifacts due to photo-physical effects such as blinking. In this case a search is performer independently on two photon streams and bursts are marked only when both photon streams exhibit a rate higher than the threshold.
 
 \subsubsection{Burst search in FRETBursts}
 \label{sec:burstsearch-intro}
@@ -21,16 +21,16 @@ d.burst_search_t(F=6, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
 The previous command perfoms a burst search on all photons (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the background rate (\verb|F=6|) and using 10 consecutive photons to compute the local rate (\verb|m=10|).
-These parameters are generally a good starting point for smFRET analisys but can be tweaked in specific cases.
+These parameters are generally a good starting point for smFRET analysis but can be tweaked in specific cases.
 
 When there is a need to perform a burst-search using a fixed threshold (independent from the background rate), 
-the \verb|min_rate| argument can be used as follows (considering a minimun rate threshold of 50~kHz):
+the \verb|min_rate| argument can be used as follows (considering a minimum rate threshold of 50~kHz):
 
 \begin{verbatim}
 d.burst_search_t(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
-Finally, to perfom an AND-gate burst search (see section~\ref{sec:burstsearch-intro}) the plugin function \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} can be used.
+Finally, to perform an AND-gate burst search (see section~\ref{sec:burstsearch-intro}) the plugin function \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} can be used.
 
 \subsection{Burst selection}
 
