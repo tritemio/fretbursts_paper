@@ -18,7 +18,7 @@ during donor excitation (\verb|Ph_sel(Dex='DAem')|) and acceptor channel photons
 excitation (\verb|Ph_sel(Aex='Aem')|).
 
 \subsubsection{Burst search in FRETBursts}
-\label{sec:burstsearch-intro}
+\label{sec:burstsearch_code}
 
 In FRETBursts the standard burst search is performed calling the \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search_t}{\verb|burst_search_t| method}.
 
@@ -36,7 +36,10 @@ the \verb|min_rate| argument can be used as follows (considering a minimum rate 
 d.burst_search_t(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
-Finally, to perform a DCBS burst search (or in general an AND-gate burst search, see section~\ref{sec:burstsearch-intro}) the plugin function \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} can be used. For example:
+Finally, to perform a DCBS burst search (or in general an AND-gate burst search, 
+see section~\ref{sec:burstsearch_intro}) the plugin function 
+\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} 
+can be used. For example:
 
 \begin{verbatim}
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
