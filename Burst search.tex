@@ -23,7 +23,7 @@ excitation (\verb|Ph_sel(Aex='Aem')|).
 In FRETBursts the standard burst search is performed calling the \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search_t}{\verb|burst_search_t| method}.
 
 \begin{verbatim}
-d.burst_search_t(F=6, m=10, ph_sel=Ph_sel('all'))
+d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
 The previous command perfoms a burst search on all photons (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the background rate (\verb|F=6|) and using 10 consecutive photons to compute the local rate (\verb|m=10|).
@@ -33,7 +33,7 @@ When there is a need to perform a burst-search using a fixed threshold (independ
 the \verb|min_rate| argument can be used as follows (considering a minimum rate threshold of 50~kHz):
 
 \begin{verbatim}
-d.burst_search_t(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
+d.burst_search(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
 Finally, to perform a DCBS burst search (or in general an AND-gate burst search, 
@@ -48,7 +48,8 @@ d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 Note that in this case a new \verb|Data| variable is returned (\verb|d_dcbp|) containing all the data and the results of the new burst search. In order to save RAM, FRETBursts shares the timestamps and detectors arrays between different copies of a \verb|Data| object (for example \verb|d| and \verb|d_dcbs|), while all the other data (including background and burst data) is copied. 
 
 The function \verb|burst_search_and_gate| accepts additional arguments \verb|ph_sel1| and \verb|ph_sel2| 
-that can be used to specify different photons streams. The default values are the pstreams for the DCBS 
+that can be used to specify different photons streams. The default values 
+(\verb|ph_sel1 = Ph_sel(Dex='DAem')| and \verb|ph_sel2 = Ph_sel(Aex='Aem')|) achieve a DCBS 
 (see section~\ref{sec:burstsearch_intro}).
 
 \subsection{Burst selection}
