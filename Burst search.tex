@@ -17,6 +17,10 @@ Usually, the term DCBS is refers to a burst search where the two photon streams 
 during donor excitation (\verb|Ph_sel(Dex='DAem')|) and acceptor channel photons during acceptor 
 excitation (\verb|Ph_sel(Aex='Aem')|).
 
+After the first level of burst search is performed it is important to select bursts according to their number of photons (burst size). In the most rudimentaly form this selection can be perfomed during burst search discarding all the bursts
+with size lower that a threshold $L$. This method, however, neglects the effect of background and gamma factor on the burst size and can lead to a selection bias of certain channels or of certain sub-populations. 
+For this reason we advocate performing a burst size selection after background correction and taking into account the gamma factor, as illustrated in section~\ref{sec:burstsel}.
+
 \subsubsection{Burst search in FRETBursts}
 \label{sec:burstsearch_code}
 
@@ -29,7 +33,24 @@ d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
 The previous command perfoms a burst search on all photons (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the background rate (\verb|F=6|) and using 10 consecutive photons to compute the local rate (\verb|m=10|).
 A different photon selection, threshold ($F$) or number of photons for rate computation $m$ can be selected by passing a different value. These parameters are generally a good starting point for smFRET analysis but can be tweaked in specific cases.
 
-When there is a need to perform a burst-search using a fixed threshold (independent from the background rate), 
+Note that in the previous burst search no burst size selection is performed (i.e. the minimum bursts size is $m$). 
+An additional paramenter $L$ can be passed to apply a threshold on the raw burst size (before any correction). 
+We however suggest to perform a more accurate burst size selection as shown in the next section~\ref{sec:burstsel}.
+
+In us-ALEX there are 3 important correction paramenters: gamma factor, spectral leakage and 
+acceptor direct excitation~\cite{}. These correction can be applied simply setting the respective
+Data attributes like in the following:
+
+\begin{verbatim}
+d.gamma = 0.85
+d.leakage = 0.04
+d.dir_ex = 0.08
+\end{verbatim}
+
+These attributes can be assigned either before or after the burst search. In the latter case, the burst data is
+automatically updated using the newly assigned correction value.
+
+It is also possible to perform a burst-search using a fixed threshold (independent from the background rate), 
 the \verb|min_rate| argument can be used as follows (considering a minimum rate threshold of 50~kHz):
 
 \begin{verbatim}
@@ -39,7 +60,7 @@ d.burst_search(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
 Finally, to perform a DCBS burst search (or in general an AND-gate burst search, 
 see section~\ref{sec:burstsearch_intro}) the plugin function 
 \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{\verb|burst_search_and_gate|} 
-can be used. For example:
+can be used like in the following example:
 
 \begin{verbatim}
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
@@ -48,11 +69,13 @@ d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 Note that in this case a new \verb|Data| variable is returned (\verb|d_dcbp|) containing all the data and the results of the new burst search. In order to save RAM, FRETBursts shares the timestamps and detectors arrays between different copies of a \verb|Data| object (for example \verb|d| and \verb|d_dcbs|), while all the other data (including background and burst data) is copied. 
 
 The function \verb|burst_search_and_gate| accepts additional arguments \verb|ph_sel1| and \verb|ph_sel2| 
-that can be used to specify different photons streams. The default values 
+used to specify different photons streams. The default values 
 (\verb|ph_sel1 = Ph_sel(Dex='DAem')| and \verb|ph_sel2 = Ph_sel(Aex='Aem')|) correspond to the classical DCBS 
 (see section~\ref{sec:burstsearch_intro}).
 
 \subsection{Burst selection}
+\label{sec:burstsel}
+
 
 How to select bursts according to different criteria (size, width, E, S, topN, etc...).
 
