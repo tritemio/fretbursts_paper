@@ -48,10 +48,11 @@ d.dir_ex = 0.08
 \end{verbatim}
 
 These attributes can be assigned either before or after the burst search. In the latter case, the burst data is
-automatically updated using the newly assigned correction value.
+automatically updated using the newly assigned correction values.
 
-It is also possible to perform a burst-search using a fixed threshold (independent from the background rate), 
-the \verb|min_rate| argument can be used as follows (considering a minimum rate threshold of 50~kHz):
+Sometimes it may be useful to specify a fixed threshold, instead 
+of a threshold derived from the background rate like in the previous example. In this case, instead of $F$ we can use the argument \verb|min_rate| that specifies a threshold in Hertz. For example, a burst search with a 50~kHz
+threshold can be perfoemed as follows:
 
 \begin{verbatim}
 d.burst_search(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
@@ -76,11 +77,50 @@ used to specify different photons streams. The default values
 \subsection{Burst selection}
 \label{sec:burstsel}
 
+After burst search it is common to select bursts according to different criteria, among which one of the most common is the burst size.
 
-How to select bursts according to different criteria (size, width, E, S, topN, etc...).
+For example, to select bursts with more than 100 photons (after background correction) detected during the donor excitation periods we can write:
 
-How to define a new criterium.
+\begin{verbatim}
+ds = Sel(d, select_bursts.size, th1=100)
+\end{verbatim}
 
+In the previous command a new Data variable (\verb|ds|) containing the selected bursts is created. As mentioned before the new object will share the photon data arrays with the original object (\verb|d|) in order to minimize the RAM consumption.
+
+Looking at the previous command, we notice that the \verb|Sel| function requires a "selection criterium" (a python function) as second argument, while all the remaining arguments are passed to the selection funtion. The module \verb|select_bursts| contains several built-in selection functions like
+selecting an area on the E-S ALEX histogram (\verb|select_bursts.ES|), 
+selecting bursts based on thei duration (\verb|select_bursts.width|) and so on. New criteria can be implementes by defining a new selection function, usually a couple of lines long (see the \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{\verb|select_bursts| module} for examples).
+
+Finally note that different criteria can be combined by applying them
+in sequence. For example with the following commands
+
+\begin{verbatim}
+ds = Sel(d, select_bursts.size, th1=50, th2=200)
+dsw = Sel(ds, select_bursts.with, th1=0.5e-3, th2=3e-3)
+\end{verbatim}
+
+the variable \verb|dsw| will contain all the bursts with sizes between 50 and 200 photons, with duration between 0.5 and 3~ms.
+
+\subsubsection{Burst size selection}
+
+In the previous section we used a defition of "burst size" as the total number of detected counts in the donor and in the acceptor channel during donor excitation periods. 
+
+We can modify the selection command in order to also include photons detected in the acceptor channels during acceptor excitation periods. This is achieved passing the boolean flag \verb|add_naa=True| to the selection function as follows:
+
+\begin{verbatim}
+ds = Sel(d, select_bursts.size, th1=100, add_naa=True)
+\end{verbatim}
+
+Another important parameter in defining the burst size is the gamma-factor, that is the unbalance between the donor and the acceptor channel. The gamma-factor is used to correct for the different quantum yield between D and A fluorophores and the different photon-detection efficiency between the D and A channels. Neglecting the effect of gamma-factor on the burst size leads to a biased burst selection, especially if $\gamma$ significantly differ from 1. 
+
+To include the effect of $\gamma$ on the burst size and obtain a "fair" burst selection (i.e. a selection that does not favor high or low FRET states) we
+need to pass the argument \verb|gamma| (or \verb|gamma1|) like in the following example:
+
+\begin{verbatim}
+ds = Sel(d, select_bursts.size, th1=100, gamma=0.65)
+\end{verbatim}
+
+For more information on burst size selection refer to the \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{\verb|select_bursts.size| documentation}.
 
 \subsection{Population fit}
 
