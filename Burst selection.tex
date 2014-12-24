@@ -11,9 +11,9 @@ ds = Sel(d, select_bursts.size, th1=100)
 
 In the previous command a new Data variable (\verb|ds|) containing the selected bursts is created. As mentioned before the new object will share the photon data arrays with the original object (\verb|d|) in order to minimize the RAM consumption.
 
-Looking at the previous command, we notice that the \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.burstlib.Sel}{\verb|Sel|} function requires a "selection criterium" (a python function) as second argument, while all the remaining arguments are passed to the selection funtion. The module \verb|select_bursts| contains several built-in selection functions like
+Looking at the previous command, we notice that the \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.burstlib.Sel}{\verb|Sel|} function requires a "selection criterium" (a python function) as second argument, while all the remaining arguments are passed to the selection function. The module \verb|select_bursts| contains several built-in selection functions like
 selecting an area on the E-S ALEX histogram (\verb|select_bursts.ES|), 
-selecting bursts based on thei duration (\verb|select_bursts.width|) and so on. New criteria can be implementes by defining a new selection function, usually a couple of lines long (see the \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{\verb|select_bursts| module} for examples).
+selecting bursts based on their duration (\verb|select_bursts.width|) and so on. New criteria can be implemented by defining a new selection function, usually a couple of lines long (see the \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{\verb|select_bursts| module} for examples).
 
 Finally note that different criteria can be combined by applying them
 in sequence. For example with the following commands
@@ -27,7 +27,7 @@ the variable \verb|dsw| will contain all the bursts with sizes between 50 and 20
 
 \subsubsection{Burst size selection}
 
-In the previous section we used a defition of "burst size" as the total number of detected counts in the donor and in the acceptor channel during donor excitation periods. 
+In the previous section we used a definition of "burst size" as the total number of detected counts in the donor and in the acceptor channel during donor excitation periods. 
 
 We can modify the selection command in order to also include photons detected in the acceptor channels during acceptor excitation periods. This is achieved passing the boolean flag \verb|add_naa=True| to the selection function as follows:
 
@@ -35,7 +35,7 @@ We can modify the selection command in order to also include photons detected in
 ds = Sel(d, select_bursts.size, th1=100, add_naa=True)
 \end{verbatim}
 
-Another important parameter in defining the burst size is the gamma-factor, that is the unbalance between the donor and the acceptor channel. The gamma-factor is used to correct for the different quantum yield between D and A fluorophores and the different photon-detection efficiency between the D and A channels. Neglecting the effect of gamma-factor on the burst size leads to a biased burst selection, especially if $\gamma$ significantly differ from 1. 
+Another important parameter in defining the burst size is the gamma-factor, i.e. the unbalance between the donor and the acceptor channels. The gamma-factor is used to correct for the different quantum yield between D and A fluorophores and the different photon-detection efficiency between the D and A channels. Neglecting the effect of gamma-factor on the burst size leads to a biased burst selection, especially if $\gamma$ significantly differ from 1. 
 
 To include the effect of $\gamma$ on the burst size and obtain a "fair" burst selection (i.e. a selection that does not favor high or low FRET states) we
 need to pass the argument \verb|gamma| (or \verb|gamma1|) like in the following example:
