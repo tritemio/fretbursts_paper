@@ -67,7 +67,13 @@ The \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{D
 All the arrays in Data are contained in lists whose length is equal to the number of excitation spots. This means that for single-spot measurements all the arrays are wrapped in 1-element lists. For example, the bursts data field \verb|Data.mbursts| will be a 1-element list and \verb|Data.mbursts[0]| will be the actual numpy array of burst data. \verb|Data|implements a shortcut syntax that allows accessing 
 \verb|Data.mbursts[0]| as \verb|Data.mbursts_| (valid for all the fields).
 
-Moreover, all the Data "fields" can be accessed both as attributes (as in \verb|d.nd|) and as key values (as in \verb|d['nd']|) and the existence of a field can be tested with the \verb|in| operator (i.e. \verb|'nd' in d|).
+As an example the following are some important burst-data fields:
+
+\begin{itemize}
+\item \verb|nd|: number of photons detected by the donor channel (during donor excitation), after correction
+\item \verb|na|: number of photons detected by the acceptor channel (during donor excitation), after correction
+\item \verb|naa|: number of photons detected by the acceptor channel during acceptor excitation, after correction
+\end{itemize}
 
 \subsection{Plotting "Data"}
 
