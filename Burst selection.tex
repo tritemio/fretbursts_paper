@@ -20,7 +20,7 @@ in sequence. For example with the following commands
 
 \begin{verbatim}
 ds = Sel(d, select_bursts.size, th1=50, th2=200)
-dsw = Sel(ds, select_bursts.with, th1=0.5e-3, th2=3e-3)
+dsw = Sel(ds, select_bursts.width, th1=0.5e-3, th2=3e-3)
 \end{verbatim}
 
 the variable \verb|dsw| will contain all the bursts with sizes between 50 and 200 photons, with duration between 0.5 and 3~ms.
