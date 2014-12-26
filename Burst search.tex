@@ -51,11 +51,11 @@ These attributes can be assigned either before or after the burst search. In the
 automatically updated using the newly assigned correction values.
 
 Sometimes it may be useful to specify a fixed threshold, instead 
-of a threshold derived from the background rate like in the previous example. In this case, instead of $F$ we can use the argument \verb|min_rate| that specifies a threshold in Hertz. For example, a burst search with a 50~kHz
+of a threshold derived from the background rate like in the previous example. In this case, instead of $F$ we can use the argument \verb|min_rate_cps| that specifies a threshold in Hertz. For example, a burst search with a 50~kHz
 threshold can be perfoemed as follows:
 
 \begin{verbatim}
-d.burst_search(rate_min=50e3, m=10, ph_sel=Ph_sel('all'))
+d.burst_search(min_rate_cps=50e3, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
 Finally, to perform a DCBS burst search (or in general an AND-gate burst search, 
