@@ -1,6 +1,6 @@
 Abstract.tex
 Introduction.tex
-smFRET data analysis.tex
+Concepts.tex
 Loading data.tex
 Background estimation.tex
 figures/ph_delays_distrib1/ph_delays_distrib1.png
