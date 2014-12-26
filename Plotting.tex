@@ -1,4 +1,16 @@
-\subsection{Plotting bursts}
+\subsection{Plotting "Data"}
+
+FRETBursts provide a wide range of built-in plot functions for \verb|Data| objects. The same syntax is used both for single and multi-spot measurements. Almost all the plot commands are called through the wrapper function \verb|dplot|, for example to plot a timetrace of the photon data we type:
+
+\begin{verbatim}
+dplot(d, timetrace)
+\end{verbatim}
+
+The function \verb|dplot| is the generic plot function that creates the figure and handles details common to all the plotting functions (i.e. the title). \verb|d| is the \verb|Data| variable and \verb|timetrace| is the actual plot function that operates on a single channel. In multi-spot measurements \verb|dplot| creates one subplot for each spot and calls \verb|timetrace| for each channel.
+
+All the built-in plot functions that can be passed to \verb|dplot| are defined in the \verb|burst_plot| module. We importing fretbursts all the plot functions are also imported. To make easy to find plot function through the auto-completion function in ipython, all the plot functions names start with the plot type. For example all the histograms start with \verb|hist_|. The most common prefixes are: \verb|timetrace| for binned timetraces of photon data, \verb|ratetrace| for rates of photons as a function of time (non binnned), \verb|hist| for functions plotting histograms and \verb|scatter| for scatter plots.
+
+
 
 \subsection{Population fit}
 
