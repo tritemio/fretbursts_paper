@@ -1,7 +1,39 @@
 \section{Introduction}
 
+\subsection{smFRET and burst analysis}
+
 FRETBursts is a python package for burst analysis of confocal single-molecule FRET 
 (smFRET) data.
 
 \textit{Expand abstract to introduce smFRET and what is burst analisys}.
+
+\subsection{Installing FRETBursts}
+FRETBursts is a standard python package that requires the "scipy stack", a set of core 
+scientific python packages.
+The "scipy stack" is easily installed through a free scientific python distribution such as Continuum Anaconda, although some users may prefer another distribution or a manual installation.
+
+FRETBursts can be installed through the standard python package manager (PIP) with 
+the command \texttt{pip install fretbursts}. Alternatively the latest development version can be installed from GitHub.
+For more information on different installation methods see the \href{http://fretbursts.readthedocs.org/en/latest/installation.html}{FRETBursts documentation}.
+
+\subsection{Executing FRETBursts}
+In general, we suggest to import FRETbursts with the expression:
+
+\begin{verbatim}
+>>> import fretbursts as fb
+\end{verbatim}
+
+that will make available all the FRETBursts functions with a concise `fb.` prefix. In this article, however, we assume that FRETBursts is imported with the shortcut form:
+
+\begin{verbatim}
+>>> from fretbursts import *
+\end{verbatim}
+
+that allows to skip the \verb|fb.| prefix and also imports some common numeric libraries (numpy and matplotlib.pyplot imported as \verb|np| and \verb|plt| respectively).
+
+Furthermore we encourage to use FRETBursts through the IPython Notebook environment. All the FRETBursts tutorials are ipython notebook documents and, indeed, a quick way to start a new analysis is copying a pre-existing FRETBursts notebook and modifying it.
+
+The "notebook workflow"\cite{Shen_2014} has the advantage of automatically recording all the analysis steps including
+data file names, software versions, analysis details and the full output (figures, tables, etc...).
+
 
