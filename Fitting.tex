@@ -1,10 +1,11 @@
 
 \subsection{Population fit}
 
-The fitting module \verb|mfit| allows to fit burst populations with a model. Typically, a bursts selection is perfomed first and the histograms of the $E$ or $S$ values of the selected bursts is fitted to a model. Under the hood the
-histogram fit is performed using the \href{http://lmfit.github.io/lmfit-py/}{lmfit} library.
+The fitting module \verb|mfit| allows to fit burst populations with a model. Typically, a bursts selection is perfomed first and aftewards the histograms of the $E$ or $S$ values of the selected bursts are fitted to a model. Under the hood the histogram fit is performed using the \href{http://lmfit.github.io/lmfit-py/}{lmfit} library, and, in fact, 
+a fit model is an \verb|lmfit.Model| object.
 
-In general a model can be automatically built from any function. Before fitting all the model parameters need to have assigned an initial value and (optional) some constrains. A series of functions starting with \verb|factory| in \verb|mfit| return pre-initialized models (for E and S histogram fitting) for commonly used functions, for example 1 or 2 gassian peaks with or without "bridge" function.
+In general a model can be automatically built from any function. Before fitting, however, all the model parameters need to have an initial value and (optionally) some constrains. FRETBursts includes a set of functions (starting with \verb|mfit.factory_|) that return pre-initialized models suitable for E and S histogram fitting. A set of commonly used functions, for example 1 or 2 gassian peaks with or without "bridge" function, are provided. These "factory" functions take optional arguments to change the initital value for the model parameters. For more info refer to the
+\href{http://fretbursts.readthedocs.org/en/latest/mfit.html#model-factory-functions}{factory-functions documentation}.
 
 For example, to fit the E histogram of bursts in \verb|ds| with two Gaussian peaks we execute:
 
@@ -22,6 +23,8 @@ dplot(ds, hist_fret, show_model=True)
 \end{verbatim}
 
 For more example on fitting bursts data and plotting results see the \href{http://nbviewer.ipython.org/urls/raw.github.com/tritemio/FRETBursts_notebooks/master/notebooks/FRETBursts\%2520-\%2520us-ALEX\%2520smFRET\%2520burst\%2520analysis.ipynb}{us-ALEX notebook}.
+
+For more info on defining custom model or on changing the constraints
 
 
 \subsubsection{Correction coefficients}
