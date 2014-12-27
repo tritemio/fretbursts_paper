@@ -62,7 +62,7 @@ As an example the following are some important burst-data fields:
 
 \subsection{Plotting "Data"}
 
-FRETBursts provide a wide range of built-in plot functions for \verb|Data| objects. The same syntax is used both for single and multi-spot measurements. Almost all the plot commands are called through the wrapper function \verb|dplot|, for example to plot a timetrace of the photon data we type:
+FRETBursts uses matplotlib~\cite{2096e2a4-8f50-4519-bfb3-f796da201630} to provide a wide range of built-in plot functions for \verb|Data| objects. The plot sysntax is the same both for single and multi-spot measurements. Almost all the plot commands are called through the wrapper function \verb|dplot|, for example to plot a timetrace of the photon data we type:
 
 \begin{verbatim}
 dplot(d, timetrace)
@@ -70,5 +70,22 @@ dplot(d, timetrace)
 
 The function \verb|dplot| is the generic plot function that creates the figure and handles details common to all the plotting functions (i.e. the title). \verb|d| is the \verb|Data| variable and \verb|timetrace| is the actual plot function that operates on a single channel. In multi-spot measurements \verb|dplot| creates one subplot for each spot and calls \verb|timetrace| for each channel.
 
-All the built-in plot functions that can be passed to \verb|dplot| are defined in the \verb|burst_plot| module. When importing fretbursts all the plot functions are also imported. To make easy to find plot function through auto-completion, all the plot functions names start with the plot type. The plot names prefixes are: \verb|timetrace| for binned timetraces of photon data, \verb|ratetrace| for rates of photons as a function of time (non binnned), \verb|hist| for functions plotting histograms and \verb|scatter| for scatter plots.
+All the built-in plot functions that can be passed to \verb|dplot| are defined in the \verb|burst_plot| module. When importing fretbursts all the plot functions are also imported. To make easy to find plot function through auto-completion, all the plot functions names start with a prefix indicating the plot type. The plot names prefixes are: \verb|timetrace| for binned timetraces of photon data, \verb|ratetrace| for rates of photons as a function of time (non binnned), \verb|hist| for functions plotting histograms and \verb|scatter| for scatter plots.
 
+Additional plots can be manually created directly with matplotlib.
+
+Usually plots are displayed inline in the notebook. However a few plot functions  such as timetrace and hist2d_alex  have interactive features that can be enabled when using the QT4 backend that open the plot in an external window. It is possible to switching backend from inline to QT and vice versa using the ipython commands \verb|\%matplotlib qt|
+and \verb|matplotlib inline|. For example, after switching to the QT4 backend the following commads:
+
+\begin{verbatim}
+dplot(d, timetrace, scroll=True)
+\end{verbatim}
+
+opens a new window with a timetrace plot and an horizontal scrollbar for quick "scrolling" throughout the measurement.
+Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows selecting an area on the E-S histogram using the mouse.
+
+\begin{verbatim}
+dplot(ds, hist2d_alex, gui_sel=True)
+\end{verbatim}
+
+The values that identify the region are printed and can be copied an pasted as argument for the burst sealection function \verb|select_bursts.ES|.
