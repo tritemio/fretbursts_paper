@@ -15,7 +15,7 @@ bext.bursts_fitter(ds, 'E', binwidth=0.03, model=mfit.factory_two_gaussians())
 
 Here, \verb|ds| is the variable with the burst data (selected bursts), \verb|'E'| is the name of the Data field to fit, \verb|binwidth| is the bin width of the histogram and \verb|model| is a pre-initialized model used for fitting.
 
-After fitting, all the fitting results are stored in the Data variable (in the \verb|E_fitter| or \verb|S_fitter| field).
+All fitting results are stored in the Data variable (in the \verb|E_fitter| or \verb|S_fitter| field).
 To plot the FRET histogram and the fitted model we run:
 
 \begin{verbatim}
