@@ -5,7 +5,7 @@ In this section we introduce some general concepts and naming conventions in FRE
 \subsection{Photon streams}
 \label{sec:ph_streams}
 
-The fundamental data at the core of smFRET experiments is the array of photon timestamps. In single-spot measurements, all the timestamps are stored in a single array. In multi-spot measurements we have as many timestamps arrays as the number of excitation spots.
+The fundamental data at the core of smFRET experiments is the array of photon arrival timestamps, with a resolution of the order of 10~ns. In single-spot measurements, all the timestamps are stored in a single array. In multi-spot measurements we have as many timestamps arrays as the number of excitation spots.
 
 Each array of timestamps contains timestamps from both the donor (D) and the acceptor channel (A). In ALEX measurements, we can further differentiate between photons emitted during D and A excitation periods. In FRETBursts the different selections of photons/timestamps are called "photon streams" and they are specified with a \href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{\texttt{Ph\_sel} object} . In non-ALEX smFRET data we have 3 base photon streams (table~\ref{tab:ph_sel_smfret}), while in ALEX data we have 5 base photon streams 
 (table~\ref{tab:ph_sel_alex}).
