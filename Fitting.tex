@@ -7,7 +7,7 @@ a fit model is an \verb|lmfit.Model| object.
 In general a model can be automatically built from any function. Before fitting, however, all the model parameters need to have an initial value and (optionally) some constrains. FRETBursts includes a set of functions (starting with \verb|mfit.factory_|) that return pre-initialized models suitable for E and S histogram fitting. A set of commonly used functions, for example 1 or 2 gassian peaks with or without "bridge" function, are provided. These "factory" functions take optional arguments to change the initital value for the model parameters. For more info refer to the
 \href{http://fretbursts.readthedocs.org/en/latest/mfit.html#model-factory-functions}{factory-functions documentation}.
 
-For example, to fit the E histogram of bursts in \verb|ds| with two Gaussian peaks we execute:
+For example, in order to fit the E histogram of bursts in \verb|ds| with two Gaussian peaks we execute:
 
 \begin{verbatim}
 bext.bursts_fitter(ds, 'E', binwidth=0.03, model=mfit.factory_two_gaussians())
