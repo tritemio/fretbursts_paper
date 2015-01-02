@@ -1,0 +1,136 @@
+\subsection{Burst search}
+\label{sec:burstsearch}
+
+\subsubsection{Introduction to burst search}
+\label{sec:burstsearch_intro}
+
+After background estimation, the burst search is the next fundamental step of
+the analysis. The core "sliding window" algorithm, proposed by
+Eggeling~\textit{et al.} in 1998~\cite{Eggeling_1998}, involves searching for
+bursts of photons
+in which $m$ consecutive photons are contained within a minimal time period
+$\Delta t$. In other words, bursts are portions of the photon stream where the
+local rate (computed using $m$ photons) is above a minimal rate chosen as a
+threshold. Eggeling did not provide any criteria on how to choose the rate
+threshold and the number of photons $m$ and as therefore it has become a common
+practice to manually tweak those parameters for each specific measurement. 
+
+A more general approach consist in taking into account the background rate of
+the specific measurements and in choosing a rate threshold that is $F$ times
+larger than the background rate. This approach assures that the resulting bursts
+all have a single-to-background ratio (SBR) larger than
+$(F-1)$~\cite{Michalet_2012}. A consistent criterion to choose the threshold is
+very important when comparing different measurements with different background
+rates, when the background significantly changes during the measurements or in
+multi-spot measurements where each spot has a different background rate.
+
+A second important aspect of burst search is which photon stream is processed.
+Sometimes, for instance when identifying FRET populations, one would like to
+apply the burst search to all the photons. Other times, when focusing on
+donor-only or acceptor only populations, it is better to use only the donor or
+acceptor signal. In general one would like to be able to apply the burst search
+to an arbitrary selection of photons. In FRETBursts this can be achieved passing
+the appropriate \verb|Ph_sel| object to the burst search method (see
+section~\ref{sec:ph_streams} for more info on photon stream definitions).
+
+Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a dual-channel burst
+search (DCBS) that allows one to mitigate (to some extent) artifacts due to
+photo-physical effects such as blinking. In this case a search is performed
+independently on two photon streams and bursts are marked only when both photon
+streams exhibit a rate higher than the threshold, 
+implementing a kind of an AND-gate logic. 
+Usually, the term DCBS is refers to a burst search where the two photon streams
+are all the photons 
+during donor excitation (\verb|Ph_sel(Dex='DAem')|) and acceptor channel photons
+during acceptor 
+excitation (\verb|Ph_sel(Aex='Aem')|).
+
+After the first level of burst search is performed it is important to select
+bursts according to their number of photons (burst size). In the most
+rudimentary form this selection can be perfomed during burst search discarding
+all the bursts
+with size lower that a threshold $L$. This method, however, neglects the effect
+of background and gamma factor on the burst size and can lead to a selection
+bias of certain channels or of certain sub-populations. 
+For this reason we advocate performing a burst size selection after background
+correction and taking into account the gamma factor, as illustrated in
+section~\ref{sec:burstsel}.
+
+\subsubsection{Burst search in FRETBursts}
+\label{sec:burstsearch_code}
+
+In FRETBursts the standard burst search is performed calling the
+\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.burst\_search}{\texttt{burst\_search} method}.
+
+\begin{verbatim}
+d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
+\end{verbatim}
+
+The previous command perfoms a burst search on all photons
+(\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the
+background rate (\verb|F=6|) and using 10 consecutive photons to compute the
+local rate (\verb|m=10|).
+A different photon selection, threshold ($F$) or number of photons for rate
+computation $m$ can be selected by passing a different value. These parameters
+are generally a good starting point for smFRET analysis but can be tweaked in
+specific cases.
+
+Note that in the previous burst search no burst size selection is performed
+(i.e. the minimum bursts size is $m$). 
+An additional parameter $L$ can be passed to apply a threshold on the raw burst
+size (before any correction). 
+We however suggest to perform a more accurate burst size selection as shown in
+the next section~\ref{sec:burstsel}.
+
+In us-ALEX there are 3 important correction parameters: gamma factor, spectral
+leakage and 
+acceptor direct excitation~\cite{Lee_2005}. These corrections can be applied by
+simply setting the respective
+Data attributes:
+
+\begin{verbatim}
+d.gamma = 0.85
+d.leakage = 0.04
+d.dir_ex = 0.08
+\end{verbatim}
+
+These attributes can be assigned either before or after the burst search. In the
+latter case, the burst data is
+automatically updated using the newly assigned correction values.
+
+Sometimes it may be useful to specify a fixed threshold, instead 
+of a threshold derived from the background rate like in the previous example. In
+this case, instead of $F$ we can use the argument \verb|min_rate_cps| that
+specifies a threshold in Hertz. For example, a burst search with a 50~kHz
+threshold can be perfoemed as follows:
+
+\begin{verbatim}
+d.burst_search(min_rate_cps=50e3, m=10, ph_sel=Ph_sel('all'))
+\end{verbatim}
+
+Finally, to perform a DCBS burst search (or in general an AND-gate burst search,
+
+see section~\ref{sec:burstsearch_intro}) the plugin function 
+\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.burst\_search\_and\_gate}{\texttt{burst\_search\_and\_gate}}
+
+can be used like in the following example:
+
+\begin{verbatim}
+d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
+\end{verbatim}
+
+Note that in this case a new \verb|Data| variable is returned (\verb|d_dcbp|)
+containing all the data and the results of the new burst search. In order to
+save RAM, FRETBursts shares the timestamps and detectors arrays between
+different copies of a \verb|Data| object (for example \verb|d| and
+\verb|d_dcbs|), while all the other data (including background and burst data)
+is copied. 
+
+The function \verb|burst_search_and_gate| accepts additional arguments
+\verb|ph_sel1| and \verb|ph_sel2| 
+used to specify different photons streams. The default values 
+(\verb|ph_sel1 = Ph_sel(Dex='DAem')| and \verb|ph_sel2 = Ph_sel(Aex='Aem')|)
+correspond to the classical DCBS 
+(see section~\ref{sec:burstsearch_intro}).
+
+
