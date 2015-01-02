@@ -1,0 +1,37 @@
+\input{preamble}
+
+\usepackage{hyperref}
+\usepackage{listings}
+
+\bibliographystyle{plain}
+
+\author{Antonino Ingargiola}
+\title{\input{title}}
+\begin{document}
+
+\maketitle
+\input{"figures/ph_delays_distrib1/caption"}
+
+\begin{abstract}
+\input{Abstract.tex}
+\end{abstract}
+
+
+\input{Introduction.tex}
+\input{Concepts.tex}
+\input{"Loading data"}
+\input{"Background estimation"}
+
+\begin{figure}
+\includegraphics{"figures/ph_delays_distrib1/ph_delays_distrib1"}
+\caption[]{\input{"figures/ph_delays_distrib1/caption"}}
+\end{figure}
+
+\input{"Burst search.tex"}
+\input{"Burst selection"}
+\input{Fitting}
+\input{Conclusions}
+
+\bibliography{bibliography/biblio}
+
+\end{document}
