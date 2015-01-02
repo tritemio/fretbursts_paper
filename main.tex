@@ -1,15 +1,17 @@
 \input{preamble}
 
+\usepackage[utf8]{inputenc}
+\usepackage{fancyref}
 \usepackage{hyperref}
+\usepackage{cite}
 
-\bibliographystyle{plain}
+\bibliographystyle{plos2009}
 
 \author{Antonino Ingargiola}
 \title{\input{title}}
 \begin{document}
 
 \maketitle
-\input{figures/ph_delays_distrib1/caption}
 
 \begin{abstract}
 \input{Abstract.tex}
@@ -22,8 +24,10 @@
 \input{background-estimation}
 
 \begin{figure}
-\includegraphics{"figures/ph_delays_distrib1/ph_delays_distrib1"}
+\begin{center}
+\includegraphics[width=0.6\columnwidth]{"figures/ph_delays_distrib1/ph_delays_distrib1"}
 \caption[]{\input{"figures/ph_delays_distrib1/caption"}}
+\end{center}
 \end{figure}
 
 \input{burst-search}
