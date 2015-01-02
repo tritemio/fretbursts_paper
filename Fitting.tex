@@ -1,30 +1,48 @@
 
 \subsection{Population fit}
 
-The fitting module \verb|mfit| allows to fit burst populations with a model. Typically, a bursts selection is perfomed first and aftewards the histograms of the $E$ or $S$ values of the selected bursts are fitted to a model. Under the hood the histogram fit is performed using the \href{http://lmfit.github.io/lmfit-py/}{lmfit} library, and, in fact, 
+The fitting module \verb|mfit| allows to fit burst populations with a model.
+Typically, a bursts selection is performed first and afterwards the histograms of
+the $E$ or $S$ values of the selected bursts are fitted to a model. Under the
+hood the histogram fit is performed using the
+\href{http://lmfit.github.io/lmfit-py/}{lmfit} library, and, in fact, 
 a fit model is an \verb|lmfit.Model| object.
 
-In general a model can be automatically built from any function. Before fitting, however, all the model parameters need to have an initial value and (optionally) some constrains. FRETBursts includes a set of functions (starting with \verb|mfit.factory_|) that return pre-initialized models suitable for E and S histogram fitting. A set of commonly used functions, for example 1 or 2 gassian peaks with or without "bridge" function, are provided. These "factory" functions take optional arguments to change the initital value for the model parameters. For more info refer to the
+In general a model can be automatically built from any function. Before fitting,
+however, all the model parameters need to have an initial value and (optionally)
+some constrains. FRETBursts includes a set of functions (starting with
+\verb|mfit.factory_|) that return pre-initialized models suitable for E and S
+histogram fitting. A set of commonly used functions, for example 1 or 2 Gaussian
+peaks with or without "bridge" function, are provided. These "factory" functions
+take optional arguments to change the initial value for the model parameters.
+For more info refer to the
 \href{http://fretbursts.readthedocs.org/en/latest/mfit.html#model-factory-functions}{factory-functions documentation}.
 
-For example, in order to fit the E histogram of bursts in \verb|ds| with two Gaussian peaks we execute:
+For example, in order to fit the E histogram of bursts in \verb|ds| with two
+Gaussian peaks we execute:
 
 \begin{verbatim}
 bext.bursts_fitter(ds, 'E', binwidth=0.03, model=mfit.factory_two_gaussians())
 \end{verbatim}
 
-Here, \verb|ds| is the variable with the burst data (selected bursts), \verb|'E'| is the name of the Data field to fit, \verb|binwidth| is the bin width of the histogram and \verb|model| is a pre-initialized model used for fitting.
+Here, \verb|ds| is the variable with the burst data (selected bursts),
+\verb|'E'| is the name of the Data field to fit, \verb|binwidth| is the bin
+width of the histogram and \verb|model| is a pre-initialized model used for
+fitting.
 
-All fitting results are stored in the Data variable (in the \verb|E_fitter| or \verb|S_fitter| field).
+All fitting results are stored in the Data variable (in the \verb|E_fitter| or
+\verb|S_fitter| field).
 In order to plot the FRET histogram and the fitted model one can run:
 
 \begin{verbatim}
 dplot(ds, hist_fret, show_model=True)
 \end{verbatim}
 
-For more examples on fitting bursts data and plotting results see the \href{http://nbviewer.ipython.org/urls/raw.github.com/tritemio/FRETBursts_notebooks/master/notebooks/FRETBursts\%2520-\%2520us-ALEX\%2520smFRET\%2520burst\%2520analysis.ipynb}{us-ALEX notebook}.
+For more examples on fitting bursts data and plotting results see the
+\href{http://nbviewer.ipython.org/urls/raw.github.com/tritemio/FRETBursts_notebooks/master/notebooks/FRETBursts\%2520-\%2520us-ALEX\%2520smFRET\%2520burst\%2520analysis.ipynb}{us-ALEX notebook}.
 
-For more information on plotting the FRET histogram ... (and see also ALEX histogram).
+For more information on plotting the FRET histogram ... (and see also ALEX
+histogram).
 
 For more information on defining custom models or on changing the constraints...
 
@@ -41,4 +59,5 @@ For more information on defining custom models or on changing the constraints...
 \subsubsection{Accurate FRET}
 
 Apply corrections to the bursts vs apply corrections after the fit.
+
 

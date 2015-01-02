@@ -22,7 +22,7 @@ On MS Windows, it is good practice to use \href{https://docs.python.org/2/tutori
 
 \subsubsection{Load data manually}
 
-In case the data is available in a format not directly supported by FRETBursts it is possible to manually create a \verb|Data| variable. For example, for non-ALEX smFRET data, two arrays of same length are needed: the timestamps and the acceptor-mask. The timestamps needs to be an int64 numpy array containing the recorded photon timestamps in arbitrary units (usually dictated by the acquisition hardware clock period). The acceptor-mask needs to be a numpy boolean array that is \verb|True| when the corresponding timestamps comes from the acceptor channel and \verb|False| when it comes from the donor channel. Having these arrays a \verb|Data| object can be manually created with:
+In case the data is available in a format not directly supported by FRETBursts it is possible to manually create a \verb|Data| variable. For example, for non-ALEX smFRET data, two arrays of same length are needed: the timestamps and the acceptor-mask. The timestamps need to be an int64 numpy array containing the recorded photon timestamps in arbitrary units (usually dictated by the acquisition hardware clock period). The acceptor-mask needs to be a numpy boolean array that is \verb|True| when the corresponding timestamps comes from the acceptor channel and \verb|False| when it comes from the donor channel. Having these arrays a \verb|Data| object can be manually created with:
 
 \begin{verbatim}
 d = Data(ph_times_m=[timestamps], A_em=[acceptor_mask], 

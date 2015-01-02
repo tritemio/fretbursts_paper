@@ -47,11 +47,11 @@ excitation (\verb|Ph_sel(Aex='Aem')|).
 
 After the first level of burst search is performed it is important to select
 bursts according to their number of photons (burst size). In the most
-rudimentary form this selection can be perfomed during burst search discarding
+rudimentary form this selection can be performed during burst search discarding
 all the bursts
 with size lower that a threshold $L$. This method, however, neglects the effect
 of background and gamma factor on the burst size and can lead to a selection
-bias of certain channels or of certain sub-populations. 
+bias of certain channels and/or sub-populations. 
 For this reason we advocate performing a burst size selection after background
 correction and taking into account the gamma factor, as illustrated in
 section~\ref{sec:burstsel}.
@@ -66,7 +66,7 @@ In FRETBursts the standard burst search is performed calling the
 d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
-The previous command perfoms a burst search on all photons
+The previous command performs a burst search on all photons
 (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the
 background rate (\verb|F=6|) and using 10 consecutive photons to compute the
 local rate (\verb|m=10|).
@@ -75,7 +75,7 @@ computation $m$ can be selected by passing a different value. These parameters
 are generally a good starting point for smFRET analysis but can be tweaked in
 specific cases.
 
-Note that in the previous burst search no burst size selection is performed
+Note that, in the previous burst search, no burst size selection is performed
 (i.e. the minimum bursts size is $m$). 
 An additional parameter $L$ can be passed to apply a threshold on the raw burst
 size (before any correction). 
@@ -102,7 +102,7 @@ Sometimes it may be useful to specify a fixed threshold, instead
 of a threshold derived from the background rate like in the previous example. In
 this case, instead of $F$ we can use the argument \verb|min_rate_cps| that
 specifies a threshold in Hertz. For example, a burst search with a 50~kHz
-threshold can be perfoemed as follows:
+threshold can be performed as follows:
 
 \begin{verbatim}
 d.burst_search(min_rate_cps=50e3, m=10, ph_sel=Ph_sel('all'))
