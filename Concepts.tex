@@ -176,3 +176,34 @@ dplot(ds, hist2d_alex, gui_sel=True)
 The values that identify the region are printed and can be copied an pasted as
 argument for the burst selection function \verb|select_bursts.ES| (see
 section~\ref{sec:burstsel}).
+
+\subsection{Burst weights}
+As will be shown in the following sections, the burst search results in a 
+burst population with burst of different sizes (i.e. number of photons). 
+The bursts with largest size (that contains indeed the most information) 
+are much less than bursts with small size. For this reason, in order to 
+resolve FRET populations and accurately fit their FRET efficiency it is of
+paramount importance to select bursts with size larger than threshold (see 
+section~\ref{sec:burst_sel}). The choice of the burst size threshold is 
+critical because a too low threshold will widen the FRET peaks because of 
+the inclusion of small size bursts, conversely a too high threshold results
+in a low number of bursts and high statitical error in the FRET estimation.
+
+In order to mitigate the dependence on the burst size threshold it is 
+useful to weight bursts according to their size (i.e. their 
+information content) so that the biggest bursts will have the highest weights. 
+The weighting can be used to build weighted histograms and KDE plots.
+When using weights the choice of a particular burst size threshold become 
+much less important and the histograms or KDE plots exhibit sharp
+peaks corresponding to different FRET popuations for a much wider range
+of thresholds. 
+
+FRETBursts allows weighting bursts using the gamma-corrected burst size
+(\verb|gamma*nd + na|) and optionally adding the acceptor counts during
+acceptor excitation (\verb|naa|). Once the size is defined, the weights
+can be computed according to different criteria among which the most
+commonly used is \verb|'size'|, meaning to associate a weight 
+directly proportional to the burst size. The list of weigth types
+can be found in the 
+\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{\texttt{fret\_fit.get\_weiths} documentation}.
+
