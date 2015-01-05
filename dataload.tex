@@ -65,3 +65,38 @@ and we specify that the data is not from an ALEX measurements. Creating
 We point the interested readers to the 
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py}{loader module source code} 
 for other examples. 
+
+\subsection{Alternation parameters}
+
+For us-ALEX and ns-ALEX data it is necessary to identify the different 
+alternation periods for donor and acceptor excitation.
+
+The functions 
+\verb|plot_alternation_hist| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist}{documentation})
+and \verb|plot_alternation_hist_nsalex| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist\_nsalex}{documentation})
+plot the alternation histogram (or the nanotime histogram)
+with the currently selected donor and acceptor excitation periods
+(if no selection has been made yet default values will be shown).
+
+To change the period definition the user can execute:
+
+\begin{verbatim}
+    d.add(D_ON=(2850, 580), A_ON=(900, 2580))
+\end{verbatim}
+
+where \verb|D_ON| and \verb|A_ON| are tuples representing 
+the start-stop range for the donor and acceptor excitation periods 
+in timestamps units. After changing the parameters a new plot
+alternation plot will show the new updates period selections.
+
+When the alternetion period selection is satisfactory it can
+be applied with:
+
+\begin{verbatim}
+    loader.usalex_apply_period(d)
+\end{verbatim}
+
+After this command, only the photons inside excitations periods
+will be present in \verb|d| and to apply a different alternation 
+period definition the file must be reloaded.
+
