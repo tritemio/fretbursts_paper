@@ -121,10 +121,12 @@ acceptor excitation, after correction
 \subsection{Plotting "Data"}
 
 FRETBursts uses matplotlib~\cite{2096e2a4-8f50-4519-bfb3-f796da201630} to
-provide a wide range of built-in plot functions for \verb|Data| objects. The
-plot syntax is the same both for single and multi-spot measurements. Almost all
-the plot commands are called through the wrapper function \verb|dplot|, for
-example to plot a timetrace of the photon data we type:
+provide a wide range of 
+\href{http://fretbursts.readthedocs.org/en/latest/plots.html}{built-in plot functions}
+for \verb|Data| objects. 
+The plot syntax is the same both for single and multi-spot measurements. 
+Almost all the plot commands are called through the wrapper function 
+\verb|dplot|, for example to plot a timetrace of the photon data we type:
 
 \begin{verbatim}
 dplot(d, timetrace)
@@ -137,24 +139,26 @@ function that operates on a single channel. In multi-spot measurements
 \verb|dplot| creates one subplot for each spot and calls \verb|timetrace| for
 each channel.
 
-All the built-in plot functions that can be passed to \verb|dplot| are defined
-in the \verb|burst_plot| module. When importing fretbursts all the plot
-functions are also imported. To make easy to find plot function through
-auto-completion, all the plot functions names start with a prefix indicating the
-plot type. The plot names prefixes are: \verb|timetrace| for binned timetraces
+All the built-in plot functions that can be passed to 
+\verb|dplot| are defined in the 
+\href{http://fretbursts.readthedocs.org/en/latest/plots.html}{\texttt{burst_plot} module}. 
+When importing fretbursts all the plot functions are also imported. 
+To make easy to find plot function through auto-completion, 
+the plot function names start with a prefix indicating the
+plot type. The prefixes are: \verb|timetrace| for binned timetraces
 of photon data, \verb|ratetrace| for rates of photons as a function of time (non
 binnned), \verb|hist| for functions plotting histograms and \verb|scatter| for
 scatter plots.
 
-Additional plots can be manually created directly with matplotlib.
+Additional plots can be easily created directly with matplotlib.
 
 Usually plots are displayed inline in the notebook. However a few plot functions
- such as \verb|timetrace| and \verb|hist2d_alex|  have interactive features that
-can be enabled when using the QT4 backend that open the plot in an external
+ such as \verb|timetrace| and \verb|hist2d_alex| have interactive features that
+can be enabled when using the QT4 backend that opens the plot in an external
 window. It is possible to switch backend from inline to QT and vice versa using
 the ipython commands \verb|%matplotlib qt|
 and \verb|%matplotlib inline|. For example, after switching to the QT4 backend
-%the following commads:
+the following commads:
 
 \begin{verbatim}
 dplot(d, timetrace, scroll=True)
