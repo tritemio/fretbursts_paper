@@ -22,16 +22,15 @@ for a detailed description of each function.
 
 \subsection{Installing FRETBursts}
 FRETBursts is a standard python package that requires the "scipy stack", a set
-of core scientific python packages.
-The "scipy stack" is easily installed through a free scientific python
+of core scientific python libraries.
+The "scipy stack" is easily installed by installing a free scientific python
 distribution such as Continuum Anaconda, although some users may prefer another
 distribution or a manual installation.
 
 FRETBursts can be installed through the standard python package manager (PIP)
-with 
-the command \texttt{pip install fretbursts}. Alternatively the latest
-development version can be installed from GitHub.
-For more information on different installation methods see the
+with the command \texttt{pip install fretbursts}. 
+Alternatively the latest development version can be downloaded directly 
+from GitHub. For more information on different installation methods see the
 \href{http://fretbursts.readthedocs.org/en/latest/installation.html}{FRETBursts
 documentation}.
 
@@ -50,19 +49,21 @@ shortcut form:
 >>> from fretbursts import *
 \end{verbatim}
 
-that allows to skip the \verb|fb.| prefix and also imports some common numeric
-libraries (numpy and matplotlib.pyplot imported as \verb|np| and \verb|plt|
-respectively).
+that allows to skip the \verb|fb.| prefix and it also imports some common numeric
+libraries (\textit{numpy} and \textit{matplotlib.pyplot} imported as 
+\verb|np| and \verb|plt| respectively).
 
-Furthermore we encourage using FRETBursts through the IPython Notebook
-environment. IPython notebooks are documents that contains both code and
-rich text and multimedia content.
-The "notebook workflow"\cite{Shen_2014} has the advantage of automatically
-recording not only the all analysis commands and parameters but also the
-data file names, software versions and the full output 
+We encourage using FRETBursts through the IPython Notebook environment. 
+IPython notebooks are web browser documents that contain
+both code cells, rich text and multimedia content. In a notebook the code is 
+interspersed with prose in a structured document that can contain math 
+formulas, hyperlinks and figures (or anything else a web browser can display).
+Furthermore, the "notebook workflow"\cite{Shen_2014} has the advantage 
+of automatically recording not only the all analysis commands and parameters 
+but also the data file names, software versions and the full output 
 (figures, tables, etc...) in a single document that can be interactively 
 modified and re-executed.
 
 All the FRETBursts tutorials are 
 ipython notebooks and, in fact, the suggested way to start a new analysis is 
-by copying a pre-existing FRETBursts notebook and modifying it.
+copying and modifying a pre-existing FRETBursts notebook.
