@@ -5,15 +5,20 @@
 FRETBursts is a python package for burst analysis of confocal single-molecule
 FRET (smFRET) data.
 
-In this paper we provide an overview of the FRETBursts software. The 
+In this paper we provide an broad overview of the FRETBursts software. The 
 paper is structured as follows. In section~\ref{sec:concepts} we
 introduce some basic concepts and terminology related to burst analysis.
 In section~\ref{sec:analysis} we illustrate how to execute the several steps involved
-in the burst analysis (background correction, burst search, burst 
-filtering, FRET fitting).
+in the burst analysis: background correction (section~\ref{sec:bg_calc}), burst search
+(section~\ref{sec:burstsearch}), burst filtering (section~\ref{sec:burstsel}), 
+FRET fitting (section~\ref{sec:fretfit}). For each step different approached and options are
+discussed.
 
-
-\textit{Expand abstract to introduce smFRET and what is burst analysis}.
+In addition to this paper, we refer the interested readers to the 
+\href{http://nbviewer.ipython.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb}{FRETBursts µs-ALEX tutorial} 
+for a single complete example of µs-ALEX data analysis and to the
+\href{http://fretbursts.readthedocs.org/}{FRETBursts Reference Documentation}
+for a detailed description of each function.
 
 \subsection{Installing FRETBursts}
 FRETBursts is a standard python package that requires the "scipy stack", a set
