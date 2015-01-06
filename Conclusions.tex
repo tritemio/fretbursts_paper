@@ -1,3 +1,21 @@
 \section{Conclusions}
 
-Mention the development practices: code readability, highly commented code, automated unit-test, regression tests, version tracking, reproducibility.
+We have described the usage of the numerous algorithms in FRETBursts
+for burst analysis. We conclude enumerating what we consider to be the strengths
+of this software.
+
+\begin{enumerate}
+\item Opensource and openly developed. The source code can be checked, modified and
+adapted for different purposes. 
+\item Provides several state-of-the-art and novel algorithms for each step of the 
+smFRET burst analysis pipeline. Just to cite a few we are not aware of any other software
+(open or close source) that implements background estimation as a function of time,
+background-dependent threshold for burst search, burst filtering based on 
+gamma-corrected burst sizes and burst weighting.
+\item Modern software engineering design: we follows the DRY rule, we aim at not
+overenginering balancing between object oriented and procedural approach
+\item Defensive programming: we aim for the maximum code redability,
+estensive unit and regression testing and continuous integration.
+\end{enumerate}
+
+Finally we ancourage feedbacks, bug reports and contributions.
