@@ -1,7 +1,7 @@
 \section{Coding style}
 
 FRETBursts has an well commented codebase with more that 35\% of source code
-being commments (for comparison the average project on OpenHub has 25\%
+being commments (for comparison the average project registered on OpenHub has 25\%
 of commments). To ease readability most of the PEP8 code style rules are followed.
 and docstrings use the highly-readable napoleon format.
 
@@ -15,4 +15,22 @@ minimizing the probability of introducing bugs. The continous integration
 service TravisCI is used to execute the full test suite after each commit.
 As a rule, whenever a bug is discovered the bug is fixed and a new test is 
 written to ensure that the same bug cannot happen in the future.
+
+In addition ot the unit tests, a specialized regression test notebook is
+also included in the source tree and periodically executed. Additionally
+the tutorials itselfs are periodically executed to ensure no error or 
+regression is introduced.
+
+Finally the full set of notebooks for the multi-spot paper analysis,
+including notebooks for extensive µs-ALEX analysis are periodically
+executed and a dedicated notebooks ensures that all the numerical
+results remain unchanged withing the floating point numerical accuracy.
+
+Code readbility, rigouros development practice and extensive testing
+shows that all the efforts have been made to minimize the presence 
+of bugs.
+
+In accordance with our open development approach we commit at publically
+disclose any bug that may result in erroneus results, openly discussing
+the bug on GitHub issues and releasing timely fixes.
 
