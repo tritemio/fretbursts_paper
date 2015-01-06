@@ -5,6 +5,7 @@ dataload.tex
 figures/usALEX_alternation_hist/usALEX_alternation_hist.png
 background-estimation.tex
 figures/ph_delays_distrib1/ph_delays_distrib1.png
+figures/ph_delays_distrib_all/ph_delays_distrib_all.png
 burst-search.tex
 burst-selection.tex
 figures/alex_jointplot/alex_jointplot.png
