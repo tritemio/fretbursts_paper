@@ -16,15 +16,16 @@ service TravisCI is used to execute the full test suite after each commit.
 As a rule, whenever a bug is discovered the bug is fixed and a new test is 
 written to ensure that the same bug cannot happen in the future.
 
-In addition ot the unit tests, a specialized regression test notebook is
-also included in the source tree and periodically executed. Additionally
-the tutorials itselfs are periodically executed to ensure no error or 
-regression is introduced.
+In addition ot the unit tests, a specialized regression-test notebook
+that compares results between two versions of FRETBursts is
+included in the source tree and periodically executed. Additionally
+the tutorials itselfs are periodically executed to ensure that
+no errors or regressions are introduced.
 
 Finally the full set of notebooks for the multi-spot paper analysis,
 including notebooks for extensive µs-ALEX analysis are periodically
 executed and a dedicated notebooks ensures that all the numerical
-results remain unchanged withing the floating point numerical accuracy.
+results remain unchanged within the numerical accuracy.
 
 Code readbility, rigouros development practice and extensive testing
 shows that all the efforts have been made to minimize the presence 
