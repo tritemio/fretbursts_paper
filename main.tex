@@ -1,5 +1,6 @@
 \input{preamble}
 
+%% Enable UTF8 Greek characters
 \usepackage[utf8]{inputenc}
 \usepackage[LGR,T1]{fontenc}
 \usepackage{textcomp}
@@ -8,10 +9,17 @@
 \usepackage{hyperref}
 \usepackage{cite}
 
+%% Enable changing the verbatim font
+\makeatletter
+\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\makeatother
 
 \author{Antonino Ingargiola}
 \title{\input{title}}
+
+
 \begin{document}
+\verbatimfont{\small}
 
 \maketitle
 
@@ -19,6 +27,7 @@
 \input{Abstract.tex}
 \end{abstract}
 
+\tableofcontents
 
 \input{Introduction.tex}
 \input{Concepts.tex}
@@ -40,8 +49,24 @@
 \end{center}
 \end{figure}
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.75\columnwidth]{"figures/ph_delays_distrib_all/ph_delays_distrib_all"}
+\caption[]{\input{"figures/ph_delays_distrib_all/caption"}}
+\end{center}
+\end{figure}
+
 \input{burst-search}
 \input{burst-selection}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.65\columnwidth]{"figures/alex_jointplot/alex_jointplot"}
+\caption[]{\input{"figures/alex_jointplot/caption"}}
+\end{center}
+\end{figure}
+
+
 \input{Fitting}
 \input{Conclusions}
 
