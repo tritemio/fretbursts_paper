@@ -82,7 +82,7 @@ size (before any correction).
 We however suggest to perform a more accurate burst size selection as shown in
 the next section~\ref{sec:burstsel}.
 
-In us-ALEX there are 3 important correction parameters: gamma factor, spectral
+In µs-ALEX there are 3 important correction parameters: gamma factor, spectral
 leakage and 
 acceptor direct excitation~\cite{Lee_2005}. These corrections can be applied by
 simply setting the respective
@@ -109,10 +109,8 @@ d.burst_search(min_rate_cps=50e3, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
 Finally, to perform a DCBS burst search (or in general an AND-gate burst search,
-
 see section~\ref{sec:burstsearch_intro}) the plugin function 
 \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.burst\_search\_and\_gate}{\texttt{burst\_search\_and\_gate}}
-
 can be used like in the following example:
 
 \begin{verbatim}
