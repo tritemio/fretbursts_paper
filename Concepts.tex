@@ -179,24 +179,26 @@ section~\ref{sec:burstsel}).
 
 \subsection{Burst weights}
 As will be shown in the following sections, the burst search returns a 
-burst population with burst of different sizes (i.e. number of photons). 
-The bursts with largest size (that contains indeed the most information) 
+burst population with burst sizes (i.e. number of photons) roughly 
+exponetially ditributed. 
+This means thar bursts with largest size (containing the most information) 
 are much less frequent than bursts with small size. For this reason, in order 
 to resolve FRET populations and accurately fit their FRET efficiency it is of
 paramount importance to select bursts with size larger than a threshold (see 
 section~\ref{sec:burstsel}). The choice of the burst size threshold is 
 critical because a too low threshold will widen the FRET peaks because of 
-the inclusion of small size bursts, conversely a too high threshold results
-in a low number of bursts and high statitical error in the FRET estimation.
+the inclusion of small size bursts (that have high variance), conversely a too
+high threshold results in a low number of bursts and high statitical error in
+the FRET estimation.
 
 In order to mitigate the dependence on the burst size threshold it is 
 useful to weight bursts according to their size (i.e. their 
-information content) so that the biggest bursts will have the highest weights. 
+information content) so that the biggest bursts will receive the highest
+weights. 
 The weighting can be used to build weighted histograms and KDE plots.
 When using weights the choice of a particular burst size threshold become 
-much less important and the histograms or KDE plots exhibit sharp
-peaks corresponding to different FRET popuations for a much wider range
-of thresholds. 
+much less important and the histograms or KDE plots exhibit FRET peaks with
+minimal width for a much wider range of thresholds. 
 
 FRETBursts allows weighting bursts using the gamma-corrected burst size
 (\verb|gamma*nd + na|) and optionally adding the acceptor counts during
