@@ -47,21 +47,22 @@ In general, we suggest to import FRETbursts with the expression:
 
 after which all the FRETBursts functions will be availabe under the \verb|fb.|
 prefix. In this article, for brevity, we assume that FRETBursts is imported 
-with the shortcut form:
+with the shortcut form instead:
 
 \begin{verbatim}
 >>> from fretbursts import *
 \end{verbatim}
 
-that allows to skip the \verb|fb.| prefix and it also imports some common numeric
-libraries (\textit{numpy} and \textit{matplotlib.pyplot} imported as 
-\verb|np| and \verb|plt| respectively).
+that allows skiping the \verb|fb.| prefix and it will also import some common 
+numeric libraries (i.e. \textit{numpy} and \textit{matplotlib.pyplot} 
+imported as \verb|np| and \verb|plt| respectively).
 
-We encourage using FRETBursts through the IPython Notebook environment. 
-IPython notebooks are web browser documents that contain
-both code cells, rich text and multimedia content. In a notebook, the code is 
-interspersed with prose in a structured document that can contain math 
-formulas, hyperlinks and figures (or anything else a web browser can display).
+In order to enable the reproducibility of the analysis and to ease
+the sharing of the complete workflow we encourage using FRETBursts through 
+the IPython Notebook environment. 
+IPython notebooks are documents in which the code is interspersed with 
+prose in a web-based format that can contain math formulas, hyperlinks 
+and figures (or anything else a web browser can display).
 Furthermore, the "notebook workflow"\cite{Shen_2014} has the advantage 
 of automatically recording not only the all analysis commands and parameters 
 but also the data file names, software versions and the full output 
@@ -69,5 +70,5 @@ but also the data file names, software versions and the full output
 modified and re-executed.
 
 All the FRETBursts tutorials are 
-ipython notebooks and, in fact, the suggested way to start a new analysis is 
+ipython notebooks and, in fact, the preferred way to start a new analysis is 
 copying and modifying a pre-existing FRETBursts notebook.
