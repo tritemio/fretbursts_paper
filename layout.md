@@ -7,6 +7,7 @@ background-estimation.tex
 figures/ph_delays_distrib1/ph_delays_distrib1.png
 burst-search.tex
 burst-selection.tex
+figures/alex_jointplot/alex_jointplot.png
 Fitting.tex
 Coding-style.tex
 Conclusions.tex
