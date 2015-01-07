@@ -84,8 +84,8 @@ the user can execute:
 
 where \verb|D_ON| and \verb|A_ON| are tuples representing 
 the start-stop range for the donor and acceptor excitation periods 
-in timestamps units. After changing the parameters a new plot
-alternation plot will show the new updates period selections.
+in timestamps units. After changing the parameters, a new plot
+alternation plot will show the updated period selections.
 
 When the alternation period selection is satisfactory it can
 be applied with:
@@ -98,8 +98,7 @@ After this command, only the photons inside excitation periods
 will be present in \verb|d| and to apply a different alternation 
 period definition the file must be reloaded.
 
-For ns-ALEX measurement there is an analogical function
-named \verb|plot_alternation_hist_nsalex| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist\_nsalex}{documentation})
-that plots the nanotime histogram and the current selection
-for the donor and acceptor excitation periods. The periods are defined
-and applied following the same syntax as for µs-ALEX.
+For ns-ALEX measurements the same plot function will show
+a nanotime histogram with the highlited alternation periods.
+The periods ranges are expressed in nanotime units in this case, 
+but are set and applied with the same syntax as for µs-ALEX.
