@@ -69,8 +69,7 @@ alternation periods for donor and acceptor excitation.
 
 The functions 
 \verb|plot_alternation_hist| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist}{documentation})
-and \verb|plot_alternation_hist_nsalex| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist\_nsalex}{documentation})
-plot the alternation histogram (or the nanotime histogram)
+plots the alternation histogram 
 with the currently selected donor and acceptor excitation periods
 (if no selection has been made yet, default values will be shown).
 Figure~\ref{fig:altern_hist} shows a typical alternation histogram for
@@ -92,10 +91,15 @@ When the alternation period selection is satisfactory it can
 be applied with:
 
 \begin{verbatim}
-    loader.usalex_apply_period(d)
+    loader.alex_apply_period(d)
 \end{verbatim}
 
 After this command, only the photons inside excitation periods
 will be present in \verb|d| and to apply a different alternation 
 period definition the file must be reloaded.
 
+For ns-ALEX measurement there is an analogical function
+named \verb|plot_alternation_hist_nsalex| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist\_nsalex}{documentation})
+that plots the nanotime histogram and the current selection
+for the donor and acceptor excitation periods. The periods are defined
+and applied following the same syntax as for µs-ALEX.
