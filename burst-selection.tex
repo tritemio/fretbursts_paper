@@ -18,19 +18,19 @@ consumption.
 
 Looking at the previous command, we notice that the
 \href{http://fretbursts.readthedocs.org/en/latest/burst\_selection.html#fretbursts.burstlib.Sel}{\texttt{Sel} function}
-requires a "selection criterion" (a python function) as second
-argument; all the remaining arguments are passed to the selection function. The
-module \verb|select_bursts| contains numerous built-in selection functions, for
-example to
-select a region on the E-S ALEX histogram (\verb|select_bursts.ES|), 
+requires a as second argument a function implementing "selection criterion"; all the 
+remaining \verb|Sel| arguments are passed to the selection function. The
+\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html}{\texttt{select\_bursts} module} 
+contains numerous 
+\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#module-fretbursts.select_bursts}{built-in selection functions}, 
+for example to select a region on the E-S ALEX histogram (\verb|select_bursts.ES|), 
 to select bursts based on their duration (\verb|select_bursts.width|) and so on.
-New criteria can be easily 
-implemented by defining a new selection function, usually not longer than a
-couple of lines (see the
+New criteria can be easily implemented by defining a new selection function, usually 
+not longer than a couple of lines (see the
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select\_bursts.py}{\texttt{select\_bursts} module} for several examples).
 
-Finally note that different criteria can be combined by applying them
-in sequence. For example with the following commands
+Finally note that different criteria can be combined by applying them in sequence. 
+For example with the following commands
 
 \begin{verbatim}
 ds = Sel(d, select_bursts.size, th1=50, th2=200)
