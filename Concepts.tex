@@ -81,7 +81,7 @@ least squares (NLSQ).
 Both burst search and burst correction require the knowledge of background rates for all the
 different photon streams. Furthermore, we want to estimate the background
 periodically (every few seconds) because it can vary during the measurement on
-time scales of tens of seconds. FRETBursts splits the data in uniform time
+time scales of tens of seconds (see figure~\ref{fig:bg_timetrace}). FRETBursts splits the data in uniform time
 slices called \textit{background periods} and computes the background rates for
 each of these slices (see section~\ref{sec:bg_calc}). Note that the slicing 
 in background
@@ -184,7 +184,9 @@ to resolve FRET populations and accurately elucidate their mean FRET efficiency,
 paramount importance to select bursts with size larger than a given threshold (see 
 section~\ref{sec:burstsel}). The choice of burst size threshold is 
 critical since a too low threshold will widen FRET subpopulations owing to the 
-inclusion of small sized bursts having higher FRET uncertainty. Conversely a too high threshold results in a lower number of bursts and FRET estimation can suffer from high statitical error.
+inclusion of small sized bursts having higher FRET uncertainty. Conversely 
+a too high threshold results in a lower number of bursts and FRET estimation 
+can suffer from high statitical error.
 
 In order to mitigate the dependence on the burst size threshold it is 
 useful to weight bursts according to their size (i.e. their 
