@@ -123,11 +123,11 @@ different copies of a \verb|Data| object (for example \verb|d| and
 \verb|d_dcbs|), while all the other data (including background and burst data)
 are copied. 
 
-The function \verb|burst_search_and_gate| accepts additional arguments
-\verb|ph_sel1| and \verb|ph_sel2| 
-used to specify different photon streams. The default values 
-(\verb|ph_sel1 = Ph_sel(Dex='DAem')| and \verb|ph_sel2 = Ph_sel(Aex='Aem')|)
-correspond to the classical DCBS 
-(see section~\ref{sec:burstsearch_intro}).
+The function \verb|burst_search_and_gate| accepts the additional arguments
+\verb|ph_sel1| and \verb|ph_sel2| used to specify different photon streams. 
+However, since their default values correspond to a classical DCBS (see 
+section~\ref{sec:burstsearch_intro}), they can be normally omitted 
+(like in the previous example), unless one wants to specify different
+photon streams.
 
 
