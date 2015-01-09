@@ -15,13 +15,13 @@ threshold. Eggeling did not provide any criteria on how to choose the rate
 threshold and the number of photons $m$ and as therefore it has become a common
 practice to manually tweak those parameters for each specific measurement. 
 
-A more general approach consist in taking into account the background rate of
+A more general approach consists taking into account the background rate of
 the specific measurements and in choosing a rate threshold that is $F$ times
-larger than the background rate. This approach assures that the resulting bursts
-all have a single-to-background ratio (SBR) larger than
+larger than the background rate. This approach assures all the resulting bursts
+have a Signal-To-Background ratio (SBR) larger than
 $(F-1)$~\cite{Michalet_2012}. A consistent criterion to choose the threshold is
 very important when comparing different measurements with different background
-rates, when the background significantly changes during the measurements or in
+rates, when the background significantly varies during measurements or in
 multi-spot measurements where each spot has a different background rate.
 
 A second important aspect of burst search is which photon stream is processed.
@@ -33,13 +33,13 @@ to an arbitrary selection of photons. In FRETBursts this can be achieved passing
 the appropriate \verb|Ph_sel| object to the burst search method (see
 section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
-Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a dual-channel burst
-search (DCBS) that allows to mitigate (to some extent) artifacts due to
-photo-physical effects such as blinking. In this case a search is performed
+Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a Dual-Channel Burst
+Search (DCBS) that allows the mitigation (to some extent) of artifacts due to
+photo-physical effects such as photo-blinking. In this case a search is performed
 independently on two photon streams and bursts are marked only when both photon
 streams exhibit a rate higher than the threshold, 
 implementing a kind of an AND-gate logic. 
-Usually, the term DCBS is refers to a burst search where the two photon streams
+Usually, the term DCBS refers to a burst search where the two photon streams
 are all the photons 
 during donor excitation (\verb|Ph_sel(Dex='DAem')|) and acceptor channel photons
 during acceptor 
@@ -80,11 +80,11 @@ Note that, in the previous burst search, no burst size selection is performed
 (i.e. the minimum bursts size is $m$). 
 An additional parameter $L$ can be passed to apply a threshold on the raw burst
 size (before any correction). 
-We however suggest to perform a more accurate burst size selection as shown in
+We, however, strongly encourage performing an accurater burst size selection as shown in
 the next section~\ref{sec:burstsel}.
 
-In µs-ALEX there are 3 important correction parameters: gamma factor, spectral
-leakage and 
+In µs-ALEX there are 3 important correction parameters: gamma factor, donor spectral
+leakage into acceptorchannel and 
 acceptor direct excitation~\cite{Lee_2005}. These corrections can be applied by
 simply setting the respective
 Data attributes:
@@ -123,11 +123,11 @@ containing all the data and the results of the new burst search. In order to
 save RAM, FRETBursts shares the timestamps and detectors arrays between
 different copies of a \verb|Data| object (for example \verb|d| and
 \verb|d_dcbs|), while all the other data (including background and burst data)
-is copied. 
+are copied. 
 
 The function \verb|burst_search_and_gate| accepts additional arguments
 \verb|ph_sel1| and \verb|ph_sel2| 
-used to specify different photons streams. The default values 
+used to specify different photon streams. The default values 
 (\verb|ph_sel1 = Ph_sel(Dex='DAem')| and \verb|ph_sel2 = Ph_sel(Aex='Aem')|)
 correspond to the classical DCBS 
 (see section~\ref{sec:burstsearch_intro}).
