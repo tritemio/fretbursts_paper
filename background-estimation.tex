@@ -2,7 +2,7 @@
 \label{sec:bg_calc}
 
 The first step of smFRET analysis involves estimating the background level. 
-For example, to compute the background every 30s, using a minimal timestamp 
+For example, to compute the background every 30 s, using a minimal timestamp 
 delay threshold of 2 ms for all the photon streams we execute: 
 
 \begin{verbatim}
@@ -17,7 +17,7 @@ background in each period and for each photon stream~\ref{sec:bg_intro}. The fun
 \href{http://fretbursts.readthedocs.org/en/latest/background.html}
 {\texttt{background} module}). The second argument, \verb|time_s|, is the 
 \textit{background period} (section~\ref{sec:bg_intro}) and the third argument 
-is the threshold above which the distribution is exponential. 
+is the timestamp delay threshold above which the distribution is exponential. 
 It is possible to use different thresholds 
 for each photon stream passing a 
 \href{https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences}{tuple} 
