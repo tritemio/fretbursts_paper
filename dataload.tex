@@ -55,7 +55,7 @@ d = Data(ph_times_m=[timestamps], A_em=[acceptor_mask],
 \end{verbatim}
 
 In the previous example, we set the timestamp unit (\verb|clk_p|) to 10~ns 
-and we specify that the data is not from an ALEX measurements. Creating 
+and we specify that the data is not from an ALEX measurement. Creating 
 \verb|Data| objects for ALEX and nsALEX measurements follows the same lines. 
 We point the interested readers to the 
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py}{loader module source code} 
@@ -73,9 +73,9 @@ plots the alternation histogram
 with the currently selected donor and acceptor excitation periods
 (if no selection has been made yet, default values will be shown).
 Figure~\ref{fig:altern_hist} shows a typical alternation histogram for
-a µs-ALEX measurement the highlighted donor and acceptor excitation periods.
+a µs-ALEX measurement with the donor and acceptor excitation periods highlighted.
 
-To change the period definition shown in figure~\ref{fig:altern_hist}
+In order to change the period definition shown in figure~\ref{fig:altern_hist}
 the user can execute:
 
 \begin{verbatim}
@@ -84,8 +84,7 @@ the user can execute:
 
 where \verb|D_ON| and \verb|A_ON| are tuples representing 
 the start-stop range for the donor and acceptor excitation periods 
-in timestamps units. After changing the parameters, a new plot
-alternation plot will show the updated period selections.
+in timestamps units. After changing the parameters, a new alternation plot will show the updated period selections.
 
 When the alternation period definition is satisfactory, it can
 be applied using the 
@@ -95,11 +94,10 @@ be applied using the
     loader.alex_apply_period(d)
 \end{verbatim}
 
-After this command only the photons inside the defined excitation periods
-will be present in \verb|d|, therefore to apply a new alternation period 
+After running this command only the photons inside the defined excitation periods
+will be present in \verb|d|, therefore in order to apply a new alternation period 
 it is necessary to reload the file.
 
-For ns-ALEX measurements the exact same functions and syntax is used.
-This time, however, the plot function will show a nanotime histogram and 
-the period ranges will be expressed in nanotime units instead of 
+For ns-ALEX measurements the exact same functions and syntax are used.
+This time, however, the plot function will show a Time-Correlated Single Photon Counting (TCSPC) histogram of two fluorescence decays originating from the two interspaced excitation sources. The period ranges will be expressed in nanotime units (TCSPC time bins) instead of 
 timestamp units.
