@@ -6,7 +6,7 @@ FRETBursts is an open source python software for burst analysis of confocal
 single-molecule FRET (smFRET) data. The software can analyze smFRET measurements
 with one or several excitation spots~\cite{Ingargiola_2013}. The supported 
 excitation schemes include single lasers, two alternating CW lasers (µs-ALEX\cite{Kapanidis_2005}) 
-and 2 interleaved pulsed lasers (ns-ALEX or PIE\cite{M_ller_2005}). 
+and two interleaved pulsed lasers (ns-ALEX or PIE\cite{M_ller_2005}). 
 FRETBursts is hosted and and openly developed~\cite{Prli__2012} on GitHub, where
 issues, feature requests and contributions can be reported.
 
@@ -17,12 +17,12 @@ load~(\ref{sec:import}) FRETBursts.
 In section~\ref{sec:concepts} we
 introduce a few preliminary concepts and some specific terminology.
 In section~\ref{sec:analysis} we illustrate how to execute the several steps involved
-in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining the 
-alternation periods (section~\ref{sec:alternation}), background 
+in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining 
+excitation alternation periods (section~\ref{sec:alternation}), background 
 correction (section~\ref{sec:bg_calc}), burst search (section~\ref{sec:burstsearch}), 
-burst filtering (section~\ref{sec:burstsel}), FRET fitting (section~\ref{sec:fretfit}). 
-For each step different approached and options are discussed. 
-In section~\ref{sec:conclusions} we conclude stating what we believe to be
+burst filtering (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}). 
+For each step different approaches and options are discussed. 
+In section~\ref{sec:conclusions} we conclude by stating what we believe are
 the strengths of this software.
 
 In addition to this paper, we refer the interested readers to the 
