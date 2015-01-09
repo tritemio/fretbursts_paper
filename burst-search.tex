@@ -15,11 +15,11 @@ threshold. Eggeling did not provide any criteria on how to choose the rate
 threshold and the number of photons $m$ and as therefore it has become a common
 practice to manually tweak those parameters for each specific measurement. 
 
-A more general approach consists taking into account the background rate of
+A more general approach consists in taking into account the background rate of
 the specific measurements and in choosing a rate threshold that is $F$ times
-larger than the background rate. This approach assures all the resulting bursts
+larger than the background rate. This approach assures that all the resulting bursts
 have a Signal-To-Background ratio (SBR) larger than
-$(F-1)$~\cite{Michalet_2012}. A consistent criterion to choose the threshold is
+$(F-1)$~\cite{Michalet_2012}. A consistent criterion for choosing the threshold is
 very important when comparing different measurements with different background
 rates, when the background significantly varies during measurements or in
 multi-spot measurements where each spot has a different background rate.
@@ -29,12 +29,12 @@ Sometimes, for instance when identifying FRET populations, one would like to
 apply the burst search to all the photons. Other times, when focusing on
 donor-only or acceptor only populations, it is better to use only the donor or
 acceptor signal. In general one would like to be able to apply the burst search
-to an arbitrary selection of photons. In FRETBursts this can be achieved passing
+to an arbitrary selection of photons. In FRETBursts this can be achieved by passing
 the appropriate \verb|Ph_sel| object to the burst search method (see
 section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
 Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a Dual-Channel Burst
-Search (DCBS) that allows the mitigation (to some extent) of artifacts due to
+Search (DCBS) that can help mitigating artifacts due to
 photo-physical effects such as photo-blinking. In this case a search is performed
 independently on two photon streams and bursts are marked only when both photon
 streams exhibit a rate higher than the threshold, 
@@ -80,14 +80,12 @@ Note that, in the previous burst search, no burst size selection is performed
 (i.e. the minimum bursts size is $m$). 
 An additional parameter $L$ can be passed to apply a threshold on the raw burst
 size (before any correction). 
-We, however, strongly encourage performing an accurater burst size selection as shown in
+We, however, strongly encourage performing an more accurate burst size selection as shown in
 the next section~\ref{sec:burstsel}.
 
 In µs-ALEX there are 3 important correction parameters: gamma factor, donor spectral
-leakage into acceptorchannel and 
-acceptor direct excitation~\cite{Lee_2005}. These corrections can be applied by
-simply setting the respective
-Data attributes:
+leakage into the acceptor channel and acceptor direct excitation~\cite{Lee_2005}. 
+These corrections can be applied by simply setting the respective \textit{Data} attributes:
 
 \begin{verbatim}
 d.gamma = 0.85
