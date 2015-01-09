@@ -177,15 +177,14 @@ argument for the burst selection function \verb|select_bursts.ES| (see
 section~\ref{sec:burstsel}).
 
 \subsection{Burst weights}
-As will be shown in the following sections, the burst search returns a 
-burst population with burst of different sizes (i.e. number of photons). 
-The bursts with largest size (that contains indeed the most information) 
-are much less frequent than bursts with small size. For this reason, in order 
-to resolve FRET populations and accurately fit their FRET efficiency it is of
+As will be shown in the following sections, the burst search returns bursts of different sizes (i.e. number of photons). 
+Bursts with large size (that indeed contain most of the information) 
+are much less frequent than bursts with smaller sizes. For this reason, in order 
+to resolve FRET populations and accurately elucidate their mean FRET efficiency, it is of
 paramount importance to select bursts with size larger than a given threshold (see 
-section~\ref{sec:burstsel}). The choice of the burst size threshold is 
-critical since a too low threshold will widen the FRET peaks because of 
-the inclusion of small sized bursts having higher FRET uncertainty, conversely a too high threshold results in a lower number of bursts and FRET estimation can suffer from high statitical error.
+section~\ref{sec:burstsel}). The choice of burst size threshold is 
+critical since a too low threshold will widen FRET subpopulations owing to the 
+inclusion of small sized bursts having higher FRET uncertainty. Conversely a too high threshold results in a lower number of bursts and FRET estimation can suffer from high statitical error.
 
 In order to mitigate the dependence on the burst size threshold it is 
 useful to weight bursts according to their size (i.e. their 
