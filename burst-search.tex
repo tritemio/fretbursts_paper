@@ -116,12 +116,12 @@ can be used like in the following example:
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 \end{verbatim}
 
-Note that in this case a new \verb|Data| variable is returned (\verb|d_dcbp|)
-containing all the data and the results of the new burst search. In order to
-save RAM, FRETBursts shares the timestamps and detectors arrays between
+Note that in this case a copy of the \verb|Data| variable is returned (here called \verb|d_dcbp|)
+containing the results of the new burst search. In order to
+save RAM, FRETBursts shares the read-only arrays timestamps and detectors between
 different copies of a \verb|Data| object (for example \verb|d| and
 \verb|d_dcbs|), while all the other data (including background and burst data)
-are copied. 
+is copied. 
 
 The function \verb|burst_search_and_gate| provides additional arguments
 \verb|ph_sel1| and \verb|ph_sel2| whose defaults values correspond to the 
