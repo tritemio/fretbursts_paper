@@ -23,13 +23,13 @@ remaining \verb|Sel| arguments are passed to the selection function. The
 \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html}{\texttt{select\_bursts} module} 
 contains numerous 
 \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#module-fretbursts.select_bursts}{built-in selection functions}, 
-for example to select a region on the E-S ALEX histogram (\verb|select_bursts.ES|), 
+for example in order to select a region on the E-S ALEX histogram (\verb|select_bursts.ES|), 
 to select bursts based on their duration (\verb|select_bursts.width|) and so on.
 New criteria can be easily implemented by defining a new selection function, usually 
 not longer than a couple of lines (see the
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select\_bursts.py}{\texttt{select\_bursts} module} for several examples).
 
-Finally note that different criteria can be combined by applying them in sequence. 
+Finally note that different criteria can be combined by applying them sequentially. 
 For example with the following commands
 
 \begin{verbatim}
@@ -38,7 +38,7 @@ dsw = Sel(ds, select_bursts.width, th1=0.5e-3, th2=3e-3)
 \end{verbatim}
 
 the variable \verb|dsw| will contain all the bursts with sizes between 50 and
-200 photons, with duration between 0.5 and 3~ms.
+200 photons, with duration between 0.5 and 3 ms.
 
 \subsubsection{Burst size selection}
 
@@ -56,11 +56,10 @@ ds = Sel(d, select_bursts.size, th1=100, add_naa=True)
 \end{verbatim}
 
 Another important parameter in defining the burst size is the gamma-factor, i.e.
-the unbalance between the donor and the acceptor channels. The gamma-factor is
-used to correct for the different quantum yield between D and A fluorophores and
-the different photon-detection efficiency between the D and A channels.
+the imbalance between the donor and the acceptor channels. The gamma-factor is
+used to correct for the different fluorescence quantum yields of the D and A fluorophores as well as the different photon-detection efficiencies of the D and A channels.
 Neglecting the effect of gamma-factor on the burst size leads to a biased burst
-selection, especially if $\gamma$ differs significantly from 1. 
+selection, especially if $\gamma$ significantly differs from a value of one. 
 
 To include the effect of $\gamma$ on the burst size and obtain a "fair" burst
 selection (i.e. a selection that does not favor high or low FRET states) we
