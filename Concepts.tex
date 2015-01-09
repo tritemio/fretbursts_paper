@@ -79,9 +79,9 @@ timestamp delay threshold, above which the distribution can be considered expone
 Likelihood Estimation (MLE) or a curve fit of the histogram via non-linear
 least squares (NLSQ).
 
-Both burst search and burst correction require background rates for all the
+Both burst search and burst correction require knowledge of background rates for all the
 different photon streams. Furthermore, we want to estimate the background
-periodically (every few seconds) because it can varies during the measurement on
+periodically (every few seconds) because it can vary during the measurement on
 time scales of tens of seconds. FRETBursts splits the data in uniform time
 slices called \textit{background periods} and computes the background rates for
 each of these slices (see section~\ref{sec:bg_calc}). Note that the slicing 
