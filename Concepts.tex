@@ -182,20 +182,20 @@ section~\ref{sec:burstsel}).
 As will be shown in the following sections, the burst search returns bursts of different sizes (i.e. number of photons). 
 Bursts with large size (that indeed contain most of the information) 
 are much less frequent than bursts with smaller sizes. For this reason, in order 
-to resolve FRET populations and accurately elucidate their mean FRET efficiency, it is of
+to resolve FRET populations and accurately assess their mean FRET efficiency, it is of
 paramount importance to select bursts with size larger than a given threshold (see 
 section~\ref{sec:burstsel}). The choice of burst size threshold is 
-critical since a too low threshold will widen FRET subpopulations owing to the 
+critical because a too low threshold will widen FRET subpopulations owing to the 
 inclusion of small sized bursts having higher FRET uncertainty. Conversely 
-a too high threshold results in a lower number of bursts and FRET estimation 
+a too high threshold will result in a lower number of bursts and FRET estimation 
 can suffer from high statitical error.
 
-In order to mitigate the dependence on the burst size threshold it is 
+In order to mitigate the dependence on the burst size threshold it may be 
 useful to weight bursts according to their size (i.e. their 
 information content) so that the biggest bursts will have the highest weights. 
 The weighting can be used to build weighted histograms and Kernel Density Estimation (KDE) plots.
 When using weights the choice of a particular burst size threshold becomes 
-much less important and the histograms or KDE plots exhibit sharp
+much less important and the histograms or KDE plots exhibit minimal-width
 peaks corresponding to different FRET popuations for a much wider range
 of thresholds. 
 
