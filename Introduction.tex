@@ -33,56 +33,46 @@ for a more in-depth description of the software.
 
 \subsection{Installing FRETBursts}
 \label{sec:install}
-FRETBursts is a python package that requires a standard set of scientific 
-python libraries, included by all the major scientific python 
-distributions. 
-Specifically, numerical computations are performed with numpy/scipy, 
-plotting is based on matplotlib and seaborn, a few core functions are
-optimized with cython and the software is preferentially run through
-a Jupyther (IPython) Notebook.
+Installing FRETBursts is analogous to installing any standard python
+package. A python environment needs to be installed, preferentially
+through a scientific python distribution which conveniently include 
+all the major scientific libraries.
+
 For new python users we suggest installing 
 \href{https://store.continuum.io/cshop/anaconda/}{Continuum Anaconda}
-python distribution.
+python distribution and then install (or update) FRETBursts with the command:
 
-FRETBursts can be installed through the standard python package manager (PIP)
-or through \href{http://conda.pydata.org/docs/}{conda}.
-Alternatively the latest development version can be downloaded directly 
-from GitHub. For more information on different installation methods refer to the 
+\begin{verbatim}
+conda install fretbursts -c tritemio
+\end{verbatim}
+
+For more information on different installation methods refer to the 
 \href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{Getting Started}
 section in the FRETBursts documentation.
 
-\subsection{Executing FRETBursts}
-\label{sec:import}
-In general, we suggest to import FRETbursts with the expression:
+FRETBursts depends on a standard set of scientific 
+python libraries, namely, numpy/scipy for numerical computations, 
+matplotlib and seaborn for plotting. Optionally, a few core functions are
+optimized with cython and the software is preferentially run through
+a Jupyther (IPython) Notebook (optional).
+For a complete list of dependencies can be found in the 
+\href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{Getting Started}
+section in the FRETBursts documentation.
 
-\begin{verbatim}
->>> import fretbursts as fb
-\end{verbatim}
+\subsection{Running FRETBursts}
+The preferential way to execute FRETBurts is by running one of the
+FRETBursts tutorials which are in the form of Jypyther notebooks.
+Jupyther (formerly IPython) notebooks are documents, 
+accessed through a web browser, that contain both code and 
+rich text (including formulas, hyperlinks, figures, etc...).
+FRETBursts tutorials are notebook that can be re-executed,
+modified or used to process new data files with minimal modifications.
+The "notebook workflow"\cite{Shen_2014} not only eases 
+the analysis comprehension (by integrating the cone in a rich document)
+but also greatly enhance its reproducibility by saving an execution trail
+including software versions, input files, parameters, commands and all
+the analysis results (text, figures, tables, etc...).
 
-after which all the FRETBursts functions will be availabe under the \verb|fb.|
-prefix. In this article, for brevity, we assume that FRETBursts is imported 
-with the shortcut form instead:
-
-\begin{verbatim}
->>> from fretbursts import *
-\end{verbatim}
-
-that allows skipping the \verb|fb.| prefix and it will also import some common 
-numeric libraries (i.e. \textit{numpy} and \textit{matplotlib.pyplot} 
-imported as \verb|np| and \verb|plt| respectively).
-
-In order to enable the reproducibility of the analysis and to ease
-the sharing of the complete workflow we encourage using FRETBursts through 
-the IPython Notebook environment. 
-IPython notebooks are documents in which the code is interspersed with 
-prose in a web-based format that can contain math formulas, hyperlinks 
-and figures (or anything else a web browser can display).
-Furthermore, the "notebook workflow"\cite{Shen_2014} has the advantage 
-of automatically recording not only the all analysis commands and parameters 
-but also the data file names, software versions and the full output 
-(figures, tables, etc...) in a single document that can be interactively 
-modified and re-executed.
-
-All the FRETBursts tutorials are 
-ipython notebooks and, in fact, the preferred way to start a new analysis is by 
-copying and modifying a pre-existing FRETBursts notebook.
+Given the modality of execution, running FRETBurst does not require
+any prior python knowledge. The user only needs familiarize with the
+notebook graphical environment to be able to navigate and run the notebooks.
