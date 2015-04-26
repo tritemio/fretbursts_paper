@@ -34,9 +34,15 @@ for a more in-depth description of the software.
 \subsection{Installing FRETBursts}
 \label{sec:install}
 FRETBursts is a python package that requires a standard set of scientific 
-python libraries called the \href{http://www.scipy.org/stackspec.html}{"scipy stack"}.
-Those libraries are included in all the major scientific python distributions such as 
-\href{https://store.continuum.io/cshop/anaconda/}{Continuum Anaconda}.
+python libraries, included by all the major scientific python 
+distributions. 
+Specifically, numerical computations are performed with numpy/scipy, 
+plotting is based on matplotlib and seaborn, a few core functions are
+optimized with cython and the software is preferentially run through
+a Jupyther (IPython) Notebook.
+For new python users we suggest installing 
+\href{https://store.continuum.io/cshop/anaconda/}{Continuum Anaconda}
+python distribution.
 
 FRETBursts can be installed through the standard python package manager (PIP)
 or through \href{http://conda.pydata.org/docs/}{conda}.
