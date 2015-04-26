@@ -4,26 +4,52 @@
 
 FRETBursts is an open source python software for burst analysis of confocal 
 single-molecule Förster Resonance Energy Transfer (smFRET) data. The software can analyze smFRET measurements
-with one or several excitation spots~\cite{Ingargiola_2013}. The supported 
+with one or multiple excitation spots~\cite{Ingargiola_2013}. The supported 
 excitation schemes include single lasers, Alternating Laser EXcitation (ALEX) with either two CW lasers (µs-ALEX \cite{Kapanidis_2005}) 
 or two interleaved pulsed lasers (ns-ALEX \cite{16287971} or Pulsed-Interleaved Excitation (PIE) \cite{M_ller_2005}). 
 FRETBursts is hosted and and openly developed~\cite{Prli__2012} on GitHub, where
 issues, feature requests and contributions can be reported.
 
-In this paper we provide a broad overview of FRETBursts. 
+The preferential way to execute FRETBurts is by running one of the
+FRETBursts tutorials which are in the form of Jypyther notebooks.
+Jupyther (formerly IPython) notebooks are documents, 
+accessed through a web browser, that contain both code and 
+rich text (including formulas, hyperlinks, figures, etc...).
+FRETBursts tutorials are notebook that can be re-executed,
+modified or used to process new data files with minimal modifications.
+The "notebook workflow"\cite{Shen_2014} not only eases 
+the analysis comprehension (by integrating the code in a rich document)
+but also greatly enhance its reproducibility by storing an execution trail
+that includes software versions, input files, parameters, commands and all
+the analysis results (text, figures, tables, etc...).
+
+Given the modality of execution, running FRETBurst does not require
+any prior python knowledge. The user only needs familiarize with the
+notebook graphical environment to be able to navigate and run the notebooks.
+The list of FRETBursts notebooks can be found in the 
+\verb|FRETBurts_notebooks| repository on GitHub.
+
+Although running the software is simple, understanding the smFRET 
+burst analysis requires several concepts and definitions.
+This paper provides a broad overview of FRETBursts, introducing all the
+the fundamental concepts and definitions needed to fully understand the 
+smFRET burst analysis. 
+
 The paper is structured as follows. 
 In the next subsections mention how to install~(\ref{sec:install}) and 
 load~(\ref{sec:import}) FRETBursts.
 In section~\ref{sec:concepts} we
-introduce a few preliminary concepts and some specific terminology.
-In section~\ref{sec:analysis} we illustrate how to execute the several steps involved
+introduce a few preliminary concepts and some specific terminology needed 
+to understand the smFRET burst analysis. 
+In section~\ref{sec:analysis} we detail the execution the several steps involved
 in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining 
 excitation alternation periods (section~\ref{sec:alternation}), background 
 correction (section~\ref{sec:bg_calc}), burst search (section~\ref{sec:burstsearch}), 
-burst filtering (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}). 
-For each step different approaches and options are discussed. 
-In section~\ref{sec:conclusions} we conclude by stating what we believe are
-the strengths of this software.
+burst filtering (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}).
+The aim is providing enough information to understand the specificities of 
+the different algorithms and to be able to adapt the analysis to new situations.
+Finally, in section~\ref{sec:conclusions}, we summarize what we believe to be
+the strengths of FRETBursts software.
 
 In addition to this paper, we refer the interested readers to the 
 \href{http://nbviewer.ipython.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts\%20-\%20us-ALEX\%20smFRET\%20burst\%20analysis.ipynb}{FRETBursts µs-ALEX tutorial} 
