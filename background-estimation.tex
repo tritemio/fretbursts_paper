@@ -9,7 +9,7 @@ delay threshold of 2 ms for all the photon streams we execute:
 d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
 \end{verbatim}
 
-Here, the first argument is the actual fitting function used to fit the
+Here, the first argument (\verb|bg.exp_fit|) is the actual fitting function used to fit the
 background in each period and for each photon stream~\ref{sec:bg_intro}. The function 
 \verb|bg.exp_fit| is fitted to the background using a Maximum Likelihood Estimation 
 (MLE) of the delays distribution. More fitting functions are available in 
