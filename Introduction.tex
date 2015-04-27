@@ -88,3 +88,34 @@ to execute the tutorials.
 A complete list of dependencies can be found in the 
 \href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{Getting Started}
 section in the FRETBursts documentation.
+
+\subsection{Executing FRETBursts}
+-\label{sec:import}
+-In general, we suggest to import FRETbursts with the expression:
+ 
+ 
+ \begin{verbatim}
+ \begin{verbatim}
+->>> import fretbursts as fb
++conda install fretbursts -c tritemio
+ \end{verbatim}
+ \end{verbatim}
+ 
+ 
+-after which all the FRETBursts functions will be availabe under the \verb|fb.|
++For more information on different installation methods refer to the 
+-prefix. In this article, for brevity, we assume that FRETBursts is imported 
++\href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{Getting Started}
+-with the shortcut form instead:
++section in the FRETBursts documentation.
+-
+-\begin{verbatim}
+->>> from fretbursts import *
+-\end{verbatim}
+ 
+ 
+-that allows skipping the \verb|fb.| prefix and it will also import some common 
++FRETBursts depends on a standard set of scientific 
+-numeric libraries (i.e. \textit{numpy} and \textit{matplotlib.pyplot} 
++python libraries, namely, numpy/scipy for numerical computations, 
+-imported as \verb|np| and \verb|plt| respectively).
