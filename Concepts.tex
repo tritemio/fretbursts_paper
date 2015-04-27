@@ -119,6 +119,95 @@ donor excitation, after correction
 acceptor excitation, after correction
 \end{itemize}
 
+
+\subsection{Introduction to burst search}
+\label{sec:burstsearch_intro}
+
+After background estimation, the burst search is the next fundamental step of
+the analysis. The core "sliding window" algorithm, proposed by
+Eggeling~\textit{et al.} in 1998~\cite{Eggeling_1998}, involves searching for
+bursts of photons
+in which $m$ consecutive photons are contained within a minimal time period
+$\Delta t$. In other words, bursts are portions of the photon stream where the
+local rate (computed using $m$ photons) is above a minimal rate chosen as a
+threshold. Eggeling did not provide any criteria on how to choose the rate
+threshold and the number of photons $m$ and as therefore it has become a common
+practice to manually tweak those parameters for each specific measurement. 
+
+A more general approach consists in taking into account the background rate of
+the specific measurements and in choosing a rate threshold that is $F$ times
+larger than the background rate. This approach assures that all the resulting bursts
+have a Signal-To-Background ratio (SBR) larger than
+$(F-1)$~\cite{Michalet_2012}. A consistent criterion for choosing the threshold is
+very important when comparing different measurements with different background
+rates, when the background significantly varies during measurements or in
+multi-spot measurements where each spot has a different background rate.
+
+A second important aspect of burst search is which photon stream is processed.
+In some cases, for instance when identifying FRET populations, one would like to
+apply the burst search to all the photons. Other times, when focusing on
+donor-only or acceptor only populations, it is better to use only the donor or
+acceptor signal. In general one would like to be able to apply the burst search
+to an arbitrary selection of photons. In FRETBursts this can be achieved by passing
+the appropriate \verb|Ph_sel| object to the burst search method (see
+section~\ref{sec:ph_streams} for more info on photon stream definitions).
+
+Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a Dual-Channel Burst
+Search (DCBS) that can help mitigating artifacts due to
+photo-physical effects such as photo-blinking. In this case a search is performed
+independently on two photon streams and bursts are marked only when both photon
+streams exhibit a rate higher than the threshold, 
+implementing a kind of an AND-gate logic. 
+Usually, the term DCBS refers to a burst search where the two photon streams
+are (1) all the photons 
+during donor excitation (\verb|Ph_sel(Dex='DAem')|) and (2) acceptor channel photons
+during acceptor 
+excitation (\verb|Ph_sel(Aex='Aem')|).
+
+After each burst search it is important to select
+bursts according to their number of photons (burst size). In the most
+basic form, this selection can be performed during burst search by discarding
+bursts with size smaller than a threshold $L$, as originally proposed by 
+Eggeling~\textit{et al.}~\cite{Eggeling_1998}. 
+This method, however, neglects the effect
+of background and gamma factor on the burst size and can lead to a selection
+bias of certain channels and/or sub-populations. 
+For this reason we advocate performing a burst size selection after background
+correction and taking into account the gamma factor, as illustrated in
+section~\ref{sec:burstsel}.
+
+
+\subsection{Burst weights}
+
+As will be shown in the following sections, the burst search returns bursts of different sizes (i.e. number of photons). 
+Bursts with large size (that indeed contain most of the information) 
+are much less frequent than bursts with smaller sizes. For this reason, in order 
+to resolve FRET populations and accurately assess their mean FRET efficiency, it is of
+paramount importance to select bursts with size larger than a given threshold (see 
+section~\ref{sec:burstsel}). The choice of burst size threshold is 
+critical because a too low threshold will widen FRET subpopulations owing to the 
+inclusion of small sized bursts having higher FRET uncertainty. Conversely 
+a too high threshold will result in a lower number of bursts and FRET estimation 
+can suffer from high statitical error.
+
+In order to mitigate the dependence on the burst size threshold it may be 
+useful to weight bursts according to their size (i.e. their 
+information content) so that the biggest bursts will have the highest weights. 
+The weighting can be used to build weighted histograms and Kernel Density Estimation (KDE) plots.
+When using weights the choice of a particular burst size threshold becomes 
+much less important and the histograms or KDE plots exhibit minimal-width
+peaks corresponding to different FRET popuations for a much wider range
+of thresholds. 
+
+FRETBursts allows weighting bursts using the gamma-corrected burst size
+(\verb|gamma*nd + na|) and optionally adding the acceptor counts during
+acceptor excitation (\verb|naa|). Once the size is defined, the weights
+can be computed according to different criteria among which the most
+commonly used is \verb|'size'|, meaning to associate a weight 
+directly proportional to the burst size. The list of weight types
+can be found in the 
+\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{\texttt{fret\_fit.get\_weiths} documentation}.
+
 \subsection{Plotting "Data"}
 
 FRETBursts uses matplotlib~\cite{2096e2a4-8f50-4519-bfb3-f796da201630} to
@@ -177,90 +266,3 @@ dplot(ds, hist2d_alex, gui_sel=True)
 The values that identify the region are printed and can be copied an pasted as
 argument for the burst selection function \verb|select_bursts.ES| (see
 section~\ref{sec:burstsel}).
-
-\subsection{Introduction to burst search}
-\label{sec:burstsearch_intro}
-
-After background estimation, the burst search is the next fundamental step of
-the analysis. The core "sliding window" algorithm, proposed by
-Eggeling~\textit{et al.} in 1998~\cite{Eggeling_1998}, involves searching for
-bursts of photons
-in which $m$ consecutive photons are contained within a minimal time period
-$\Delta t$. In other words, bursts are portions of the photon stream where the
-local rate (computed using $m$ photons) is above a minimal rate chosen as a
-threshold. Eggeling did not provide any criteria on how to choose the rate
-threshold and the number of photons $m$ and as therefore it has become a common
-practice to manually tweak those parameters for each specific measurement. 
-
-A more general approach consists in taking into account the background rate of
-the specific measurements and in choosing a rate threshold that is $F$ times
-larger than the background rate. This approach assures that all the resulting bursts
-have a Signal-To-Background ratio (SBR) larger than
-$(F-1)$~\cite{Michalet_2012}. A consistent criterion for choosing the threshold is
-very important when comparing different measurements with different background
-rates, when the background significantly varies during measurements or in
-multi-spot measurements where each spot has a different background rate.
-
-A second important aspect of burst search is which photon stream is processed.
-In some cases, for instance when identifying FRET populations, one would like to
-apply the burst search to all the photons. Other times, when focusing on
-donor-only or acceptor only populations, it is better to use only the donor or
-acceptor signal. In general one would like to be able to apply the burst search
-to an arbitrary selection of photons. In FRETBursts this can be achieved by passing
-the appropriate \verb|Ph_sel| object to the burst search method (see
-section~\ref{sec:ph_streams} for more info on photon stream definitions).
-
-Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a Dual-Channel Burst
-Search (DCBS) that can help mitigating artifacts due to
-photo-physical effects such as photo-blinking. In this case a search is performed
-independently on two photon streams and bursts are marked only when both photon
-streams exhibit a rate higher than the threshold, 
-implementing a kind of an AND-gate logic. 
-Usually, the term DCBS refers to a burst search where the two photon streams
-are (1) all the photons 
-during donor excitation (\verb|Ph_sel(Dex='DAem')|) and (2) acceptor channel photons
-during acceptor 
-excitation (\verb|Ph_sel(Aex='Aem')|).
-
-After each burst search it is important to select
-bursts according to their number of photons (burst size). In the most
-basic form, this selection can be performed during burst search by discarding
-bursts with size smaller than a threshold $L$, as originally proposed by 
-Eggeling~\textit{et al.}~\cite{Eggeling_1998}. 
-This method, however, neglects the effect
-of background and gamma factor on the burst size and can lead to a selection
-bias of certain channels and/or sub-populations. 
-For this reason we advocate performing a burst size selection after background
-correction and taking into account the gamma factor, as illustrated in
-section~\ref{sec:burstsel}.
-
-\subsection{Burst weights}
-As will be shown in the following sections, the burst search returns bursts of different sizes (i.e. number of photons). 
-Bursts with large size (that indeed contain most of the information) 
-are much less frequent than bursts with smaller sizes. For this reason, in order 
-to resolve FRET populations and accurately assess their mean FRET efficiency, it is of
-paramount importance to select bursts with size larger than a given threshold (see 
-section~\ref{sec:burstsel}). The choice of burst size threshold is 
-critical because a too low threshold will widen FRET subpopulations owing to the 
-inclusion of small sized bursts having higher FRET uncertainty. Conversely 
-a too high threshold will result in a lower number of bursts and FRET estimation 
-can suffer from high statitical error.
-
-In order to mitigate the dependence on the burst size threshold it may be 
-useful to weight bursts according to their size (i.e. their 
-information content) so that the biggest bursts will have the highest weights. 
-The weighting can be used to build weighted histograms and Kernel Density Estimation (KDE) plots.
-When using weights the choice of a particular burst size threshold becomes 
-much less important and the histograms or KDE plots exhibit minimal-width
-peaks corresponding to different FRET popuations for a much wider range
-of thresholds. 
-
-FRETBursts allows weighting bursts using the gamma-corrected burst size
-(\verb|gamma*nd + na|) and optionally adding the acceptor counts during
-acceptor excitation (\verb|naa|). Once the size is defined, the weights
-can be computed according to different criteria among which the most
-commonly used is \verb|'size'|, meaning to associate a weight 
-directly proportional to the burst size. The list of weigth types
-can be found in the 
-\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{\texttt{fret\_fit.get\_weiths} documentation}.
-
