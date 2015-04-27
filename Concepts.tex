@@ -8,7 +8,7 @@ to the smFRET burst analysis in FRETBursts.
 \label{sec:ph_streams}
 
 The fundamental data at the core of smFRET experiments is the array of photon
-arrival timestamps, with a temporal resolution of the order of 10~ns. In single-spot
+arrival timestamps, with a temporal resolution usually of the order of 10~ns. In single-spot
 measurements, all the timestamps are stored in a single array. In multi-spot
 measurements~\cite{Ingargiola_2013} we have as many timestamps arrays as the number of excitation
 spots.
@@ -80,7 +80,7 @@ least squares (NLSQ).
 
 An estimation of the background rates is needed both to select a proper threshold for
 burst search and to correct the raw burst counts by subtracting the background counts.
-Furthermore, it is advisable to periodially estimate the background
+Furthermore, it is advisable to periodically estimate the background
 in order to track occasional variations during the measurement. Experimentally
 we found that when the background is not constant, it varies on time scales of tens of seconds 
 (see figure~\ref{fig:bg_timetrace}). FRETBursts splits the data in uniform time
@@ -126,7 +126,7 @@ provide a wide range of
 \href{http://fretbursts.readthedocs.org/en/latest/plots.html}{built-in plot functions}
 for \verb|Data| objects. 
 The plot syntax is the same both for single and multi-spot measurements. 
-Almost all the plot commands are called through the wrapper function 
+The majority of plot commands are called through the wrapper function 
 \verb|dplot|, for example to plot a timetrace of the photon data we type:
 
 \begin{verbatim}
