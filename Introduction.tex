@@ -89,22 +89,17 @@ A complete list of dependencies can be found in the
 \href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{Getting Started}
 section in the FRETBursts documentation.
 
-\subsection{Executing FRETBursts}
+\subsection{Loading FRETBursts}
 \label{sec:import}
-In general, we suggest to import FRETbursts with the expression:
+In this article, we assume that FRETBursts is loaded using the following 
+import line:
 
 \begin{verbatim}
->>> import fretbursts as fb
+from fretbursts import *
 \end{verbatim}
 
-after which all the FRETBursts functions will be available under the \verb|fb.|
-prefix. In this article, for brevity, we assume that FRETBursts is imported 
-with the shortcut form instead:
+After this import, all the FRETbursts functions and objects will be accessible.
+The previous line will also import \verb|numpy| and \verb|matplotlib.pyplot|
+respectively as \verb|np| and \verb|plt|.
 
-\begin{verbatim}
->>> from fretbursts import *
-\end{verbatim}
-
-that allows skipping the \verb|fb.| prefix and it will also import some common 
-numeric libraries (i.e. \textit{numpy} and \textit{matplotlib.pyplot} 
-imported as \verb|np| and \verb|plt| respectively).
+The previous import is also used in the FRETBursts tutorials.
