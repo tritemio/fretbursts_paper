@@ -13,8 +13,7 @@ issues, feature requests and contributions can be reported.
 To assure the correctness of the results, FRETBursts is developed using modern 
 software engineering techniques such as unit and regression tests. 
 
-The preferential way to execute FRETBursts is by running one of the
-FRETBursts tutorials which are in the form of Jypyter notebooks.
+The preferential way to execute FRETBursts is by running one of the tutorials which are in the form of \href{http://ipython.org/notebook.html}{Jypyter notebooks}.
 Jupyter (formerly IPython) notebooks are documents, 
 accessed through a web browser, that contain both code and 
 rich text (including formulas, hyperlinks, figures, etc...).
@@ -32,7 +31,7 @@ notebook graphical environment to be able to navigate and run the notebooks.
 The list of FRETBursts notebooks can be found in the 
 \verb|FRETBurts_notebooks| repository on GitHub.
 
-Although running the software is simple, understanding the smFRET 
+Although running the software is technically simple, understanding the smFRET 
 burst analysis requires several concepts and definitions.
 This paper provides a broad overview of FRETBursts, introducing all the
 the fundamental concepts and definitions needed to fully understand the 
@@ -63,7 +62,7 @@ for a more in-depth description of the software.
 \subsection{Installing FRETBursts}
 \label{sec:install}
 Installing FRETBursts is analogous to installing any standard python
-package. A python environment needs to be installed, preferentially
+package. The python interpreter needs to be installed, preferentially
 through a scientific python distribution which conveniently include 
 all the major scientific libraries.
 
@@ -80,31 +79,10 @@ For more information on different installation methods refer to the
 section in the FRETBursts documentation.
 
 FRETBursts depends on a standard set of scientific 
-python libraries, namely, numpy/scipy for numerical computations, 
-matplotlib and seaborn for plotting. Optionally, a few core functions are
-optimized with cython and the software is preferentially run through
-a Jupyter (IPython) Notebook (optional).
-For a complete list of dependencies can be found in the 
+python libraries, namely, \href{http://www.numpy.org/}{numpy}/\href{http://www.scipy.org/}{scipy} for numerical computations, 
+\href{http://matplotlib.org/}{matplotlib} and \href{http://stanford.edu/~mwaskom/software/seaborn/}{seaborn} for plotting. Optionally, a few core functions are
+optimized with \href{http://cython.org/}{cython} and the software is preferentially run through
+a \href{http://ipython.org/}{Jupyter (IPython) Notebook} (optional).
+A complete list of dependencies can be found in the 
 \href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{Getting Started}
 section in the FRETBursts documentation.
-
-\subsection{Running FRETBursts}
-The preferential way to execute FRETBurts is by running one of the
-FRETBursts tutorials which are in the form of Jypyther notebooks.
-Jupyter (formerly IPython) notebooks are documents, 
-accessed through a web browser, that contain both code and 
-rich text (including formulas, hyperlinks, figures, etc...).
-FRETBursts tutorials are notebook that can be re-executed,
-modified or used to process new data files with minimal modifications.
-The "notebook workflow"\cite{Shen_2014} not only eases 
-the analysis comprehension (by integrating the code in a rich document)
-but also greatly enhance its reproducibility by storing an execution trail
-that includes software versions, input files, parameters, commands and all
-the analysis results (text, figures, tables, etc...).
-
-Given the modality of execution, running FRETBurst does not require
-any prior python knowledge. The user only needs familiarize with the
-notebook graphical environment to be able to navigate and run the notebooks.
-
-The list of FRETBursts notebooks can be found in the 
-\verb|FRETBurts_notebooks| repository on GitHub.
