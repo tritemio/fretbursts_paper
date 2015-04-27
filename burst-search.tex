@@ -4,14 +4,16 @@
 \subsubsection{Burst search in FRETBursts}
 \label{sec:burstsearch_code}
 
-In FRETBursts the standard burst search is performed calling the
-\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.burst\_search}{\texttt{burst\_search} method}.
+After background estimation, the burst search is the next fundamental step of
+the analysis.
+In FRETBursts, the standard burst search on a single photon stream (section~\ref{sec:burstsearch_intro}}) is performed calling the
+\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.burst\_search}{\texttt{burst\_search} method}. For example the following command:
 
 \begin{verbatim}
 d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
-The previous command performs a burst search on all photons
+performs a burst search on all photons
 (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the
 background rate (\verb|F=6|) and using 10 consecutive photons to compute the
 local rate (\verb|m=10|).
