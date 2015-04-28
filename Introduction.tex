@@ -17,11 +17,11 @@ issues, feature requests and contributions can be reported.
 
 FRETBursts implements both classical and novel algorithms for smFRET data analysis 
 including background estimation as a function of time (including background accuracy 
-metrics), sliding-window burst search, dual-channel bursts search and
+metrics), sliding-window burst search~\cite{Eggeling_1998}, dual-channel bursts search~\cite{Nir_2006} and
 generic and composable burst selection methods based on arbitrary criteria 
 (including a large set of pre-defined selection rules). Novel features include burst size
 selection with gamma-corrected burst size, burst weighting, burst search with background-
-dependent threshold (in order to guarantee a minimal single-to background ratio).
+dependent threshold (in order to guarantee a minimal single-to background ratio~\cite{Michalet_2012}).
 Finally a large novel set of FRET distribution fitting options are provided including
 FRET distribution fitting through (1) histogram fitting (with arbitrary model functions), 
 (2)  non-parametric weighted \textit{Kernel Density Estimation} (KDE), (3) weighted 
@@ -30,7 +30,7 @@ or on the underlying Poisson statistics. FRETBursts includes also a large number
 predefined and customizable plot functions that (thanks to the \textit{matplotlib} 
 graphic library) produce publication quality plots in a wide range of formats.
 
-\subsection{Development style and the advantages of open source}
+\subsection{Development style and open source}
 
 FRETBursts (and the entire python ecosystem it depends upon) is open source 
 and the source code is fully available to any scientist for studying, 
