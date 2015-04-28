@@ -1,19 +1,21 @@
 \section{Introduction}
 
-\subsection{smFRET and burst analysis}
+\subsection{What is FRETBursts}
 
-FRETBursts is an open source python software for burst analysis of confocal 
+FRETBursts is an open source python software for burst analysis of freely-diffusing 
 single-molecule Förster Resonance Energy Transfer (smFRET) data. 
 The software can analyze smFRET measurements
 with one or multiple excitation spots~\cite{Ingargiola_2013}. The supported 
-excitation schemes include single lasers, Alternating Laser EXcitation (ALEX) 
-with either two CW lasers (µs-ALEX \cite{Kapanidis_2005}) 
-or two interleaved pulsed lasers (ns-ALEX \cite{16287971} or 
+excitation schemes include single laser, Alternating Laser Excitation (ALEX) 
+with either CW lasers (µs-ALEX \cite{Kapanidis_2005}) 
+or interleaved pulsed lasers (ns-ALEX \cite{16287971} or 
 Pulsed-Interleaved Excitation (PIE) \cite{M_ller_2005}). 
 FRETBursts is hosted and and openly developed~\cite{Prli__2012} on GitHub, where
 issues, feature requests and contributions can be reported.
 
-FRETBursts implements of both classical and novel algorithms for smFRET data analysis 
+\subsection{Features overview}
+
+FRETBursts implements both classical and novel algorithms for smFRET data analysis 
 including background estimation as a function of time (including background accuracy 
 metrics), sliding-window burst search, dual-channel bursts search and
 generic and composable burst selection methods based on arbitrary criteria 
@@ -24,18 +26,35 @@ Finally a large novel set of FRET distribution fitting options are provided incl
 FRET distribution fitting through (1) histogram fitting (with arbitrary model functions), 
 (2)  non-parametric weighted \textit{Kernel Density Estimation} (KDE), (3) weighted 
 Expectation Maximization (EM), (4) Maximum Likelihood fitting for based Gaussian models 
-or on the underlying Poisson statistics. FRETBursts also includes a large number of
-predefined and customizable plot functions that leveraging the matplotlib graphic library
-produce publication quality plots in a wide range of formats.
+or on the underlying Poisson statistics. FRETBursts includes also a large number of
+predefined and customizable plot functions that (thanks to the \textit{matplotlib} 
+graphic library) produce publication quality plots in a wide range of formats.
 
-FRETBursts is opensource (GNU GPL v2 license) and openly developed on GitHub. 
-The authors welcome and encourage comments, discussions, bug reports and code patches
-(including new features).
+\subsection{Development style and the advantages of open source}
+
+FRETBursts (and the entire python ecosystem it depends upon) is open source 
+and the source code is fully available to any scientist for studying, 
+inspection and modifications.
+The authors welcome users to use GitHub Issues for questions, discussions
+and bug reports, and to submit patches through GitHub Pull Requests.
+
 In order to minimize the chance of bugs and erroneous results, FRETBursts is developed
 following modern software engineering techniques such 
-as unit test suite, regression tests and continuous integration.
+as defensive programming, unit testing, regression testing and continuous integration.
 
-The preferential way to execute FRETBursts is by running one of the tutorials 
+The open source nature of FRETBursts and of the python ecosystem 
+not only make it a more transparent, reviewable, platform 
+for scientific data analysis, but also allows 
+to leverage state-of-the-art online services like GitHub for hosting, issues tracking and code 
+reviews, TravisCI for continuous integration (i.e. automated the test suite execution after 
+each commit on multiple platforms) 
+and ReadTheDocs.org for automatic documentation building and hosting. 
+All these services would be extremely costly, if available at all, 
+for a proprietary software or platform.
+
+\subsection{Executing FRETBursts: the notebooks}
+
+The preferential way to execute FRETBursts is executing one of the tutorials 
 which are in the form of \href{http://ipython.org/notebook.html}{Jypyter notebooks}.
 Jupyter (formerly IPython) notebooks are web-based documents that contain both 
 code and rich text (including equations, hyperlinks, figures, etc...).
@@ -53,14 +72,21 @@ notebook graphical environment to be able to navigate and run the notebooks.
 The list of FRETBursts notebooks can be found in the 
 \verb|FRETBursts_notebooks| repository on GitHub.
 
+\subsection{Paper overview and further resources}
+
 Although running the software is technically simple, understanding the smFRET 
 burst analysis requires several concepts and definitions.
-This paper provides a broad overview of FRETBursts, introducing all the
-the fundamental concepts and definitions needed to fully understand the 
-smFRET burst analysis. 
+In this paper we aim to provide a brief introduction to smFRET analysis concepts
+and terminology used by FRETBursts. Furthermore we illustrate how to perform the
+the fundamental steps of burst analysis, highlighting the important parameters
+and algorithms that can be chosen. We will not cover extensively all the FRETBursts
+features and options. For more detailed information, the interested readers can refer 
+to the FRETBursts Reference Documentation and to the source code (that we strive 
+to make readable and well commented). 
+Furthermore, users can ask question about FRETBursts usage opening a new issue on GitHub.
 
-The paper is structured as follows. 
-In the next subsections we mention how to install~(\ref{sec:install}) and 
+The present paper is structured as follows. 
+In the next subsections we briefly mention how to install~(\ref{sec:install}) and 
 load~(\ref{sec:import}) FRETBursts.
 In section~\ref{sec:concepts} we
 introduce a few preliminary concepts and some specific terminology needed 
