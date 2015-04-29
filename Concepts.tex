@@ -104,7 +104,7 @@ All the arrays in \texttt{Data} are contained in lists with lengths equal to the
 number of excitation spots. This means that for single-spot measurements all the
 arrays are wrapped in 1-element lists. For example, the bursts data field
 \verb|Data.mbursts| will be a 1-element list and \verb|Data.mbursts[0]| will be
-the actual numpy array of burst data. \verb|Data|implements a shortcut syntax
+the actual numpy array of burst data. \verb|Data| implements a shortcut syntax
 that allows accessing 
 \verb|Data.mbursts[0]| as \verb|Data.mbursts_| (valid for all the fields).
 
@@ -158,7 +158,7 @@ Search (DCBS) that can help mitigating artifacts due to
 photo-physical effects such as photo-blinking. In this case a search is performed
 independently on two photon streams and bursts are marked only when both photon
 streams exhibit a rate higher than the threshold, 
-implementing a kind of an AND-gate logic. 
+implementing a kind of AND-gate logic. 
 Usually, the term DCBS refers to a burst search where the two photon streams
 are (1) all the photons 
 during donor excitation (\verb|Ph_sel(Dex='DAem')|) and (2) acceptor channel photons
@@ -189,7 +189,7 @@ section~\ref{sec:burstsel}). The choice of burst size threshold is
 critical because a too low threshold will widen FRET subpopulations owing to the 
 inclusion of small sized bursts having higher FRET uncertainty. Conversely 
 a too high threshold will result in a lower number of bursts and FRET estimation 
-can suffer from high statitical error.
+can suffer from high statistical error.
 
 In order to mitigate the dependence on the burst size threshold it may be 
 useful to weight bursts according to their size (i.e. their 
@@ -197,7 +197,7 @@ information content) so that the biggest bursts will have the highest weights.
 The weighting can be used to build weighted histograms and Kernel Density Estimation (KDE) plots.
 When using weights the choice of a particular burst size threshold becomes 
 much less important and the histograms or KDE plots exhibit minimal-width
-peaks corresponding to different FRET popuations for a much wider range
+peaks corresponding to different FRET populations for a much wider range
 of thresholds. 
 
 FRETBursts allows weighting bursts using the gamma-corrected burst size
@@ -207,7 +207,7 @@ can be computed according to different criteria among which the most
 commonly used is \verb|'size'|, meaning to associate a weight 
 directly proportional to the burst size. The list of weight types
 can be found in the 
-\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{\texttt{fret\_fit.get\_weiths} documentation}.
+\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{\texttt{fret\_fit.get\_weights} documentation}.
 
 \subsection{Plotting "Data"}
 
@@ -249,13 +249,13 @@ can be enabled when using the QT4 backend that opens the plot in an external
 window. It is possible to switch backend from inline to QT and vice versa using
 the ipython commands \verb|%matplotlib qt|
 and \verb|%matplotlib inline|. For example, after switching to the QT4 backend
-the following commads:
+the following command:
 
 \begin{verbatim}
 dplot(d, timetrace, scroll=True)
 \end{verbatim}
 
-opens a new window with a timetrace plot and an horizontal scrollbar for quick
+opens a new window with a timetrace plot and an horizontal scroll-bar for quick
 "scrolling" throughout the measurement.
 Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows
 selecting an area on the E-S histogram using the mouse.
