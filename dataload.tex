@@ -4,17 +4,11 @@
 \subsection{Loading the data}
 \label{sec:dataload}
 
-FRETBursts supports loading data from a few file formats: SM files
-(a binary format saved by a common LabVIEW program used in smFRET setups), 
-SPC (a binary format used by TCSPC Becker \& Hickl cards) and 
-\href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5}  an open binary 
-format single-molecule data based on HDF5. Support for additional file formats
-can be added depending on user requests.
-
-We encourage adopting \href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5},
+While FRETBursts can load data files from a variety of file formats,
+the authors encourage adopting \href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5},
 a format specifically designed for freely-diffusing smFRET and other timestamp-based data. 
 Photon-HDF5 is a self-documented and efficient format
-that allows saving both the raw data and the measurement-specific meta-data
+that allows saving both the raw per-photon data and the measurement-specific meta-data
 (setup and sample information, authors, provenance etc...).
 Photon-HDF5 assures long-term accessibility of the data and aims to ease data sharing 
 among different software and research groups.
@@ -22,22 +16,31 @@ All the FRETBursts exemplary data files are saved in Photon-HDF5 and can be open
 standard viewers such as \href{http://www.hdfgroup.org/products/java/hdfview/}{HDFView}. 
 Additional data files can be found here[multi-spot paper data files].
 
-The \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module}
-contains functions to load the different file formats. 
-In particular, to load a Photon-HDF5 file we use the following command:
+The functions to load data from different file formats are provided by
+the \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module}.
+In particular, to load data from a Photon-HDF5 file we use the function
+\verb|load.photon_hdf5| as follows:
 
 \begin{verbatim}
 d = loader.photon_hdf5(file_name)
 \end{verbatim}
 
-where \verb|file_name| is a string containing the file path. The function
-\verb|load.photon_hdf5| returns an object \verb|d| of type 
-\href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}}) 
-containing all the measurement data (see section~\ref{sec:data_intro}).
+where \verb|file_name| is a string containing the file path. 
+This command loads all the measurement data into the variable \verb|d|,
+a \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}}) object 
+(see section~\ref{sec:data_intro}).
 
-Similar functions in the 
-\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module} 
-allow loading of other supported file formats.
+The same command can load data from a variety of measurement types stored 
+in a Photon-HDF5 file. Specifically, data employing different excitation schemes 
+(CW vs pulsed, single-laser vs 2 alternating lasers) or with any number of excitation spots
+is automatically recognized.
+
+Other file formats that FRETBursts can load include μs-ALEX data stored in SM format
+(a binary format saved by a common LabVIEW program used in μs-ALEX-smFRET setups), 
+ns-ALEX data stored in SPC format (a binary format used by TCSPC Becker \& Hickl cards).
+Please refer to the 
+\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module documetation} 
+for more information.
 
 \subsubsection{Load data manually}
 
