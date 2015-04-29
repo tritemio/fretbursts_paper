@@ -38,34 +38,10 @@ is automatically recognized.
 Other file formats that FRETBursts can load include μs-ALEX data stored in SM format
 (a binary format saved by a common LabVIEW program used in μs-ALEX-smFRET setups), 
 ns-ALEX data stored in SPC format (a binary format used by TCSPC Becker \& Hickl cards).
-Please refer to the 
-\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module documentation} 
-for more information.
+More information on loading those formats and on manually loading other arbitrary format
+can be found in the 
+\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module documentation}.
 
-\subsubsection{Load data manually}
-
-In case the data is available in a format not directly supported by 
-FRETBursts it is possible to manually create a \verb|Data| variable. 
-For example, for non-ALEX smFRET data, two arrays of same length are 
-needed: the timestamps and the acceptor-mask. The timestamps need to be 
-an int64 numpy array containing the recorded photon timestamps in arbitrary 
-units (usually dictated by the acquisition hardware clock period). 
-The acceptor-mask needs to be a numpy boolean array that is \verb|True| 
-when the corresponding timestamps comes from the acceptor channel and 
-\verb|False| when it comes from the donor channel. Having these arrays a 
-\verb|Data| object can be manually created with:
-
-\begin{verbatim}
-d = Data(ph_times_m=[timestamps], A_em=[acceptor_mask], 
-         clk_p=10e-9, ALEX=False, nch=1, fname='file_name')
-\end{verbatim}
-
-In the previous example, we set the timestamp unit (\verb|clk_p|) to 10~ns 
-and we specify that the data is not from an ALEX measurement. Creating 
-\verb|Data| objects for ALEX and ns-ALEX measurements follows the same lines. 
-We point the interested readers to the 
-\href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/loader.py}{loader module source code} 
-for other examples. 
 
 \subsection{Alternation parameters}
 \label{sec:alternation}
