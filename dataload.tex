@@ -16,21 +16,21 @@ as a fast and space efficient format that assure long-term accessibility
 to the data and ease data sharing between different programs. All the 
 FRETBursts exemplary data files are saved in Photon-HDF5 and can be opened with 
 standard viewers such as 
-\href{http://www.hdfgroup.org/products/java/hdfview/}{HDFView}. An additional data file 
+\href{http://www.hdfgroup.org/products/java/hdfview/}{HDFView}. A additional data files 
 can be found here[multi-spot paper data files].
 
 The \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module}
-contains all the functions to load the different file formats. 
-In particular, to load a Photon-HDF5 file use:
+contains functions to load the different file formats. 
+In particular, to load a Photon-HDF5 file we use the following command:
 
 \begin{verbatim}
 d = loader.photon_hdf5(file_name)
 \end{verbatim}
 
 where \verb|file_name| is a string containing the file path. The function
-\verb|load.hdf5| returns an object \verb|d| of type 
+\verb|load.photon_hdf5| returns an object \verb|d| of type 
 \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}}) 
-containing all the measurement info (see section~\ref{sec:data_intro}).
+containing all the measurement data (see section~\ref{sec:data_intro}).
 
 Similar functions in the 
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module} 
