@@ -22,7 +22,8 @@ For example, in order to fit the E histogram of bursts in \verb|ds| with two
 Gaussian peaks we execute:
 
 \begin{verbatim}
-bext.bursts_fitter(ds, 'E', binwidth=0.03, model=mfit.factory_two_gaussians())
+bext.bursts_fitter(ds, 'E', binwidth=0.03, 
+                   model=mfit.factory_two_gaussians())
 \end{verbatim}
 
 Here, \verb|ds| is the variable with the burst data (selected bursts),
