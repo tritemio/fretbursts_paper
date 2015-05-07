@@ -4,17 +4,16 @@ invaluable tool in studying cellular processes at the molecular
 scale~\cite{Kapanidis_2006}. smFRET experiments can detect the distance between 
 two fluorescent labels (\textit{donor} and \textit{acceptor}) in the 
 3-10~nm range. In the commonly employed confocal geometry, molecules are free 
-to diffuse in a solution. When a molecule traverses the excitation volume it 
+to diffuse in solution. When a molecule traverses the excitation volume it 
 emits a burst of photons that can be detected by single-photon avalanche detectors (SPADs). 
-The relative intensities of signals from donor and acceptor fluorescence 
-are related to the distance between the two dyes.
+The intensities of donor and acceptor fluorescence 
+can then be related to the distance between the two dyes.
 
-smFRET experiments are sometimes considered complex to properly analyze. 
 The analysis of smFRET experiments involves identifying photon bursts from 
-single-molecules in a continuous stream of photon timestamps, estimating the 
-background and other correction factors, filtering and extracting the corrected 
-FRET efficiencies for each sub-population in the sample. In order to ease 
-the process, we herein present FRETBursts, a new open source software for smFRET data 
+single-molecules in a continuous stream of photon, estimating the 
+background and other correction factors, filtering and finally extracting the corrected 
+FRET efficiencies for each sub-population in the sample. In order to simplify 
+the process, we have developed FRETBursts, an open source software for confocal smFRET data 
 analysis that includes most of the common state-of-the-art algorithms. 
 We follow the highest standard in software development to ensure that 
 the source is easy to read, well documented and thoroughly tested. 
