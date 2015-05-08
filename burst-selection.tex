@@ -1,76 +1,83 @@
 \subsection{Burst selection}
 \label{sec:burstsel}
 
-After burst search it is common to select bursts according to different
-criteria, among which one of the most common is the burst size.
+After burst search, it is common to select bursts according to different
+criteria. One of the most common is the burst size.
 
-For example, to select bursts with more than 100 photons (after background
-correction) detected during the donor excitation periods one can write:
+For instance, to select bursts with more than 100 photons (as computed
+after background correction) detected during the donor excitation periods
+the following command is used:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size, th1=100)
 \end{verbatim}
 
-In the previous command a new \textit{Data} variable (\verb|ds|) containing the selected
-bursts is created. As mentioned before the new object will share the photon data
-arrays with the original object (\verb|d|) in order to minimize the RAM
-consumption.
+In the previous command, a new \textit{Data} variable (\verb|ds|) containing
+the selected bursts is created.
+As mentioned before the new object will share the photon data
+arrays with the original object (\verb|d|) in order to minimize the RAM use.
 
 The
 \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#burst-selection-methods}{\texttt{select\_bursts()} method}
-requires, as first argument, a function implementing the "selection criterion" (\verb|select_bursts.size| 
-in this example); all the remaining arguments (here only \verb|th1|) are passed to the selection function. The
-\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html}{\texttt{select\_bursts} module} 
-contains numerous 
-\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#module-fretbursts.select_bursts}{built-in selection functions}, 
-for example in order to select a region on the E-S ALEX histogram (\verb|select_bursts.ES|), 
-to select bursts based on their duration (\verb|select_bursts.width|) and so on.
-New criteria can be easily implemented by defining a new selection function, usually 
-not longer than a couple of lines (see the
+requires a function implementing the "selection criterion" as its first argument
+(\verb|select_bursts.size| in this example);
+all the remaining arguments are passed to the selection function (in this case
+the only additional argument is \verb|th1|).
+The \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html}{\texttt{select\_bursts} module}
+contains numerous
+\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#module-fretbursts.select_bursts}{built-in selection functions}.
+For example,
+\verb|select_bursts.ES|
+is used to select a region on the E-S ALEX histogram,
+\verb|select_bursts.width|
+to select bursts based on their duration.
+New criteria can be easily implemented by defining a new selection function,
+usually not longer than a couple of lines (see the
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select\_bursts.py}{\texttt{select\_bursts} module} for several examples).
 
-Finally note that different criteria can be combined by applying them sequentially. 
-For example with the following commands
+Finally, different criteria can be combined by applying them sequentially.
+For example, after the following commands
 
 \begin{verbatim}
-ds = d.select_bursts(select_bursts.size, 
+ds = d.select_bursts(select_bursts.size,
                      th1=50, th2=200)
-dsw = ds.select_bursts(select_bursts.width, 
+dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
 \end{verbatim}
 
-the variable \verb|dsw| will contain all the bursts with sizes between 50 and
-200 photons, with duration between 0.5 and 3~ms.
+the variable \verb|dsw| will contain all bursts with sizes between 50 and
+200 photons, and duration between 0.5 and 3~ms.
 
 \subsubsection{Burst size selection}
 
-In the previous section we used a definition of "burst size" as the total number
-of detected counts in the donor and in the acceptor channel during donor
-excitation periods. 
+In the previous section, the definition of "burst size" was implicitly referring
+to the total number of detected counts in the donor and in the acceptor channel
+during donor excitation.
 
-We can modify the selection command in order to also include photons detected in
-the acceptor channels during acceptor excitation periods. This is achieved
-passing the flag \verb|add_naa=True| to the selection function as
-follows:
+The selection command can be provided with an additional parameter in order to
+also include photons detected in the acceptor channels during acceptor excitation.
+This is achieved by passing the flag \verb|add_naa=True| to the selection function
+as follows:
 
 \begin{verbatim}
-ds = d.select_bursts(select_bursts.size, 
+ds = d.select_bursts(select_bursts.size,
                      th1=100, add_naa=True)
 \end{verbatim}
 
-Another important parameter in defining the burst size is the gamma-factor, i.e.
+Another important parameter for defining the burst size is the gamma-factor, i.e.
 the imbalance between the donor and the acceptor channels. The gamma-factor is
-used to correct for the different fluorescence quantum yields of the D and A fluorophores as well as the different photon-detection efficiencies of the D and A channels.
+used to correct for the different fluorescence quantum yields of the D and A
+fluorophores as well as the different photon-detection efficiencies of the D and A channels.
 Neglecting the effect of gamma-factor on the burst size leads to a biased burst
-selection, especially if $\gamma$ significantly differs from a value of one. 
+selection, if $\gamma$ is different from 1.
 
-To include the effect of $\gamma$ on the burst size and obtain a "fair" burst
-selection (i.e. a selection that does not favor high or low FRET states) we
-need to pass the argument \verb|gamma| (or \verb|gamma1|) like in the following
-example:
+To include the effect of $\gamma$ on burst size and obtain a burst
+selection which does not favor high or low FRET states,
+the argument \verb|gamma| (or \verb|gamma1|) needs to be provided,
+as shown in this example:
 
 \begin{verbatim}
-ds = d.select_bursts(select_bursts.size, 
+ds = d.select_bursts(select_bursts.size,
                      th1=100, gamma=0.65)
 \end{verbatim}
 
