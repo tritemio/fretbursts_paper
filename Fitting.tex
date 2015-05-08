@@ -4,8 +4,6 @@
 The \verb|mfit| fitting module allows fitting burst populations with a model.
 Typically, bursts selection is performed first and next, histograms of
 $E$ or $S$ values for the selected bursts are fitted to a model.
-Under the hood, histogram fit is performed using the
-\href{http://lmfit.github.io/lmfit-py/}{lmfit} library.
 
 In general, a model can be automatically built from any function.
 Model parameters need to have an initial value (and optionally
@@ -48,7 +46,12 @@ Refer to the FRETBursts documentation for the different fitting and model option
 and for details on plot customization (
 \href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst_plot.hist_fret}{\texttt{hist\_fret} plot function}).
 
-and, in fact, a fit model is an \verb|lmfit.Model| object.
+\paragraph{Python details}
+Under the hood, histogram fit in FRETBursts is performed using the
+\href{http://lmfit.github.io/lmfit-py/}{lmfit} library[CITATION].
+Every fit model is, in fact, an \verb|lmfit.Model| object, and these object
+can be created and modified by calling directly \verb|lmfit| functions.
+We refer the interested users to the excellent lmfit documentation.
 
 \subsubsection{Correction coefficients}
 
