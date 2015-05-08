@@ -4,10 +4,12 @@
 \subsubsection{Burst search in FRETBursts}
 \label{sec:burstsearch_code}
 
-After background estimation, the burst search is the next fundamental step of
+Following background estimation, burst search is the next step of
 the analysis.
-In FRETBursts, the standard burst search on a single photon stream (section~\ref{sec:burstsearch_intro}) is performed calling the
-\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.burst\_search}{\texttt{burst\_search} method}. For example the following command:
+In FRETBursts, a standard burst search on a single photon stream
+(see section~\ref{sec:burstsearch_intro}) is performed by calling the
+\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.burst\_search}{\texttt{burst\_search} method}.
+For example, the following command:
 
 \begin{verbatim}
 d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
@@ -19,19 +21,20 @@ background rate (\verb|F=6|) and using 10 consecutive photons to compute the
 local rate (\verb|m=10|).
 A different photon selection, threshold ($F$) or number of photons for rate
 computation $m$ can be selected by passing a different value. These parameters
-are generally a good starting point for smFRET analysis but can be tweaked in
+are generally a good starting point for smFRET analysis but can be adjusted in
 specific cases.
 
-Note that, in the previous burst search, no burst size selection is performed
-(i.e. the minimum bursts size is $m$). 
+Note that, in the previous burst search, no burst size selection was performed
+(i.e. the minimum bursts size is effectively $m$).
 An additional parameter $L$ can be passed to apply a threshold on the raw burst
-size (before any correction). 
-We, however, strongly encourage performing a more accurate burst size selection as shown in
-the next section~\ref{sec:burstsel}.
+size (before any correction).
+It is recommended, however, to select bursts only after the background correction
+is applied as shown in the next section~\ref{sec:burstsel}.
 
 In µs-ALEX there are 3 important correction parameters: gamma factor, donor spectral
-leakage into the acceptor channel and acceptor direct excitation~\cite{Lee_2005}. 
-These corrections can be applied by simply setting the respective \textit{Data} attributes:
+leakage into the acceptor channel and acceptor direct excitation by the donor excitation
+laser~\cite{Lee_2005}.
+These corrections can be applied by simply assigning to the respective \textit{Data} attributes:
 
 \begin{verbatim}
 d.gamma = 0.85
@@ -40,37 +43,42 @@ d.dir_ex = 0.08
 \end{verbatim}
 
 These attributes can be assigned either before or after the burst search. In the
-latter case, the burst data is
-automatically updated using the newly assigned correction values.
+latter case, existing burst data is automatically updated using the new
+correction parameters.
 
-Sometimes it may be useful to specify a fixed threshold, instead 
-of a threshold derived from the background rate like in the previous example. In
-this case, instead of $F$ we can use the argument \verb|min_rate_cps| that
-specifies a threshold in Hertz. For example, a burst search with a 50~kHz
+It might sometimes be useful to specify a fixed threshold, instead
+of a threshold depending on the background rate, as in the previous example. In
+this case, instead of $F$, the argument \verb|min_rate_cps| can be used to
+specify the threshold (in Hertz). For example, a burst search with a 50~kHz
 threshold can be performed as follows:
 
 \begin{verbatim}
 d.burst_search(min_rate_cps=50e3, m=10, ph_sel=Ph_sel('all'))
 \end{verbatim}
 
-Finally, to perform a DCBS burst search (or in general an AND-gate burst search,
-see section~\ref{sec:burstsearch_intro}) the plugin function 
+Finally, to perform a DCBS burst search (or in general an AND gate burst search,
+see section~\ref{sec:burstsearch_intro}) the plugin function
 \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.burst\_search\_and\_gate}{\texttt{burst\_search\_and\_gate}}
-can be used like in the following example:
+can be used as in the following example:
 
 \begin{verbatim}
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 \end{verbatim}
 
-Note that in this case a copy of the \verb|Data| variable is returned (here called \verb|d_dcbp|)
-containing the results of the new burst search. In order to
-save RAM, FRETBursts shares the read-only arrays timestamps and detectors between
+Note that, in this case, a copy of the \verb|Data| variable (containing the results
+of the new burst search) is returned (called here \verb|d_dcbs|).
+In order to
+reduce memory usage, FRETBursts shares the read-only arrays timestamps and detectors between
 different copies of a \verb|Data| object (for example \verb|d| and
-\verb|d_dcbs|), while all the other data (including background and burst data)
-is copied. 
+\verb|d_dcbs|).
+All other data (including background and burst data) are copied.
 
-The function \verb|burst_search_and_gate| provides additional arguments
-\verb|ph_sel1| and \verb|ph_sel2| whose defaults values correspond to the 
+
+\paragraph{Python details}
+The function \verb|burst_search_and_gate| accepts optional arguments,
+\verb|ph_sel1| and \verb|ph_sel2|, whose default values correspond to the
 classical DCBS photon stream selection (see section~\ref{sec:burstsearch_intro}).
-These arguments can be specified to select different photon streams than in 
+These arguments can be specified to select different photon streams than in
 a classical DCBS.
+
+
