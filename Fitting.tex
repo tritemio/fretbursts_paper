@@ -1,28 +1,27 @@
-\subsection{Population fit}
+\subsection{Population analysis}
 \label{sec:fretfit}
 
-The fitting module \verb|mfit| allows to fit burst populations with a model.
-Typically, a bursts selection is performed first and only afterwards the histograms of
-the $E$ or $S$ values of the selected bursts are fitted to a model. Under the
-hood the histogram fit is performed using the
-\href{http://lmfit.github.io/lmfit-py/}{lmfit} library, and, in fact, 
-a fit model is an \verb|lmfit.Model| object.
+The \verb|mfit| fitting module allows fitting burst populations with a model.
+Typically, bursts selection is performed first and next, histograms of
+$E$ or $S$ values for the selected bursts are fitted to a model.
+Under the hood, histogram fit is performed using the
+\href{http://lmfit.github.io/lmfit-py/}{lmfit} library.
 
-In general a model can be automatically built from any function. Before fitting,
-however, all the model parameters need to have an initial value and (optionally)
-some constrains. FRETBursts includes a set of functions (starting with
-\verb|mfit.factory_|) that return pre-initialized models suitable for E and S
-histogram fitting. A set of commonly used functions, for example 1 or 2 Gaussian
+In general, a model can be automatically built from any function.
+Model parameters need to have an initial value (and optionally
+constrains). FRETBursts includes a set of functions (whose names start with
+\verb|mfit.factory_|) which return pre-initialized models suitable for E and S
+histogram fitting. A set of commonly used functions, such as 1 or 2 Gaussian
 peaks with or without "bridge" function, are provided. These "factory" functions
-take optional arguments to change the initial value for the model parameters.
+take optional arguments to change the initial value of model parameters.
 For more info refer to the
 \href{http://fretbursts.readthedocs.org/en/latest/mfit.html#model-factory-functions}{factory-functions documentation}.
 
 For example, in order to fit the E histogram of bursts in \verb|ds| with two
-Gaussian peaks we execute:
+Gaussian peaks, the following command can be used:
 
 \begin{verbatim}
-bext.bursts_fitter(ds, 'E', binwidth=0.03, 
+bext.bursts_fitter(ds, 'E', binwidth=0.03,
                    model=mfit.factory_two_gaussians())
 \end{verbatim}
 
@@ -33,7 +32,9 @@ fitting.
 
 All fitting results are stored in the \textit{Data} variable (in the \verb|E_fitter| or
 \verb|S_fitter| field).
-In order to plot the FRET histogram and the fitted model one can run:
+In order to plot the FRET histogram and the fitted model, we pass the parameter
+\verb|show_model=True| to \verb|hist_fret| function as follows
+(see also section~\ref{sec:plotting}):
 
 \begin{verbatim}
 dplot(ds, hist_fret, show_model=True)
@@ -42,10 +43,12 @@ dplot(ds, hist_fret, show_model=True)
 For more examples on fitting bursts data and plotting results see the
 \href{http://nbviewer.ipython.org/urls/raw.github.com/tritemio/FRETBursts_notebooks/master/notebooks/FRETBursts\%2520-\%2520us-ALEX\%2520smFRET\%2520burst\%2520analysis.ipynb}{us-ALEX notebook}.
 Refer to the FRETBursts documentation for the different fitting and model options
-(\href{http://fretbursts.readthedocs.org/en/latest/fit.html}{Fitting framework} and 
+(\href{http://fretbursts.readthedocs.org/en/latest/fit.html}{Fitting framework} and
 \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.bursts\_fitter}{\texttt{bursts\_fitter} function})
 and for details on plot customization (
 \href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst_plot.hist_fret}{\texttt{hist\_fret} plot function}).
+
+and, in fact, a fit model is an \verb|lmfit.Model| object.
 
 \subsubsection{Correction coefficients}
 
