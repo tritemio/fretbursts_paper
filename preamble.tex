@@ -5,3 +5,17 @@
 \usepackage{url}
 
 \bibliographystyle{abbrv}
+
+%% Enable UTF8 Greek characters
+\usepackage[utf8]{inputenc}
+\usepackage[LGR,T1]{fontenc}
+\usepackage{textcomp}
+
+\usepackage{fancyref}
+\usepackage{hyperref}
+\usepackage{cite}
+
+%% Enable changing the verbatim font
+\makeatletter
+\newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
+\makeatother
