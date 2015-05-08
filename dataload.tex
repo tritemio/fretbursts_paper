@@ -6,13 +6,13 @@
 
 While FRETBursts can load data files from a variety of file formats,
 the authors encourage adopting \href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5},
-a format specifically designed for freely-diffusing smFRET and other timestamp-based data. 
+a format specifically designed for freely-diffusing smFRET and other timestamp-based experiments. 
 Photon-HDF5 is a self-documented and efficient format
-that allows saving both the raw per-photon data and the measurement-specific meta-data
+which allows saving both raw per-photon data and measurement-specific meta-data
 (setup and sample information, authors, provenance etc...).
 Photon-HDF5 assures long-term accessibility of the data and aims to ease data sharing 
 among different software and research groups.
-All the FRETBursts exemplary data files are saved in Photon-HDF5 and can be opened with 
+All the FRETBursts exemple data files are saved in Photon-HDF5 and can be opened with 
 standard viewers such as \href{http://www.hdfgroup.org/products/java/hdfview/}{HDFView}. 
 Additional data files can be found here[multi-spot paper data files].
 
@@ -29,14 +29,14 @@ a \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Dat
 (see section~\ref{sec:data_intro}).
 
 The same command can load data from a variety of measurement types stored 
-in a Photon-HDF5 file. Specifically, data employing different excitation schemes 
+in a Photon-HDF5 file. For instance, data generated using different excitation schemes 
 (CW vs pulsed, single-laser vs 2 alternating lasers) or with any number of excitation spots
 is automatically recognized.
 
-Other file formats that FRETBursts can load include μs-ALEX data stored in SM format
-(a binary format saved by a common LabVIEW program used in μs-ALEX-smFRET setups), 
+Other file formats which FRETBursts can load include μs-ALEX data stored in sm format
+(a binary format formerly used in our lab), 
 ns-ALEX data stored in SPC format (a binary format used by TCSPC Becker \& Hickl cards).
-More information on loading those formats and on manually loading other arbitrary formats
+More information on loading these file formats and on manually loading other arbitrary formats
 can be found in the 
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module documentation}.
 
@@ -44,7 +44,7 @@ can be found in the
 \subsection{Alternation parameters}
 \label{sec:alternation}
 
-For µs-ALEX and ns-ALEX data it is necessary to identify the different 
+For µs-ALEX and ns-ALEX data, it is necessary to identify the 
 alternation periods for donor and acceptor excitation.
 
 The functions 
