@@ -6,78 +6,80 @@
 
 While FRETBursts can load data files from a variety of file formats,
 the authors encourage adopting \href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5},
-a format specifically designed for freely-diffusing smFRET and other timestamp-based experiments. 
+a format specifically designed for freely-diffusing smFRET and other timestamp-based experiments.
 Photon-HDF5 is a self-documented and efficient format
 which allows saving both raw per-photon data and measurement-specific meta-data
 (setup and sample information, authors, provenance etc...).
-Photon-HDF5 assures long-term accessibility of the data and aims to ease data sharing 
+Photon-HDF5 assures long-term accessibility of the data and aims to ease data sharing
 among different software and research groups.
-All the FRETBursts exemple data files are saved in Photon-HDF5 and can be opened with 
-standard viewers such as \href{http://www.hdfgroup.org/products/java/hdfview/}{HDFView}. 
+All the FRETBursts exemple data files are saved in Photon-HDF5 and can be opened with
+standard viewers such as \href{http://www.hdfgroup.org/products/java/hdfview/}{HDFView}.
 Additional data files can be found here[multi-spot paper data files].
 
-To load data from a Photon-HDF5 file we use the 
+To load data from a Photon-HDF5 file we use the
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.photon_hdf5}{function \texttt{loader.photon\_hdf5}} as follows:
 
 \begin{verbatim}
 d = loader.photon_hdf5(file_name)
 \end{verbatim}
 
-where \verb|file_name| is a string containing the file path. 
+where \verb|file_name| is a string containing the file path.
 This command loads all the measurement data into the variable \verb|d|,
-a \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}} object 
+a \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}} object
 (see section~\ref{sec:data_intro}).
 
-The same command can load data from a variety of measurement types stored 
-in a Photon-HDF5 file. For instance, data generated using different excitation schemes 
+The same command can load data from a variety of measurement types stored
+in a Photon-HDF5 file. For instance, data generated using different excitation schemes
 (CW vs pulsed, single-laser vs 2 alternating lasers) or with any number of excitation spots
 is automatically recognized.
 
 Other file formats which FRETBursts can load include μs-ALEX data stored in sm format
-(a binary format formerly used in our lab), 
+(a binary format formerly used in our lab),
 ns-ALEX data stored in SPC format (a binary format used by TCSPC Becker \& Hickl cards).
 More information on loading these file formats and on manually loading other arbitrary formats
-can be found in the 
+can be found in the
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module documentation}.
 
 
 \subsection{Alternation parameters}
 \label{sec:alternation}
 
-For µs-ALEX and ns-ALEX data, it is necessary to identify the 
+For µs-ALEX and ns-ALEX data, it is necessary to identify the
 alternation periods for donor and acceptor excitation.
 
-The functions 
+The functions
 \verb|plot_alternation_hist| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist}{documentation})
-plots the alternation histogram 
+plots the alternation histogram
 with the currently selected donor and acceptor excitation periods
 (if no selection has been made yet, default values will be shown).
 Figure~\ref{fig:altern_hist} shows a typical alternation histogram for
 a µs-ALEX measurement with the donor and acceptor excitation periods highlighted.
 
-In order to change the period definition shown in figure~\ref{fig:altern_hist}
-the user can execute:
+In order to change the period definition the user needs to execute:
 
 \begin{verbatim}
     d.add(D_ON=(2850, 580), A_ON=(900, 2580))
 \end{verbatim}
 
-where \verb|D_ON| and \verb|A_ON| are tuples representing 
-the start-stop range for the donor and acceptor excitation periods 
-in timestamps units. After changing the parameters, a new alternation plot will show the updated period selections.
+where \verb|D_ON| and \verb|A_ON| are tuples (pairs of numbers) representing
+the start and stop values for the donor and acceptor excitation periods
+(in timestamps units).
+After changing the parameters, a new alternation plot will show the updated period selections.
 
-When the alternation period definition is satisfactory, it can
-be applied using the 
+When the alternation period definition is correctly defined, it can
+be applied using the
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.alex_apply_period}{\texttt{alex\_apply\_period} function}:
 
 \begin{verbatim}
     loader.alex_apply_period(d)
 \end{verbatim}
 
-After running this command only the photons inside the defined excitation periods
-will be present in \verb|d|, therefore in order to apply a new alternation period 
-it is necessary to reload the file.
+After this command, only the photons inside the defined excitation periods
+will be present in \verb|d|.  In order to apply a new alternation period
+it is therefore necessary to reload the data file.
 
-For ns-ALEX measurements the exact same functions and syntax are used.
-This time, however, the plot function will show a Time-Correlated Single Photon Counting (TCSPC) histogram of two fluorescence decays originating from the two interspaced excitation sources. The period ranges will be expressed in nanotime units (TCSPC time bins) instead of 
-timestamp units.
+For ns-ALEX measurements, the exact same functions and syntax are used.
+In this case, however, the plot function will show a Time-Correlated Single-Photon Counting
+(TCSPC) histogram of two sets of fluorescence decays resulting from the two interlaced
+excitation sources. The period ranges will be expressed in nanotime units (TCSPC time bins)
+instead of timestamp units.
