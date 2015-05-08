@@ -75,10 +75,18 @@ All other data (including background and burst data) are copied.
 
 
 \paragraph{Python details}
+Note that, while \verb|.burst_search()| is a method of \verb|Data|,
+\verb|burst_search_and_gate| is a function in the \verb|bext| module
+taking a \verb|Data| object as a first argument and returning a new
+\verb|Data| object.
+
 The function \verb|burst_search_and_gate| accepts optional arguments,
 \verb|ph_sel1| and \verb|ph_sel2|, whose default values correspond to the
 classical DCBS photon stream selection (see section~\ref{sec:burstsearch_intro}).
 These arguments can be specified to select different photon streams than in
 a classical DCBS.
 
+The \verb|bext| module collects additional "plugin" functions
+that are not part of \verb|Data| (as methods) but that operate
+on \verb|Data| by implementing some high level functionality.
 
