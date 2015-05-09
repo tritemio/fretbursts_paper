@@ -1,27 +1,25 @@
 \section{FRETBursts overview}
+\label{sec:overview}
 
-\subsection{What is FRETBursts}
+\subsection{Features}
 
-FRETBursts is an open source python software for burst analysis of freely-diffusing
-single-molecule Förster Resonance Energy Transfer (smFRET) data.
-The software can analyze smFRET measurements
+
+FRETBursts can analyze smFRET measurements
 from one or multiple excitation spots~\cite{Ingargiola_2013}. The supported
 excitation schemes include single laser, alternating laser excitation (ALEX)
 with either CW lasers (µs-ALEX \cite{Kapanidis_2005})
 or interleaved pulsed lasers (ns-ALEX~\cite{Laurence_2005} or
 Pulsed-Interleaved Excitation (PIE) \cite{M_ller_2005}).
-FRETBursts is hosted and openly developed~\cite{Prli__2012} on GitHub, which
-simplifies managing issues, feature requests and user contributions.
 
-\subsection{Features overview}
-
-FRETBursts implements both standard and novel algorithms for smFRET data analysis
+The software implements both standard and novel algorithms for smFRET data analysis
 including background estimation as a function of time (including background accuracy
-metrics), sliding-window burst search~\cite{Eggeling_1998}, dual-channel bursts search~\cite{Nir_2006} and
-generic and composable burst selection methods based on user-defined criteria
+metrics), sliding-window burst search~\cite{Eggeling_1998}, 
+dual-channel bursts search~\cite{Nir_2006} and
+modular burst selection methods based on user-defined criteria
 (including a large set of pre-defined selection rules). Novel features include burst size
 selection with gamma-corrected burst size, burst weighting, burst search with background-
-dependent threshold (in order to guarantee a minimal single-to background ratio~\cite{Michalet_2012}).
+dependent threshold (in order to guarantee a minimal single-to background 
+ratio~\cite{Michalet_2012}).
 Moreover, a large set of FRET distribution fitting options are provided including
 FRET distribution fitting through (1) histogram fitting (with arbitrary model functions),
 (2)  non-parametric weighted \textit{Kernel Density Estimation} (KDE), (3) weighted
@@ -30,28 +28,6 @@ or Poisson statistic. Finally FRETBursts includes a large number of
 predefined and customizable plot functions which (thanks to the \textit{matplotlib}
 graphic library) produce publication quality plots in a wide range of formats.
 
-\subsection{Development style}
-
-FRETBursts (and the entire python ecosystem it depends on) is open source
-and the source code is fully available for any scientist to study,
-review and modify.
-The authors encourage users to use GitHub issues for questions, discussions
-and bug reports, and to submit patches through GitHub pull requests.
-
-In order to minimize the likelihood of bugs and erroneous results, FRETBursts is developed
-following modern software engineering techniques such
-as defensive programming, unit testing, regression testing and continuous integration~\cite{Wilson_2014}.
-
-The open source nature of FRETBursts and of the python ecosystem,
-not only makes it a more transparent, reviewable platform
-for scientific data analysis, but also allows
-to leverage state-of-the-art online services as \href{http://https://github.com}{GitHub} for hosting,
-issues tracking and code reviews,
-\href{https://travis-ci.org}{TravisCI} for continuous integration
-(i.e. automated test suite execution on multiple platforms after each commit)
-and \href{https://readthedocs.org/}{ReadTheDocs.org} for automatic documentation building and hosting.
-All these services would be extremely costly, if at all available,
-for a proprietary software or platform.
 
 \subsection{FRETBursts and Jupyter Notebook}
 
@@ -75,45 +51,27 @@ notebook graphical environment, in order to be able to navigate and run the note
 The list of FRETBursts notebooks can be found in the
 \verb|FRETBursts_notebooks| repository on GitHub.
 
-\subsection{Paper overview and further resources}
 
-Although running the software is technically simple, understanding the smFRET
-burst analysis requires several concepts and definitions.
-In this paper we aim to provide a brief introduction to smFRET analysis concepts
-and terminology used by FRETBursts. We illustrate how to perform
-the fundamental steps of burst analysis, highlighting key parameters
-and algorithms available. We will not cover extensively all the FRETBursts
-features and options. For more detailed information, the interested readers can refer
-to the FRETBursts Reference Documentation and to the source code (that we strive
-to make readable and well commented).
-Furthermore, users can ask question about FRETBursts use by opening a new issue on GitHub.
+\subsection{Development style}
 
-The present paper is structured as follows.
-In section~\ref{sec:concepts}, we
-introduce a few preliminary concepts and some specific terminology needed
-to understand the smFRET burst analysis.
-In section~\ref{sec:analysis}, we detail the execution the several steps involved
-in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining
-excitation alternation periods (section~\ref{sec:alternation}), background
-correction (section~\ref{sec:bg_calc}), burst search (section~\ref{sec:burstsearch}),
-burst selection (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}).
-The aim is to provide enough information to understand the specificities of
-the different algorithms and to be able to adapt the analysis to new situations.
-Finally, in section~\ref{sec:conclusions}, we summarize what we believe to be
-the strengths of FRETBursts software.
+FRETBursts (and the entire python ecosystem it depends on) is open source
+and the source code is fully available for any scientist to study,
+review and modify.
+The authors encourage users to use GitHub issues for questions, discussions
+and bug reports, and to submit patches through GitHub pull requests.
 
-In addition to this paper, we refer the interested readers to the
-\href{http://nbviewer.ipython.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts\%20-\%20us-ALEX\%20smFRET\%20burst\%20analysis.ipynb}{FRETBursts µs-ALEX tutorial}
-for a single complete example of µs-ALEX data analysis and to the
-\href{http://fretbursts.readthedocs.org/}{FRETBursts Reference Documentation}
-for a more in-depth description of the software. The reference documentation
-includes also a special section describing how to install and run the software
-for users without any prior python knowledge.
+In order to minimize the likelihood of bugs and erroneous results, FRETBursts is developed
+following modern software engineering techniques such
+as defensive programming, unit testing, regression testing and continuous integration~\cite{Wilson_2014}.
 
-Finally, in order to make this paper accessible to the widest number of readers,
-we concentrated python-specific details in special subsections titled
-\textit{Python details}. These subsections provide deeper insights for readers
-already familiar with python and can be safely skipped otherwise. Note also
-that all commands shown in this paper can be found in the FRETBursts tutorial notebook
-and, in general, do not need to be re-typed.
+The open source nature of FRETBursts and of the python ecosystem,
+not only makes it a more transparent, reviewable platform
+for scientific data analysis, but also allows
+to leverage state-of-the-art online services as \href{http://https://github.com}{GitHub} for hosting,
+issues tracking and code reviews,
+\href{https://travis-ci.org}{TravisCI} for continuous integration
+(i.e. automated test suite execution on multiple platforms after each commit)
+and \href{https://readthedocs.org/}{ReadTheDocs.org} for automatic documentation building and hosting.
+All these services would be extremely costly, if at all available,
+for a proprietary software or platform.
 

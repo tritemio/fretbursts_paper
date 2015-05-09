@@ -1,3 +1,84 @@
 \section{Introduction}
 
-Motivation for FRETBursts and contributing.
+\subsection{What is FRETBursts}
+
+In the last 20 years the field of single molecule spectroscopy has seen a remarkable
+growth from a pioneristic technology to a widespread analysis performed by many labs
+across the world. Among the techniques that probe freely-diffusing molecules,
+single-molecule FRET (smFRET) is one of the most successful, able to provide
+information on conformational changes or monitor binding-unbinding kinetics on
+a single-molecule level.
+
+The field of freely-diffusing smFRET data analysis has seen a number of significant 
+contributions over the years but still there is no clear consensus on a single
+universal approach for data analysis.
+Even if a wide variety of algorithms have been proposed over the years, very few 
+of have been widely embraced by the community at large. One of the main issues 
+is that the analysis of smFRET data is complex and requires a significant 
+development effort. Currently,
+each research group have reimplemented its own unpublished or closed-source versions
+of the analysis software, with very little collaboration or code sharing. 
+The fact that the implementation of a freely-diffusing smFRET setup can significantly 
+vary (in number of polarization or spectral channels for example), 
+makes the problem only worst.
+This situation, represents a huge duplication of efforts and a real 
+impediment to the scientific progress. 
+In fact, the differences in implementation details among the various software
+are enough that a direct comparison of their results is very difficult. 
+This limits the ability to validate the correctness
+of one software but also to compare the performance of different algorithms
+in estimating physical quantities.
+
+In order to start addressing these issues we developed FRETBursts, 
+an open source python software for burst analysis of freely-diffusing
+single-molecule smFRET experiments. 
+With FRETRBursts we aim to provide a tool that is available to any scientist
+to use, study and modify. 
+FRETBursts is hosted and openly developed~\cite{Prli__2012} on GitHub, 
+and we encourage users to send comments, issues, contributions through
+the GitHub website.
+
+\subsection{Paper overview}
+
+Understanding the smFRET burst analysis requires several concepts and definitions.
+In this paper we aim to provide a brief introduction to smFRET analysis concepts
+and terminology used by FRETBursts. We illustrate how to perform
+the fundamental steps of burst analysis, highlighting key parameters
+and algorithms available. We will not cover extensively all the FRETBursts
+features and options. For more detailed information, the interested readers can refer
+to the FRETBursts Reference Documentation and to the source code (that we strive
+to make readable and well commented).
+Furthermore, users can ask question about FRETBursts use by opening 
+a new issue on GitHub.
+
+The paper is structured as follows.
+In the next section~\ref{sec:overview} we give an overview of the software features,
+the modality of execution and the development style.
+In section~\ref{sec:concepts}, we
+introduce a few preliminary concepts and some specific terminology needed
+to understand the smFRET burst analysis.
+In section~\ref{sec:analysis}, we detail the execution the several steps involved
+in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining
+excitation alternation periods (section~\ref{sec:alternation}), background
+correction (section~\ref{sec:bg_calc}), burst search (section~\ref{sec:burstsearch}),
+burst selection (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}).
+The aim is to provide enough information to understand the specificities of
+the different algorithms and to be able to adapt the analysis to new situations.
+Finally, in section~\ref{sec:conclusions}, we summarize what we believe to be
+the strengths of FRETBursts software.
+
+In addition to this paper, we refer the interested readers to the
+\href{http://nbviewer.ipython.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts\%20-\%20us-ALEX\%20smFRET\%20burst\%20analysis.ipynb}{FRETBursts µs-ALEX tutorial}
+for a single complete example of µs-ALEX data analysis and to the
+\href{http://fretbursts.readthedocs.org/}{FRETBursts Reference Documentation}
+for a more in-depth description of the software. The reference documentation
+includes also a special section describing how to install and run the software
+for users without any prior python knowledge.
+
+Finally, in order to make this paper accessible to the widest number of readers,
+we concentrated python-specific details in special subsections titled
+\textit{Python details}. These subsections provide deeper insights for readers
+already familiar with python and can be safely skipped otherwise. Note also
+that all commands shown in this paper can be found in the FRETBursts tutorial notebook
+and, in general, do not need to be re-typed.
+
