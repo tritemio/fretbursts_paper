@@ -2,41 +2,51 @@
 
 \subsection{What is FRETBursts}
 
-In the last 20 years the field of single molecule spectroscopy has seen a remarkable
+In the last 20 years, the field of single molecule spectroscopy has seen a remarkable
 growth from a pioneristic technology to a widespread analysis performed by many labs
 across the world. Among the techniques that probe freely-diffusing molecules,
 single-molecule FRET (smFRET) is one of the most successful, able to provide
 information on conformational changes or monitor binding-unbinding kinetics on
 a single-molecule level.
 
-The field of freely-diffusing smFRET data analysis has seen a number of significant 
-contributions over the years but still there is no clear consensus on a single
-universal approach for data analysis.
-Even though a wide variety of algorithms have been proposed over the years, very few 
-of them have been widely embraced by the community at large. One of the main issues 
-is that the analysis of smFRET data is complex and requires a significant 
-development effort. Currently,
+The field of freely-diffusing smFRET data analysis, has seen a number of significant 
+contributions over the years. However, so far, beyond some fundamental steps such as the burst search, 
+there is no single approach that is universally accepted and broadly applied. 
+On one hand this situation stems from the fact that
+different approaches tend to answer different questions, even if there are overlaps.
+On the other hand, this is the result of the trade off in each research lab
+between accuracy and software complexity, in particular on the amount of effort
+each group wants to invest in implementing new non-trivial methods reported in literature.
+
+Currently, in fact,
 each research group have reimplemented its own unpublished or closed-source versions
 of the analysis software, with very little collaboration or code sharing. 
-The fact that the implementation of a freely-diffusing smFRET setup can significantly 
+The fact that the setups for freely-diffusing smFRET can significantly 
 vary (in number of polarization or spectral channels for example), 
 makes the problem only worst.
-This situation, represents a huge duplication of efforts and a real 
-impediment to the scientific progress. 
-In fact, the differences in implementation details among the various software
-are enough that a direct comparison of their results is very difficult. 
-This limits the ability to validate the correctness
-of one software but also to compare the performance of different algorithms
-in estimating physical quantities.
+This situation, represents a real impediment to the scientific progress because:
 
-In order to start addressing these issues we developed FRETBursts, 
+(a) as new methods are proposed in literature, understandably, only few 
+groups are willing to invest the time necessary to reimplement it within 
+the internally used software. In the rare occasions when the new methods 
+is really groundbreaking (most of the science is incremental), the reimplementation requires 
+a huge duplication of efforts, and the correctness of the implementation
+is difficult to validate.
+
+(b) the differences in implementation details among the various software
+are enough that a direct comparison of their results is very difficult. 
+This limits the ability to cross-validate the correctness of different 
+implementations of the same method or to compare the accuracy 
+of different methods.
+
+In order contrast these issues we developed FRETBursts, 
 an open source python software for burst analysis of freely-diffusing
 single-molecule smFRET experiments. 
 With FRETRBursts we aim to provide a tool that is available to any scientist
 to use, study and modify. 
 FRETBursts is hosted and openly developed~\cite{Prli__2012} on GitHub, 
-and we encourage users to send comments, issues, contributions through
-the GitHub website.
+and we encourage users to send comments, report issues or contribute code
+through the GitHub website.
 
 Understanding the smFRET burst analysis requires several concepts and definitions.
 In this paper we aim to provide a brief introduction to smFRET analysis concepts
