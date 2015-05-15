@@ -260,19 +260,23 @@ scatter plots.
 
 Additional plots can be easily created directly with matplotlib.
 
-Usually plots are displayed inline in the notebook. However a few plot functions
- such as \verb|timetrace| and \verb|hist2d_alex| have interactive features that
+By default in FRETBursts tutorials, plots are displayed the notebook as static images
+in order to speed-up batch processing. In this case matplotlib uses a non-interactive backend called \textit{inline}. 
+The user can choose to create interactive figures
+by using an interactive backend, i.e. with the command \verb|\%matplotlib notebook| for interactive figures inside the browser, and \verb|\%matplotlib qt| for interactive figures in a new window.
+
+A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have interactive features that
 can be enabled when using the QT4 backend that opens the plot in an external
-window. It is possible to switch backend from inline to QT and vice versa using
-the ipython commands \verb|%matplotlib qt|
-and \verb|%matplotlib inline|. For example, after switching to the QT4 backend
+window. It is possible to switch backend from inline to QT4 and vice versa by using
+the ipython commands \verb|\%matplotlib qt|
+and \verb|\%matplotlib inline|. As an example, after switching to the QT4 backend
 the following command:
 
 \begin{verbatim}
 dplot(d, timetrace, scroll=True)
 \end{verbatim}
 
-opens a new window with a timetrace plot and an horizontal scroll-bar for quick
+will open a new window with a timetrace plot and an horizontal scroll-bar for quick
 "scrolling" throughout the measurement.
 Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows
 selecting an area on the E-S histogram using the mouse.
@@ -284,3 +288,5 @@ dplot(ds, hist2d_alex, gui_sel=True)
 The values that identify the region are printed and can be copied an pasted as
 argument for the burst selection function \verb|select_bursts.ES| (see
 section~\ref{sec:burstsel}).
+
+Note that
