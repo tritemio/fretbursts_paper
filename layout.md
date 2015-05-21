@@ -4,6 +4,7 @@ Overview.tex
 Concepts.tex
 dataload.tex
 figures/usALEX_alternation_hist/usALEX_alternation_hist.png
+figures/ALEX_alternation_double/ALEX_alternation_double.png
 background-estimation.tex
 figures/ph_delays_distrib1/ph_delays_distrib1.png
 figures/ph_delays_distrib_all/ph_delays_distrib_all.png
