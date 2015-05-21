@@ -3,6 +3,7 @@ Introduction.tex
 Overview.tex
 Concepts.tex
 dataload.tex
+figures/ALEX_alternation_double1/ALEX_alternation_double1.png
 figures/usALEX_alternation_hist/usALEX_alternation_hist.png
 figures/ALEX_alternation_double/ALEX_alternation_double.png
 background-estimation.tex
