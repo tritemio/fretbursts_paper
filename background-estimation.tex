@@ -32,9 +32,31 @@ Finally, it is possible to use a heuristic estimation of the threshold using
 \verb|tail_min_us='auto'|. For more details refer to the
 \href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.calc\_bg}{\texttt{calc\_bg} documentation}.
 
+After the background has been estimated, it is useful to compare the histogram of 
+photon waiting times with an the fitted exponential distribution as shown in figure~\ref{fig:bg_dist_all}. 
+This plot is performed with:
+
+\begin{verbatim}
+dplot(d, hist_bg, bp=0)
+\end{verbatim}
+
+The argument \verb|bp| is an integer specifying the background period to be plotted.
+When not specified the default is 0, i.e. the first period.
+Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases when the 
+background fitting procedure returns unreasonable values. 
+
+Another useful plot is the timetrace of the estimated background, as shown in 
+figure~\ref{fig:bg_timetrace}. This plot allows to monitor background changes
+taking place during the measurement. In our experience, coverglass impurities
+can contribute to the background even when focusing deep into the sample (10um or more),
+and these impurities tend to bleach on timescales of minutes resulting in
+background variations such as the one shown in figure~\ref{fig:bg_timetrace}a.
+Another source of background variation, visible in figure~\ref{fig:bg_timetrace}b, is 
+the evaporation in case the sample was placed on the coverglass without an enclosure (gasket).
+
 \subsubsection{Error metric and optimal threshold}
 
-The functions fitted to the background also return an estimation of the
+The functions that fit the background also return an estimation of the
 quality of the fit, computed as the distance between the empirical
 \href{http://en.wikipedia.org/wiki/Cumulative\_distribution\_function}{cumulative distribution function}
 (CDF) and fitted CDF. Two different distance metrics can be returned.
