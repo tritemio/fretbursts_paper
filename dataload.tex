@@ -40,31 +40,38 @@ More information on loading these file formats and on manually loading other arb
 can be found in the
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module documentation}.
 
-
 \subsection{Alternation parameters}
 \label{sec:alternation}
 
-For µs-ALEX and ns-ALEX data, it is necessary to identify the
-alternation periods for donor and acceptor excitation.
+In case of µs-ALEX and ns-ALEX data, it is necessary to define the
+alternation periods for donor and acceptor excitation. 
+In µs-ALEX measurements, CW lasers are alternated in the timescale of 10~µs.
+By plotting the histogram of the timestamps modulo the alternation period
+is possible to identify the donor and acceptor periods (see figure~\ref{fig:altern_hist_double}a).
+In ns-ALEX measurements, pulsed lasers are interleaved with typical separation of 10-20~ns.
+In this case the histogram of the TCSP nanotimes will allow to define the period
+starting with a donor (or acceptor) excitation pulse (see figure~\ref{fig:altern_hist_double}b).
 
-The functions
+In both cases, the functions
 \verb|plot_alternation_hist| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist}{documentation})
-plots the alternation histogram (for either µs-ALEX and ns-ALEX measurements)
-using the currently selected donor and acceptor excitation periods
-(if no selection has been made yet, default values will be shown).
-Figure~\ref{fig:altern_hist_double} shows typical alternation histograms for
-µs-ALEX and ns-ALEX measurements with the donor and acceptor excitation periods highlighted.
+will plots the relevant alternation histogram using currently selected 
+donor and acceptor excitation periods (or default values).
 
-In order to change the period definition the user needs to execute:
+In figure~\ref{fig:altern_hist_double}, donor and acceptor excitation periods 
+are represented by light green and red shaded areas respectively.
+
+To change the period definitions, the user can type:
 
 \begin{verbatim}
     d.add(D_ON=(2850, 580), A_ON=(900, 2580))
 \end{verbatim}
 
 where \verb|D_ON| and \verb|A_ON| are tuples (pairs of numbers) representing
-the start and stop values for the donor and acceptor excitation periods
-(in timestamps units).
-After changing the parameters, a new alternation plot will show the updated period selections.
+the \textit{start} and \textit{stop} values for D or A excitation periods.
+The previous command works both for µs-ALEX and ns-ALEX measurements.
+
+After changing the parameters, a new alternation plot will show the updated 
+period selections.
 
 When the alternation period definition is correctly defined, it can
 be applied using the
@@ -75,11 +82,5 @@ be applied using the
 \end{verbatim}
 
 After this command, only the photons inside the defined excitation periods
-will be present in \verb|d|.  In order to apply a new alternation period
-it is therefore necessary to reload the data file.
-
-For ns-ALEX measurements, the exact same functions and syntax are used.
-In this case, however, the plot function will show a Time-Correlated Single-Photon Counting
-(TCSPC) histogram of two sets of fluorescence decays resulting from the two interlaced
-excitation sources. The period ranges will be expressed in nanotime units (TCSPC time bins)
-instead of timestamp units.
+will be present in \verb|d|. At this point, in order to further change the period definitions,
+it is necessary to reload the data file.
