@@ -167,7 +167,7 @@ FRETBursts allows to perform the burst search on arbitrary selections of photons
 
 Finally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a Dual-Channel Burst
 Search (DCBS), which can help mitigating artifacts due to
-photophysical effects such as blinking. In this case a search is performed
+photo-physical effects such as blinking. In this case a search is performed
 independently on two photon streams and bursts are marked only when both photon
 streams exhibit a rate higher than the threshold,
 implementing an AND gate logic.
@@ -249,8 +249,7 @@ All built-in plot functions which can be passed to
 
 \paragraph{Python details}
 
-By default, when FRETbursts is imported (for example by the very first command
-in the tutorial) all the plot functions are also imported.
+When FRETbursts is imported, all the plot functions are also imported.
 To facilitate finding the plot functions through auto-completion,
 their names start with a standard prefix indicating the
 plot type. The prefixes are: \verb|timetrace| for binned timetraces
@@ -260,24 +259,23 @@ scatter plots.
 
 Additional plots can be easily created directly with matplotlib.
 
-By default in FRETBursts tutorials, plots are displayed the notebook as static images
-in order to speed-up batch processing. In this case matplotlib uses a non-interactive backend called \textit{inline}. 
-The user can choose to create interactive figures
-by using an interactive backend, i.e. with the command \verb|\%matplotlib notebook| for interactive figures inside the browser, and \verb|\%matplotlib qt| for interactive figures in a new window.
+By default, in order to speed-up batch processing, FRETBursts notebooks display plots 
+as static images using the \textit{inline} matplotlib backend. 
+User can choose switch to interactive figures by using an interactive backend. 
+For example \verb|\%matplotlib notebook| provides interactive figures inside the browser, 
+and \verb|\%matplotlib qt| for interactive figures in a new window (using the QT4 graphical library).
 
-A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have interactive features that
-can be enabled when using the QT4 backend that opens the plot in an external
-window. It is possible to switch backend from inline to QT4 and vice versa by using
-the ipython commands \verb|\%matplotlib qt|
-and \verb|\%matplotlib inline|. As an example, after switching to the QT4 backend
+A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have interactive features 
+which require the QT4 backend. As an example, after switching to the QT4 backend
 the following command:
 
 \begin{verbatim}
-dplot(d, timetrace, scroll=True)
+dplot(d, timetrace, scroll=True, bursts=True)
 \end{verbatim}
 
-will open a new window with a timetrace plot and an horizontal scroll-bar for quick
-"scrolling" throughout the measurement.
+will open a new window with a timetrace plot with overlay of bursts, and an horizontal scroll-bar for quick
+"scrolling" throughout the measurement. The user can click on a burst to have the corresponding burst info 
+printed in the notebooks.
 Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows
 selecting an area on the E-S histogram using the mouse.
 
@@ -285,8 +283,6 @@ selecting an area on the E-S histogram using the mouse.
 dplot(ds, hist2d_alex, gui_sel=True)
 \end{verbatim}
 
-The values that identify the region are printed and can be copied an pasted as
-argument for the burst selection function \verb|select_bursts.ES| (see
+The values that identify the region are printed in the notebook and can be used 
+to select bursts inside the region with the function \verb|select_bursts.ES| (see
 section~\ref{sec:burstsel}).
-
-Note that
