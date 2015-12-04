@@ -65,14 +65,11 @@ can be used as in the following example:
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 \end{verbatim}
 
-Note that, in this case, a copy of the \verb|Data| variable (containing the results
-of the new burst search) is returned (called here \verb|d_dcbs|).
-In order to
-reduce memory usage, FRETBursts shares the read-only arrays timestamps and detectors between
-different copies of a \verb|Data| object (for example \verb|d| and
-\verb|d_dcbs|).
-All other data (including background and burst data) are copied.
-
+The last command puts the burst search results in a new copy the \verb|Data| variable \textit{d}
+(the copy is here called \verb|d_dcbs|).
+Since FRETBursts shares the arrays timestamps and detectors between
+different copies of \verb|Data| objects, the memory usage is contained even when using 
+several copies. 
 
 \paragraph{Python details}
 Note that, while \verb|.burst_search()| is a method of \verb|Data|,
@@ -87,7 +84,6 @@ These arguments can be specified to select different photon streams than in
 a classical DCBS.
 
 The \href{http://fretbursts.readthedocs.org/en/latest/plugins.html}{\texttt{bext} module} 
-collects additional "plugin" functions
-that are not part of \verb|Data| (as methods) but that operate
-on \verb|Data| by implementing some high level functionality.
+collects "plugin" functions that provides additional algorithms 
+for processing \verb|Data| objects. 
 
