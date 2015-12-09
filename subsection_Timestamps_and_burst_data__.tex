@@ -1,0 +1,17 @@
+\subsection{Timestamps and burst data}
+\label{sec:burststimes}
+
+FRETBursts provides an infrastructure for exploring new analysis approaches.
+Users can easily get timestamps (or masks) for any photon stream.
+Moreover the low-level burst data (essentially start and stop times and indexes 
+and derived quantities) are stored in Bursts objects. 
+The advantages over a numpy array are:
+
+- ease of use: fields are accessed by name (e.g. start, stop, counts, etc...)
+- performances: element access and iteration is faster than numpy arrays or Pandas Dataframes
+- pretty printing in the notebook (displayed as HTML table)
+- added functionality: methods to transform burst data to be relative to different timestamp array
+
+Bursts implements all the common operations performed with burst data and is heavily 
+tested by the unit test framework. Leveraging Bursts methods, users can implement new 
+types of analysis without wasting time implementing (and debugging) routine manipulations.
