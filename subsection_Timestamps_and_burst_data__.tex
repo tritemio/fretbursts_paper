@@ -10,18 +10,16 @@ to access and manipulate burst data. Bursts are created from a sequence of start
 times and indexes, while all the other fields are automatically
 computed. Bursts methods allow to recompute indexes relative to a different photon
 selection or recompute start and stop times relative to a new timestamps array.
-Addiational, methods perform fusion of nearby bursts or intersection of two set
+Additional methods perform fusion of nearby bursts or intersection of two set
 of bursts (functionality used by the dual-channel burst search).
 In conclusion, Bursts efficiently implements all the common operations performed 
-with burst data, providing and easy-to-use interface and high reliability due to 
-its 100 \% unit test coverage. Leveraging Bursts methods, users can implement new 
-types of analysis without wasting time implementing (and debugging) standard
-manipulation routines.
+with burst data, providing and easy-to-use interface and well tested algorithms. 
+Leveraging Bursts methods, users can implement new types of analysis without 
+wasting time implementing (and debugging) standard manipulation routines.
 
-\begin{itemize}
-\item ease of use: fields are accessed by name (e.g. start, stop, counts, etc...)
-\item performances: element access and iteration is faster than numpy arrays or Pandas Dataframes
-\item pretty printing in the notebook (displayed as HTML table)
-\item added functionality: methods to transform burst data to be relative to different timestamps array
-\end{itemize}
+\subsubsection{Python details}
+Bursts objects store the start and stop times and indexes in a numpy array.
+The other fields are computed on-fly using class properties, so they are always
+up to date even if start and stop are modified. Iteration over bursts is
+relatively fast, with performances similar to iterating through numpy rows.
 
