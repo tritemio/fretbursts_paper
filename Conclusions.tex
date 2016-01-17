@@ -3,19 +3,17 @@
 
 FRETBursts provides an open source implementation of state-of-the-art smFRET burst analysis 
 accessible to the whole single-molecule community.
-In this paper we have examined a standard smFRET burst analysis, describing
-and illustrating how to perform the different steps using FRETBursts.
-We have highlighted several novel concepts implemented in FRETBursts which
-can lead to significantly more accurate results in specific situations:
+FRETBursts implements several novel concepts which can lead 
+to significantly more accurate results in specific situations:
 time-dependent background estimation, background dependent burst search threshold,
 burst weighting, burst selection based on gamma corrected burst sizes.
 
-More importantly, FRETBursts provides a toolkit of several well-tested routines
+More importantly, FRETBursts provides a library of well-tested routines
 for timestamps and burst manipulation, making it an ideal environment to 
-experiment and compare novel analysis techniques.
+quickly develop and compare novel analysis techniques.
 
-We conclude enumerating what we consider to be the strengths
-of this software.
+To conclude we summarize here what we consider to be the strengths
+of the FRETBursts software.
 
 \begin{enumerate}
 \item Open source and openly developed. The source code can be checked, modified and
@@ -27,11 +25,11 @@ smFRET burst analysis pipeline are provided.
 to reduce duplication and the
 \href{http://en.wikipedia.org/wiki/KISS_principle}{KISS principle}
 to avoid over-engineering were followed.
-\item Defensive programming~\cite{Prli__2012}: maximum code readability,
-extensive unit and regression testing and continuous integration.
+\item Defensive programming~\cite{Prli__2012}: care about code readability,
+unit and regression testing and continuous integration.
 \end{enumerate}
 
-Given these features FRETBursts is suitable both as a toolkit to develop novel algorithms
-in smFRET burst analysis and as a software for processing smFRET data files with
-state-of-the art algorithms.
+Given its features, FRETBursts is suitable both as a toolkit to develop novel algorithms
+in smFRET burst analysis and as a software to perform standard smFRET burst analysis
+using well tested state-of-the-art algorithms.
 
