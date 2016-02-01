@@ -2,20 +2,22 @@
 \label{sec:fretfit}
 
 The \verb|mfit| fitting module allows fitting burst populations with a model.
-Typically, bursts selection is performed first and next, histograms of
-$E$ or $S$ values for the selected bursts are fitted to a model.
+Typically, after bursts selection, E or S histograms are fitted to a model.
 
-In general, a model can be automatically built from any function.
+In general, models can be automatically built from any function.
 Model parameters need to have an initial value (and optionally
-constrains). FRETBursts includes a set of functions (whose names start with
-\verb|mfit.factory_|) which return pre-initialized models suitable for E and S
-histogram fitting. A set of commonly used functions, such as 1 or 2 Gaussian
-peaks with or without "bridge" function, are provided. These "factory" functions
-take optional arguments to change the initial value of model parameters.
-For more info refer to the
-\href{http://fretbursts.readthedocs.org/en/latest/mfit.html#model-factory-functions}{factory-functions documentation}.
+constrains). 
 
-For example, in order to fit the E histogram of bursts in \verb|ds| with two
+FRETBursts includes a set of predefined models such as 1 to 3 Gaussian
+peaks or 2-Gaussian plus "bridge".
+Built-in models are created calling the a factory function 
+(names starting with \verb|mfit.factory_|) which initialize the parameters
+with initial values and constraints suitable for E and S histogram fit.
+(see
+\href{http://fretbursts.readthedocs.org/en/latest/mfit.html#model-factory-functions}{factory-functions documentation}).
+Additionally models can be created from any generic function.
+
+As an example, in order to fit the E histogram of bursts in \verb|ds| with two
 Gaussian peaks, the following command can be used:
 
 \begin{verbatim}
@@ -51,6 +53,9 @@ Under the hood, histogram fit in FRETBursts is performed using the
 \href{http://lmfit.github.io/lmfit-py/}{lmfit} library~\cite{c09228b4-321a-404b-8f8c-e56696295eda}.
 Every fit model is, in fact, an \verb|lmfit.Model| object, and these object
 can be created and modified by calling directly \verb|lmfit| functions.
+Fitting an lmfit \verb|Model| returns an object with all the results.
+FRETBursts appends the fit result of each channel in the list 
+\verb|ds.E_fitter.fit_res|.
 Example of defining and modifying models for fitting are provided in the FRETBursts tutorial. 
 Interested users should also refer to the excellent lmfit documentation.
 
