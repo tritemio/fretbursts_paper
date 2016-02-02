@@ -30,11 +30,11 @@ is used to select a region on the E-S ALEX histogram,
 \verb|select_bursts.width|
 to select bursts based on their duration.
 New criteria can be easily implemented by defining a new selection function,
-usually not longer than a couple of lines (see the
+which requires not more than a couple of lines of code in most cases (see the
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select\_bursts.py}{\texttt{select\_bursts} module} for several examples).
 
 Finally, different criteria can be combined by applying them sequentially.
-For example, after the following commands:
+For example, with the following commands:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size,
@@ -43,8 +43,8 @@ dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
 \end{verbatim}
 
-the variable \verb|dsw| will contain all bursts with sizes between 50 and
-200 photons, and duration between 0.5 and 3~ms.
+we apply a combined burst size and duration selection, in which bursts
+have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \subsubsection{Gamma-corrected burst size selection}
 
