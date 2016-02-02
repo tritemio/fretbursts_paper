@@ -206,24 +206,24 @@ $$n_t = n_a + \gamma\,n_d + n_{aa}$$
 $$n_t = n_a + \gamma\,n_d $$
 
 The former includes all photons, while the latter only photons during 
-donor execitation periods.
+donor excitation periods.
 The inclusion of $\gamma$ factor allows to correct
-bias when comparing the number of bursts accross several sub-populations.
+bias when comparing the number of bursts across several sub-populations.
 
 The results of burst search is a distribution of burst sizes that approximately 
 follows an exponential distribution.
 Bursts with large size (which contain most of the information)
 are much less frequent than bursts with smaller sizes. For this reason, it is 
 important to select burst sizes larger than a threshold in order
-to properly characterize FRET populations(see section~\ref{sec:burstsel}). 
+to properly characterize FRET populations (see section~\ref{sec:burstsel}). 
 
 Selecting bursts by size is a critically important step.
 A too low threshold will broaden the FRET populations and introduce
 artifacts (spurious peaks and patterns) due to the majority of bursts
 having E and S computed from ratios of small integers. 
-Conversely a too high threshold will result in a lower number of bursts 
+Conversely, a too high threshold will result in a lower number of bursts 
 and possibly poor statistics in representing FRET populations.
-When selecting bursts (see section~~\ref{sec:burstsel}), 
+Additionally, when selecting bursts (see section~\ref{sec:burstsel}), 
 it is important to use $\gamma$-corrected burst sizes,
 in order to avoid under-representing some FRET sub-populations
 due to different quantum yields between donor and acceptor dyes and/or 
@@ -235,13 +235,17 @@ so that the biggest bursts will have the highest weights.
 The weighting can be used to build weighted histograms and Kernel Density 
 Estimation (KDE) plots. When using weights, the choice of a particular 
 burst size threshold affects less the shape of the burst distribution,
-so lower thresholds can be used (better statistics) wihtout broadening 
+so lower thresholds can be used (better statistics) without broadening 
 the peaks of sub-populations (better population identification).
+
+\subsubsection{Python details}
 FRETBursts has the option to weight bursts using $\gamma$-corrected 
 burst sizes and to include the acceptor excitation photons \verb|naa|.
-Passing the argument \verb|weights='size'| to plot functions
-a weight proportional to the burst size is applied. Other weighting functions
-(for example quadratical) are listed in the
+A weight proportional to the burst size is applied by passing the argument 
+\verb|weights='size'| to histogram or KDE plot functions. The \verb|weights|
+keyword can be also passed to fitting functions in order to fit 
+the weighted E or S distributions (see section~\ref{sec:fretfit}).
+Several other weighting functions (for example quadratical) are listed in the
 \href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{\texttt{fret\_fit.get\_weights} documentation}.
 
 \subsection{Plotting "Data"}
