@@ -4,25 +4,23 @@
 After burst search, it is common to select bursts according to different
 criteria. One of the most common is the burst size.
 
-For instance, to select bursts with more than 100 photons (as computed
-after background correction) detected during the donor excitation periods
-the following command is used:
+For instance, to select bursts with more than 30 photons (computed
+after background correction) detected during the donor excitation
+we use:
 
 \begin{verbatim}
-ds = d.select_bursts(select_bursts.size, th1=100)
+ds = d.select_bursts(select_bursts.size, th1=30)
 \end{verbatim}
 
-In the previous command, a new \textit{Data} variable (\verb|ds|) containing
-the selected bursts is created.
+The previous command creates a new \textit{Data} variable (\verb|ds|) containing
+the selected bursts.
 As mentioned before the new object will share the photon data
 arrays with the original object (\verb|d|) in order to minimize the RAM use.
 
-The
+The first argument of 
 \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#burst-selection-methods}{\texttt{select\_bursts()} method}
-requires a function implementing the "selection criterion" as its first argument
-(\verb|select_bursts.size| in this example);
-all the remaining arguments are passed to the selection function (in this case
-the only additional argument is \verb|th1|).
+is the a python function implementing the "selection rule" (\verb|select_bursts.size| in this example);
+all the remaining method arguments (only \verb|th1| in this case) parameters of the selection rule.
 The \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html}{\texttt{select\_bursts} module}
 contains numerous
 \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#module-fretbursts.select_bursts}{built-in selection functions}.
@@ -56,12 +54,12 @@ during donor excitation.
 
 The selection command can be provided with an additional parameter in order to
 also include photons detected in the acceptor channels during acceptor excitation.
-This is achieved by passing the flag \verb|add_naa=True| to the selection function
-as follows:
+This type of selection is shown in figure~\ref{fig:alex_jointplot} and is achieved 
+by passing \verb|add_naa=True| as in the following command:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size,
-                     th1=100, add_naa=True)
+                     th1=30, add_naa=True)
 \end{verbatim}
 
 Another important parameter for defining the burst size is the gamma-factor, i.e.
@@ -82,7 +80,7 @@ using the argument \verb|gamma| (or \verb|gamma1|) during the selection:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size,
-                     th1=100, gamma=0.65)
+                     th1=15, gamma=0.65)
 \end{verbatim}
 
 For more information on burst size selection refer to the
