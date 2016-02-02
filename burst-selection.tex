@@ -36,7 +36,7 @@ usually not longer than a couple of lines (see the
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select\_bursts.py}{\texttt{select\_bursts} module} for several examples).
 
 Finally, different criteria can be combined by applying them sequentially.
-For example, after the following commands
+For example, after the following commands:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size,
@@ -48,7 +48,7 @@ dsw = ds.select_bursts(select_bursts.width,
 the variable \verb|dsw| will contain all bursts with sizes between 50 and
 200 photons, and duration between 0.5 and 3~ms.
 
-\subsubsection{Burst size selection}
+\subsubsection{Gamma-corrected burst size selection}
 
 In the previous section, the definition of "burst size" was implicitly referring
 to the total number of detected counts in the donor and in the acceptor channel
@@ -68,13 +68,17 @@ Another important parameter for defining the burst size is the gamma-factor, i.e
 the imbalance between the donor and the acceptor channels. The gamma-factor is
 used to correct for the different fluorescence quantum yields of the D and A
 fluorophores as well as the different photon-detection efficiencies of the D and A channels.
-Neglecting the effect of gamma-factor on the burst size leads to a biased burst
-selection, if $\gamma$ is different from 1.
+When gamma-factor is not 1, neglecting its effect on burst size leads to
+over-representing one population versus to the other in terms of number of bursts.
 
-To include the effect of $\gamma$ on burst size and obtain a burst
-selection which does not favor high or low FRET states,
-the argument \verb|gamma| (or \verb|gamma1|) needs to be provided,
-as shown in this example:
+When the gamma factor is known, it can be used to obtain a "fair" selection
+of different populations by computing the burst size $n_t$ as:
+
+$$ n_t = n_a + \gamma\,n_d$$ 
+
+This expression is used by FRETBursts to compute the corrected burst size.
+By default, $\gamma=1$ is assumed but a different value can be specified
+using the argument \verb|gamma| (or \verb|gamma1|) during the selection:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size,
@@ -86,4 +90,27 @@ For more information on burst size selection refer to the
 \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{method \texttt{Data.burst\_sizes()}} that returns the gamma-corrected burst sizes with or
 without the addition of \verb|naa|.
 
+\subsubsection{Select FRET Populations}
+
+In smFRET-ALEX experiments, in addition to one or more the FRET populations, there are always
+donor-only and acceptor-only populations. In most cases, these additional populations
+are not of interest and would be better to filter them out.
+
+In principle, using the E-S representation, we can exclude D-only and A-only bursts
+by selecting bursts withing a range of $S$ values (e.g. S=0.2-0.8). 
+This approach, however, simply truncates the burst distribution with arbitrary 
+thresholds and is therefore not recommended for quantitative assessment of FRET 
+populations.
+
+A better approach consists in applying two selection filters one after the other.
+First, we filter out the A-only population 
+by applying a threshold on number of photons during donor excitation.
+Second, we exclude the D-only population by
+by applying a threshold on number of photons during acceptor excitation.
+The commands to achieve this combined selections are:
+
+\begin{verbatim}
+ds1 = d.select_bursts(select_bursts.size, th1=15)
+ds2 = ds1.select_bursts(select_bursts.naa, th1=15)
+\end{verbatim}
 
