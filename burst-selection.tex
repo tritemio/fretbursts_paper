@@ -48,43 +48,45 @@ have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \subsubsection{Gamma-corrected burst size selection}
 
-In the previous section, the definition of "burst size" was implicitly referring
-to the total number of detected counts in the donor and in the acceptor channel
-during donor excitation.
-
-The selection command can be provided with an additional parameter in order to
-also include photons detected in the acceptor channels during acceptor excitation.
-This type of selection is shown in figure~\ref{fig:alex_jointplot} and is achieved 
-by passing \verb|add_naa=True| as in the following command:
+In the previous section, we selected bursts by size using only photons
+detected by donor and acceptor channel during donor excitation.
+Conversely, we can apply a threshold on the all-photon burst size 
+(section~\ref{sec:burstsizeweights}) by adding $n_{aa}$ to the burst size
+as in eq.~\ref{eq:burstsize_allph}. This is achieved
+by passing \verb|add_naa=True| to the selection function. When \verb|add_naa| is not specified,
+as in the previous section, the default \verb|add_naa=False| is used
+(i.e. use only photons during donor excitation). The complete selection command
+is:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size,
                      th1=30, add_naa=True)
 \end{verbatim}
 
-Another important parameter for defining the burst size is the gamma-factor, i.e.
-the imbalance between the donor and the acceptor channels. The gamma-factor is
-used to correct for the different fluorescence quantum yields of the D and A
+\noindent and the resulting selection is plotted in figure~\ref{fig:alex_jointplot}.
+
+Another important parameter for defining the burst size is the $\gamma$-factor, i.e.
+the imbalance between the donor and the acceptor channels. As noted in
+section~\ref{sec:burstsizeweights}, the $\gamma$-factor is
+used to compensate bias for the different fluorescence quantum yields of the D and A
 fluorophores as well as the different photon-detection efficiencies of the D and A channels.
 When gamma-factor is not 1, neglecting its effect on burst size leads to
-over-representing one population versus to the other in terms of number of bursts.
+over-representing (in terms of number of bursts) one population versus to the others.
 
-When the gamma factor is known, it can be used to obtain a "fair" selection
-of different populations by computing the burst size $n_t$ as:
-
-$$ n_t = n_a + \gamma\,n_d$$ 
-
-This expression is used by FRETBursts to compute the corrected burst size.
-By default, $\gamma=1$ is assumed but a different value can be specified
-using the argument \verb|gamma| (or \verb|gamma1|) during the selection:
+When the gamma factor is known, users can pass the argument 
+\verb|gamma| during burst selection:
 
 \begin{verbatim}
 ds = d.select_bursts(select_bursts.size,
                      th1=15, gamma=0.65)
 \end{verbatim}
 
+When not specified, $\gamma=1$ is assumed.
+
 For more information on burst size selection refer to the
-\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select\_bursts.size}{\texttt{select\_bursts.size} documentation}. Furthermore the \textit{Data} class provides the
+\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select\_bursts.size}{\texttt{select\_bursts.size} documentation}. 
+
+Furthermore the \textit{Data} class provides the
 \href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{method \texttt{Data.burst\_sizes()}} that returns the gamma-corrected burst sizes with or
 without the addition of \verb|naa|.
 
