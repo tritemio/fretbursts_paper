@@ -11,6 +11,7 @@ figures/background_timetrace/background_timetrace.png
 burst-search.tex
 burst-selection.tex
 figures/alex_jointplot/alex_jointplot.png
+figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
 Coding-style.tex
 section_Implementing_Burst_Variance_Analysis__.tex
