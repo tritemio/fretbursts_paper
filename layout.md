@@ -13,6 +13,6 @@ burst-selection.tex
 figures/alex_jointplot/alex_jointplot.png
 Fitting.tex
 Coding-style.tex
-section_Implementing_BVA_Burst_Variance__.tex
+section_Implementing_Burst_Variance_Analysis__.tex
 Conclusions.tex
 subsection_Timestamps_and_burst_data__.tex
