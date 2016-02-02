@@ -201,12 +201,18 @@ Bursts sizes are usually computed using either all photons, or photons detected
 during donor excitation period. To compute burst size, FRETBursts uses 
 one of the following formulas:
 
-$$n_t = n_a + \gamma\,n_d + n_{aa}$$
+\begin{equation}
+\label{eq:burstsize_dex}
+n_t = n_a + \gamma\,n_d 
+\end{equation}
 
-$$n_t = n_a + \gamma\,n_d $$
+\begin{equation}
+\label{eq:burstsize_allph}
+n_t = n_a + \gamma\,n_d + n_{aa}
+\end{equation}
 
-The former includes all photons, while the latter only photons during 
-donor excitation periods.
+The former includes  only photons during donor excitation periods, 
+while the latter includes all photons.
 The inclusion of $\gamma$ factor allows to correct
 bias when comparing the number of bursts across several sub-populations.
 
