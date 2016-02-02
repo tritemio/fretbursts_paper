@@ -190,18 +190,25 @@ correction and taking into account the gamma factor, as discussed in
 section~\ref{sec:burstsel}.
 
 
-\subsection{Burst weights}
+\subsection{Burst sizes and weights}
+The number of photon detected during a burst is commonly called the ``burst size''.
+Bursts sizes are usually computed using all photons (e.g. \verb|nd + na + naa|), 
+or photons detected during a single excitation period (e.g. \verb|nd + na|).
 
-As will be shown in the following sections, the burst search returns bursts of different sizes (i.e. number of photons).
-Bursts with large size (that indeed contain most of the information)
-are much less frequent than bursts with smaller sizes. For this reason, in order
-to resolve FRET populations and accurately assess their mean FRET efficiency, it is of
-paramount importance to select bursts with size larger than a given threshold (see
-section~\ref{sec:burstsel}). The choice of burst size threshold is
-critical because too low threshold will for instance widen FRET histogram peaks owing to the
-inclusion of small sized bursts having higher FRET uncertainty. Conversely
-too high threshold will result in a lower number of bursts and FRET estimation
-can suffer from poor statistics.
+Burst search yields a distribution of burst sizes that approximately 
+follows an exponential distribution.
+Bursts with large size (which contain most of the information)
+are much less frequent than bursts with smaller sizes. For this reason, it is 
+important to select burst sizes larger than a threshold in order
+to properly characterize FRET populations(see section~\ref{sec:burstsel}). 
+
+
+The burst size threshold is critical.
+A too low threshold will broaden the FRET populations and introduce
+artifacts (spurious peaks and patterns) because for the majority of bursts
+E and S are ratios of small integers. 
+Conversely a too high threshold will result in a lower number of bursts 
+and possibly poor statistics in representing FRET populations.
 
 In order to mitigate the dependence on the burst size threshold it may be
 useful to weight bursts according to their size (i.e. their
