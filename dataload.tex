@@ -3,7 +3,28 @@
 
 \subsection{Loading the data}
 \label{sec:dataload}
+\lstset{language=c}
+\begin{lstlisting}
+#include <stdio.h>
+#define N 10
+/* Block
+ * comment */
 
+int main()
+{
+    int i;
+
+    // Line comment.
+    puts("Hello world!");
+    
+    for (i = 0; i < N; i++)
+    {
+        puts("LaTeX is also great for programmers!");
+    }
+
+    return 0;
+}
+\end{lstlisting}
 While FRETBursts can load data files from a few file formats,
 the authors promote \href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5},
 an HDF5-based open format specifically designed for freely-diffusing smFRET and other timestamp-based experiments.
