@@ -4,17 +4,18 @@
 FRETBursts provides the infrastructure for exploring new analysis approaches.
 Users can easily get timestamps (or selection masks) for any photon stream.
 Core burst data (essentially start and stop times and indexes 
-and derived quantities) are stored in special Bursts objects.
-These object provide a simple and well tested interface (100 \% test coverage) 
+and derived quantities) are stored in special \verb|Bursts| objects 
+(\href{documentation}{http://fretbursts.readthedocs.org/en/latest/burstsearch.html}).
+These objects provide a simple and well tested interface (100 \% test coverage) 
 to access and manipulate burst data. Bursts are created from a sequence of start/stop 
 times and indexes, while all the other fields are automatically
-computed. Bursts methods allow to recompute indexes relative to a different photon
+computed. \verb|Bursts|'s methods allow to recompute indexes relative to a different photon
 selection or recompute start and stop times relative to a new timestamps array.
 Additional methods perform fusion of nearby bursts or intersection of two set
 of bursts (functionality used by the dual-channel burst search).
-In conclusion, Bursts efficiently implements all the common operations performed 
+In conclusion, \verb|Bursts| efficiently implements all the common operations performed 
 with burst data, providing and easy-to-use interface and well tested algorithms. 
-Leveraging Bursts methods, users can implement new types of analysis without 
+Leveraging \verb|Bursts| methods, users can implement new types of analysis without 
 wasting time implementing (and debugging) standard manipulation routines.
 
 \subsubsection{Python details}
