@@ -11,9 +11,9 @@ In FRETBursts, a standard burst search on a single photon stream
 \href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.burst\_search}{\texttt{burst\_search} method}.
 For example, the following command:
 
-\begin{verbatim}
+\begin{lstlisting}
 d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
-\end{verbatim}
+\end{lstlisting}
 
 performs a burst search on all photons
 (\verb|ph_sel=Ph_sel('all')|), with a minimum rate 6 times larger than the
@@ -36,11 +36,11 @@ leakage into the acceptor channel and acceptor direct excitation by the donor ex
 laser~\cite{Lee_2005}.
 These corrections can be applied by simply assigning to the respective \textit{Data} attributes:
 
-\begin{verbatim}
+\begin{lstlisting}
 d.gamma = 0.85
 d.leakage = 0.04
 d.dir_ex = 0.08
-\end{verbatim}
+\end{lstlisting}
 
 These attributes can be assigned either before or after the burst search. In the
 latter case, existing burst data is automatically updated using the new
@@ -52,18 +52,18 @@ this case, instead of $F$, the argument \verb|min_rate_cps| can be used to
 specify the threshold (in Hertz). For example, a burst search with a 50~kHz
 threshold can be performed as follows:
 
-\begin{verbatim}
+\begin{lstlisting}
 d.burst_search(min_rate_cps=50e3, m=10, ph_sel=Ph_sel('all'))
-\end{verbatim}
+\end{lstlisting}
 
 Finally, to perform a DCBS burst search (or in general an AND gate burst search,
 see section~\ref{sec:burstsearch_intro}) the plugin function
 \href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.burst\_search\_and\_gate}{\texttt{burst\_search\_and\_gate}}
 can be used as in the following example:
 
-\begin{verbatim}
+\begin{lstlisting}
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
-\end{verbatim}
+\end{lstlisting}
 
 The last command puts the burst search results in a new copy the \verb|Data| variable \textit{d}
 (the copy is here called \verb|d_dcbs|).
