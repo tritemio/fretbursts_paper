@@ -5,9 +5,9 @@ The first step of smFRET analysis involves estimating background rates.
 For example, to compute the background every 30 s, using a minimal timestamp
 delay threshold of 2 ms for all the photon streams, execute:
 
-\begin{verbatim}
+\begin{lstlisting}
 d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
-\end{verbatim}
+\end{lstlisting}
 
 The first argument (\verb|bg.exp_fit|) is the underlying function used to fit the
 background in each period and for each photon stream (see section~\ref{sec:bg_intro}).
@@ -36,9 +36,9 @@ After the background has been estimated, it is useful to compare the histogram o
 photon waiting times with an the fitted exponential distribution as shown in figure~\ref{fig:bg_dist_all}
 (see section~\ref{sec:bg_intro}). This plot is performed with:
 
-\begin{verbatim}
+\begin{lstlisting}
 dplot(d, hist_bg, bp=0)
-\end{verbatim}
+\end{lstlisting}
 
 The argument \verb|bp| is an integer specifying the background period to be plotted.
 When not specified the default is 0, i.e. the first period.
