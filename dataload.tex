@@ -19,9 +19,9 @@ Additional data files can be found here[multi-spot paper data files].
 To load data from a Photon-HDF5 file we use the
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.photon_hdf5}{function \texttt{loader.photon\_hdf5}} as follows:
 
-\begin{verbatim}
+\begin{lstlisting}
 d = loader.photon_hdf5(file_name)
-\end{verbatim}
+\end{lstlisting}
 
 \noindent
 where \verb|file_name| is a string containing the file path.
@@ -60,9 +60,9 @@ using currently selected (or default) values for donor and acceptor excitation p
 
 To change the period definitions, the user can type:
 
-\begin{verbatim}
+\begin{lstlisting}
     d.add(D_ON=(2850, 580), A_ON=(900, 2580))
-\end{verbatim}
+\end{lstlisting}
 
 where \verb|D_ON| and \verb|A_ON| are tuples (pairs of numbers) representing
 the \textit{start} and \textit{stop} values for D or A excitation periods.
@@ -75,9 +75,9 @@ When the alternation period definition is correctly defined, it can
 be applied using the
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.alex_apply_period}{function \texttt{alex\_apply\_period}}:
 
-\begin{verbatim}
+\begin{lstlisting}
     loader.alex_apply_period(d)
-\end{verbatim}
+\end{lstlisting}
 
 After this command, \verb|d| will contain only photons inside the defined excitation periods. 
 At this point, in order to further change the period definitions,
