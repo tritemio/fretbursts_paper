@@ -93,8 +93,8 @@ without the addition of \verb|naa|.
 \subsubsection{Select FRET Populations}
 
 In smFRET-ALEX experiments, in addition to one or more the FRET populations, there are always
-donor-only and acceptor-only populations. In most cases, these additional populations
-are not of interest and would be better to filter them out.
+donor-only (D-only) and acceptor-only (A-only) populations. In most cases, these additional 
+populations are not of interest need to be filter out.
 
 In principle, using the E-S representation, we can exclude D-only and A-only bursts
 by selecting bursts withing a range of $S$ values (e.g. S=0.2-0.8). 
@@ -107,10 +107,13 @@ First, we filter out the A-only population
 by applying a threshold on number of photons during donor excitation.
 Second, we exclude the D-only population by
 by applying a threshold on number of photons during acceptor excitation.
-The commands to achieve this combined selections are:
+The commands for this combined selections are:
 
 \begin{lstlisting}
 ds1 = d.select_bursts(select_bursts.size, th1=15)
 ds2 = ds1.select_bursts(select_bursts.naa, th1=15)
 \end{lstlisting}
 
+Here, the variable \verb|ds2| contains the composite selection of bursts.
+Figure~\ref{fig:alex_jointplot_fretsel} shows the resulting pure FRET
+population obtained with the previous selection.
