@@ -13,7 +13,7 @@ burst-selection.tex
 figures/alex_jointplot/alex_jointplot.png
 figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
-subsection_Timestamps_and_burst_data__.tex
+Timestamps_and_burst_data.tex
 section_Implementing_Burst_Variance_Analysis__.tex
 Coding-style.tex
 Conclusions.tex
