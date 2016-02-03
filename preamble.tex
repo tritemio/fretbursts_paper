@@ -1,4 +1,6 @@
-\documentclass[10pt,onecolumn]{article}
+\documentclass[10pt,twocolumn]{article}
+\usepackage[letterpaper, margin=0.5in]{geometry}
+
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{color}
@@ -6,11 +8,17 @@
 
 \bibliographystyle{abbrv}
 
-%% Enable UTF8 Greek characters
-\usepackage[utf8]{inputenc}
-\usepackage[LGR,T1]{fontenc}
-\usepackage{textcomp}
-\DeclareUnicodeCharacter{00F6}{\"{o}}
+%% Enable UTF8 Greek characters ()
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage[LGR,T1]{fontenc}
+%\usepackage{textcomp}
+%\DeclareUnicodeCharacter{00F6}{\"{o}}
+%\usepackage{fontspec}
+
+% CM fonts have not greek characters
+% Libertine has it, but it has crappy monotype fonts
+\usepackage{libertineRoman}
 
 
 \usepackage{fancyref}
@@ -21,3 +29,9 @@
 \makeatletter
 \newcommand{\verbatimfont}[1]{\renewcommand{\verbatim@font}{\ttfamily#1}}
 \makeatother
+
+%% Custom
+\newlength{\singlefig}
+\newlength{\doublefig}
+\setlength{\singlefig}{1\columnwidth}
+\setlength{\doublefig}{0.8\textwidth}
