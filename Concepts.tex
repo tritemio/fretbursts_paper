@@ -267,9 +267,9 @@ The plot syntax is the same for both single and multi-spot measurements.
 The majority of plot commands are called through the wrapper function
 \verb|dplot|, for example to plot a timetrace of the photon data, type:
 
-\begin{verbatim}
+\begin{lstlisting}
 dplot(d, timetrace)
-\end{verbatim}
+\end{lstlisting}
 
 The function \verb|dplot| is the generic plot function which creates figure
 and handles details common to all the plotting functions (for instance the title).
@@ -306,9 +306,9 @@ A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have intera
 which require the QT4 backend. As an example, after switching to the QT4 backend
 the following command:
 
-\begin{verbatim}
+\begin{lstlisting}
 dplot(d, timetrace, scroll=True, bursts=True)
-\end{verbatim}
+\end{lstlisting}
 
 \noindent
 will open a new window with a timetrace plot with overlay of bursts, and an horizontal scroll-bar for quick
@@ -317,9 +317,9 @@ printed in the notebooks.
 Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows
 selecting an area on the E-S histogram using the mouse.
 
-\begin{verbatim}
+\begin{lstlisting}
 dplot(ds, hist2d_alex, gui_sel=True)
-\end{verbatim}
+\end{lstlisting}
 
 The values that identify the region are printed in the notebook and can be used 
 to select bursts inside the region with the function \verb|select_bursts.ES| (see
