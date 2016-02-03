@@ -61,7 +61,7 @@ using currently selected (or default) values for donor and acceptor excitation p
 To change the period definitions, the user can type:
 
 \begin{lstlisting}
-    d.add(D_ON=(2850, 580), A_ON=(900, 2580))
+d.add(D_ON=(2850, 580), A_ON=(900, 2580))
 \end{lstlisting}
 
 where \verb|D_ON| and \verb|A_ON| are tuples (pairs of numbers) representing
@@ -76,7 +76,7 @@ be applied using the
 \href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.alex_apply_period}{function \texttt{alex\_apply\_period}}:
 
 \begin{lstlisting}
-    loader.alex_apply_period(d)
+loader.alex_apply_period(d)
 \end{lstlisting}
 
 After this command, \verb|d| will contain only photons inside the defined excitation periods. 
