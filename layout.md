@@ -14,6 +14,6 @@ figures/alex_jointplot/alex_jointplot.png
 figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
 Timestamps_and_burst_data.tex
-section_Implementing_Burst_Variance_Analysis__.tex
+Implementing_Burst_Variance_Analysis.tex
 Coding-style.tex
 Conclusions.tex
