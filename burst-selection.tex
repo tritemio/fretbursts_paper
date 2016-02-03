@@ -8,9 +8,9 @@ For instance, to select bursts with more than 30 photons (computed
 after background correction) detected during the donor excitation
 we use:
 
-\begin{verbatim}
+\begin{lstlisting}
 ds = d.select_bursts(select_bursts.size, th1=30)
-\end{verbatim}
+\end{lstlisting}
 
 The previous command creates a new \textit{Data} variable (\verb|ds|) containing
 the selected bursts.
@@ -36,12 +36,12 @@ which requires not more than a couple of lines of code in most cases (see the
 Finally, different criteria can be combined by applying them sequentially.
 For example, with the following commands:
 
-\begin{verbatim}
+\begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
                      th1=50, th2=200)
 dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
-\end{verbatim}
+\end{lstlisting}
 
 we apply a combined burst size and duration selection, in which bursts
 have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
@@ -58,10 +58,10 @@ as in the previous section, the default \verb|add_naa=False| is used
 (i.e. use only photons during donor excitation). The complete selection command
 is:
 
-\begin{verbatim}
+\begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
                      th1=30, add_naa=True)
-\end{verbatim}
+\end{lstlisting}
 
 \noindent and the resulting selection is plotted in figure~\ref{fig:alex_jointplot}.
 
@@ -76,10 +76,10 @@ over-representing (in terms of number of bursts) one population versus to the ot
 When the gamma factor is known, users can pass the argument 
 \verb|gamma| during burst selection:
 
-\begin{verbatim}
+\begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
                      th1=15, gamma=0.65)
-\end{verbatim}
+\end{lstlisting}
 
 When not specified, $\gamma=1$ is assumed.
 
@@ -109,8 +109,8 @@ Second, we exclude the D-only population by
 by applying a threshold on number of photons during acceptor excitation.
 The commands to achieve this combined selections are:
 
-\begin{verbatim}
+\begin{lstlisting}
 ds1 = d.select_bursts(select_bursts.size, th1=15)
 ds2 = ds1.select_bursts(select_bursts.naa, th1=15)
-\end{verbatim}
+\end{lstlisting}
 
