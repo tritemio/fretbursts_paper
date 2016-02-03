@@ -31,25 +31,10 @@ size (before any correction).
 It is recommended, however, to select bursts only after the background correction
 is applied as shown in the next section~\ref{sec:burstsel}.
 
-In µs-ALEX there are 3 important correction parameters: gamma factor, donor spectral
-leakage into the acceptor channel and acceptor direct excitation by the donor excitation
-laser~\cite{Lee_2005}.
-These corrections can be applied by simply assigning to the respective \textit{Data} attributes:
-
-\begin{lstlisting}
-d.gamma = 0.85
-d.leakage = 0.04
-d.dir_ex = 0.08
-\end{lstlisting}
-
-These attributes can be assigned either before or after the burst search. In the
-latter case, existing burst data is automatically updated using the new
-correction parameters.
-
-It might sometimes be useful to specify a fixed threshold, instead
+It might sometimes be useful to specify a fixed photon-rate threshold, instead
 of a threshold depending on the background rate, as in the previous example. In
 this case, instead of $F$, the argument \verb|min_rate_cps| can be used to
-specify the threshold (in Hertz). For example, a burst search with a 50~kHz
+specify the threshold (in Hz). For example, a burst search with a 50~kHz
 threshold can be performed as follows:
 
 \begin{lstlisting}
@@ -86,4 +71,31 @@ a classical DCBS.
 The \href{http://fretbursts.readthedocs.org/en/latest/plugins.html}{\texttt{bext} module} 
 collects "plugin" functions that provides additional algorithms 
 for processing \verb|Data| objects. 
+
+\subsubsection{Correction coefficients}
+\label{sec:corrcoeff}
+
+In µs-ALEX there are 3 important correction parameters: γ-factor, donor spectral
+leakage into the acceptor channel and acceptor direct excitation by the donor excitation
+laser~\cite{Lee_2005}.
+These corrections can be applied by simply assigning to the respective \verb|Data| attributes:
+
+\begin{lstlisting}
+d.gamma = 0.85
+d.leakage = 0.04
+d.dir_ex = 0.08
+\end{lstlisting}
+
+These attributes can be assigned either before or after the burst search. In the
+latter case, existing burst data is automatically updated using the new
+correction parameters.
+
+These correction factors can be used to display corrected FRET distributions.
+However, to fit the FRET peak position we found that is more accurate to 
+fit the FRET histogram without those corrections (i.e. background-corrected
+proximity ratio), next apply the correction to the fitted peaks positions
+using the equation (reported in\~cite{Lee_2005}:
+
+
+
 
