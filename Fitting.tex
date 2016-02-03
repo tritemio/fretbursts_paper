@@ -20,10 +20,10 @@ Additionally models can be created from any generic function.
 As an example, in order to fit the E histogram of bursts in \verb|ds| with two
 Gaussian peaks, the following command can be used:
 
-\begin{verbatim}
+\begin{lstlisting}
 bext.bursts_fitter(ds, 'E', binwidth=0.03,
                    model=mfit.factory_two_gaussians())
-\end{verbatim}
+\end{lstlisting}
 
 Here, \verb|ds| is the variable with the burst data (selected bursts),
 \verb|'E'| is the name of the \textit{Data} field to fit, \verb|binwidth| is the bin
@@ -36,9 +36,9 @@ In order to plot the FRET histogram and the fitted model, we pass the parameter
 \verb|show_model=True| to \verb|hist_fret| function as follows
 (see also section~\ref{sec:plotting}):
 
-\begin{verbatim}
+\begin{lstlisting}
 dplot(ds, hist_fret, show_model=True)
-\end{verbatim}
+\end{lstlisting}
 
 For more examples on fitting bursts data and plotting results see the
 \href{http://nbviewer.ipython.org/urls/raw.github.com/tritemio/FRETBursts_notebooks/master/notebooks/FRETBursts\%2520-\%2520us-ALEX\%2520smFRET\%2520burst\%2520analysis.ipynb}{us-ALEX notebook}.
