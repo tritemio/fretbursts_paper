@@ -93,8 +93,18 @@ correction parameters.
 These correction factors can be used to display corrected FRET distributions.
 However, to fit the FRET peak position we found that is more accurate to 
 fit the FRET histogram without those corrections (i.e. background-corrected
-proximity ratio), next apply the correction to the fitted peaks positions
-using the equation (reported in\~cite{Lee_2005}:
+proximity ratio). Next, we can use an algebraic formula to correct fitted peak
+positions (see SI of~\cite{Lee_2005}) and obtain the corrected FRET efficiency.
+FRETBursts implements the correction formulas for $E$ and $S$ in the functions
+\verb|fretmath.correct_E_gamma_leak_dir| and \verb|fretmath.correct_S|
+(\href{http://fretbursts.readthedocs.org/en/latest/fretmath.html}{documentation}). 
+A complete derivation of all these correction formulas
+(and their inverse) has been reported posted as \href{http://nbviewer.jupyter.org/github/tritemio/notebooks/blob/master/Derivation%20of%20FRET%20and%20S%20correction%20formulas.ipynb}{notebook}.
+
+
+\begin{equation}
+
+\end{equation}
 
 
 
