@@ -141,13 +141,13 @@ with an underscore, so we can type equivalently use
 
 Identifying single-molecule bursts in the stream of photons is
 one of the most crucial steps in the analysis of freely-diffusing single-molecule FRET data.
-The widely used "sliding window" algorithm, introduced by the Seidel group in 1998
+The widely used ``sliding window'' algorithm, introduced by the Seidel group in 1998
 (\cite{Eggeling_1998}, \cite{Fries_1998}), involves searching for
 $m$ consecutive photons detected during a period shorter than
 $\Delta t$. In other words, bursts are regions of the photon stream where the
-local rate (computed using $m$ photons) is above a minimal rate chosen as a
-threshold. Eggeling did not provide any criteria on how to choose the rate
-threshold and the number of photons $m$ and as therefore it has become a common
+local rate (computed using $m$ photons) is above a minimum threshold rate. 
+Eggeling did not provide a criterion on how to choose the rate
+threshold and the number of photons $m$ and, therefore, it has become a common
 practice to manually adjust those parameters for each specific measurement.
 
 A more general approach consists in taking into account the background rate of
@@ -181,16 +181,16 @@ during donor excitation (\verb|Ph_sel(Dex='DAem')|) and (2) acceptor channel pho
 during acceptor
 excitation (\verb|Ph_sel(Aex='Aem')|).
 
-After each burst search, it is useful to select
+After each burst search, it is necessary to select
 bursts having a minimum number of photons (burst size). In the most
 basic form, this selection can be performed during burst search by discarding
 bursts with size smaller than a threshold $L$, as originally proposed by
 Eggeling~\textit{et al.}~\cite{Eggeling_1998}.
 This method, however, neglects the effect
-of background and gamma factor on the burst size and can lead to a selection
+of background and γ factor on the burst size and can lead to a selection
 bias of certain channels and/or sub-populations.
 For this reason we encourage performing a burst size selection after background
-correction, possibly taking into account the gamma factor, as discussed in
+correction, possibly taking into account the γ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
 
 \subsection{γ-corrected burst sizes and weights}
@@ -198,7 +198,7 @@ sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
 
 The number of photon detected during a burst is commonly called the ``burst size''.
 Bursts sizes are usually computed using either all photons, or photons detected 
-during donor excitation period. To compute burst size, FRETBursts uses 
+during donor excitation period. To compute the burst size $n_t$, FRETBursts uses 
 one of the following formulas:
 
 \begin{equation}
@@ -211,9 +211,11 @@ n_t = n_a + \gamma\,n_d
 n_t = n_a + \gamma\,n_d + n_{aa}
 \end{equation}
 
-The former includes  only photons during donor excitation periods, 
-while the latter includes all photons.
-The inclusion of $\gamma$ factor allows to obtain a ``fair threshold''
+\noindent where $n_d$, $n_a$ and $n_aa$ have are the background-corrected
+burst counts in different channels and excitation periods (section~\ref{sec:data_intro})
+Eq.~\ref{eq:burstsize_dex} includes  only photons during donor excitation periods, 
+while eq.~\ref{eq:burstsize_allph} includes all photons.
+The inclusion of γ factor allows to obtain a ``fair threshold''
 and to correct bias when comparing the number of bursts across several sub-populations.
 
 The results of burst search is a distribution of burst sizes that approximately 
@@ -236,7 +238,7 @@ due to different quantum yields between donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor emission.
 
 A simple way to mitigate the dependence on the burst size threshold is
-weight bursts according to their size (i.e. their information content)
+weighting bursts according to their size (i.e. their information content)
 so that the biggest bursts will have the highest weights.
 The weighting can be used to build weighted histograms and Kernel Density 
 Estimation (KDE) plots. When using weights, the choice of a particular 
