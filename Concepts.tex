@@ -18,7 +18,7 @@ as excitation spots.
 Each array contains timestamps from both donor (D) and acceptor (A) channels.
 In ALEX measurements~\cite{Lee_2005}, we can further differentiate between
 photons emitted during D and A excitation periods. In FRETBursts the different
-selections of photons/timestamps are called "photon streams" and they are
+selections of photons/timestamps are called ``photon streams'' and they are
 specified with a
 \href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{\texttt{Ph\_sel}
 object} . In non-ALEX smFRET data there are 3 photon streams
@@ -113,21 +113,21 @@ during donor or acceptor excitation:
 
 \begin{itemize}
 \item \verb|nd|: number of photons detected by the donor channel
-(during donor excitation period, if ALEX)
+(during donor excitation period in ALEX case)
 \item \verb|na|: number of photons detected by the acceptor channel
-(during donor excitation period, if ALEX)
+(during donor excitation period in ALEX case)
 \item \verb|naa|: number of photons detected by the acceptor channel
 during acceptor excitation period (present only in ALEX measurements)
 \end{itemize}
 
 These fields are background-corrected by default. Furthermore,
-\verb|na| is corrected for leakage and direct excitation if the
-relative coefficients are specified (by default they are 0).
+\verb|na| is corrected for leakage and direct excitation 
+(section~\ref{sec:corrcoeff}) if the relative coefficients are specified 
+(by default they are 0).
 There is also a field named \verb|nda| containing donor photon during 
 acceptor excitation, which is only due to background.
 
 \paragraph{Python details}
-
 Most arrays in \texttt{Data} are contained in lists with lengths equal to the
 number of excitation spots. This means that, in
 single-spot measurements, to access an array of burst-data
