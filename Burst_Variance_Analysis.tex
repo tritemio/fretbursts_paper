@@ -7,7 +7,7 @@ manipulation and therefore simplifies implementing custom burst analysis algorit
 Single-molecule FRET histograms show more information than just mean FRET efficiencies. 
 While, in general, several peaks indicate the presence of multiple subpopulations, 
 a single peak cannot be a priori associated with a single FRET efficiency,
-unless a detailed shot-noise analysis is carried out~\cite{Nir_2006}.
+unless a detailed shot-noise analysis is carried out~\cite{Nir_2006,Antonik2006}.
 A broad FRET distribution might be attributed to a mixture of multiple species with static but different FRET efficiencies, single species with dynamic fluctuations between multiple FRET states, or a combination of the two cases. Burst Variance Analysis (BVA) is an analysis method for single molecule FRET experiments, developed to detect molecular dynamics~\cite{Torella_2011}. It has been successfully implemented to identify heterogeneities in FRET histograms due to dynamic processes of biomolecules in millisecond time scale~\cite{Torella_2011, Robb_2013}.
 
 BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing \textit{n} consecutive photons, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to an expected standard deviation based on shot noise limited distribution~\cite{Torella_2011}. 
