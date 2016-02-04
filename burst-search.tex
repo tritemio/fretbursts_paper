@@ -38,7 +38,8 @@ specify the threshold (in Hz). For example, a burst search with a 50~kHz
 threshold can be performed as follows:
 
 \begin{lstlisting}
-d.burst_search(min_rate_cps=50e3, m=10, ph_sel=Ph_sel('all'))
+d.burst_search(min_rate_cps=50e3, m=10, 
+               ph_sel=Ph_sel('all'))
 \end{lstlisting}
 
 Finally, to perform a DCBS burst search (or in general an AND gate burst search,
