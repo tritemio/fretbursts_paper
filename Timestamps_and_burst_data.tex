@@ -22,7 +22,7 @@ wasting time implementing (and debugging) standard manipulation routines.
 Examples of working directly with timestamps, masks (i.e. photon selections) and 
 burst data are provided in one of the FRETBursts notebooks (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}).
 
-\subsubsection{Python details}
+\paragraph{Python details}
 \verb|Bursts| objects internally store the start and stop times and indexes in a numpy array.
 The other fields are computed on-fly using class properties, so they are always
 up to date even if start and stop are modified. Iteration over bursts is
