@@ -287,23 +287,22 @@ All built-in plot functions which can be passed to
 (\href{http://fretbursts.readthedocs.org/en/latest/plots.html}{documentation}).
 
 \paragraph{Python details}
-When FRETbursts is imported, all the plot functions are also imported.
+When FRETbursts is imported, all plot functions are also imported.
 To facilitate finding the plot functions through auto-completion,
 their names start with a standard prefix indicating the
 plot type. The prefixes are: \verb|timetrace| for binned timetraces
 of photon data, \verb|ratetrace| for rates of photons as a function of time (non
 binnned), \verb|hist| for functions plotting histograms and \verb|scatter| for
 scatter plots.
-
 Additional plots can be easily created directly with matplotlib.
 
 By default, in order to speed-up batch processing, FRETBursts notebooks display plots 
 as static images using the \textit{inline} matplotlib backend. 
-User can choose switch to interactive figures by using an interactive backend. 
-For example \verb|%matplotlib notebook| 
-provides interactive figures inside the browser, 
-and \verb|%matplotlib qt| 
-for interactive figures in a new window (using the QT4 graphical library).
+User can switch to interactive figures inside the browser by activating 
+the interactive backend with the command \verb|%matplotlib notebook|.
+Another option is displaying figures in a new standalone window
+using a desktop graphical library such as QT4.
+In this case the command to be used is \verb|%matplotlib qt|.
 
 A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have interactive features 
 which require the QT4 backend. As an example, after switching to the QT4 backend
@@ -315,8 +314,8 @@ dplot(d, timetrace, scroll=True, bursts=True)
 
 \noindent
 will open a new window with a timetrace plot with overlay of bursts, and an horizontal scroll-bar for quick
-"scrolling" throughout the measurement. The user can click on a burst to have the corresponding burst info 
-printed in the notebooks.
+"scrolling" throughout time. The user can click on a burst to have the corresponding burst info 
+be printed in the notebook.
 Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows
 selecting an area on the E-S histogram using the mouse.
 
