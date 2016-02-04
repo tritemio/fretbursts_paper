@@ -246,15 +246,16 @@ burst size threshold affects less the shape of the burst distribution,
 so lower thresholds can be used (better statistics) without broadening 
 the peaks of sub-populations (better population identification).
 
-\subsubsection{Python details}
+\paragraph{Python details}
 FRETBursts has the option to weight bursts using $\gamma$-corrected 
-burst sizes and to include the acceptor excitation photons \verb|naa|.
+burst sizes which optionally include acceptor excitation photons \verb|naa|.
 A weight proportional to the burst size is applied by passing the argument 
 \verb|weights='size'| to histogram or KDE plot functions. The \verb|weights|
 keyword can be also passed to fitting functions in order to fit 
 the weighted E or S distributions (see section~\ref{sec:fretfit}).
 Several other weighting functions (for example quadratical) are listed in the
-\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{\texttt{fret\_fit.get\_weights} documentation}.
+\verb|fret_fit.get_weights| documentation
+(\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
 
 \subsection{Plotting "Data"}
 \label{sec:plotting}
