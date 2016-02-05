@@ -1,10 +1,10 @@
-\section{Architecture and concepts}
+\section{Architecture and Concepts}
 \label{sec:concepts}
 
 In this section we introduce some general concepts and naming conventions related
 to the smFRET burst analysis in FRETBursts.
 
-\subsection{Photon streams}
+\subsection{Photon Streams}
 \label{sec:ph_streams}
 
 The fundamental data at the core of smFRET experiments is the array of photon
@@ -58,7 +58,7 @@ photons (\verb|Aem|) during acceptor excitation (\verb|Aex|).
 \caption{\label{tab:ph_sel_alex}Photon selection syntax (ALEX)}
 \end{table}
 
-\subsection{Background definitions}
+\subsection{Background Definitions}
 \label{sec:bg_intro}
 
 An estimation of the background rates is needed both to select a proper threshold for
@@ -102,40 +102,44 @@ threshold and to apply the burst correction (section~\ref{sec:burstsearch}).
 The \verb|Data| class 
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{link})
 is the fundamental data container in FRETBursts. It contains the
-measurement data and provides several methods for data analysis (background
-estimation, burst search, etc...). It also stores all analysis results
-(bursts data, estimated parameters).
+measurement data and paramenters (attributes) as well as several methods 
+for data analysis (background estimation, burst search, etc...). 
+All analysis results (bursts data, estimated parameters) are also stored
+as \verb|Data| attributes.
 
-As an example, there are 3 important ``burst counts'' fields containing  
+There are 3 important ``burst counts'' attributes which contains  
 the number of photon detected in donor or acceptor channel
-during donor or acceptor excitation:
-
-\begin{itemize}
-\item \verb|nd|: number of photons detected by the donor channel
-(during donor excitation period in ALEX case)
-\item \verb|na|: number of photons detected by the acceptor channel
-(during donor excitation period in ALEX case)
-\item \verb|naa|: number of photons detected by the acceptor channel
-during acceptor excitation period (present only in ALEX measurements)
-\end{itemize}
-
-These fields are background-corrected by default. Furthermore,
-\verb|na| is corrected for leakage and direct excitation 
+during donor or acceptor excitation (table~\ref{tab:data_n}).
+The attributes in table~\ref{tab:data_n} are background-corrected by default. 
+Furthermore, \verb|na| is corrected for leakage and direct excitation 
 (section~\ref{sec:corrcoeff}) if the relative coefficients are specified 
 (by default they are 0).
-There is also a field named \verb|nda| containing donor photon during 
-acceptor excitation, which is only due to background.
+There is also a closely related attribute named \verb|nda| for donor photons 
+during acceptor excitation. \verb|nda| is normally neglected as it only contains
+background.
+
+\begin{table}
+\begin{tabular}{l p{0.8\columnwidth}}
+  Name  & Description \\
+  \hline
+  \verb|nd| & number of photons detected by the donor channel (during donor excitation period in ALEX case)\\
+  \verb|na| & number of photons detected by the acceptor channel (during donor excitation period in ALEX case)\\
+  \verb|naa| & number of photons detected by the acceptor channel during acceptor excitation period (present only in ALEX measurements)\\
+\end{tabular}
+\caption{\label{tab:data_n}\texttt{Data} attributes names and descriptions for burst photon counts in different photon streams.}
+\end{table}
+
 
 \paragraph{Python details}
-Most arrays in \texttt{Data} are contained in lists with lengths equal to the
-number of excitation spots. This means that, in
+Many \verb|Data| attributes are list of arrays (or scalars) with list-length
+equal to the number of excitation spots. This means that, in
 single-spot measurements, to access an array of burst-data
 we always have to specify the index 0, for example \verb|Data.nd[0]|.
 \verb|Data| implements a shortcut syntax to access the first element of a list
 with an underscore, so we can type equivalently use
 \verb|Data.nd_| instead of \verb|Data.nd[0]|.
 
-\subsection{Introduction to burst search}
+\subsection{Introduction to Burst Search}
 \label{sec:burstsearch_intro}
 
 Identifying single-molecule bursts in the stream of photons is
@@ -192,11 +196,11 @@ For this reason we encourage performing a burst size selection after background
 correction, possibly taking into account the γ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
 
-\subsection{γ-corrected burst sizes and weights}
+\subsection{γ-corrected Burst Sizes and Weights}
 \label{sec:burstsizeweights}
 
-The number of photon detected during a burst is commonly called the ``burst size''.
-Bursts sizes are usually computed using either all photons, or photons detected 
+The number of photons detected during a burst, commonly called ``burst size'',
+is usually computed using either all photons, or photons detected 
 during donor excitation period. To compute the burst size $n_t$, FRETBursts uses 
 one of the following formulas:
 
@@ -210,16 +214,18 @@ n_t = n_a + \gamma\,n_d
 n_t = n_a + \gamma\,n_d + n_{aa}
 \end{equation}
 
-\noindent where $n_d$, $n_a$ and $n_aa$ have are the background-corrected
-burst counts in different channels and excitation periods (section~\ref{sec:data_intro})
+\noindent where $n_d$, $n_a$ and $n_{aa}$ are, similarly to the attributes 
+in tables~\ref{tab:data_n}, the background-corrected
+burst counts in different channels and excitation periods,
+and $\gamma$ is the γ factor.
 Eq.~\ref{eq:burstsize_dex} includes  only photons during donor excitation periods, 
 while eq.~\ref{eq:burstsize_allph} includes all photons.
-The inclusion of γ factor allows to obtain a ``fair threshold''
-and to correct bias when comparing the number of bursts across several sub-populations.
+Burst sizes computed according to eq.~\ref{eq:burstsize_dex} 
+or~\ref{eq:burstsize_allph} are called γ-corrected burst sizes.
 
 The results of burst search is a distribution of burst sizes that approximately 
 follows an exponential distribution.
-Bursts with large size (which contain most of the information)
+Bursts with large sizes (which contain most of the information)
 are much less frequent than bursts with smaller sizes. For this reason, it is 
 important to select burst sizes larger than a threshold in order
 to properly characterize FRET populations (see section~\ref{sec:burstsel}). 
@@ -239,11 +245,12 @@ different photon detection efficiencies of donor and acceptor emission.
 A simple way to mitigate the dependence on the burst size threshold is
 weighting bursts according to their size (i.e. their information content)
 so that the biggest bursts will have the highest weights.
-The weighting can be used to build weighted histograms and Kernel Density 
+The weighting can be used to build weighted histograms or Kernel Density 
 Estimation (KDE) plots. When using weights, the choice of a particular 
-burst size threshold affects less the shape of the burst distribution,
-so lower thresholds can be used (better statistics) without broadening 
-the peaks of sub-populations (better population identification).
+burst size threshold is less aftecting the shape of the burst distribution,
+therefore lower thresholds can be used (yielding to better statistics) 
+without broadening the peaks of sub-populations (yielding to better 
+population identification).
 
 \paragraph{Python details}
 FRETBursts has the option to weight bursts using γ-corrected 
@@ -322,6 +329,6 @@ selecting an area on the E-S histogram using the mouse.
 dplot(ds, hist2d_alex, gui_sel=True)
 \end{lstlisting}
 
-The values that identify the region are printed in the notebook and can be used 
-to select bursts inside the region with the function \verb|select_bursts.ES| (see
-section~\ref{sec:burstsel}).
+The values that identify the region are printed in the notebook and can be passed
+to the function \verb|select_bursts.ES| to select bursts inside that region 
+(see section~\ref{sec:burstsel}).
