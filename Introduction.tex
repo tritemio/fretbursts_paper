@@ -58,7 +58,8 @@ an open source python software for burst analysis of freely-diffusing
 single-molecule smFRET experiments. 
 With FRETBursts we provide a tool that is available to any scientist
 to use, study and modify. Furthermore, FRETBursts execution model 
-is designed to facilitate computational reproducibility.
+based on Juyter Notebook~\cite{Shen_2014} is designed to facilitate 
+computational reproducibility. 
 FRETBursts is hosted and openly developed on GitHub~\cite{Blischak_2016,Prli__2012}, 
 where users can send comments, report issues or contribute code.
 
@@ -68,11 +69,13 @@ and terminology used by FRETBursts. We illustrate how to perform
 the fundamental steps of burst analysis, highlighting key parameters
 and algorithms available. The aim is not covering all FRETBursts
 features and options but providing an overview detailed enough for starting
-using FRETbursts and customizing the analysis. For additional information, 
-we refer the reader to the 
-\href{http://fretbursts.readthedocs.org/}{FRETBursts Reference Documentation}
-. Finally, usage questions can be asked on the mailing list or on GitHub 
-by opening an Issue.
+using FRETBursts and customizing the analysis. For additional information, 
+we refer the reader to the FRETBursts Reference Documentation
+(\href{http://fretbursts.readthedocs.org/}{link}) and to
+the FRETBursts µs-ALEX notebook
+(\href{http://nbviewer.ipython.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts\%20-\%20us-ALEX\%20smFRET\%20burst\%20analysis.ipynb}{link})
+Finally, usage questions can be posted by  opening an Issue
+on GitHub (\href{https://github.com/tritemio/FRETBursts}{link}).
 
 \subsection{Paper overview}
 
@@ -80,30 +83,27 @@ The paper is structured as follows.
 In the next section~\ref{sec:overview} we give an overview of the software features,
 the modality of execution and the development style.
 In section~\ref{sec:concepts}, we
-introduce a few preliminary concepts and some specific terminology needed
+review a few preliminary concepts and terminology needed
 to understand the smFRET burst analysis.
-In section~\ref{sec:analysis}, we detail the execution the several steps involved
+In section~\ref{sec:analysis}, we detail the execution the main steps involved
 in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining
 excitation alternation periods (section~\ref{sec:alternation}), background
 correction (section~\ref{sec:bg_calc}), burst search (section~\ref{sec:burstsearch}),
 burst selection (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}).
 The aim is to provide enough information to understand the specificities of
 the different algorithms and to be able to adapt the analysis to new situations.
+In section~\ref{sec:bva}, we show how to implement a new burst analysis in FRETBursts,
+taking as an example the Burst Variance Analysis (BVA)~\cite{Torella_2011}.
 Finally, in section~\ref{sec:conclusions}, we summarize what we believe to be
 the strengths of FRETBursts software.
 
-In addition to this paper, we refer the interested readers to the
-\href{http://nbviewer.ipython.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts\%20-\%20us-ALEX\%20smFRET\%20burst\%20analysis.ipynb}{FRETBursts µs-ALEX tutorial}
-for a single complete example of µs-ALEX data analysis and to the
-\href{http://fretbursts.readthedocs.org/}{FRETBursts Reference Documentation}
-for a more in-depth description of the software. Throughout this paper,
-we provide direct links to relevant sections of the FRETBursts documentation
-and display them as ``(link)''.
-
-Finally, in order to make this paper accessible to the widest number of readers,
+Throughout this paper,
+links to relevant sections of documentation and other web resources
+are displayed as ``(link)''.
+In order to make the text accessible to the widest number of readers,
 we concentrated python-specific details in special subsections titled
 \textit{Python details}. These subsections provide deeper insights for readers
-already familiar with python and can be safely skipped otherwise. Note also
-that all commands shown in this paper can be found in the FRETBursts tutorial notebook
-and, in general, do not need to be re-typed.
+already familiar with python and can be safely skipped otherwise. 
+Finally, note that all commands here reported can be found in the 
+accompanying notebooks and, in general, do not need to be re-typed.
 
