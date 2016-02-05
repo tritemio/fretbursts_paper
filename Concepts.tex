@@ -172,12 +172,11 @@ In order to handle the general case and to provide flexibility,
 FRETBursts allows to perform the burst search on arbitrary selections of photons.
 (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
-Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a dual-channel burst
-search (DCBS), which can help mitigate artifacts due to
-photo-physical effects such as blinking. In this case a search is performed
-independently on two photon streams and bursts are marked only when both photon
-streams exhibit a rate higher than the threshold,
-implementing an AND-gate logic.
+Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a DCBS, which can help 
+mitigating artifacts due to photo-physical effects such as blinking. 
+In DCBS a search is performed independently on two photon streams 
+and bursts are marked only when both photon streams exhibit a rate higher than 
+the threshold, implementing an AND-gate logic.
 Usually, the term DCBS refers to a burst search where the two photon streams
 are (1) all photons
 during donor excitation (\verb|Ph_sel(Dex='DAem')|) and (2) acceptor channel photons
