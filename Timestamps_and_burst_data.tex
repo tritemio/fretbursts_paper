@@ -14,7 +14,7 @@ computed. \verb|Bursts|'s methods allow to recompute indexes relative to a diffe
 selection or recompute start and stop times relative to a new timestamps array.
 Additional methods perform fusion of nearby bursts or combination of two set of bursts 
 (time intersection or union). This functionality is used for example to implement 
-the dual-channel burst search).
+the DCBS).
 In conclusion, \verb|Bursts| efficiently implements all the common operations performed 
 with burst data, providing and easy-to-use interface and well tested algorithms. 
 Leveraging \verb|Bursts| methods, users can implement new types of analysis without 
@@ -22,7 +22,7 @@ wasting time implementing (and debugging) standard manipulation routines.
 Examples of working directly with timestamps, masks (i.e. photon selections) and 
 burst data are provided in one of the FRETBursts notebooks (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}). 
 Section~\ref{sec:bva} provides a complete example on using FRETBurts to implement 
-custom burst analsysis techniques.
+custom burst analysis techniques.
 
 \paragraph{Python details}
 Timestamps are stored in the \verb|Data| attribute \verb|ph_times_m|, which is a list
