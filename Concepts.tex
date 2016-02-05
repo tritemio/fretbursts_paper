@@ -102,7 +102,7 @@ threshold and to apply the burst correction (section~\ref{sec:burstsearch}).
 The \verb|Data| class 
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{link})
 is the fundamental data container in FRETBursts. It contains the
-measurement data and paramenters (attributes) as well as several methods 
+measurement data and parameters (attributes) as well as several methods 
 for data analysis (background estimation, burst search, etc...). 
 All analysis results (bursts data, estimated parameters) are also stored
 as \verb|Data| attributes.
@@ -149,8 +149,8 @@ The widely used ``sliding window'' algorithm, introduced by the Seidel group in 
 $m$ consecutive photons detected during a period shorter than
 $\Delta t$. In other words, bursts are regions of the photon stream where the
 local rate (computed using $m$ photons) is above a minimum threshold rate. 
-Eggeling did not provide a criterion on how to choose the rate
-threshold and the number of photons $m$ and, therefore, it has become a common
+Since a universal criterion to choose the rate threshold and 
+the number of photons $m$ is, as of today, lacking, it has become a common
 practice to manually adjust those parameters for each specific measurement.
 
 A more general approach consists in taking into account the background rate of
