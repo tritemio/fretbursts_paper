@@ -15,5 +15,6 @@ figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
 Timestamps_and_burst_data.tex
 Burst_Variance_Analysis.tex
+figures/20dA_20dT_200mMMgCl_ALEX/20dA_20dT_200mMMgCl_ALEX.png
 Coding-style.tex
 Conclusions.tex
