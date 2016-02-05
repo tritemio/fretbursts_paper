@@ -194,18 +194,20 @@ bias of certain channels and/or sub-populations.
 For this reason we encourage performing a burst size selection after background
 correction, possibly taking into account the γ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
+In special situations, users can also choose to replace this size selection
+with another criterion such as burst duration or brightness.
 
 \subsection{γ-corrected Burst Sizes and Weights}
 \label{sec:burstsizeweights}
 
 The number of photons detected during a burst, commonly called ``burst size'',
 is usually computed using either all photons, or photons detected 
-during donor excitation period. To compute the burst size $n_t$, FRETBursts uses 
+during donor excitation period. To compute the burst size, FRETBursts uses 
 one of the following formulas:
 
 \begin{equation}
 \label{eq:burstsize_dex}
-n_t = n_a + \gamma\,n_d 
+n_{dex} = n_a + \gamma\,n_d 
 \end{equation}
 
 \begin{equation}
@@ -215,8 +217,11 @@ n_t = n_a + \gamma\,n_d + n_{aa}
 
 \noindent where $n_d$, $n_a$ and $n_{aa}$ are, similarly to the attributes 
 in tables~\ref{tab:data_n}, the background-corrected
-burst counts in different channels and excitation periods,
-and $\gamma$ is the γ factor.
+burst counts in different channels and excitation periods.
+$\gamma$, dubbed the ``γ factor'', takes into account
+different quantum yield of donor and acceptor dyes and different
+photon detection efficiencies between donor and acceptor detection
+channel~\cite{Lee_2005}.
 Eq.~\ref{eq:burstsize_dex} includes  only photons during donor excitation periods, 
 while eq.~\ref{eq:burstsize_allph} includes all photons.
 Burst sizes computed according to eq.~\ref{eq:burstsize_dex} 
