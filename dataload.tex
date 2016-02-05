@@ -4,7 +4,7 @@
 \subsection{Loading the data}
 \label{sec:dataload}
 While FRETBursts can load data files from a few file formats,
-the authors promote \href{http://photon-hdf5.readthedocs.org/}{Photon-HDF5},
+the authors promote Photon-HDF5~\cite{Ingargiola2016},
 an HDF5-based open format specifically designed for freely-diffusing smFRET and other timestamp-based experiments.
 Photon-HDF5 is a self-documented platform and language independent binary format
 which support compression and allows saving photon-data (e.g. timestamps) and measurement-specific meta-data
@@ -12,12 +12,12 @@ which support compression and allows saving photon-data (e.g. timestamps) and me
 Moreover, Photon-HDF5 is designed for long-term data preservation and aims to facilitate data sharing
 among different software and research groups.
 FRETBursts example data files are in Photon-HDF5 format and can be opened with
-stand-alone viewers (such as \href{http://www.hdfgroup.org/products/java/hdfview/}{HDFView}) or 
-programming environment.
-Additional data files can be found here[multi-spot paper data files].
+stand-alone viewers (such as HDFView, \href{http://www.hdfgroup.org/products/java/hdfview/}{link}) or 
+programming language.
 
-To load data from a Photon-HDF5 file we use the
-\href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.photon_hdf5}{function \texttt{loader.photon\_hdf5}} as follows:
+To load data from a Photon-HDF5 file we use the function \verb|loader.photon_hdf5|
+(\href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.photon_hdf5}{link})
+as follows:
 
 \begin{lstlisting}
 d = loader.photon_hdf5(file_name)
@@ -25,21 +25,24 @@ d = loader.photon_hdf5(file_name)
 
 \noindent
 where \verb|file_name| is a string containing the file path.
-This command loads all the measurement data into the variable \verb|d|,
-a \href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{\texttt{Data}} object
-(see section~\ref{sec:data_intro}).
+This command loads all the measurement data into the variable \verb|d|, 
+a \verb|Data| object (see section~\ref{sec:data_intro}).
 
 The same command can load data from a variety of measurement types stored
 in a Photon-HDF5 file. For instance, data generated using different excitation schemes
 (CW vs pulsed, single-laser vs 2 alternating lasers) or with any number of excitation spots
 is automatically recognized.
 
-Other file formats which FRETBursts can load include μs-ALEX data stored in sm format
-(a binary format formerly used in our lab),
+Other file formats which FRETBursts can load include μs-ALEX data stored in SM format
+(a custom binary format used in S.W. lab),
 ns-ALEX data stored in SPC format (a binary format used by TCSPC Becker \& Hickl cards).
+ns-ALEX data in HT3 format (a binary format used by PicoQuant hardware)
+can be easily converted to Photon-HDF5 using the phconvert converter
+(\href{http://photon-hdf5.github.io/phconvert/}{link})
+and then loaded in FRETBursts.
 More information on loading these file formats and on manually loading other arbitrary formats
-can be found in the
-\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{\texttt{loader} module documentation}.
+can be found in the \verb|loader| module's documentation
+(\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{link}).
 
 \subsection{Alternation parameters}
 \label{sec:alternation}
@@ -54,7 +57,8 @@ In this case the histogram of the TCSP nanotimes will allow to define the period
 starting with a donor (or acceptor) excitation pulse (see figure~\ref{fig:altern_hist_double}b).
 
 In both cases, the functions
-\verb|plot_alternation_hist| (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst\_plot.plot\_alternation\_hist}{documentation})
+\verb|plot_alternation_hist| 
+(\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst_plot.plot_alternation_hist}{link})
 will plots the relevant alternation histogram (figure~\ref{fig:altern_hist_double}) 
 using currently selected (or default) values for donor and acceptor excitation periods.
 
