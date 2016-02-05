@@ -4,27 +4,39 @@
 Beyond providing prepackaged functions for established methods, 
 FRETBursts also provides the infrastructure for exploring new analysis approaches.
 Users can easily get timestamps (or selection masks) for any photon stream.
-Core burst data (essentially start and stop times and indexes 
+Core burst data (essentially start and stop times, indexes 
 and derived quantities for each burst) are stored in a \verb|Bursts| object 
-(\href{http://fretbursts.readthedocs.org/en/latest/burstsearch.html}{documentation}).
-This object provides a simple and well tested interface (100 \% test coverage) 
+(\href{http://fretbursts.readthedocs.org/en/latest/burstsearch.html}{link}).
+This object provides a simple and well tested interface (100 \% unit-test coverage) 
 to access and manipulate burst data. \verb|Bursts| are created from a sequence of start/stop 
 times and indexes, while all the other fields are automatically
 computed. \verb|Bursts|'s methods allow to recompute indexes relative to a different photon
 selection or recompute start and stop times relative to a new timestamps array.
 Additional methods perform fusion of nearby bursts or combination of two set of bursts 
-(time intersection or union). This functionality is used fr example to implement 
+(time intersection or union). This functionality is used for example to implement 
 the dual-channel burst search).
 In conclusion, \verb|Bursts| efficiently implements all the common operations performed 
 with burst data, providing and easy-to-use interface and well tested algorithms. 
 Leveraging \verb|Bursts| methods, users can implement new types of analysis without 
 wasting time implementing (and debugging) standard manipulation routines.
 Examples of working directly with timestamps, masks (i.e. photon selections) and 
-burst data are provided in one of the FRETBursts notebooks (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}).
+burst data are provided in one of the FRETBursts notebooks (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}). 
+Section~\ref{sec:bva} provides a complete example on using FRETBurts to implement 
+custom burst analsysis techniques.
 
 \paragraph{Python details}
-\verb|Bursts| objects internally store the start and stop times and indexes in a numpy array.
+Timestamps are stored in the \verb|Data| attribute \verb|ph_times_m|, which is a list
+or arrays, one array per excitation spot. In single-spot measurements the full
+timestamps array is accessed as \verb|Data.ph_times_m[0]|. To get  timestamps
+of arbitrary photon streams, users can use the method \verb|Data.get_ph_times|
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html?highlight=get_ph_times#fretbursts.burstlib.Data.get_ph_times}{link}).
+Photon streams are selected from the full (all-photon) timestamps array using
+boolean masks. The masks can be obtained using the method \verb|Data.get_ph_mask|
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html?highlight=get_ph_mask#fretbursts.burstlib.Data.get_ph_mask}{link}).
+\verb|Bursts| objects 
+(\href{http://fretbursts.readthedocs.org/en/latest/burstsearch.html}{link})
+internally store the start and stop times and indexes in a numpy array.
 The other fields are computed on-fly using class properties, so they are always
-up to date even if start and stop are modified. Iteration over bursts is
+up to date even if start and stop are modified. Iteration over \verb|Bursts| is
 relatively fast, with performances similar to iterating through numpy rows.
 
