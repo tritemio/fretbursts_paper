@@ -31,7 +31,8 @@ The argument \verb|binwidth| specifies the histogram bin width and
 the argument \verb|model| takes pre-initialized model used to be used for
 fitting.
 
-All fitting results are stored in the \verb|E_fitter| (or \verb|S_fitter|)
+All fitting results (including best fit values, uncertainties, etc...), 
+are stored in the \verb|E_fitter| (or \verb|S_fitter|)
 attributes of the \verb|Data| variable (here named \verb|ds|).
 In order to plot the fitted model with the FRET histogram, we pass the parameter
 \verb|show_model=True| to \verb|hist_fret| function as follows
