@@ -165,15 +165,15 @@ multi-spot measurements where each spot has a different background rate.
 A second important aspect of burst search is the choice of photon stream used
 to perform the search.
 In most cases, for instance when identifying FRET populations,
-the burst search should use all photons. In some other cases, when focusing on
+the burst search should use all photons (i.e. ACBS). In some other cases, when focusing on
 donor-only or acceptor only populations, it is better to perform the search using
 only donor or acceptor signal.
 In order to handle the general case and to provide flexibility,
 FRETBursts allows to perform the burst search on arbitrary selections of photons.
 (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
-Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a Dual-Channel Burst
-Search (DCBS), which can help mitigating artifacts due to
+Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a dual-channel burst
+search (DCBS), which can help mitigate artifacts due to
 photo-physical effects such as blinking. In this case a search is performed
 independently on two photon streams and bursts are marked only when both photon
 streams exhibit a rate higher than the threshold,
