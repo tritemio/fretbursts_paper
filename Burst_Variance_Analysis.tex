@@ -4,7 +4,7 @@ In this section we describe how to implement the Burst Variance Analysis (BVA)~\
 FRETBurts provides well-tested, general-purpose functions for timestamps and burst data 
 manipulation and therefore simplifies implementing custom burst analysis algorithms such as BVA.
 
-\subsection{An Introduction to BVA}
+\subsection{An Introduction to Burst Variance Analysis (BVA)}
 Single-molecule FRET histograms show more information than just mean FRET efficiencies. 
 While, in general, several peaks indicate the presence of multiple subpopulations, 
 a single peak cannot be a priori associated with a single FRET efficiency,
@@ -15,7 +15,7 @@ A FRET peak originating from a single static FRET efficiency has the minimum wid
 the sub-bursts acceptor counts ($N_a$) will ideally follow a binomial distribution of 
 eq.~\ref{eq:binom_dist}, where $n$ is the number of photons in each sub-burst and 
 $E$ is the FRET efficiency. In practice, we use the proximity ratio peak position as $E$,
-and we expect the standard deviation $E$ for the sub-bursts to be distributed according to 
+and we expect the standard deviation of $E$ for the sub-bursts to be distributed according to 
 eq.~\ref{eq:binom_std}. This is an approximation because background counts (both from
 sample and detector's dark counts) add additional variance that is not taken into account.
 However, the approximation works well in practical cases because the background contribution
