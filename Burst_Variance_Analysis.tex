@@ -51,7 +51,7 @@ has standard deviation reported in eq.~\ref{eq:binom_std}.
 \operatorname{Std(\textit{E})} = {\sqrt{\frac{E(1 - E)}{n}}}
 \end{equation}
 
-\subsetcion{BVA implementation}
+\subsection{BVA implementation}
 BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing a constant number of consecutive photons,~\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}). 
 
 If, as in figure~\ref{fig:bva_static}, the observed distribution originates a static mixture 
