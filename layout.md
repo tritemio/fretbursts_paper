@@ -16,6 +16,5 @@ Fitting.tex
 Timestamps_and_burst_data.tex
 Burst_Variance_Analysis.tex
 figures/HP3_RT_400mM_NaCl_BVA/HP3_RT_400mM_NaCl_BVA.png
-figures/HP3_RT_400mM_NaCl_ALEX/HP3_RT_400mM_NaCl_ALEX.png
 Coding-style.tex
 Conclusions.tex
