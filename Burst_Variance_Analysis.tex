@@ -20,12 +20,6 @@ $E$ is the FRET efficiency (In practice, Proximity ratio is used as $E$, instead
 This is an approximation because background counts (both from sample and detector's dark counts) add additional variance that is not taken into account. However, the approximation works well in practical cases because the background contribution
 is normally a small fraction of the total number of counts (therefore it marginally contributes to the variance).
 
-
-\begin{equation}
-\label{eq:binom_dist}
-N_a \sim \operatorname{Binom} \{n, E\}
-\end{equation}
-
 \begin{equation}
 \label{eq:binom_std}
 \operatorname{Std(\textit{E})} = {\sqrt{\frac{E(1 - E)}{n}}}
