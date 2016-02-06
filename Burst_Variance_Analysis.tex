@@ -25,6 +25,11 @@ is normally a small fraction of the total number of counts (therefore it margina
 N_a \sim \operatorname{Binom} \{n, E\}
 \end{equation}
 
+\begin{equation}
+\label{eq:binom_std}
+\operatorname{Std(E)} = {\sqrt{\frac{E(1 - E)}{n}}}
+\end{equation}
+
 
 BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing \textit{n} consecutive photons, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to an expected standard deviation based on shot noise limited distribution~\cite{Torella_2011}. 
 
