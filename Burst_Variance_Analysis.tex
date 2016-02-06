@@ -15,8 +15,8 @@ A broad FRET distribution might be attributed to a mixture of multiple species w
 
 A FRET peak originating from a single static FRET efficiency has the minimum width and 
 the sub-bursts acceptor counts ($N_a$) can be modeled as a binomial distribution, 
-($N_a \sim \operatorname{Binom} \{n, E\}$), where $n$ is the number of photons in each sub-burst and 
-$E$ is the FRET efficiency. (In practice, Proximity ratio is used as $E$, instead of FRET efficiency) Since, as mentioned, $N_a$ will follow a binomial distribution and $E = N_a/n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std}. This is an approximation because background counts (both from sample and detector's dark counts) add additional variance that is not taken into account. However, the approximation works well in practical cases because the background contribution
+$N_a \sim \operatorname{Binom} \{n, E\}$, where $n$ is the number of photons in each sub-burst and 
+$E$ is the FRET efficiency. (In practice, Proximity ratio is used as $E$, instead of FRET efficiency) Since, as mentioned, $N_a$ follow a binomial distribution and $E = N_a/n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std}. This is an approximation because background counts (both from sample and detector's dark counts) add additional variance that is not taken into account. However, the approximation works well in practical cases because the background contribution
 is normally a small fraction of the total number of counts (therefore it marginally contributes to the variance).
 
 
