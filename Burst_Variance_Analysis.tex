@@ -16,7 +16,7 @@ The width of a FRET efficiency population has a typical lower boundary that is c
 
 a FRET efficiency (sub-)population originating from a single static FRET efficiency has the minimum width and the sub-bursts acceptor counts ($N_a$) can be modeled as a binomial distribution, 
 $N_a \sim \operatorname{Binom} \{n, E\}$, where $n$ is the number of photons in each sub-burst and 
-$E$ is the FRET efficiency (In practice, Proximity ratio is used as $E$, instead of FRET efficiency). Since, $N_a$ follow a binomial distribution, as modeled, and $E = N_a/n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std}. 
+$E$ is the FRET efficiency (In practice, Proximity ratio is used as $E$, instead of FRET efficiency). Since, $N_a$ follow a binomial distribution, as modeled, and $E = N_a/n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std} ~\cite{Torella_2011}. 
 This is an approximation because background counts (both from sample and detector's dark counts) add additional variance that is not taken into account. However, the approximation works well in practical cases because the background contribution
 is normally a small fraction of the total number of counts (therefore it marginally contributes to the variance).
 
@@ -26,7 +26,7 @@ is normally a small fraction of the total number of counts (therefore it margina
 \end{equation}
 
 
-BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing equal number of consecutive photons,\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to an expected standard deviation based on shot noise limited distribution~\cite{Torella_2011}. 
+BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing \textit{n} consecutive photons, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to an expected standard deviation based on shot noise limited distribution~\cite{Torella_2011}. 
 
-If the observed broadening originates from different molecules having distinct FRET efficiencies without dynamics, $s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve rationalized by a binomial distribution (see equation 4 in~\cite{Torella_2011}). However, if the observed broadness is due to millisecond dynamics of single species of biomolecules, $s_E$ of each burst is supposed to be larger than the expected standard deviation and sit above the expected standard deviation curve as shown in figure .
+If the observed broadening originates from different molecules having distinct FRET efficiencies without dynamics, $s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve based on eq.~\ref{eq:binom_std}. However, if the observed broadness is due to millisecond dynamics of single species of biomolecules, $s_E$ of each burst is supposed to be larger than the expected standard deviation and sit above the expected standard deviation curve as shown in figure .
 Since FRETBursts is based on open source python packages, BVA can be easily built and implemented by FRETBursts with combination of other python packages (see notebook).  
