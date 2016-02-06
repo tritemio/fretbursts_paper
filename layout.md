@@ -15,7 +15,6 @@ figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
 Timestamps_and_burst_data.tex
 Burst_Variance_Analysis.tex
-figures/20dA_20dT_200mMMgcl_ALEX_BVA/20dA_20dT_200mMMgcl_ALEX_BVA.png
 figures/HP3_RT_400mM_NaCl_ALEX_BVA/HP3_RT_400mM_NaCl_ALEX_BVA.png
 Coding-style.tex
 Conclusions.tex
