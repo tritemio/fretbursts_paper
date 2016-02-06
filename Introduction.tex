@@ -31,18 +31,28 @@ vary (in number of polarization or spectral channels for example),
 makes the problem only worst.
 This situation, represents a real impediment to the scientific progress because:
 
-(a) as new methods are proposed in literature, understandably, only few 
+(a) As new methods are proposed in literature, understandably, only few 
 groups are willing (or have the resources) to invest the time necessary to 
 re-implement them in their own software, especially when contributions are incremental. 
 In the rare occasions of new methods being groundbreaking, the reimplementation 
 requires a systematic duplication of efforts. 
 
-(b) both the non-availability of the software and the differences in implementation 
+(b) Both the non-availability of the software and the differences in implementation 
 details render a direct comparison of different software implementations difficult, 
 if not impossible. 
 This limits the ability to cross-validate the correctness of different 
 implementations of the same method or to compare accuracy and effectiveness
 of different methods.
+
+(c) The variety of optical setups resulted in an accumulation of different
+incompatible file binary formats, some vendor-specific and some custom-made. 
+This clearly represent an additional barrier in data exchange between 
+groups using different hardware and aggravate the previous issues.
+
+Effectively, these issues we have created islands of non-communicating groups 
+(regarding software and data sharing). This is issue is in stark contrast 
+with the consolidated tradition in the biological science of openly sharing 
+reagents and samples.
 
 From a more general stance, since the pioneering work of Donoho group in the 90's~\cite{Buckheit_1995}, 
 it is widely understood that developing and maintaining open source scientific software
@@ -63,6 +73,9 @@ based on Juyter Notebook~\cite{Shen_2014} is designed to facilitate
 computational reproducibility. 
 FRETBursts is hosted and openly developed on GitHub~\cite{Blischak_2016,Prli__2012}, 
 where users can send comments, report issues or contribute code.
+In a parallel effort, some of the authors recently introduced a common
+file format for timestamp-based single-molecule fluorescence experiments
+called Photon-HDF5~\cite{Ingargiola_2016}.
 
 Understanding smFRET burst analysis requires several concepts and definitions.
 In this paper we aim to provide a brief introduction to smFRET analysis concepts
