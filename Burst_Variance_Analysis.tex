@@ -1,5 +1,4 @@
-\section{Implementing burst variance analysis (BVA)}
-
+\section{Implementing Burst Variance Analysis}
 
 \label{sec:bva}
 In this section we describe how to implement the burst variance analysis (BVA)~\cite{Torella_2011}.
@@ -12,11 +11,38 @@ While, in general, several peaks indicate the presence of multiple subpopulation
 a single peak cannot be a priori associated with a single FRET efficiency,
 unless a detailed shot-noise analysis is carried out~\cite{Nir_2006,Antonik2006}.
 
-The width of a FRET efficiency population has a typical lower boundary that is caused due to shot noise driven by low number counting statistics. A broader FRET efficiency distribution can be accounted for a mixture of multiple non-interconverting species with different FRET efficiencies, and/or a mixture of dynamic species, interconverting at times comparable to the diffusion time. Burst variance analysis (BVA) is an analysis method for single molecule FRET experiments, developed to detect molecular dynamics~\cite{Torella_2011}. It has been successfully implemented to identify heterogeneities in FRET histograms due to dynamic processes of biomolecules in the milliseconds' time scale~\cite{Torella_2011, Robb_2013}.
+The width of a FRET distribution has a typical lower boundary set by shot noise, which is caused by
+the statistics of discrete photon-detection events. FRET distributions broader than the shot noise limit, 
+can be ascribed to a static mixture of species with slightly different FRET efficiencies, 
+or to a specie undergoing dynamic transitions (e.g. interconversion between multiple states,
+diffusion in a continuum of conformations, binding-unbinding events, etc...).
+By simply looking at the FRET histogram,  in cases when there is single peak broader than shot-noise, 
+it is not possible to discriminate between the static and dynamic case.
+The BVA method has been developed to address this issue of detecting the presence of dynamics 
+in FRET distributions~\cite{Torella_2011}, 
+and has been successfully applied to identify biomolecular processes with 
+dynamics on the millisecond time-scale~\cite{Torella_2011, Robb_2013}.
 
-a FRET efficiency (sub-)population originating from a single static FRET efficiency has the minimum width and the sub-bursts acceptor counts ($N_a$) can be modeled as a binomial distribution, 
+The basic idea behind BVA is slicing bursts in sub-bursts with a fixed number of photons $n$,
+and comparing the empirical variance of acceptor counts across all sub-bursts in a burst 
+with the theoretical shot-noise limited variance, dictated by the Binomial distribution.
+An empirical variance of sub-bursts larger than the shot-noise limited value indicates
+the presence of dynamics. Naturally, since the estimation of the sub-bursts variance is affected
+by uncertainty, BVA analysis provides and indication of an higher or lower probability
+of observing dynamics.
+
+In a FRET (sub-)population distribution originating from a single static FRET efficiency,
+the sub-bursts acceptor counts $N_a$ can be modeled as a Binomial-distributed random variable 
 $N_a \sim \operatorname{Binom} \{n, E\}$, where $n$ is the number of photons in each sub-burst and 
-$E$ is the FRET efficiency (In practice, Proximity ratio is used as $E$, instead of FRET efficiency). Since, $N_a$ follow a binomial distribution, as modeled, and $E = N_a/n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std} ~\cite{Torella_2011}. 
+$E$ is the estimated population FRET efficiency. Note that, without approximation, we can replace 
+E with PR and use the uncorrected counts. This is possible because, regardless of the 
+molecula FRET efficiency, the detected counts are partitioned between donor and acceptor channel
+according to a Binomila distribution whit a $p$ parameter equal to PR.
+The only approximation done here and in the following paragraphs is neglecting the presence background. 
+We refer the interested reader to~\cite{Torella_2011} for further discussion.
+
+the PR instead of the corrected The same considerations holds if, instead of $E$ 
+we use the PR grated that we used the uncorrected acceptor counts in this case.  and Note that, we can also substitute $E$ with $PR$ Proximity ratio is used as $E$, instead of FRET efficiency). Since, $N_a$ follow a binomial distribution, as modeled, and $E = N_a/n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std} ~\cite{Torella_2011}. 
 This is an approximation because background counts (both from sample and detector's dark counts) add additional variance that is not taken into account. However, the approximation works well in practical cases because the background contribution
 is normally a small fraction of the total number of counts (therefore it marginally contributes to the variance).
 
