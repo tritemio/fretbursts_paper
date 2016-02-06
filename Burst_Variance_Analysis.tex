@@ -20,9 +20,12 @@ $E$ is the FRET efficiency. (In practice, Proximity ratio is used as $E$, instea
 is normally a small fraction of the total number of counts (therefore it marginally contributes to the variance).
 
 
-\begin{equation}a
-a+b
+\begin{equation}
+\label{eq:binom_dist}
+N_a \sim \operatorname{Binom} \{n, E\}
 \end{equation}
+
+
 BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing \textit{n} consecutive photons, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to an expected standard deviation based on shot noise limited distribution~\cite{Torella_2011}. 
 
 If the observed broadening originates from different molecules having distinct FRET efficiencies without dynamics, $s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve rationalized by a binomial distribution (see equation 4 in~\cite{Torella_2011}). However, if the observed broadness is due to millisecond dynamics of single species of biomolecules, $s_E$ of each burst is supposed to be larger than the expected standard deviation and sit above the expected standard deviation curve as shown in figure .
