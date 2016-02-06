@@ -1,5 +1,6 @@
 \section{Implementing Burst Variance Analysis}
 
+
 \label{sec:bva}
 In this section we describe how to implement the Burst Variance Analysis (BVA)~\cite{Torella_2011}.
 FRETBurts provides well-tested, general-purpose functions for timestamps and burst data 
@@ -18,12 +19,10 @@ eq.~\ref{eq:binom_dist}, where $n$ is the number of photons in each sub-burst an
 $E$ is the FRET efficiency. (In practice, Proximity ratio is used as $E$, instead of FRET efficiency) Since, as mentioned, $N_a$ will follow a binomial distribution and $E$ = $N_a$/$n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std}. This is an approximation because background counts (both from sample and detector's dark counts) add additional variance that is not taken into account. However, the approximation works well in practical cases because the background contribution
 is normally a small fraction of the total number of counts (therefore it marginally contributes to the variance).
 
-\begin{equation}
-\label{eq:binom_dist}
-$N_a$ \sim \operatorname{Binom} \{n, E\}
+
+\begin{equation}a
+a+b
 \end{equation}
-
-
 BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing \textit{n} consecutive photons, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to an expected standard deviation based on shot noise limited distribution~\cite{Torella_2011}. 
 
 If the observed broadening originates from different molecules having distinct FRET efficiencies without dynamics, $s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve rationalized by a binomial distribution (see equation 4 in~\cite{Torella_2011}). However, if the observed broadness is due to millisecond dynamics of single species of biomolecules, $s_E$ of each burst is supposed to be larger than the expected standard deviation and sit above the expected standard deviation curve as shown in figure .
