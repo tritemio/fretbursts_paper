@@ -36,21 +36,23 @@ the sub-bursts acceptor counts $N_a$ can be modeled as a Binomial-distributed ra
 $N_a \sim \operatorname{Binom} \{n, E\}$, where $n$ is the number of photons in each sub-burst and 
 $E$ is the estimated population FRET efficiency. Note that, without approximation, we can replace 
 E with PR and use the uncorrected counts. This is possible because, regardless of the 
-molecula FRET efficiency, the detected counts are partitioned between donor and acceptor channel
+molecular FRET efficiency, the detected counts are partitioned between donor and acceptor channel
 according to a Binomila distribution whit a $p$ parameter equal to PR.
-The only approximation done here and in the following paragraphs is neglecting the presence background. 
+The only approximation done here and in the following paragraphs is neglecting the presence background
+(a reasonable approximation since the backgrounds counts are in general a very small fraction of
+the total counts). 
 We refer the interested reader to~\cite{Torella_2011} for further discussion.
 
-the PR instead of the corrected The same considerations holds if, instead of $E$ 
-we use the PR grated that we used the uncorrected acceptor counts in this case.  and Note that, we can also substitute $E$ with $PR$ Proximity ratio is used as $E$, instead of FRET efficiency). Since, $N_a$ follow a binomial distribution, as modeled, and $E = N_a/n$, we expect the standard deviation of $E$ for the sub-bursts to be distributed according to eq.~\ref{eq:binom_std} ~\cite{Torella_2011}. 
-This is an approximation because background counts (both from sample and detector's dark counts) add additional variance that is not taken into account. However, the approximation works well in practical cases because the background contribution
-is normally a small fraction of the total number of counts (therefore it marginally contributes to the variance).
+If $N_a$ follow a binomial distribution, the random variable $E = N_a/n$,
+has standard deviation reported in eq.~\ref{eq:binom_std}. 
 
 \begin{equation}
 \label{eq:binom_std}
 \operatorname{Std(\textit{E})} = {\sqrt{\frac{E(1 - E)}{n}}}
 \end{equation}
 
-BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing a constant number of consecutive photons,~\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to an expected standard deviation based on shot noise limited distribution~\cite{Torella_2011}. 
+BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing a constant number of consecutive photons,~\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{binom_std}). 
 
-If the observed broadening originates from different molecules having distinct FRET efficiencies without dynamics, $s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve based on eq.~\ref{eq:binom_std} (Fig.~\ref{fig:bva_static}). However, if the observed broadness is due to millisecond dynamics of single species of biomolecules, $s_E$ of each burst is supposed to be larger than the expected standard deviation and sit above the expected standard deviation curve as shown in figure~\ref{fig:bva_dynamic}.
+If, as in figure~\ref{fig:bva_static}, the observed distribution originates a static mixture 
+of FRET efficiencies (without dynamics), 
+$s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve based on eq.~\ref{eq:binom_std}. Conversely, if the observed distribution is due to dynamics of single species of biomolecules as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected standard deviation and will sit above the expected standard deviation curve as shown in figure~\ref{fig:bva_dynamic}.
