@@ -2,8 +2,8 @@
 \label{sec:bg_calc}
 
 The first step of smFRET analysis involves estimating background rates.
-For example, to compute the background every 30 s, using a minimal timestamp
-delay threshold of 2 ms for all the photon streams, execute:
+For example, to compute the background every 30 s, using a minimal inter-photon
+delay threshold of 2~ms for all the photon, we use:
 
 \begin{lstlisting}
 d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
@@ -12,28 +12,22 @@ d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
 The first argument (\verb|bg.exp_fit|) is the underlying function used to fit the
 background in each period and for each photon stream (see section~\ref{sec:bg_intro}).
 The function
-\verb|bg.exp_fit| estimates the background using a Maximum Likelihood Estimation
+\verb|bg.exp_fit| estimates the background using a maximum likelihood estimation
 (MLE) of the delays distribution. Additional fitting functions are available in
-\verb|bg| namespace (see the
-\href{http://fretbursts.readthedocs.org/en/latest/background.html}
-{\texttt{background} module}). The second argument, \verb|time_s|, is the
-\textit{background period} (section~\ref{sec:bg_intro}) and the third argument
-is the timestamp delay threshold above which the distribution is assumed exponential.
-It is possible to use different thresholds
-for each photon stream passing a
-\href{https://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences}{tuple}
-as \verb|tail_min_us| (instead of a scalar).
-For an ALEX measurement, the tuple needs to have 5 values
-corresponding to thresholds for the 5 photon streams. The list of photon
-streams for a \verb|Data| object can be found in the \verb|ph_streams|
-attribute (in the present example \verb|d.ph_streams|).
+\verb|bg| namespace 
+(i.e. the \verb|background| modulw, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
+{link}). The second argument, \verb|time_s|, is the
+\textit{background period} (section~\ref{sec:bg_intro}) and the third, \verb|tail_min_us|,
+is the inter-photon delay threshold above which the distribution is assumed exponential.
+It is possible to use different thresholds for each photon stream, passing a
+tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
 
 Finally, it is possible to use a heuristic estimation of the threshold using
-\verb|tail_min_us='auto'|. For more details refer to the
-\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.calc\_bg}{\texttt{calc\_bg} documentation}.
+\verb|tail_min_us='auto'|. For more details refer to the \verb|calc_bg| documentation
+(\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.calc_bg}{link}).
 
 After the background has been estimated, it is useful to compare the histogram of 
-photon waiting times with an the fitted exponential distribution as shown in figure~\ref{fig:bg_dist_all}
+inter-photon delays with an the fitted exponential distribution as shown in figure~\ref{fig:bg_dist_all}
 (see section~\ref{sec:bg_intro}). This plot is performed with:
 
 \begin{lstlisting}
@@ -52,7 +46,19 @@ can contribute to the background even when focusing deep into the sample (10um o
 and these impurities tend to bleach on timescales of minutes resulting in
 background variations such as the one shown in figure~\ref{fig:bg_timetrace}a.
 Another source of background variation, visible in figure~\ref{fig:bg_timetrace}b, is 
-the evaporation in case the sample was placed on the coverglass without an enclosure (gasket).
+the evaporation in case the sample is placed on the coverglass without an enclosure (gasket).
+
+\paragraph{Python details} For an ALEX measurement, the tuple passed to
+\verb|tail_min_us| to define the thresholds, is required to have have 
+5 values corresponding the 5 photon streams. 
+The ordering of the photon streams can be obtained from
+the \verb|Data.ph_streams| attributes (i.e. \verb|d.ph_streams| in our example).
+The estimated background rates are stored in the \verb|Data| attributes
+\verb|bg_dd|, \verb|bg_ad| and \verb|bg_aa|, corresponding to the photon
+streams \verb|Ph_sel(Dex='Dem')|, \verb|Ph_sel(Dex='Aem')| and \verb|Ph_sel(Aex='Aem')|
+respectively. These attributes are lists of arrays (one array per excitation spot).
+The arrays contain the estimated background rates in the different background periods.
+
 
 \subsubsection{Error metric and optimal threshold}
 
