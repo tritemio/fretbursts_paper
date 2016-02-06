@@ -15,20 +15,20 @@ The function
 \verb|bg.exp_fit| estimates the background using a maximum likelihood estimation
 (MLE) of the delays distribution. Additional fitting functions are available in
 \verb|bg| namespace 
-(i.e. the \verb|background| modulw, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
+(i.e. the \verb|background| module, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
 {link}). The second argument, \verb|time_s|, is the
 \textit{background period} (section~\ref{sec:bg_intro}) and the third, \verb|tail_min_us|,
 is the inter-photon delay threshold above which the distribution is assumed exponential.
 It is possible to use different thresholds for each photon stream, passing a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
-
 Finally, it is possible to use a heuristic estimation of the threshold using
 \verb|tail_min_us='auto'|. For more details refer to the \verb|calc_bg| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.calc_bg}{link}).
 
-After the background has been estimated, it is useful to compare the histogram of 
-inter-photon delays with an the fitted exponential distribution as shown in figure~\ref{fig:bg_dist_all}
-(see section~\ref{sec:bg_intro}). This plot is performed with:
+FRETBursts provides are two kind of plots to represent the background. One is the histograms
+of inter-photon delays compared to the fitted exponential distribution reported in 
+figure~\ref{fig:bg_dist_all}) (see section~\ref{sec:bg_intro} for details on the inter-photon distribution). 
+This plot is performed with the command:
 
 \begin{lstlisting}
 dplot(d, hist_bg, bp=0)
@@ -39,26 +39,33 @@ When not specified the default is 0, i.e. the first period.
 Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases when the 
 background fitting procedure returns unreasonable values. 
 
-Another useful plot is the timetrace of the estimated background, as shown in 
-figure~\ref{fig:bg_timetrace}. This plot allows to monitor background changes
-taking place during the measurement. In our experience, coverglass impurities
-can contribute to the background even when focusing deep into the sample (10um or more),
-and these impurities tend to bleach on timescales of minutes resulting in
-background variations such as the one shown in figure~\ref{fig:bg_timetrace}a.
-Another source of background variation, visible in figure~\ref{fig:bg_timetrace}b, is 
-the evaporation in case the sample is placed on the coverglass without an enclosure (gasket).
+The second background-related plot is the timetrace of the estimated background rates, 
+as shown in figure~\ref{fig:bg_timetrace}. This plot allows to monitor background changes
+taking place during the measurement. This plot is obtained with the commans:
+
+\begin{lstlisting}
+dplot(d, timetrace_bg)
+\end{lstlisting}
+
+Coverglass impurities can contribute to the background even when focusing 
+deep into the sample (10μm or more),
+These impurities tend to bleach on timescales of minutes resulting in
+background variations during the course of the measurement, such as
+the one shown in figure~\ref{fig:bg_timetrace}a.
+Additionally, when the sample in not sealed in an observation chamber,
+evaporation can contribute to background variations, similar to the
+one shown in figure~\ref{fig:bg_timetrace}b.
 
 \paragraph{Python details} For an ALEX measurement, the tuple passed to
 \verb|tail_min_us| to define the thresholds, is required to have have 
 5 values corresponding the 5 photon streams. 
-The ordering of the photon streams can be obtained from
-the \verb|Data.ph_streams| attributes (i.e. \verb|d.ph_streams| in our example).
+The order of the photon streams can be obtained from
+the \verb|Data.ph_streams| attribute (i.e. \verb|d.ph_streams| in our example).
 The estimated background rates are stored in the \verb|Data| attributes
 \verb|bg_dd|, \verb|bg_ad| and \verb|bg_aa|, corresponding to the photon
 streams \verb|Ph_sel(Dex='Dem')|, \verb|Ph_sel(Dex='Aem')| and \verb|Ph_sel(Aex='Aem')|
 respectively. These attributes are lists of arrays (one array per excitation spot).
 The arrays contain the estimated background rates in the different background periods.
-
 
 \subsubsection{Error metric and optimal threshold}
 
