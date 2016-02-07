@@ -12,6 +12,7 @@ burst-selection.tex
 figures/alex_jointplot/alex_jointplot.png
 figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
+figures/hist_fit/hist_fit.png
 Timestamps_and_burst_data.tex
 Burst_Variance_Analysis.tex
 figures/20dA_20dT_200mMMgcl_ALEX_BVA5/20dA_20dT_200mMMgcl_ALEX_BVA5.png
