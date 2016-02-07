@@ -5,7 +5,6 @@ Concepts.tex
 dataload.tex
 figures/ALEX_alternation_double/ALEX_alternation_double.png
 background-estimation.tex
-figures/ph_delays_distrib1/ph_delays_distrib1.png
 figures/ph_delays_distrib_all/ph_delays_distrib_all.png
 figures/background_timetrace/background_timetrace.png
 burst-search.tex
