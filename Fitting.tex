@@ -60,8 +60,7 @@ as well as the \verb|bursts_fitter| function documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.bursts_fitter}{link}).
 
 \paragraph{Python details}
-Under the hood, histogram fits in FRETBursts are performed using the
-\href{http://lmfit.github.io/lmfit-py/}{lmfit} library~\cite{lmfit}.
+
 Models returned by FRETBursts's factory functions (\verb|mfit.factory_*|) 
 are \verb|lmfit.Model| objects (\href{https://lmfit.github.io/lmfit-py/model.html}{link}).
 Custom models can be created calling \verb|lmfit.Model| directly.
@@ -69,7 +68,7 @@ When an \verb|lmfit.Model| is fitted, it returns a \verb|ModelResults| object
 (\href{https://lmfit.github.io/lmfit-py/model.html#the-modelresult-class}{link})
 which contains all the information related to the fit (model, data, 
 parameters with best values and uncertainties) and useful methods to operate on fit results. 
-FRETBursts puts \verb|ModelResults| of each channel in the list 
+FRETBursts puts a \verb|ModelResults| object of each excitation spot in the list 
 \verb|ds.E_fitter.fit_res|.
 As an example, to get the reduced $\chi^2$ value of the E histogram fit in a 
 single-spot measurement \verb|d|, we use:
@@ -81,9 +80,9 @@ d.E_fitter.fit_res[0].redchi
 Other useful attributes are \verb|aic| and \verb|bic| which contain the 
 Akaike information criterion (AIC) and the Bayes Information criterion (BIC)
 quantities. AIC and BIC allow to compare different models and
-to select the most approriate for the data at hand.
+to select the most appropriate for the data at hand.
 
 Example of defining and modifying models for fitting are provided in 
-the μs-ALEX FRETBursts tutorial (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb}{link}). 
-Interested users should also refer to the comprehensive lmfit's documentation
+the afore mentioned μs-ALEX notebook.
+Users can also refer to the comprehensive lmfit's documentation
 (\href{http://lmfit.github.io/lmfit-py/}{link}).
