@@ -34,7 +34,6 @@ Photon streams are selected from the full (all-photon) timestamps array using
 boolean masks. The masks can be obtained using the method \verb|Data.get_ph_mask|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html?highlight=get_ph_mask#fretbursts.burstlib.Data.get_ph_mask}{link}).
 \verb|Bursts| objects 
-(\href{http://fretbursts.readthedocs.org/en/latest/burstsearch.html}{link})
 internally store the start and stop times and indexes in a numpy array.
 The other fields are computed on-the-fly using class properties, so they are always
 up to date even if start and stop are modified. Iteration over \verb|Bursts| is
