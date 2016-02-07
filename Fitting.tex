@@ -29,12 +29,21 @@ bext.bursts_fitter(ds, 'E', binwidth=0.03,
 Changing \verb|'E'| with \verb|'S'| will fit the S histogram instead.
 The argument \verb|binwidth| specifies the histogram bin width and 
 the argument \verb|model| takes pre-initialized model used to be used for
-fitting.
+fitting. 
 
 All fitting results (including best fit values, uncertainties, etc...), 
 are stored in the \verb|E_fitter| (or \verb|S_fitter|)
 attributes of the \verb|Data| variable (here named \verb|ds|).
-In order to plot the fitted model with the FRET histogram, we pass the parameter
+To print a comprehensive summary of the fitting results including
+uncertainties, reduced $\chi^2$ and correlation between parameters
+we can use the following command:
+
+\begin{lstlisting}
+fit_res = ds.E_fitter.fit_res[0]
+print(fit_res.fit_report())
+\end{lstlisting}
+
+To plot the fitted model together with the FRET histogram, we pass the parameter
 \verb|show_model=True| to \verb|hist_fret| function as follows
 (see also section~\ref{sec:plotting}):
 
