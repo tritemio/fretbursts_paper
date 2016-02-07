@@ -23,7 +23,7 @@ It is possible to use different thresholds for each photon stream, passing a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
 Finally, it is possible to use a heuristic estimation of the threshold using
 \verb|tail_min_us='auto'|. For more details refer to the \verb|calc_bg| documentation
-(\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.calc_bg}{link}).
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.calc_bg}{link}).
 
 FRETBursts provides are two kind of plots to represent the background. One is the histograms
 of inter-photon delays compared to the fitted exponential distribution reported in 
@@ -39,25 +39,22 @@ When not specified the default is 0, i.e. the first period.
 Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases when the 
 background fitting procedure returns unreasonable values. 
 
-The second background-related plot is a timetrace of background rates, 
+The second background-related plot is the timetrace of the estimated background rates, 
 as shown in figure~\ref{fig:bg_timetrace}. This plot allows to monitor background changes
-taking place during the measurement and is obtained with the command:
+taking place during the measurement. This plot is obtained with the commans:
 
 \begin{lstlisting}
 dplot(d, timetrace_bg)
 \end{lstlisting}
 
-Normally, samples should have a constant background as a function of time
-like in figure~\ref{fig:bg_timetrace}(a). However, oftentimes, non-ideal
-experimental conditions can yield a time-varying background, as shown in
-figure~\ref{fig:bg_timetrace}(b).
-For example, when the sample is not sealed in an observation chamber,
-evaporation can induce background variations (typically increasing)
-as a function of time. Additionally,
-cover-glass impurities can contribute to the background even when focusing 
-deep into the sample (10μm or more).
+Coverglass impurities can contribute to the background even when focusing 
+deep into the sample (10μm or more),
 These impurities tend to bleach on timescales of minutes resulting in
-background variations during the course of the measurement.
+background variations during the course of the measurement, such as
+the one shown in figure~\ref{fig:bg_timetrace}a.
+Additionally, when the sample in not sealed in an observation chamber,
+evaporation can contribute to background variations, similar to the
+one shown in figure~\ref{fig:bg_timetrace}b.
 
 \paragraph{Python details} For an ALEX measurement, the tuple passed to
 \verb|tail_min_us| to define the thresholds, is required to have have 
