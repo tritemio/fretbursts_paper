@@ -39,22 +39,25 @@ When not specified the default is 0, i.e. the first period.
 Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases when the 
 background fitting procedure returns unreasonable values. 
 
-The second background-related plot is the timetrace of the estimated background rates, 
+The second background-related plot is a timetrace of background rates, 
 as shown in figure~\ref{fig:bg_timetrace}. This plot allows to monitor background changes
-taking place during the measurement. This plot is obtained with the commans:
+taking place during the measurement and is obtained with the command:
 
 \begin{lstlisting}
 dplot(d, timetrace_bg)
 \end{lstlisting}
 
-Coverglass impurities can contribute to the background even when focusing 
-deep into the sample (10μm or more),
+Normally, samples should have a constant background as a function of time
+like in figure~\ref{fig:bg_timetrace}(a). However, oftentimes, non-ideal
+experimental conditions can yield a time-varying background, as shown in
+figure~\ref{fig:bg_timetrace}(b).
+For example, when the sample is not sealed in an observation chamber,
+evaporation can induce background variations (typically increasing)
+as a function of time. Additionally,
+cover-glass impurities can contribute to the background even when focusing 
+deep into the sample (10μm or more).
 These impurities tend to bleach on timescales of minutes resulting in
-background variations during the course of the measurement, such as
-the one shown in figure~\ref{fig:bg_timetrace}a.
-Additionally, when the sample in not sealed in an observation chamber,
-evaporation can contribute to background variations, similar to the
-one shown in figure~\ref{fig:bg_timetrace}b.
+background variations during the course of the measurement.
 
 \paragraph{Python details} For an ALEX measurement, the tuple passed to
 \verb|tail_min_us| to define the thresholds, is required to have have 
