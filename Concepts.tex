@@ -19,13 +19,13 @@ Each array contains timestamps from both donor (D) and acceptor (A) channels.
 In ALEX measurements~\cite{Lee_2005}, we can further differentiate between
 photons emitted during D and A excitation periods. In FRETBursts the different
 selections of photons/timestamps are called ``photon streams'' and they are
-specified with a \verb|PhSel| object 
+specified with a \verb|Ph_sel| object 
 (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link}). 
 In non-ALEX smFRET data there are 3 photon streams
 (table~\ref{tab:ph_sel_smfret}), while in ALEX data we have 5 base photon
 streams (table~\ref{tab:ph_sel_alex}).
 
-The \verb|PhSel| class (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link})
+The \verb|Ph_sel| class (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link})
 allows the expression of any combination of photon streams.
 For example, in ALEX measurements, the D-emission during A-excitation stream is
 usually excluded because it does not contain any useful signal~\cite{Lee_2005}.
