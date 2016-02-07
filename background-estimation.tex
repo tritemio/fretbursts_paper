@@ -69,22 +69,20 @@ The arrays contain the estimated background rates in the different background pe
 
 \subsubsection{Error metric and optimal threshold}
 
-The functions that fit the background also return an estimation of the
-quality of the fit, computed as the distance between the empirical
-\href{http://en.wikipedia.org/wiki/Cumulative\_distribution\_function}{cumulative distribution function}
-(CDF) and fitted CDF. Two different distance metrics can be returned.
-The first is the
-\href{http://en.wikipedia.org/wiki/Kolmogorov\%E2\%80\%93Smirnov\_test}{Kolgomorov-Smirnov}
-statistics (the maximum of the difference between the empirical and the
-fitted CDF) and the second is the
-\href{http://en.wikipedia.org/wiki/Cram\%C3\%A9r\%E2\%80\%93von\_Mises\_criterion}{Cramér von Mises}
+The functions used to fit the background provide also a goodness-of-fit estimator 
+computed on the basis of the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}. 
+The ``distance'' between the EDF and the theoretical (i.e. exponential) cumulative distribution
+represent and indicator of the quality of fit.
+Two different distance metrics can be returned by the background fitting functions.
+The first is the Kolgomorov-Smirnov statistics, which uses the maximum of the difference 
+between the EDF and the theoretical distribution. The second is the Cramér von Mises
 statistics corresponding to the integral of the squared residuals
-(see the code
-\href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/background.py#L41}{here}).
+(see the code for more details,
+\href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/background.py#L41}{link}).
 
-In principle, the optimal threshold minimizes
-the error metric. This approach is implemented by the function
-\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.calc\_bg\_brute}{calc\_bg\_brute}
-in the
-\href{http://fretbursts.readthedocs.org/en/latest/plugins.html}{burstlib\_ext module} and can be used
-in cases when a user wants to extract the most accurate estimation of background rates.
+In principle, the optimal interphoton-delay threshold will minimize
+the error metric. This approach is implemented by the function \verb|calc_bg_brute|
+(\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.calc\_bg\_brute}{link}) which performs a brute-force search in order to find the optimal threshold.
+This level of sofistication in estimation the background rates is not
+necessary under typical circumstances, as the difference between an optimal threshold
+and a manually (or euristically) choosen one is negligible in most practical cases.
