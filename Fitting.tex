@@ -43,9 +43,10 @@ fit_res = ds.E_fitter.fit_res[0]
 print(fit_res.fit_report())
 \end{lstlisting}
 
-To plot the fitted model together with the FRET histogram, we pass the parameter
-\verb|show_model=True| to \verb|hist_fret| function as follows
-(see also section~\ref{sec:plotting}):
+To plot the fitted model together with the FRET histogram as in 
+figure~\ref{fig:histfit}, we pass the parameter \verb|show_model=True| 
+to \verb|hist_fret| function as follows 
+(see section~\ref{sec:plotting} for an introduction to plotting):
 
 \begin{lstlisting}
 dplot(ds, hist_fret, show_model=True)
