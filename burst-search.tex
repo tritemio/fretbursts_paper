@@ -8,7 +8,8 @@ Following background estimation, burst search is the next step of
 the analysis.
 In FRETBursts, a standard burst search on a single photon stream
 (see section~\ref{sec:burstsearch_intro}) is performed by calling the
-\href{http://fretbursts.readthedocs.org/en/latest/data\_class.html#fretbursts.burstlib.Data.burst\_search}{\texttt{burst\_search} method}.
+\verb|Data.burst_search| method
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search}{link}).
 For example, the following command:
 
 \begin{lstlisting}
@@ -43,9 +44,10 @@ d.burst_search(min_rate_cps=50e3, m=10,
 \end{lstlisting}
 
 Finally, to perform a DCBS burst search (or in general an AND gate burst search,
-see section~\ref{sec:burstsearch_intro}) the plugin function
-\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib\_ext.burst\_search\_and\_gate}{\texttt{burst\_search\_and\_gate}}
-can be used as in the following example:
+see section~\ref{sec:burstsearch_intro}) we use the function
+\verb|burst_search_and_gate|
+(\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{link})
+as in the following example:
 
 \begin{lstlisting}
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
@@ -69,7 +71,7 @@ classical DCBS photon stream selection (see section~\ref{sec:burstsearch_intro})
 These arguments can be specified to select different photon streams than in
 a classical DCBS.
 
-The \href{http://fretbursts.readthedocs.org/en/latest/plugins.html}{\texttt{bext} module} 
+The \verb|bext| module (\href{http://fretbursts.readthedocs.org/en/latest/plugins.html}{link}) 
 collects "plugin" functions that provides additional algorithms 
 for processing \verb|Data| objects. 
 
@@ -98,6 +100,6 @@ proximity ratio). Next, we can use an algebraic formula to correct fitted peak
 positions (see SI of~\cite{Lee_2005}) and obtain the corrected FRET efficiency.
 FRETBursts implements the correction formulas for $E$ and $S$ in the functions
 \verb|fretmath.correct_E_gamma_leak_dir| and \verb|fretmath.correct_S|
-(\href{http://fretbursts.readthedocs.org/en/latest/fretmath.html}{documentation}). 
+(\href{http://fretbursts.readthedocs.org/en/latest/fretmath.html}{link}). 
 A complete derivation of all these correction formulas
-(and their inverse) has been posted as \href{http://nbviewer.jupyter.org/github/tritemio/notebooks/blob/master/Derivation%20of%20FRET%20and%20S%20correction%20formulas.ipynb}{notebook}.
+(and their inverse) has been posted as a notebook (\href{http://nbviewer.jupyter.org/github/tritemio/notebooks/blob/master/Derivation%20of%20FRET%20and%20S%20correction%20formulas.ipynb}{link}).
