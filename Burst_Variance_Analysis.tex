@@ -54,6 +54,12 @@ has standard deviation reported in eq.~\ref{eq:binom_std}.
 \subsection{BVA Implementation}
 BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing a constant number of consecutive photons,~\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}). 
 
-If, as in figure~\ref{fig:bva_static}, the observed distribution originates a static mixture 
-of FRET efficiencies (without dynamics), 
-$s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve based on eq.~\ref{eq:binom_std}. Conversely, if the observed distribution is due to dynamics of single species of biomolecules as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected standard deviation and will sit above the expected standard deviation curve as shown in figure~\ref{fig:bva_dynamic}.
+If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
+originates from a static mixture of FRET efficiency sub-populations (of different 
+non-interconverting molecules), 
+$s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve based on eq.~\ref{eq:binom_std}. 
+Conversely, if the observed distribution originates from biomolecules of a single specie, which 
+interconverts between different FRET sub-populations in (times comparable to diffusion 
+time), as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected 
+shot-noise-limited standard deviation, hence it will be placed above the shot-noise standard 
+deviation curve (right panel on figure~\ref{fig:bva_dynamic}).
