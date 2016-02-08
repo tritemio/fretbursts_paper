@@ -68,15 +68,15 @@ ds = d.select_bursts(select_bursts.size,
 
 \noindent and the resulting selection is plotted in figure~\ref{fig:alex_jointplot}.
 
-Another important parameter for defining the burst size is the $\gamma$-factor, i.e.
+Another important parameter for defining the burst size is the γ-factor, i.e.
 the imbalance between the donor and the acceptor channels. As noted in
-section~\ref{sec:burstsizeweights}, the $\gamma$-factor is
+section~\ref{sec:burstsizeweights}, the γ-factor is
 used to compensate bias for the different fluorescence quantum yields of the D and A
 fluorophores as well as the different photon-detection efficiencies of the D and A channels.
-When gamma-factor is not 1, neglecting its effect on burst size leads to
+When γ-factor is not 1, neglecting its effect on burst size leads to
 over-representing (in terms of number of bursts) one population versus to the others.
 
-When the gamma factor is known, users can pass the argument 
+When the γ factor is known, users can pass the argument 
 \verb|gamma| during burst selection:
 
 \begin{lstlisting}
@@ -90,7 +90,7 @@ For more information on burst size selection refer to the
 \href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select\_bursts.size}{\texttt{select\_bursts.size} documentation}. 
 
 Furthermore the \textit{Data} class provides the
-\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{method \texttt{Data.burst\_sizes()}} that returns the gamma-corrected burst sizes with or
+\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{method \texttt{Data.burst\_sizes()}} that returns the γ-corrected burst sizes with or
 without the addition of \verb|naa|.
 
 \subsubsection{Select the FRET Populations}
