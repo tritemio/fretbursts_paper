@@ -87,11 +87,12 @@ ds = d.select_bursts(select_bursts.size,
 When not specified, $\gamma=1$ is assumed.
 
 For more information on burst size selection refer to the
-\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select\_bursts.size}{\texttt{select\_bursts.size} documentation}. 
+\verb|select_bursts.size| documentation
+(\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}). 
 
-Furthermore the \textit{Data} class provides the
-\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{method \texttt{Data.burst\_sizes()}} that returns the γ-corrected burst sizes with or
-without the addition of \verb|naa|.
+\paragraph{Python details} The method \verb|Data.burst_sizes| 
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link})
+computes and returns γ-corrected burst sizes with or without addition of \verb|naa|.
 
 \subsubsection{Select the FRET Populations}
 
