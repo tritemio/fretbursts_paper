@@ -15,7 +15,7 @@ Fitting.tex
 figures/hist_fit/hist_fit.png
 Timestamps_and_burst_data.tex
 Burst_Variance_Analysis.tex
-figures/20dA_20dT_200mMMgcl_ALEX_BVA5/20dA_20dT_200mMMgcl_ALEX_BVA5.png
-figures/HP3_RT_400mM_NaCl_ALEX_BVA2/HP3_RT_400mM_NaCl_ALEX_BVA2.png
+figures/ALEX_BVA_static/ALEX_BVA_static.png
+figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
 Coding-style.tex
 Conclusions.tex
