@@ -54,7 +54,7 @@ has standard deviation reported in eq.~\ref{eq:binom_std}.
 \subsection{BVA Implementation}
 BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing a constant number of consecutive photons,~\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}). 
 
-In order to  \verb|Bursts|
+In order to perform BVA using FRETBursts, first, one has to obtain the photon mask for each channel by \verb|Data.get_ph_times| (see in 4.7). Then, 
 
 
 If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
