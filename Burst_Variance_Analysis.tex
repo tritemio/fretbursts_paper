@@ -61,7 +61,7 @@ AemDex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem'))
 Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))   
 \end{lstlisting}
 
-Note that a photon time stamp array by \verb|Data.mburst| is from µs-ALEX while BVA is based upon a single laser excitation. In this regards, to implement BVA for µs-ALEX data, one needs to reduce the photon time stamp array as if it only contains photon data during donor excitation by using \verb|Data.recompute_index_reduce|. In addition, the photon mask for accepter emission during donor excitation (AemDex_mask) has to be reduced accordingly.
+Note that a photon time stamp array by \verb|Data.mburst| is from µs-ALEX while BVA is based upon a single laser excitation. In this regards, to implement BVA for µs-ALEX data, one needs to reduce the photon time stamp array as if it only contains photon data during donor excitation by using \verb|Data.recompute_index_reduce|. In addition, the photon data array for accepter emission during donor excitation (AemDex_mask) has to be further selected accordingly.
 
 \begin{lstlisting}
 bursts = ds_FRET.mburst[0]
