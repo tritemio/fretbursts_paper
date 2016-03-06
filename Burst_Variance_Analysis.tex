@@ -71,6 +71,24 @@ AemDex_mask_d = AemDex_mask[Dex_mask]
 \end{lstlisting}
 
 
+\begin{lstlisting}
+n=7
+
+Std_small=[]
+for burst in bursts_d:
+    E_small=[]
+    startlist = range(burst.istart, burst.istop + 2 - n, n)
+    stoplist = [i + n for i in startlist]
+    for start, stop in zip(startlist, stoplist): 
+        A_D = AemDex_mask_d[start:stop].sum()
+        E = A_D / n
+        E_small.append(E)
+    Std_small.append(np.std(E_small))
+\end{lstlisting}
+
+
+
+
 
 If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
 originates from a static mixture of FRET efficiency sub-populations (of different 
