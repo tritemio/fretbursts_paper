@@ -57,11 +57,11 @@ BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containin
 In order to perform BVA using FRETBursts, first, one has to obtain the photon mask for each channel by \verb|Data.get_ph_times| (see in 4.7) as follows.
 
 \begin{lstlisting}
-AemDex_mask = ds_FRET.get_ph_mask(ph_sel=Ph_sel(Dex='Aem')) 
-Dex_mask = ds_FRET.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))   
+AemDex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem')) 
+Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))   
 \end{lstlisting}
 
-Note that photon time stamp arrays by \verb|Data.mburst| are based on ALEX (alternating laser excitation by two lasers) while BVA is based on a single laser excitation.
+Note that photon time stamp arrays by \verb|Data.mburst| are based upon ALEX (alternating laser excitation by two lasers) while BVA is based upon a single laser excitation.
 
 If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
 originates from a static mixture of FRET efficiency sub-populations (of different 
