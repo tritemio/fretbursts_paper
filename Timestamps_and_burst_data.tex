@@ -28,14 +28,19 @@ custom burst analysis techniques.
 Timestamps are stored in the \verb|Data| attribute \verb|ph_times_m|, which is a list
 or arrays, one array per excitation spot. In single-spot measurements the full
 timestamps array is accessed as \verb|Data.ph_times_m[0]|. To get  timestamps
-of arbitrary photon streams, users can use the method \verb|Data.get_ph_times|
+of arbitrary photon streams, users can call \verb|Data.get_ph_times|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html?highlight=get_ph_times#fretbursts.burstlib.Data.get_ph_times}{link}).
-Photon streams are selected from the full (all-photon) timestamps array using
-boolean masks. The masks can be obtained using the method \verb|Data.get_ph_mask|
+Photon streams are selected from the full (all-photons) timestamps array using
+boolean masks, which can be obtained calling \verb|Data.get_ph_mask|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html?highlight=get_ph_mask#fretbursts.burstlib.Data.get_ph_mask}{link}).
+All burst data (e.g. start-stop times and indexes, burst duration, etc.) are stored in 
+\verb|Bursts| objects. For uniformity, the bursts start-stop
+indexes are always referring to the all-photons timestamps array,
+regardless of the photon stream used for burst search.
 \verb|Bursts| objects 
-internally store the start and stop times and indexes in a numpy array.
-The other fields are computed on-the-fly using class properties, so they are always
-up to date even if start and stop are modified. Iteration over \verb|Bursts| is
-relatively fast, with performances similar to iterating through numpy rows.
+internally store only start and stop times and indexes. 
+The other \verb|Bursts| attributes (duration, photon counts, etc.) are computed on-the-fly 
+when requested (using class properties), thus minimizing the object state. 
+\verb|Bursts| support iteration
+with performances similar to iterating through rows of 2D row-major numpy arrays.
 
