@@ -70,7 +70,7 @@ bursts_d = bursts.recompute_index_reduce(ph_d)
 AemDex_mask_d = AemDex_mask[Dex_mask]
 \end{lstlisting}
 
-
+\verb|AemDex_mask_d[start:stop].sum| computes the number of photons emitted from acceptor in each sub-burst containing a constant number of consecutive photons,~\textit{n}. 
 
 \begin{lstlisting}
 n=7
@@ -87,7 +87,7 @@ for burst in bursts_d:
     Std_small.append(np.std(E_small))
 \end{lstlisting}
 
-After computations, one can plot the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst with the respect to each burst's FRET efficiency, as well as the expected standard deviation curve according to~ eq.~\ref{eq:binom_std} (red curve), as shown in the right panels of figure ~\ref{fig:bva_static} & ~\ref{fig:bva_dynamic}.
+After computations, one can plot $s_E$ with the respect to each burst's FRET efficiency, as well as the expected standard deviation curve according to~ eq.~\ref{eq:binom_std} (red curve), as shown in the right panels of figure ~\ref{fig:bva_static} & ~\ref{fig:bva_dynamic}.
 
 
 
