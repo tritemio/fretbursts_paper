@@ -70,7 +70,7 @@ bursts_d = bursts.recompute_index_reduce(ph_d)
 AemDex_mask_d = AemDex_mask[Dex_mask]
 \end{lstlisting}
 
-Using \verb|AemDex_mask_d[start:stop].sum| one can count the number of photons emitted from acceptor in each sub-burst containing a constant number of consecutive photons,~\textit{n}. Then, FRET efficiencies (E_small) of sub-bursts are calculated and used to obtain the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, as follows. 
+Using \verb|AemDex_mask_d[start:stop].sum| one can count the number of photons emitted from acceptor in each sub-burst containing a constant number of consecutive photons,~\textit{n}. Then, FRET efficiencies (E_small) of sub-bursts are calculated and used to obtain the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst as follows. 
 
 \begin{lstlisting}
 n=7
