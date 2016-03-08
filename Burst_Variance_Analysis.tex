@@ -115,8 +115,14 @@ for burst in bursts_d:
     E_sub_std.append(np.std(E_sub))
 \end{lstlisting}
 
-Here \verb|n| is the BVA parameter defining the number of photons in each sub-burst.
+Here \verb|n| is the BVA parameter defining the number of photons in each sub-burst. The outer loop,
+iterate through bursts, while the inner loop iterates through sub-bursts in each burst.
+The variables \verb|startlist| and \verb|stoplist| contains start-stop indexes for
+all sub-bursts in current burst.
+In the inner loop, \verb|A_D| and \verb|E| contains the number of acceptor photons and 
+FRET efficiency for the current sub-burst. Finally, the standard deviation of \verb|E| 
+(for each burst) is appended to \verb|E_sub_std|.
 
-Finally, by plotting the 2D distribution of $s_E$ (i.e. \verb|E_sub_std|) versus the average (uncorrected) E 
+By plotting the 2D distribution of $s_E$ (i.e. \verb|E_sub_std|) versus the average (uncorrected) E 
 we obtain the BVA plot of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}.
 
