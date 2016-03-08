@@ -52,44 +52,7 @@ has standard deviation reported in eq.~\ref{eq:binom_std}.
 \end{equation}
 
 \subsection{BVA Implementation}
-BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing a constant number of consecutive photons,~\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}). 
-
-In order to perform BVA using FRETBursts, first, one has to obtain the photon mask for each channel by \verb|Data.get_ph_times| (see in 4.7) as follows.
-
-\begin{lstlisting}
-AemDex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem')) 
-Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))   
-\end{lstlisting}
-
-Note that a photon time stamp array by \verb|Data.mburst| is from µs-ALEX while BVA is based upon a single laser excitation. In this regards, to implement BVA for µs-ALEX data, one needs to reduce the photon time stamp array as if it only contains photon data during donor excitation by using \verb|Data.recompute_index_reduce|. In addition, the photon data array for accepter emission during donor excitation (AemDex_mask) has to be further selected accordingly.
-
-\begin{lstlisting}
-bursts = ds_FRET.mburst[0]
-ph_d = ds_FRET.get_ph_times(ph_sel=Ph_sel(Dex='DAem'))
-bursts_d = bursts.recompute_index_reduce(ph_d)
-AemDex_mask_d = AemDex_mask[Dex_mask]
-\end{lstlisting}
-
-Using \verb|AemDex_mask_d[start:stop].sum| one can count the number of photons emitted from acceptor in each sub-burst containing a constant number of consecutive photons,~\textit{n}. Then, FRET efficiencies (E_small) of sub-bursts are calculated and used to obtain the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst as follows. 
-
-\begin{lstlisting}
-n=7
-
-Std_small=[]
-for burst in bursts_d:
-    E_small=[]
-    startlist = range(burst.istart, burst.istop + 2 - n, n)
-    stoplist = [i + n for i in startlist]
-    for start, stop in zip(startlist, stoplist): 
-        A_D = AemDex_mask_d[start:stop].sum()
-        E = A_D / n
-        E_small.append(E)
-    Std_small.append(np.std(E_small))
-\end{lstlisting}
-
-After computations, one can plot $s_E$ and the expected standard deviation curve (according to~ eq.~\ref{eq:binom_std}; red curve) with the respect to each burst's FRET efficiency as shown in the right panels of figure ~\ref{fig:bva_static} & ~\ref{fig:bva_dynamic}.
-
-
+BVA analysis consists of four steps: 1) slicing bursts into sub-bursts containing a constant number of consecutive photons,~\textit{n}, 2) computing FRET efficiencies of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-burst FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}).
 
 If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
 originates from a static mixture of FRET efficiency sub-populations (of different 
@@ -102,3 +65,54 @@ shot-noise-limited standard deviation, hence it will be placed above the shot-no
 deviation curve (right panel on figure~\ref{fig:bva_dynamic}).
 For implementation details please refer to the BVA notebook included with FRETBursts
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{link}).
+
+\paragraph{Python details}
+With FRETBursts, a user can easily get the data needed for BVA analysis. 
+For start, we need two photon streams: photon during donor excitation (Dex) and acceptor photon during donor excitation (AemDex). These selections are obtained by computing photon masks as follows (see section~\ref{sec:burststimes}):
+
+\begin{lstlisting}
+Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))   
+AemDex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem'))
+AemDex_mask_d = AemDex_mask[Dex_mask]
+\end{lstlisting}
+
+Here, the first two variables (\verb|Dex_mask| and \verb|AemDex_mask|) select 
+photon streams from the all-photons timestamps arrays,
+while \verb|AemDex_mask_d|, selects acceptor photons from the
+Dex photon stream. As shown below, this selection is
+needed to count acceptor photons in sub-bursts during BVA analysis.
+
+Next, we need burst data relative to donor excitation stream (by default 
+burst start-stop index refer to all-photons timestamps array).
+
+\begin{lstlisting}
+ph_d = ds_FRET.get_ph_times(ph_sel=Ph_sel(Dex='DAem'))
+bursts = ds_FRET.mburst[0] 
+bursts_d = bursts.recompute_index_reduce(ph_d)
+\end{lstlisting}
+
+Here, \verb|ph_d| contains the Dex timestamps, \verb|bursts| the original burst data and 
+\verb|bursts_d| the burst data with start-stop index relative to \verb|ph_d|.
+
+Finally, once previous variables are computed, we can easily implement the BVA algorithm
+by computing the $\sigma_E$ quantity for each burst.
+
+\begin{lstlisting}
+n = 7
+E_sub_std = []
+for burst in bursts_d:
+    E_sub = []
+    startlist = range(burst.istart, burst.istop + 2 - n, n)
+    stoplist = [i + n for i in startlist]
+    for start, stop in zip(startlist, stoplist): 
+        A_D = AemDex_mask_d[start:stop].sum()
+        E = A_D / n
+        E_sub.append(E)
+    E_sub_std.append(np.std(E_sub))
+\end{lstlisting}
+
+Here \verb|n| is the BVA parameter defining the number of photons in each sub-burst.
+
+Finally, by plotting the 2D distribution of $s_E$ (i.e. \verb|E_sub_std|) versus the average (uncorrected) E 
+we obtain the BVA plot of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}.
+
