@@ -3,14 +3,14 @@
 
 FRETBursts provides an open source implementation of state-of-the-art smFRET burst analysis 
 accessible to the whole single-molecule community.
-FRETBursts implements several novel concepts which can lead 
-to significantly more accurate results in specific situations:
+It implements several novel concepts which can lead 
+to significantly more accurate results. Example of novel concepts include
 time-dependent background estimation, background dependent burst search threshold,
 burst weighting, burst selection based on γ-corrected burst sizes.
 
 More importantly, FRETBursts provides a library of well-tested routines
 for timestamps and burst manipulation, making it an ideal environment to 
-quickly develop and compare novel analytical techniques.
+develop and compare novel analytical techniques with minimal effort.
 
 We summarize here what we consider to be the strengths
 of the FRETBursts software.
@@ -18,22 +18,27 @@ of the FRETBursts software.
 \begin{enumerate}
 \item Open source and openly developed. The source code can be checked, modified and
 adapted for different purposes. All the software dependencies are open source as well.
-\item Several state-of-the-art and novel algorithms for each step of the
-smFRET burst analysis pipeline are provided.
-\item Modern software engineering design: the
-\href{http://en.wikipedia.org/wiki/Don\%27t_repeat_yourself}{DRY principle}
-to reduce duplication and the
-\href{http://en.wikipedia.org/wiki/KISS_principle}{KISS principle}
-to avoid over-engineering were followed.
-\item Defensive programming~\cite{Prli__2012}: care about code readability,
+\item State-of-the-art and novel algorithms for each step of the
+smFRET burst analysis pipeline.
+\item Modern software engineering design (e.g. DRY principle
+(\href{http://en.wikipedia.org/wiki/Don\%27t_repeat_yourself}{link})
+to reduce duplication and KISS principle
+(\href{http://en.wikipedia.org/wiki/KISS_principle}{link})
+to reduce over-engineering).
+\item Defensive programming~\cite{Prli__2012}: code readability,
 unit and regression testing and continuous integration.
 \end{enumerate}
 
-Given its features, FRETBursts is both a toolkit for developing novel algorithms
-in smFRET burst analysis and a well-tested software for standard smFRET burst analysis. 
-Its open source nature and open development process assures that discovered bug 
-are always timely disclosed, and lowers the barriers
-for new users to identify and potentially fix bugs, and even develop new or improved analysis.
+We envision FRETBursts both as a standard burst analysis 
+software as well as a platform for development and assessment of novel algorithms.
+We believe that a standard software implementation can improve 
+reproducibilty and promote a faster adpotion of novel methods 
+while reducing the duplication of efforts among different groups 
+in the single-molecule community.
+Finally, FRETBursts open source nature, guarantees that the source code 
+can always be inspected, fixed and improved 
+by any member of the community.
+
 
 \section*{Acknowledgments}
 This work was supported in part by National Institutes of Health (NIH)
