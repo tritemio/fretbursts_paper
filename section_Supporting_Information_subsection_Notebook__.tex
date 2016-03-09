@@ -47,3 +47,48 @@ issues tracking and code reviews, TravisCI
 and \href{https://readthedocs.org/}{ReadTheDocs.org} for automatic documentation building and hosting.
 All these services would be extremely costly, if available \textit{tout court},
 for a proprietary software or platform~\cite{Freeman_2015}.
+
+\subsection{Development and Contributions}
+\label{sec:dev}
+
+Errors are an inevitable reality in any reasonably complex software. It is 
+therefore critical to implement countermeasures to
+minimize the probability of introducing bugs and their potential impact~\cite{Prli__2012, Wilson_2014}.
+We strive to follow modern best-practices in software development which are summarized 
+below.
+
+In FRETBursts, we highly value source code readability, a property which can 
+reduce the number of bugs by facilitating understanding and verifying the code.
+For this purpose, FRETBursts code-base is well commented (more that 35\%
+of source code), 
+follows the PEP8 python code style rules (\href{https://www.python.org/dev/peps/pep-0008/}{link}),
+and has docstrings in napoleon format (\href{http://sphinxcontrib-napoleon.readthedocs.org/}{link}).
+
+Reference documentation is built with Sphinx (\href{http://sphinx-doc.org/}{sphinx-doc.org})
+and all the API documents are automatically generated from docstrings.
+On each commit, documentation is automatically built and deployed on
+\href{https://readthedocs.org/}{ReadTheDocs.org}.
+
+Unit tests cover most of the core algorithms, ensuring consistency and
+minimizing the probability of introducing bugs. 
+The TravisCI (\href{http://travis-ci.org}{link}) continuous integration service, 
+executes the full test suite on each commit, timely reporting errors.
+As a rule, whenever a bug is discovered, the  fix also includes a new test
+to ensure that the same bug cannot happen in the future.
+In addition to the unit tests, we include a regression-test notebook
+(\href{https://github.com/tritemio/FRETBursts/blob/master/notebooks/dev/tests/FRETBursts%20-%20Regression%20tests.ipynb}{link})
+to easily compares numerical results between two versions of FRETBursts. 
+Additionally, the tutorials themselves are executed before each release as
+an additional test layer to ensure that no errors or regressions are introduced.
+
+FRETBursts is openly developed using the GitHub platform.
+Contributors of any level of expertize are welcome in the projects
+and publically acknowledged.
+Contributions can be as simple as pointing out deficiencies in the 
+documentation but can also be bug reports or corrections to 
+the documentation or code. Users willing to implement
+new features are encouraged to open an Issue on GitHub and to submit
+a Pull Request. The open source nature of FRETBursts guarantees that
+contributions will remain available to the entire single-molecule 
+community.
+
