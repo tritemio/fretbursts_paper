@@ -70,38 +70,23 @@ experiments~\cite{Ingargiola2016}. Together with Photon-HDF5,
 FRETBursts contributes to the ecosystem
 of open tools for reproducible science in the single-molecule field.
 
-
 \subsection{Paper Overview}
-Since understanding smFRET burst analysis requires several concepts and definitions,
-in this paper, we provide an introduction to smFRET bursts analysis and 
-how different steps are executed in FRETBursts. 
-We will no cover all FRETBursts
-features and options but provide an overview detailed enough for starting
-using FRETBursts and customizing the analysis. For additional information, 
-we refer the reader to the FRETBursts Reference Documentation
-(\href{http://fretbursts.readthedocs.org/}{link}) and to
-the FRETBursts µs-ALEX notebook
-(\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb}{link})
-Finally, usage questions can be posted by  opening an Issue
-on GitHub (\href{https://github.com/tritemio/FRETBursts}{link}).
+This paper is an introduction to smFRET burst analysis and FRETBursts usage.
+Therefore, after a brief overview of FRETBursts features (section~\ref{sec:overview}),
+we introduce core smFRET burst analysis concepts and terminology 
+(section~\ref{sec:concepts}). These concepts are used throughout the paper
+so reading section~\ref{sec:concepts} is highly recommended.
 
-The paper is structured as follows.
-In section~\ref{sec:overview} we give an overview of the software features,
-the modality of execution and the development style.
-In section~\ref{sec:concepts}, we
-review basic concepts and terminology needed
-to understand the smFRET burst analysis.
-In section~\ref{sec:analysis}, we detail the execution the main steps involved
+In section~\ref{sec:analysis}, we illustrate the practical steps involved
 in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining
 excitation alternation periods (section~\ref{sec:alternation}), background
 correction (section~\ref{sec:bg_calc}), burst search (section~\ref{sec:burstsearch}),
 burst selection (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}).
-The aim is to provide the reader with enough information to understand the specificities of
-the different algorithms and to be able to adapt the analysis to new situations.
-In section~\ref{sec:bva}, we show how to implement a new burst analysis in FRETBursts,
-taking as an example the Burst Variance Analysis (BVA)~\cite{Torella_2011}.
-In section~\ref{sec:dev} we describe the development process, the testing infrastructure 
-and contributors guidelines.
+The aim is elucidating the specificities and trade-off of various approaches
+with enough details to empowers reader new to the field to customize the analysis to their own needs.
+For the most advanced use-case, section~\ref{sec:bva} walks the reader thorough implementing
+Burst Variance Analysis (BVA)~\cite{Torella_2011} as an example of manipulating timestamps 
+and burst data.
 Finally, in section~\ref{sec:conclusions}, we summarize what we believe to be
 the strengths of FRETBursts software.
 
@@ -115,4 +100,3 @@ already familiar with python and can be safely skipped otherwise.
 Finally, note that all commands here reported can be found in the 
 accompanying notebooks 
 (\href{https://github.com/tritemio/fretbursts_paper}{link}).
-
