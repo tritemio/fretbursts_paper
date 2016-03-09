@@ -183,7 +183,7 @@ are (1) all photons during donor excitation (\verb|Ph_sel(Dex='DAem')|) and
 In FRETBursts the user can choose arbitrary photon streams as input, an in general
 we call this kind of search AND-gate burst search.
 
-After each burst search, it is necessary to select
+After burst search, it is necessary to select
 bursts having a minimum number of photons (burst size). In the most
 basic form, this selection can be performed during burst search by discarding
 bursts with size smaller than a threshold $L$, as originally proposed by
@@ -192,10 +192,11 @@ This method, however, neglects the effect
 of background and γ factor on the burst size and can lead to a selection
 bias of certain channels and/or sub-populations.
 For this reason we suggest performing a burst size selection after background
-correction, possibly taking into account the γ factor, as discussed in
+correction, taking into account the γ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
-In special situations, users can also choose to replace this size selection
-with another criterion such as burst duration or brightness.
+In special case, users can also choose to replace or combine 
+the burst selection based on burst size
+with another criterion such as burst duration or brightness (see section~\ref{sec:}).
 
 \subsection{γ-corrected Burst Sizes and Weights}
 \label{sec:burstsizeweights}
