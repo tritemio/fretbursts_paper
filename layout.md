@@ -13,7 +13,6 @@ figures/alex_jointplot/alex_jointplot.png
 figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
 figures/hist_fit/hist_fit.png
-Timestamps_and_burst_data.tex
 Burst_Variance_Analysis.tex
 figures/ALEX_BVA_static/ALEX_BVA_static.png
 figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
