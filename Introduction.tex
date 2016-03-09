@@ -14,78 +14,69 @@ immobilization~\cite{Dahan_1999,Eggeling_1998}.
 The field of freely-diffusing smFRET data analysis, has seen a number of significant 
 contributions over the 
 years~\cite{Fries_1998,Eggeling_2001,Zhang_2005,Gopich_2005,Lee_2005,Nir_2006,Antonik2006,Gopich_2007,Gopich_2008,Camley_2009,Santoso_2010,Torella_2011,Tomov_2012}. 
-However, so far, except for some fundamental steps of burst analysis, 
-there is no single approach that is universally accepted and broadly applied. 
-On one hand this situation stems from the fact that
-different approaches tend to answer slightly different questions.
-On the other hand, this is the result of the trade off in each research lab
-between accuracy and software complexity, in particular on the amount of effort
-each group wants to invest in implementing new non-trivial methods reported in literature.
-
-In fact, except for a recent laudable example~\cite{Murphy2014}, 
-each research group have reimplemented its own unpublished or closed-source versions
-of the analysis software, with very little collaboration or code sharing.
+Historically, each research group have implemented its own private version
+of analysis software (oftentimes highly dependent on a particular setup
+configuration) with almost no collaboration or code sharing.
 Even in our group, past smFRET papers merely mention the usage of custom-made software without 
 additional details~\cite{Lee_2005,Nir_2006}.
-The fact that setups for freely-diffusing smFRET can significantly 
-vary (in number of polarization or spectral channels for example), 
-makes the problem only worst.
-This situation, represents a real impediment to the scientific progress because:
+This situation makes it hard to reproduce and validate and build upon 
+results from different groups.
+Moreover, as new methods are proposed in literature, 
+it is oftentimes hard to quantify their advantages.
+An independent quantitative assessment
+would require a complete reimplementation, an effort a few groups can afford.
+As a results, potentially useful analysis improvements
+are rarely adopted by the community at large.
+In contrast with other consolidated traditions such as 
+sharing protocols and samples, for scientific software,
+we have relegated ourselves to islands of non-communication.
 
-(a) As new methods are proposed in literature, understandably, only few 
-groups are willing (or have the resources) to invest the time necessary to 
-re-implement them in their own software, especially when contributions are incremental. 
-In the rare occasions of new methods being groundbreaking, the reimplementation 
-requires a systematic duplication of efforts. 
+From a more general stance, non-availabilty of codes 
+used for scientific results, hinders reproducibility, 
+makes it impossible to review and validate the software correctness
+and prevents improvements and extensions by other scientists.
+This situation, common in many disciplines, 
+represents a real impediment to the scientific progress.
+Since pioneering work of Donoho group in the 90's~\cite{Buckheit_1995},
+it has become evident that developing and maintaining open source scientific software
+for reproducible research is a critical requirement of modern 
+sciencific enterprice~\cite{Ince_2012,Vihinen_2015}. 
 
-(b) Both the non-availability of the software and the differences in implementation 
-details render a direct comparison of different software implementations difficult, 
-if not impossible. 
-This limits the ability to cross-validate the correctness of different 
-implementations of the same method or to compare accuracy and effectiveness
-of different methods.
+%Peer-reviewed publications describing such software are also necessary~\cite{Pradal_2013}, 
+%although the debate is still open on the most effective model for peer-reviewing this
+%class of publications~\cite{Check_Hayden_2013,Check_Hayden_2015} 
+%(\href{https://software-carpentry.org/blog/2015/04/quality-is-free-getting-there-isnt.html}{Willson 2015})
+%(\href{https://www.mozillascience.org/effective-code-review-for-journals}{Mills 2015})
+%(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
 
-(c) The variety of optical setups resulted in an accumulation of different
-incompatible file binary formats, some vendor-specific and some custom-made. 
-This clearly represent an additional barrier in data exchange between 
-groups using different hardware and aggravate the previous issues.
-
-Effectively, these issues have created islands of non-communicating groups 
-(regarding software and data sharing), in stark contrast 
-with the consolidated tradition, in the biological sciences, of openly 
-sharing reagents and samples.
-
-From a more general stance, since the pioneering work of Donoho group in the 90's~\cite{Buckheit_1995}, 
-became clear that developing and maintaining open source scientific software
-for reproducible research is a critical requirement for progress in modern 
-science~\cite{Ince_2012,Vihinen_2015}. Peer-reviewed publications describing such software are also necessary~\cite{Pradal_2013}, 
-although the debate is still open on the most effective model for peer-reviewing this
-class of publications~\cite{Check_Hayden_2013,Check_Hayden_2015} 
-(\href{https://software-carpentry.org/blog/2015/04/quality-is-free-getting-there-isnt.html}{Willson 2015})
-(\href{https://www.mozillascience.org/effective-code-review-for-journals}{Mills 2015})
-(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
-
-Facing the previous issues, we decided to develop FRETBursts, 
+Facing these issues, we developed FRETBursts, 
 an open source Python software for burst analysis of freely-diffusing
 single-molecule FRET experiments. 
 With FRETBursts we provide a tool that is available to any scientist
-to use, study and modify. Furthermore, FRETBursts execution model 
-based on Juyter Notebook~\cite{Shen_2014} is designed to facilitate 
-computational reproducibility. 
+to use, inspect and modify. FRETBursts is suitable for routine state-of-the-art 
+analysis of smFRET data but also represents an ideal platform 
+for quantitative comparison of different methods in burst analysis.
+To facilitate reproducibility of complete analysis
+workflows, FRETBursts execution model is based on Juyter Notebook~\cite{Shen_2014}.
+A notebook contains a narrative, input paramenters, code and 
+results in a single document that is easy to share and re-execute.
+To minimize chance of bugs we employ modern software engineering techniques
+such as unit testing and continuous integration.
 FRETBursts is hosted and openly developed on GitHub~\cite{Blischak_2016,Prli__2012}, 
 where users can send comments, report issues or contribute code.
-In a parallel effort, some of the authors recently introduced a common
-file format for timestamp-based single-molecule fluorescence experiments
-called Photon-HDF5~\cite{Ingargiola2016}. The work on Photon-HDF5,
-which is fully supported by FRETBursts, complements the ecosystem
+In a parallel effort, we recently introduced Photon-HDF5,
+a open file format for timestamp-based single-molecule fluorescence 
+experiments~\cite{Ingargiola2016}. Together with Photon-HDF5,
+FRETBursts contributes to the ecosystem
 of open tools for reproducible science in the single-molecule field.
 
-Understanding smFRET burst analysis requires several concepts and definitions.
-In this paper we aim to provide a brief introduction to smFRET analysis concepts
-and terminology used by FRETBursts. We illustrate how to perform
-the fundamental steps of burst analysis, highlighting key parameters
-and algorithms available. The aim is not covering all FRETBursts
-features and options but providing an overview detailed enough for starting
+
+\subsection{Paper Overview}
+Since understanding smFRET burst analysis requires several concepts and definitions,
+in this paper, we provide an introduction to smFRET bursts analysis and 
+how different steps are executed in FRETBursts. 
+We will no cover all FRETBursts
+features and options but provide an overview detailed enough for starting
 using FRETBursts and customizing the analysis. For additional information, 
 we refer the reader to the FRETBursts Reference Documentation
 (\href{http://fretbursts.readthedocs.org/}{link}) and to
@@ -94,13 +85,11 @@ the FRETBursts µs-ALEX notebook
 Finally, usage questions can be posted by  opening an Issue
 on GitHub (\href{https://github.com/tritemio/FRETBursts}{link}).
 
-\subsection{Paper Overview}
-
 The paper is structured as follows.
-In the next section~\ref{sec:overview} we give an overview of the software features,
+In section~\ref{sec:overview} we give an overview of the software features,
 the modality of execution and the development style.
 In section~\ref{sec:concepts}, we
-review a few preliminary concepts and terminology needed
+review basic concepts and terminology needed
 to understand the smFRET burst analysis.
 In section~\ref{sec:analysis}, we detail the execution the main steps involved
 in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining
