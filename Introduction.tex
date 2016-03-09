@@ -3,69 +3,69 @@
 \subsection{Open Science and Reproducibility}
 
 In the last 20 years, single molecule FRET (smFRET), has emerged as one of the most
-useful techniques in single-molecule spectroscopy~\cite{Weiss_1999,Hohlbein_2014}. 
-Except a few specific ensemble time-resolved measurements~\cite{Lerner_2014,Rahamim_2015}, 
-smFRET unique feature is the ability to resolve conformational 
-changes of biomolecules or measure binding-unbinding kinetics on heterogeneous samples. 
-smFRET measurements on freely diffusing molecules (the focus of this paper) have the advantage 
-of probing molecules and processes without possible perturbation from surface 
-immobilization~\cite{Dahan_1999,Eggeling_1998}. 
+useful techniques in single-molecule spectroscopy~\cite{Weiss_1999,Hohlbein_2014}.
+Except a few specific ensemble time-resolved measurements~\cite{Lerner_2014,Rahamim_2015},
+smFRET unique feature is the ability to resolve conformational
+changes of biomolecules or measure binding-unbinding kinetics on heterogeneous samples.
+smFRET measurements on freely diffusing molecules (the focus of this paper) have the advantage
+of probing molecules and processes without possible perturbation from surface
+immobilization~\cite{Dahan_1999,Eggeling_1998}.
 
-The field of freely-diffusing smFRET data analysis, has seen a number of significant 
-contributions over the 
-years~\cite{Fries_1998,Eggeling_2001,Zhang_2005,Gopich_2005,Lee_2005,Nir_2006,Antonik2006,Gopich_2007,Gopich_2008,Camley_2009,Santoso_2010,Torella_2011,Tomov_2012}. 
+The field of freely-diffusing smFRET data analysis, has seen a number of significant
+contributions over the
+years~\cite{Fries_1998,Eggeling_2001,Zhang_2005,Gopich_2005,Lee_2005,Nir_2006,Antonik2006,Gopich_2007,Gopich_2008,Camley_2009,Santoso_2010,Torella_2011,Tomov_2012}.
 Historically, each research group have implemented its own private version
 of analysis software (oftentimes highly dependent on a particular setup
 configuration) with almost no collaboration or code sharing.
-Even in our group, past smFRET papers merely mention the usage of custom-made software without 
+Even in our group, past smFRET papers merely mention the usage of custom-made software without
 additional details~\cite{Lee_2005,Nir_2006}.
-This situation makes it hard to reproduce and validate and to build upon 
+This situation makes it hard to reproduce and validate and to build upon
 results from different groups.
-Moreover, as new methods are proposed in literature, 
+Moreover, as new methods are proposed in literature,
 it is oftentimes hard to quantify their performances.
 An independent quantitative assessment
 would require a complete reimplementation, an effort a few groups can afford.
 As a results, potentially useful analysis improvements
 are rarely adopted by the community at large.
-In contrast with other consolidated traditions such as 
+In contrast with other consolidated traditions such as
 sharing protocols and samples, for scientific software,
 we have relegated ourselves to islands of non-communication.
 
-From a more general stance, non-availabilty of codes 
-used for scientific results, hinders reproducibility, 
+From a more general stance, non-availability of codes
+used for scientific results, hinders reproducibility,
 makes it impossible to review and validate the software correctness
 and prevents improvements and extensions by other scientists.
-This situation, common in many disciplines, 
+This situation, common in many disciplines,
 represents a real impediment to the scientific progress.
 Since pioneering work of Donoho group in the 90's~\cite{Buckheit_1995},
 it has become evident that developing and maintaining open source scientific software
-for reproducible research is a critical requirement of modern 
-sciencific enterprice~\cite{Ince_2012,Vihinen_2015}. 
+for reproducible research is a critical requirement of modern
+scientific enterprice~\cite{Ince_2012,Vihinen_2015}.
 
-%Peer-reviewed publications describing such software are also necessary~\cite{Pradal_2013}, 
+%Peer-reviewed publications describing such software are also necessary~\cite{Pradal_2013},
 %although the debate is still open on the most effective model for peer-reviewing this
-%class of publications~\cite{Check_Hayden_2013,Check_Hayden_2015} 
+%class of publications~\cite{Check_Hayden_2013,Check_Hayden_2015}
 %(\href{https://software-carpentry.org/blog/2015/04/quality-is-free-getting-there-isnt.html}{Willson 2015})
 %(\href{https://www.mozillascience.org/effective-code-review-for-journals}{Mills 2015})
 %(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
 
-Facing these issues, we developed FRETBursts, 
+Facing these issues, we developed FRETBursts,
 an open source Python software for burst analysis of freely-diffusing
-single-molecule FRET experiments. 
+single-molecule FRET experiments.
 With FRETBursts we provide a tool that is available to any scientist
-to use, inspect and modify. FRETBursts is suitable for routine state-of-the-art 
-analysis of smFRET data but also represents an ideal platform 
+to use, inspect and modify. FRETBursts is suitable for routine state-of-the-art
+analysis of smFRET data but also represents an ideal platform
 for quantitative comparison of different methods in burst analysis.
 To facilitate reproducibility of complete analysis
 workflows, FRETBursts execution model is based on Juyter Notebook~\cite{Shen_2014}.
-A notebook contains a narrative, input paramenters, code and 
+A notebook contains a narrative, input parameters, code and 
 results in a single document that is easy to share and re-execute.
 To minimize chance of bugs we employ modern software engineering techniques
 such as unit testing and continuous integration.
-FRETBursts is hosted and openly developed on GitHub~\cite{Blischak_2016,Prli__2012}, 
+FRETBursts is hosted and openly developed on GitHub~\cite{Blischak_2016,Prli__2012},
 where users can send comments, report issues or contribute code.
 In a parallel effort, we recently introduced Photon-HDF5,
-a open file format for timestamp-based single-molecule fluorescence 
+a open file format for timestamp-based single-molecule fluorescence
 experiments~\cite{Ingargiola2016}. Together with Photon-HDF5,
 FRETBursts contributes to the ecosystem
 of open tools for reproducible science in the single-molecule field.
@@ -73,7 +73,7 @@ of open tools for reproducible science in the single-molecule field.
 \subsection{Paper Overview}
 This paper is an introduction to smFRET burst analysis and FRETBursts usage.
 Therefore, after a brief overview of FRETBursts features (section~\ref{sec:overview}),
-we introduce core smFRET burst analysis concepts and terminology 
+we introduce core smFRET burst analysis concepts and terminology
 (section~\ref{sec:concepts}). These concepts are used throughout the paper
 so reading section~\ref{sec:concepts} is highly recommended.
 
@@ -85,7 +85,7 @@ burst selection (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:
 The aim is elucidating the specificities and trade-off of various approaches
 with enough details to empowers reader new to the field to customize the analysis to their own needs.
 For the most advanced use-case, section~\ref{sec:bva} walks the reader thorough implementing
-Burst Variance Analysis (BVA)~\cite{Torella_2011} as an example of manipulating timestamps 
+Burst Variance Analysis (BVA)~\cite{Torella_2011} as an example of manipulating timestamps
 and burst data.
 Finally, in section~\ref{sec:conclusions}, we summarize what we believe to be
 the strengths of FRETBursts software.
@@ -96,7 +96,7 @@ are displayed as ``(link)''.
 In order to make the text accessible to the widest number of readers,
 we concentrated python-specific details in special subsections titled
 \textit{Python details}. These subsections provide deeper insights for readers
-already familiar with python and can be safely skipped otherwise. 
-Finally, note that all commands here reported can be found in the 
-accompanying notebooks 
+already familiar with python and can be safely skipped otherwise.
+Finally, note that all commands here reported can be found in the
+accompanying notebooks
 (\href{https://github.com/tritemio/fretbursts_paper}{link}).

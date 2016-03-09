@@ -19,8 +19,8 @@ Each array contains timestamps from both donor (D) and acceptor (A) channels.
 In ALEX measurements~\cite{Lee_2005}, we can further differentiate between
 photons emitted during D and A excitation periods. In FRETBursts the different
 selections of photons/timestamps are called ``photon streams'' and they are
-specified with a \verb|Ph_sel| object 
-(\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link}). 
+specified with a \verb|Ph_sel| object
+(\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link}).
 In non-ALEX smFRET data there are 3 photon streams
 (table~\ref{tab:ph_sel_smfret}), while in ALEX data we have 5 base photon
 streams (table~\ref{tab:ph_sel_alex}).
@@ -99,22 +99,22 @@ threshold and to apply the burst correction (section~\ref{sec:burstsearch}).
 \subsection{The \texttt{Data} Class}
 \label{sec:data_intro}
 
-The \verb|Data| class 
+The \verb|Data| class
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{link})
 is the fundamental data container in FRETBursts. It contains the
-measurement data and parameters (attributes) as well as several methods 
-for data analysis (background estimation, burst search, etc...). 
+measurement data and parameters (attributes) as well as several methods
+for data analysis (background estimation, burst search, etc...).
 All analysis results (bursts data, estimated parameters) are also stored
 as \verb|Data| attributes.
 
-There are 3 important ``burst counts'' attributes which contains  
+There are 3 important ``burst counts'' attributes which contains
 the number of photon detected in donor or acceptor channel
 during donor or acceptor excitation (table~\ref{tab:data_n}).
-The attributes in table~\ref{tab:data_n} are background-corrected by default. 
-Furthermore, \verb|na| is corrected for leakage and direct excitation 
-(section~\ref{sec:corrcoeff}) if the relative coefficients are specified 
+The attributes in table~\ref{tab:data_n} are background-corrected by default.
+Furthermore, \verb|na| is corrected for leakage and direct excitation
+(section~\ref{sec:corrcoeff}) if the relative coefficients are specified
 (by default they are 0).
-There is also a closely related attribute named \verb|nda| for donor photons 
+There is also a closely related attribute named \verb|nda| for donor photons
 during acceptor excitation. \verb|nda| is normally neglected as it only contains
 background.
 
@@ -148,8 +148,8 @@ The widely used ``sliding window'' algorithm, introduced by the Seidel group in 
 (\cite{Eggeling_1998}, \cite{Fries_1998}), involves searching for
 $m$ consecutive photons detected during a period shorter than
 $\Delta t$. In other words, bursts are regions of the photon stream where the
-local rate (computed using $m$ photons) is above a minimum threshold rate. 
-Since a universal criterion to choose the rate threshold and 
+local rate (computed using $m$ photons) is above a minimum threshold rate.
+Since a universal criterion to choose the rate threshold and
 the number of photons $m$ is, as of today, lacking, it has become a common
 practice to manually adjust those parameters for each specific measurement.
 
@@ -172,14 +172,14 @@ In order to handle the general case and to provide flexibility,
 FRETBursts allows to perform the burst search on arbitrary selections of photons.
 (see section~\ref{sec:ph_streams} for more info on photon stream definitions).
 
-Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS, which can help 
-to mitigate artifacts due to photo-physical effects such as blinking. 
-During DCBS, a search is performed independently on two photon streams 
-and bursts are marked only when both photon streams exhibit a rate higher than 
+Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS, which can help
+to mitigate artifacts due to photo-physical effects such as blinking.
+During DCBS, a search is performed independently on two photon streams
+and bursts are marked only when both photon streams exhibit a rate higher than
 the threshold, implementing a sort of AND-gate logic.
 Conventionally, the term DCBS refers to a burst search where the two photon streams
-are (1) all photons during donor excitation (\verb|Ph_sel(Dex='DAem')|) and 
-(2) acceptor channel photons during acceptor excitation (\verb|Ph_sel(Aex='Aem')|). 
+are (1) all photons during donor excitation (\verb|Ph_sel(Dex='DAem')|) and
+(2) acceptor channel photons during acceptor excitation (\verb|Ph_sel(Aex='Aem')|).
 In FRETBursts the user can choose arbitrary photon streams as input, an in general
 we call this kind of search AND-gate burst search.
 
@@ -194,7 +194,7 @@ bias of certain channels and/or sub-populations.
 For this reason we suggest performing a burst size selection after background
 correction, taking into account the γ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
-In special case, users can also choose to replace or combine 
+In special case, users can also choose to replace or combine
 the burst selection based on burst size
 with another criterion such as burst duration or brightness (see section~\ref{sec:burstsel}).
 
@@ -202,13 +202,13 @@ with another criterion such as burst duration or brightness (see section~\ref{se
 \label{sec:burstsizeweights}
 
 The number of photons detected during a burst --the ``burst size''--
-is computed using either all photons, or photons detected 
-during donor excitation period. To compute the burst size, FRETBursts uses 
+is computed using either all photons, or photons detected
+during donor excitation period. To compute the burst size, FRETBursts uses
 one of the following formulas:
 
 \begin{equation}
 \label{eq:burstsize_dex}
-n_{dex} = n_a + \gamma\,n_d 
+n_{dex} = n_a + \gamma\,n_d
 \end{equation}
 
 \begin{equation}
@@ -216,53 +216,53 @@ n_{dex} = n_a + \gamma\,n_d
 n_t = n_a + \gamma\,n_d + n_{aa}
 \end{equation}
 
-\noindent where $n_d$, $n_a$ and $n_{aa}$ are, similarly to the attributes 
+\noindent where $n_d$, $n_a$ and $n_{aa}$ are, similarly to the attributes
 in table~\ref{tab:data_n}, the background-corrected
 burst counts in different channels and excitation periods.
 $\gamma$, called the ``γ factor'', takes into account
 different quantum yields of donor and acceptor dyes and different
 photon detection efficiencies between donor and acceptor detection
 channels~\cite{Lee_2005}.
-Eq.~\ref{eq:burstsize_dex} includes only photons during donor excitation periods, 
+Eq.~\ref{eq:burstsize_dex} includes only photons during donor excitation periods,
 while eq.~\ref{eq:burstsize_allph} includes all photons.
-Burst sizes computed according to eq.~\ref{eq:burstsize_dex} 
+Burst sizes computed according to eq.~\ref{eq:burstsize_dex}
 or~\ref{eq:burstsize_allph} are called γ-corrected burst sizes.
 
 The burst search algorithm yields a set of bursts whose sizes
 approximately follows an exponential distribution.
 Bursts with large sizes (which contain most of the information)
-are much less frequent than bursts with smaller sizes. For this reason, it is 
+are much less frequent than bursts with smaller sizes. For this reason, it is
 important to select burst sizes larger than a threshold in order
-to properly characterize FRET populations (see section~\ref{sec:burstsel}). 
+to properly characterize FRET populations (see section~\ref{sec:burstsel}).
 
 Selecting bursts by size is a critically important step.
 A too low threshold will broaden the FRET populations and introduce
 artifacts (spurious peaks and patterns) due to the majority of bursts
-having E and S computed from ratios of small integers. 
-Conversely, a too high threshold will result in a lower number of bursts 
+having E and S computed from ratios of small integers.
+Conversely, a too high threshold will result in a lower number of bursts
 and possibly poor statistics in representing FRET populations.
-Additionally, when selecting bursts (see section~\ref{sec:burstsel}), 
+Additionally, when selecting bursts (see section~\ref{sec:burstsel}),
 it is important to use γ-corrected burst sizes,
 in order to avoid under-representing some FRET sub-populations
-due to different quantum yields between donor and acceptor dyes and/or 
+due to different quantum yields between donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor emission.
 
 A simple way to mitigate the dependence on the burst size threshold is
 weighting bursts according to their size (i.e. their information content)
 so that the bursts with largest sizes will have the largest weights.
-The weighting can be used to build weighted histograms or Kernel Density 
-Estimation (KDE) plots. When using weights, the choice of a particular 
+The weighting can be used to build weighted histograms or Kernel Density
+Estimation (KDE) plots. When using weights, the choice of a particular
 burst size threshold affects the shape of the burst distribution to a lesser extent,
-therefore lower thresholds can be used (yielding to better statistics) 
-without broadening the peaks of sub-populations (yielding to better 
+therefore lower thresholds can be used (yielding to better statistics)
+without broadening the peaks of sub-populations (yielding to better
 population identification).
 
 \paragraph{Python details}
-FRETBursts has the option to weight bursts using γ-corrected 
+FRETBursts has the option to weight bursts using γ-corrected
 burst sizes which optionally include acceptor excitation photons \verb|naa|.
-A weight proportional to the burst size is applied by passing the argument 
+A weight proportional to the burst size is applied by passing the argument
 \verb|weights='size'| to histogram or KDE plot functions. The \verb|weights|
-keyword can be also passed to fitting functions in order to fit 
+keyword can be also passed to fitting functions in order to fit
 the weighted E or S distributions (see section~\ref{sec:fretfit}).
 Several other weighting functions (for example quadratical) are listed in the
 \verb|fret_fit.get_weights| documentation
@@ -271,9 +271,9 @@ Several other weighting functions (for example quadratical) are listed in the
 \subsection{Plotting \texttt{Data}}
 \label{sec:plotting}
 
-FRETBursts uses 
+FRETBursts uses
 matplotlib~\cite{matplotlib}
-and seaborn~\cite{seaborn} 
+and seaborn~\cite{seaborn}
 to provide a wide range of built-in plot functions
 (\href{http://fretbursts.readthedocs.org/en/latest/plots.html}{link})
 for \verb|Data| objects.
@@ -294,11 +294,11 @@ each channel.
 
 All built-in plot functions which can be passed to
 \verb|dplot| are defined in the
-\verb|burst_plot| module 
+\verb|burst_plot| module
 (\href{http://fretbursts.readthedocs.org/en/latest/plots.html}{link}).
 
 \paragraph{Python details}
-When FRETbursts is imported, all plot functions are also imported.
+When FRETBursts is imported, all plot functions are also imported.
 To facilitate finding the plot functions through auto-completion,
 their names start with a standard prefix indicating the
 plot type. The prefixes are: \verb|timetrace| for binned timetraces
@@ -307,15 +307,15 @@ binnned), \verb|hist| for functions plotting histograms and \verb|scatter| for
 scatter plots.
 Additional plots can be easily created directly with matplotlib.
 
-By default, in order to speed-up batch processing, FRETBursts notebooks display plots 
-as static images using the \textit{inline} matplotlib backend. 
-User can switch to interactive figures inside the browser by activating 
+By default, in order to speed-up batch processing, FRETBursts notebooks display plots
+as static images using the \textit{inline} matplotlib backend.
+User can switch to interactive figures inside the browser by activating
 the interactive backend with the command \verb|%matplotlib notebook|.
 Another option is displaying figures in a new standalone window
 using a desktop graphical library such as QT4.
 In this case the command to be used is \verb|%matplotlib qt|.
 
-A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have interactive features 
+A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have interactive features
 which require the QT4 backend. As an example, after switching to the QT4 backend
 the following command:
 
@@ -325,7 +325,7 @@ dplot(d, timetrace, scroll=True, bursts=True)
 
 \noindent
 will open a new window with a timetrace plot with overlay of bursts, and an horizontal scroll-bar for quick
-"scrolling" throughout time. The user can click on a burst to have the corresponding burst info 
+"scrolling" throughout time. The user can click on a burst to have the corresponding burst info
 be printed in the notebook.
 Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows
 selecting an area on the E-S histogram using the mouse.
@@ -335,5 +335,5 @@ dplot(ds, hist2d_alex, gui_sel=True)
 \end{lstlisting}
 
 The values that identify the region are printed in the notebook and can be passed
-to the function \verb|select_bursts.ES| to select bursts inside that region 
+to the function \verb|select_bursts.ES| to select bursts inside that region
 (see section~\ref{sec:burstsel}).

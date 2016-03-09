@@ -17,11 +17,11 @@ the selected bursts.
 As mentioned before the new object will share the photon data
 arrays with the original object (\verb|d|) in order to minimize the RAM use.
 
-The first argument of \verb|select_bursts| 
+The first argument of \verb|select_bursts|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#burst-selection-methods}{link})
 is a python function implementing the "selection rule" (\verb|select_bursts.size| in this example);
 all the remaining arguments (only \verb|th1| in this case) are parameters of the selection rule.
-The \verb|select_bursts| module 
+The \verb|select_bursts| module
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html}{link})
 contains numerous built-in selection functions
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#module-fretbursts.select_bursts}{link}).
@@ -33,7 +33,7 @@ to select bursts based on their duration.
 New criteria can be easily implemented by defining a new selection function,
 which requires not more than a couple of lines of code in most cases (see the
 \verb|select_bursts| module's source code
-for several examples, 
+for several examples,
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{link}).
 
 Finally, different criteria can be combined by applying them sequentially.
@@ -53,7 +53,7 @@ have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 In the previous section, we selected bursts by size using only photons
 detected by donor and acceptor channel during donor excitation.
-Conversely, we can apply a threshold on the all-photon burst size 
+Conversely, we can apply a threshold on the all-photon burst size
 (section~\ref{sec:burstsizeweights}) by adding $n_{aa}$ to the burst size
 as in eq.~\ref{eq:burstsize_allph}. This is achieved
 by passing \verb|add_naa=True| to the selection function. When \verb|add_naa| is not specified,
@@ -76,7 +76,7 @@ fluorophores as well as the different photon-detection efficiencies of the D and
 When γ-factor is not 1, neglecting its effect on burst size leads to
 over-representing (in terms of number of bursts) one population versus to the others.
 
-When the γ factor is known, users can pass the argument 
+When the γ factor is known, users can pass the argument
 \verb|gamma| during burst selection:
 
 \begin{lstlisting}
@@ -88,26 +88,26 @@ When not specified, $\gamma=1$ is assumed.
 
 For more information on burst size selection refer to the
 \verb|select_bursts.size| documentation
-(\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}). 
+(\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}).
 
-\paragraph{Python details} The method \verb|Data.burst_sizes| 
+\paragraph{Python details} The method \verb|Data.burst_sizes|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link})
 computes and returns γ-corrected burst sizes with or without addition of \verb|naa|.
 
 \subsubsection{Select the FRET Populations}
 
 In smFRET-ALEX experiments, in addition to one or more FRET populations, there are always
-donor-only (D-only) and acceptor-only (A-only) populations. 
+donor-only (D-only) and acceptor-only (A-only) populations.
 In most cases, these additional populations are not of interest and need to be filtered out.
 
 In principle, using the E-S representation, we can exclude D-only and A-only bursts
-by selecting bursts withing a range of $S$ values (e.g. S=0.2-0.8). 
-This approach, however, simply truncates the burst distribution with arbitrary 
-thresholds and is therefore not recommended for quantitative assessment of FRET 
+by selecting bursts within a range of $S$ values (e.g. S=0.2-0.8). 
+This approach, however, simply truncates the burst distribution with arbitrary
+thresholds and is therefore not recommended for quantitative assessment of FRET
 populations.
 
 A better approach consists in applying two selection filters one after the other.
-First, we filter out the A-only population 
+First, we filter out the A-only population
 by applying a threshold on number of photons during donor excitation.
 Second, we exclude the D-only population by
 by applying a threshold on number of photons during acceptor excitation.
