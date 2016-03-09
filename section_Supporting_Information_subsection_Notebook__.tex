@@ -25,18 +25,17 @@ The list of FRETBursts notebooks can be found in the
 (\href{https://github.com/tritemio/FRETBursts_notebooks}{link}).
 
 
-\subsection{Development Model}
+\subsection{Development and Contributions}
+\label{sec:dev}
+Errors are an inevitable reality in any reasonably complex software. It is 
+therefore critical to implement countermeasures to
+minimize the probability of introducing bugs and their potential impact~\cite{Prli__2012, Wilson_2014}.
+We strive to follow modern best-practices in software development which are summarized 
+below.
 
 FRETBursts (and the entire python ecosystem it depends on) is open source
 and the source code is fully available for any scientist to study,
 review and modify.
-The authors encourage users to use GitHub issues for questions, discussions
-and bug reports, and to submit patches through GitHub pull requests.
-
-In order to minimize the likelihood of bugs and erroneous results, FRETBursts is developed
-following modern software engineering techniques such
-as defensive programming, unit testing, regression testing and continuous integration~\cite{Wilson_2014}.
-
 The open source nature of FRETBursts and of the python ecosystem,
 not only makes it a more transparent, reviewable platform
 for scientific data analysis, but also allows
@@ -48,16 +47,7 @@ and \href{https://readthedocs.org/}{ReadTheDocs.org} for automatic documentation
 All these services would be extremely costly, if available \textit{tout court},
 for a proprietary software or platform~\cite{Freeman_2015}.
 
-\subsection{Development and Contributions}
-\label{sec:dev}
-
-Errors are an inevitable reality in any reasonably complex software. It is 
-therefore critical to implement countermeasures to
-minimize the probability of introducing bugs and their potential impact~\cite{Prli__2012, Wilson_2014}.
-We strive to follow modern best-practices in software development which are summarized 
-below.
-
-In FRETBursts, we highly value source code readability, a property which can 
+We highly value source code readability, a property which can 
 reduce the number of bugs by facilitating understanding and verifying the code.
 For this purpose, FRETBursts code-base is well commented (more that 35\%
 of source code), 
@@ -82,8 +72,10 @@ Additionally, the tutorials themselves are executed before each release as
 an additional test layer to ensure that no errors or regressions are introduced.
 
 FRETBursts is openly developed using the GitHub platform.
+The authors encourage users to use GitHub issues for questions, discussions
+and bug reports, and to submit patches through GitHub pull requests.
 Contributors of any level of expertize are welcome in the projects
-and publically acknowledged.
+and publicly acknowledged.
 Contributions can be as simple as pointing out deficiencies in the 
 documentation but can also be bug reports or corrections to 
 the documentation or code. Users willing to implement
@@ -91,4 +83,3 @@ new features are encouraged to open an Issue on GitHub and to submit
 a Pull Request. The open source nature of FRETBursts guarantees that
 contributions will remain available to the entire single-molecule 
 community.
-
