@@ -18,4 +18,4 @@ Burst_Variance_Analysis.tex
 figures/ALEX_BVA_static/ALEX_BVA_static.png
 figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
 Conclusions.tex
-section_Supporting_Information_subsection_Notebook__.tex
+Supporting_Information.tex
