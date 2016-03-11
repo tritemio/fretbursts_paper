@@ -94,12 +94,14 @@ latter case, existing burst data is automatically updated using the new
 correction parameters.
 
 These correction factors can be used to display corrected FRET distributions.
-However, in order to resolve the peak FRET efficiency value, we found that is more accurate to 
-fit the FRET histogram without those corrections (i.e. background-corrected
-proximity ratio). Next, we can use an algebraic formula to correct fitted peak
-positions (see SI of~\cite{Lee_2005}) and obtain the corrected FRET efficiency.
+However, when the goal is fitting the FRET efficiency of sub-populations, 
+it is more accurate to fit the uncorrected FRET histogram (i.e. background-corrected
+proximity ratio) and then correct the fitted FRET efficiency for with a purely
+algebraic formula (see SI in~\cite{Lee_2005}, SI). This procedure avoids 
+distortion of the FRET distributions due to the corrections, which causes
+a departure from the ideal Binomial statistics~\ref{Gopich_2007}.
 FRETBursts implements the correction formulas for $E$ and $S$ in the functions
 \verb|fretmath.correct_E_gamma_leak_dir| and \verb|fretmath.correct_S|
 (\href{http://fretbursts.readthedocs.org/en/latest/fretmath.html}{link}). 
-A complete derivation of all these correction formulas
-(and their inverse) has been posted as a notebook (\href{http://nbviewer.jupyter.org/github/tritemio/notebooks/blob/master/Derivation%20of%20FRET%20and%20S%20correction%20formulas.ipynb}{link}).
+A rigorous derivation of these correction formulas (using computer-assisted algebra) 
+can be found online as an interactive notebook (\href{http://nbviewer.jupyter.org/github/tritemio/notebooks/blob/master/Derivation%20of%20FRET%20and%20S%20correction%20formulas.ipynb}{link}).
