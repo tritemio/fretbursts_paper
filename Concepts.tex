@@ -194,7 +194,7 @@ bias of certain channels and/or sub-populations.
 For this reason we suggest performing a burst size selection after background
 correction, taking into account the γ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
-In special case, users can also choose to replace or combine
+In special cases, users may choose to replace (or combine)
 the burst selection based on burst size
 with another criterion such as burst duration or brightness (see section~\ref{sec:burstsel}).
 
@@ -239,14 +239,17 @@ because of broadening of FRET peaks and appearance of shot-noise artifacts
 in the FRET (and S) distribution.
 Conversely, a too high threshold may result in a too low number of bursts
 and in poor statistics in the empirical FRET distribution.
-Additionally, when selecting bursts (see section~\ref{sec:burstsel}),
+
+Additionally, especially when computing fractions of sub-population 
+(e.g. ratio of number of bursts in each sub-population),
 it is important to use γ-corrected burst sizes,
 in order to avoid under-representing some FRET sub-populations
-due to different quantum yields between donor and acceptor dyes and/or
-different photon detection efficiencies of donor and acceptor emission.
+due to different quantum yields of donor and acceptor dyes and/or
+different photon detection efficiencies of donor and acceptor channels.
 
-A simple way to mitigate the dependence on the burst size threshold is
-weighting bursts according to their size (i.e. their information content)
+A simple way to mitigate the dependence of the FRET distribution on 
+the burst size selection threshold is weighting bursts according to their size 
+(i.e. their information content)
 so that the bursts with largest sizes will have the largest weights.
 The weighting can be used to build weighted histograms or Kernel Density
 Estimation (KDE) plots. When using weights, the choice of a particular
