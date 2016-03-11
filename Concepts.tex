@@ -230,17 +230,15 @@ or~\ref{eq:burstsize_allph} are called γ-corrected burst sizes.
 
 The burst search algorithm yields a set of bursts whose sizes
 approximately follows an exponential distribution.
-Bursts with large sizes (which contain most of the information)
-are much less frequent than bursts with smaller sizes. For this reason, it is
-important to select burst sizes larger than a threshold in order
-to properly characterize FRET populations (see section~\ref{sec:burstsel}).
+Compared to bursts with smaller sizes, bursts with large sizes are less frequent, 
+but contain most of the information (having lower shot-noise).
 
-Selecting bursts by size is a critically important step.
-A too low threshold will broaden the FRET populations and introduce
-artifacts (spurious peaks and patterns) due to the majority of bursts
-having E and S computed from ratios of small integers.
-Conversely, a too high threshold will result in a lower number of bursts
-and possibly poor statistics in representing FRET populations.
+Therefore, selecting bursts by size is a critically important step (see section~\ref{sec:burstsel}).
+A too low threshold may result in unresolvable sub-populations
+because of broadening of FRET peaks and appearance of shot-noise artifacts
+in the FRET (and S) distribution.
+Conversely, a too high threshold may result in a too low number of bursts
+and in poor statistics in the empirical FRET distribution.
 Additionally, when selecting bursts (see section~\ref{sec:burstsel}),
 it is important to use γ-corrected burst sizes,
 in order to avoid under-representing some FRET sub-populations
