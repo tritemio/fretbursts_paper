@@ -4,8 +4,8 @@ invaluable tool in studying cellular processes at the molecular
 scale~\cite{Kapanidis_2006}. smFRET experiments can detect the distance between 
 two fluorescent labels (\textit{donor} and \textit{acceptor}) in the 
 3-10~nm range. In the commonly employed confocal geometry, molecules are free 
-to diffuse in solution. When a molecule traverses the excitation volume it 
-emits a burst of photons that can be detected by single-photon avalanche detectors (SPADs). 
+to diffuse in solution. When a molecule traverses the excitation volume, it 
+emits a burst of photons, which can be detected by single-photon avalanche diode (SPAD) detectors. 
 The intensities of donor and acceptor fluorescence 
 can then be related to the distance between the two dyes.
 
@@ -13,12 +13,11 @@ The analysis of smFRET experiments involves identifying photon bursts from
 single-molecules in a continuous stream of photon, estimating the 
 background and other correction factors, filtering and finally extracting the corrected 
 FRET efficiencies for each sub-population in the sample. In this paper we introduce FRETBursts,
-a software for confocal smFRET data analysis which 
+a software for confocal smFRET data analysis, which 
 allows executing a complete burst analysis pipeline by using state-of-the-art algorithms.
-FRETBursts is an open source python package that we envision both as toolkit 
-for research and new developments in burst analysis and as reference implementation of commonly employed algorithms.
+FRETBursts is an open source Python package, which we propose as both a toolkit 
+for research and new developments in burst analysis, and as a reference implementation of commonly employed algorithms.
 We follow the highest standard in software development to ensure that 
 the source is easy to read, well documented and thoroughly tested. 
 Moreover, in an effort to lower the barriers to computational reproducibility, 
-we embrace a modern workflow based on Jupyter notebooks that allows to capture 
-of the whole process from raw data to figures within a single document.
+we embrace a modern workflow based on Jupyter notebooks, which allows capturing the whole analysis process from reading raw data to generating publication-ready figures within a single document.
