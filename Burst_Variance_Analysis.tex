@@ -77,17 +77,17 @@ These photon selections are obtained by computing boolean masks as follows
 
 \begin{lstlisting}
 Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))   
-AemDex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem'))
-AemDex_mask_d = AemDex_mask[Dex_mask]
+DexAem_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem'))
+DexAem_mask_d = AemDex_mask[Dex_mask]
 \end{lstlisting}
 
-Here, the first two variables (\verb|Dex_mask| and \verb|AemDex_mask|) select 
-photon streams from the all-photons timestamps arrays,
-while \verb|AemDex_mask_d|, selects acceptor photons from the
-Dex photon stream. As shown below, the latter is
-needed to count acceptor photons in sub-bursts.
+Here, the first two variables (\verb|Dex_mask| and \verb|DexAem_mask|) are used to
+select photon from the all-photons timestamps array,
+while \verb|DexAem_mask_d|, selects A-emitted photons from the
+array of photons emitted during D-excitation. As shown below, 
+the latter is needed to count acceptor photons in sub-bursts.
 
-Next, we need burst data relative to donor excitation stream (by default 
+Next, we need burst data relative to D-excitation photon stream (by default 
 burst start-stop index refer to all-photons timestamps array):
 
 \begin{lstlisting}
@@ -97,7 +97,7 @@ bursts_d = bursts.recompute_index_reduce(ph_d)
 \end{lstlisting}
 
 Here, \verb|ph_d| contains the Dex timestamps, \verb|bursts| the original burst data and 
-\verb|bursts_d| the burst data with start-stop index relative to \verb|ph_d|.
+\verb|bursts_d| the burst data with start-stop indexes relative to \verb|ph_d|.
 
 Finally, with the previous variables at hand, we can easily implement the BVA algorithm
 by computing the $s_E$ quantity for each burst:
@@ -110,19 +110,19 @@ for burst in bursts_d:
     startlist = range(burst.istart, burst.istop + 2 - n, n)
     stoplist = [i + n for i in startlist]
     for start, stop in zip(startlist, stoplist): 
-        A_D = AemDex_mask_d[start:stop].sum()
+        A_D = DexAem_mask_d[start:stop].sum()
         E = A_D / n
         E_sub.append(E)
     E_sub_std.append(np.std(E_sub))
 \end{lstlisting}
 
-Here \verb|n| is the BVA parameter defining the number of photons in each sub-burst. 
+Here, \verb|n| is the BVA parameter defining the number of photons in each sub-burst. 
 The outer loop, iterates through bursts, while the inner loop iterates through sub-bursts.
 The variables \verb|startlist| and \verb|stoplist| are the list of start-stop indexes for
 all sub-bursts in current burst.
-In the inner loop, \verb|A_D| and \verb|E| contains the number of acceptor photons and 
-FRET efficiency for the current sub-burst. Finally, the standard deviation of \verb|E| 
-(for each burst) is appended to \verb|E_sub_std|.
+In the inner loop, \verb|A_D| and \verb|E| contain the number of acceptor photons and 
+FRET efficiency for the current sub-burst. Finally, for each burst, the standard deviation 
+of \verb|E| is appended to \verb|E_sub_std|.
 
 By plotting the 2D distribution of $s_E$ (i.e. \verb|E_sub_std|) versus the average (uncorrected) E 
 we obtain the BVA plots of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}.
