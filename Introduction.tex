@@ -55,17 +55,21 @@ scientific enterprise~\cite{Ince_2012,Vihinen_2015}.
 %(\href{https://www.mozillascience.org/effective-code-review-for-journals}{Mills 2015})
 %(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
 
-Facing these issues, we developed FRETBursts,
-an open source Python software for burst analysis of freely-diffusing
-single-molecule FRET experiments.
+Recently, a few efforts have been made to provide standard implementations of methods used in
+surface immobilized single-molecule experiments~\cite{Greenfeld_2012, K_nig_2013}.
+To address a similar need in the freely-diffusing field, we developed FRETBursts,
+an open source Python software for burst analysis of single-molecule FRET experiments.
 With FRETBursts we provide a tool that is available to any scientist
-to use, inspect and modify. FRETBursts is suitable for routine state-of-the-art
+to use, inspect and modify. 
+FRETBursts is suitable for routine state-of-the-art
 analysis of smFRET data but also represents an ideal platform
-for quantitative comparison of different methods in burst analysis.
-To facilitate reproducibility of complete analysis
-workflows, FRETBursts execution model is based on Jupyter Notebook~\cite{Shen_2014}.
-A notebook contains a narrative, input parameters, code and 
-results in a single document that is easy to share and re-execute.
+for quantitative comparison of different methods in burst analysis, 
+as well as for development of new methods.
+A strong focus is placed on reproducibility of complete analysis
+workflows. FRETBursts execution model is based on Jupyter Notebook~\cite{Shen_2014},
+an interactive and executable document containing narrative, input parameters, 
+code and computational results. A notebook captures the various analysis steps
+and input parameters in a document that is easy to share and re-execute.
 To minimize the inevitable occurrence of bugs~\cite{Soergel_2015} 
 we employ modern software engineering techniques
 such as unit testing and continuous integration.
