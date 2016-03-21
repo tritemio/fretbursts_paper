@@ -15,10 +15,10 @@ of allowing to probe molecules and processes without perturbation from surface
 immobilization or additional functionalization needed for surface 
 attachment~\cite{Eggeling_1998,Dahan_1999}.
 
-The increasing amount of work using freely-diffusing smFRET has resulted 
-in a growing number of theoretical contributions to the specific topic of data 
+The increasing amount of work using freely-diffusing smFRET has motivated 
+a growing number of theoretical contributions to the specific topic of data 
 analysis~\cite{Fries_1998,Eggeling_2001,Zhang_2005,Gopich_2005,Lee_2005,Nir_2006,Antonik2006,Gopich_2007,Gopich_2008,Camley_2009,Santoso_2010,Torella_2011,Tomov_2012}. 
-Despite this profusion of methods, most research groups still rely on 
+Despite this profusion of publications, most research groups still rely on 
 their own implementation of a limited number of methods, with very little 
 collaboration or code sharing. 
 To clarify this statement, let us point that our own group's past smFRET papers 
@@ -37,7 +37,7 @@ In contrast with other established traditions such as
 sharing protocols and samples, in the domain of scientific software,
 we have relegated ourselves to islands of non-communication.
 
-From a more general standpoint, the non-availability of codes
+From a more general standpoint, the non-availability of the code
 used to produce scientific results, hinders reproducibility,
 makes it impossible to review and validate the software's correctness
 and prevents improvements and extensions by other scientists.
@@ -55,29 +55,24 @@ scientific enterprise~\cite{Ince_2012,Vihinen_2015}.
 %(\href{https://www.mozillascience.org/effective-code-review-for-journals}{Mills 2015})
 %(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
 
-Recently, a few efforts have been made to provide standard implementations of methods used in
+Recently, a few publications have included software implementation of methods used to analyze
 surface immobilized single-molecule experiments~\cite{Bronson_2009,Greenfeld_2012, K_nig_2013}.
-In the freely-diffusing smFRET field, to the best of our knowledge, 
-there is only a laudable example in this direction~\cite{Murphy2014}.
-To address a similar need in the freely-diffusing field, we developed FRETBursts,
-an open source Python software for burst analysis of single-molecule FRET experiments.
-With FRETBursts we provide a tool that is available to any scientist
-to use, inspect and modify. 
-FRETBursts is suitable for routine state-of-the-art
-analysis of smFRET data but also represents an ideal platform
-for quantitative comparison of different methods in burst analysis, 
-as well as for development of new methods.
-A strong focus is placed on reproducibility of complete analysis
-workflows. FRETBursts execution model is based on Jupyter Notebook~\cite{Shen_2014},
-an interactive and executable document containing narrative, input parameters, 
-code and computational results. A notebook captures the various analysis steps
-in a document that is easy to share and re-execute.
-To minimize the inevitable occurrence of bugs~\cite{Soergel_2015} 
+In the field of freely-diffusing smFRET, although it is common to find mention of "code available from the authors upon request" in publications, there is a dearth of such open source code, with, to our knowledge, the notable exception of a single example~\cite{Murphy2014}.
+To address this issue, we have developed FRETBursts,
+an open source Python software for the analysis of freely diffusing single-molecule FRET bursts.
+FRETBursts can be used, inspected and modified by anyone interested in using state-of-the art smFRET analysis method or implementing modifications or completely new techniques. FRETBursts therefore represents an ideal platform
+for quantitative comparison of different methods for smFRET burst analysis.
+Technically, a strong emphasis has been given to the reproducibility of complete analysis
+workflows. FRETBursts uses Jupyter Notebooks~\cite{Shen_2014},
+an interactive and executable document containing textual narrative, input parameters, 
+code, and computational results (tables, plots, etc.). A notebook thus captures the various analysis steps
+in a document which is easy to share and execute.
+To minimize the possibility of bugs being introduced inadvertently~\cite{Soergel_2015} 
 we employ modern software engineering techniques
 such as unit testing and continuous integration.
-FRETBursts is hosted and openly developed on GitHub~\cite{Blischak_2016,Prli__2012},
-where users can send comments, report issues or contribute code.
-In a parallel effort, we recently introduced Photon-HDF5,
+FRETBursts is hosted on GitHub~\cite{Blischak_2016,Prli__2012},
+where users can write comments, report issues or contribute code.
+In a related effort, we recently introduced Photon-HDF5,
 a open file format for timestamp-based single-molecule fluorescence
 experiments~\cite{Ingargiola2016}. An other related open source tool is PyBroMo~\cite{Ingargiola_2016},
 a freely-diffusing smFRET simulator which produces Photon-HDF5 files that are
@@ -86,32 +81,30 @@ Together with all the aforementioned tools, FRETBursts contributes to the growin
 ecosystem of open tools for reproducible science in the single-molecule field.
 
 \subsection{Paper Overview}
-This paper is an introduction to smFRET burst analysis and FRETBursts usage.
-Therefore, after a brief overview of FRETBursts features (section~\ref{sec:overview}),
-we introduce core smFRET burst analysis concepts and terminology
-(section~\ref{sec:concepts}). These concepts are used throughout the paper
-so reading section~\ref{sec:concepts} is highly recommended.
+This paper is written as an introduction to smFRET burst analysis and its implementation in FRETBursts.
+After a brief overview of FRETBursts features (section~\ref{sec:overview}),
+we introduce essential concepts and terminology for smFRET burst analysis 
+(section~\ref{sec:concepts}).
 
-In section~\ref{sec:analysis}, we illustrate the practical steps involved
-in smFRET burst analysis: data loading (section~\ref{sec:dataload}), defining
-excitation alternation periods (section~\ref{sec:alternation}), background
-correction (section~\ref{sec:bg_calc}), burst search (section~\ref{sec:burstsearch}),
-burst selection (section~\ref{sec:burstsel}) and FRET fitting (section~\ref{sec:fretfit}).
-The aim is elucidating the specificities and trade-off of various approaches
-with enough details to empower readers new to the field to customize the analysis to their own needs.
-For the most advanced use-case, section~\ref{sec:bva} walks the reader thorough implementing
-Burst Variance Analysis (BVA)~\cite{Torella_2011} as an example of manipulating timestamps
-and burst data.
-Finally, in section~\ref{sec:conclusions}, we summarize what we believe to be
+In section~\ref{sec:analysis}, we illustrate the steps involved
+in smFRET burst analysis: (i) data loading (section~\ref{sec:dataload}), )ii) definition of the
+excitation alternation periods (section~\ref{sec:alternation}), (iii) background
+correction (section~\ref{sec:bg_calc}), (iv) burst search (section~\ref{sec:burstsearch}),
+(v) burst selection (section~\ref{sec:burstsel}) and (vi) FRET histogram fitting (section~\ref{sec:fretfit}).
+The aim of this section is to illustrate the specificities and trade-off involved in various approaches
+with sufficient details to enable readers new to the field (or Jupyter Notebooks) to customize the analysis for their own needs.
+Section~\ref{sec:bva} walks the reader thorough implementing
+Burst Variance Analysis (BVA)~\cite{Torella_2011}, as an example of implementation of an advanced data processing technique.
+Finally, section~\ref{sec:conclusions} summarizes what we believe to be
 the strengths of FRETBursts software.
 
 Throughout this paper,
 links to relevant sections of documentation and other web resources
 are displayed as ``(link)''.
-In order to make the text accessible to the widest number of readers,
-we concentrated python-specific details in special subsections titled
+In order to make the text more legible,
+we have concentrated python-specific details in subsections entitled
 \textit{Python details}. These subsections provide deeper insights for readers
-already familiar with python and can be safely skipped otherwise.
+already familiar with python and can be initially skipped by readers who are not.
 Finally, note that all commands here reported can be found in the
 accompanying notebooks
 (\href{https://github.com/tritemio/fretbursts_paper}{link}).
