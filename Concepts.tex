@@ -285,10 +285,10 @@ The majority of plot commands are called through the wrapper function
 dplot(d, timetrace)
 \end{lstlisting}
 
-The function \verb|dplot| is the generic plot function which creates figure
-and handles details common to all the plotting functions (for instance the title).
+The function \verb|dplot| is the generic plot function, which creates figure
+and handles details common to all the plotting functions (for instance, the title).
 \verb|d| is the \verb|Data| variable and \verb|timetrace| is the actual plot
-function which operates on a single channel. In multi-spot measurements
+function, which operates on a single channel. In multispot measurements,
 \verb|dplot| creates one subplot for each spot and calls \verb|timetrace| for
 each channel.
 
@@ -313,9 +313,9 @@ User can switch to interactive figures inside the browser by activating
 the interactive backend with the command \verb|%matplotlib notebook|.
 Another option is displaying figures in a new standalone window
 using a desktop graphical library such as QT4.
-In this case the command to be used is \verb|%matplotlib qt|.
+In this case, the command to be used is \verb|%matplotlib qt|.
 
-A few plot functions such as \verb|timetrace| and \verb|hist2d_alex| have interactive features
+A few plot functions, such as \verb|timetrace| and \verb|hist2d_alex|, have interactive features
 which require the QT4 backend. As an example, after switching to the QT4 backend
 the following command:
 
@@ -334,6 +334,6 @@ selecting an area on the E-S histogram using the mouse.
 dplot(ds, hist2d_alex, gui_sel=True)
 \end{lstlisting}
 
-The values that identify the region are printed in the notebook and can be passed
+The values which identify the region are printed in the notebook and can be passed
 to the function \verb|select_bursts.ES| to select bursts inside that region
 (see section~\ref{sec:burstsel}).
