@@ -3,74 +3,81 @@
 
 The first step of smFRET analysis involves estimating background rates.
 For example, to compute the background every 30 s, using a minimal inter-photon
-delay threshold of 2~ms for all the photon, we use:
+delay threshold of 2~ms for the photon stream comprising all photons, the corresponding command is:
 
 \begin{lstlisting}
 d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
 \end{lstlisting}
 
-The first argument (\verb|bg.exp_fit|) is the underlying function used to fit the
-background in each period and for each photon stream (see section~\ref{sec:bg_intro}).
+The first argument (\verb|bg.exp_fit|) is the function used to fit the
+background rate for each photon stream (see section~\ref{sec:bg_intro}).
+%we used to define a photon stream by its excitation period and channel. 
 The function
 \verb|bg.exp_fit| estimates the background using a maximum likelihood estimation
-(MLE) of the delays distribution. Additional fitting functions are available in
+(MLE) of the delays distribution.
+%where is the fitting method specified? Is it implicit in the choice of method?
+Additional fitting functions are available in
 \verb|bg| namespace 
 (i.e. the \verb|background| module, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
 {link}). The second argument, \verb|time_s|, is the duration of the
 \textit{background period} (section~\ref{sec:bg_intro}) and the third, \verb|tail_min_us|,
-is the inter-photon delay threshold above which the distribution is assumed exponential.
+is the minimum inter-photon delay to use when fitting the distribution to the specified model function.
+%so there is only an exponential model then?
 It is possible to use different thresholds for each photon stream, passing a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
 Finally, it is possible to use a heuristic estimation of the threshold using
 \verb|tail_min_us='auto'|. For more details refer to the \verb|Data.calc_bg| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.calc_bg}{link}).
 
-FRETBursts provides are two kind of plots to represent the background. One is the histograms
-of inter-photon delays compared to the fitted exponential distribution reported in 
+FRETBursts provides two kinds of plots to represent the background. One is the histograms
+of inter-photon delays compared to the fitted exponential distribution, shown in 
 figure~\ref{fig:bg_dist_all}) (see section~\ref{sec:bg_intro} for details on the inter-photon distribution). 
-This plot is performed with the command:
+This plot is created with the command:
 
 \begin{lstlisting}
 dplot(d, hist_bg, bp=0)
 \end{lstlisting}
 
 The argument \verb|bp| is an integer specifying the background period to be plotted.
-When not specified the default is 0, i.e. the first period.
-Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases when the 
+When omitted, the default is 0, i.e. the first period is chosen.
+Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where the 
 background fitting procedure returns unreasonable values. 
 
-The second background-related plot is a timetrace of background rates, 
-as shown in figure~\ref{fig:bg_timetrace}. This plot allows to monitor background changes
-taking place during the measurement and is obtained with the command:
+The second background-related plot represents a timetrace of background rates, 
+as shown in figure~\ref{fig:bg_timetrace}. This plot allows monitoring background rate variationss
+occurring during the measurement and is obtained with the command:
 
 \begin{lstlisting}
 dplot(d, timetrace_bg)
 \end{lstlisting}
 
-Normally, samples should have a constant background as a function of time
-like in figure~\ref{fig:bg_timetrace}(a). However, oftentimes, non-ideal
-experimental conditions can yield a time-varying background, as shown in
+Normally, samples should have a fairly constant background rate as a function of time
+as in figure~\ref{fig:bg_timetrace}(a). However, sometimes, non-ideal
+experimental conditions can yield a time-varying background rate, as illustrated in
 figure~\ref{fig:bg_timetrace}(b).
-For example, when the sample is not sealed in an observation chamber,
-evaporation can induce background variations (typically increasing)
-as a function of time. Additionally,
+A possible reason for the observed behavior could be buffer evaporation from a poorly sealed (or open) sample observation chamber. Alternatively,
 cover-glass impurities can contribute to the background even when focusing 
 deep into the sample (10μm or more).
 These impurities tend to bleach on timescales of minutes resulting in
 background variations during the course of the measurement.
-
-\paragraph{Python details} For an ALEX measurement, the tuple passed to
-\verb|tail_min_us| to define the thresholds, is required to have have 
-5 values corresponding the 5 photon streams. 
-The order of the photon streams can be obtained from
+%I don't understand this. 10 um is NOT deep. If anything, you would have to assume increasing adsorption of fluorescent molecules (or impurities) to account for an increase in background rate.
+\paragraph{Python details} For ALEX measurements, the tuple passed to
+\verb|tail_min_us| in order to define the thresholds needs to contain  
+5 values corresponding the 5 distinct photon streams define in section XXX.
+%don't remember which section and photon streams. I suggest repeating them here.
+The photon streams order can be obtained from
 the \verb|Data.ph_streams| attribute (i.e. \verb|d.ph_streams| in our example).
+% what is the stream order?
 The estimated background rates are stored in the \verb|Data| attributes
-\verb|bg_dd|, \verb|bg_ad| and \verb|bg_aa|, corresponding to the photon
+\verb|bg_dd|, \verb|bg_ad| and \verb|bg_aa|, corresponding to photon
 streams \verb|Ph_sel(Dex='Dem')|, \verb|Ph_sel(Dex='Aem')| and \verb|Ph_sel(Aex='Aem')|
-respectively. These attributes are lists of arrays (one array per excitation spot).
-The arrays contain the estimated background rates in the different background periods.
+respectively.
+% that's 3. Where are the others?
+These attributes are lists of arrays (one array per excitation spot).
+The arrays contain the estimated background rates in the different time trace windows.
 
 \subsubsection{Error Metrics and Optimal Threshold}
+%that sounds like advanced information which might not belong to this introductory paper. If this is discussed in the manual, maybe refer to it?
 
 The functions used to fit the background provide also a goodness-of-fit estimator 
 computed on the basis of the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}. 
