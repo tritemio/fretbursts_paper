@@ -1,15 +1,12 @@
 \section{Architecture and Concepts}
 \label{sec:concepts}
 
-In this section we introduce some general concepts and naming conventions related
-to smFRET burst analysis in FRETBursts.
+In this section, we introduce some general concepts and notations used in FRETBursts.
 
 \subsection{Photon Streams}
 \label{sec:ph_streams}
 
-The fundamental data at the core of smFRET experiments is the array of photon
-arrival timestamps, with a temporal resolution set by the acquisition hardware,
-ranging from below nanoseconds to a few tens of nanoseconds.
+The raw data collected during a smFRET experiment is one or more arrays of photon timestamps, whose temporal resolution is set by the acquisition hardware. This resolution typically ranges from less than a nanosecond to a few tens of nanoseconds.
 In single-spot
 measurements, all timestamps are stored in a single array. In multi-spot
 measurements~\cite{Ingargiola_2013}, there are as many timestamps arrays
