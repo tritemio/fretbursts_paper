@@ -8,19 +8,18 @@ In this section, we introduce some general concepts and notations used in FRETBu
 
 The raw data collected during a smFRET experiment is one or more arrays of photon timestamps, whose temporal resolution is set by the acquisition hardware. This resolution typically ranges from less than a nanosecond to a few tens of nanoseconds.
 In single-spot
-measurements, all timestamps are stored in a single array. In multi-spot
+measurements, all timestamps are stored in a single array. In multispot
 measurements~\cite{Ingargiola_2013}, there are as many timestamps arrays
 as excitation spots.
 
 Each array contains timestamps from both donor (D) and acceptor (A) channels.
-In ALEX measurements~\cite{Lee_2005}, we can further differentiate between
-photons emitted during D and A excitation periods. In FRETBursts the different
-selections of photons/timestamps are called ``photon streams'' and they are
+When alternating excitation lasers are used (ALEX measurements)~\cite{Lee_2005}, a further distinction between
+photons emitted during the D or A excitation periods can be made. In FRETBursts, the corresponding
+sets of photons are called ``photon streams'' and are
 specified with a \verb|Ph_sel| object
 (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link}).
-In non-ALEX smFRET data there are 3 photon streams
-(table~\ref{tab:ph_sel_smfret}), while in ALEX data we have 5 base photon
-streams (table~\ref{tab:ph_sel_alex}).
+In non-ALEX smFRET data, there are 3 photon streams
+(table~\ref{tab:ph_sel_smfret}), while in ALEX data, there are 5 (table~\ref{tab:ph_sel_alex}).
 
 The \verb|Ph_sel| class (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link})
 allows the expression of any combination of photon streams.
