@@ -214,7 +214,6 @@ n_{dex} = n_a + \gamma\,n_d
 n_t = n_a + \gamma\,n_d + n_{aa}
 \end{equation}
 
-%equations appears a unformatted text when I switch to non-edit mode. Is that intended? The Preview mode is not very user-friendly.
 \noindent where $n_d$, $n_a$ and $n_{aa}$ are, similarly to the attributes
 in table~\ref{tab:data_n}, the background-corrected
 burst counts in different channels and excitation periods.
@@ -231,16 +230,14 @@ or~\ref{eq:burstsize_allph} are called γ-corrected burst sizes.
 The burst search algorithm yields a set of bursts whose sizes
 approximately follow an exponential distribution.
 Compared to bursts with smaller sizes, bursts with large sizes are less frequent, 
-but contain most of the information (having lower shot-noise).
-%rephrase. There is MORE shot-noise contribution in large bursts. It is only its RELATIVE contribution which is lower. As far as information goes, I am not sure it is correct to say that there is less information in small bursts, especially considering their exponentially larger number.
+but contain more information per-burst (having higher SNR).
 Therefore, selecting bursts by size is an important step (see section~\ref{sec:burstsel}).
 A threshold set too low may result in unresolvable sub-populations
 because of broadening of FRET peaks and appearance of shot-noise artifacts
-in the FRET (and S) distribution.
-% what artifacts do you have in mind?
+in the FRET (and S) distribution (i.e. spurious narrow peaks due to E and S being
+computed as the ratio of small integers).
 Conversely, too large a threshold may result in too low a number of bursts
-and poor statistical significance of the computed FRET distribution.
-% essentially you mean low count sample twice. Maybe drop the second part of that sentence?
+therefore poor statistical significance of the computed FRET distribution.
 Additionally, especially when computing fractions of sub-population 
 (e.g. ratio of number of bursts in each sub-population),
 it is important to use γ-corrected burst sizes,
@@ -270,6 +267,7 @@ Several other weighting functions (for example quadratical) are listed in the
 \verb|fret_fit.get_weights| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
 %you may want to discuss stoichiometry-corrected burst size (as I do in the corresponding Appendix)
+% add some discussion
 \subsection{Plotting \texttt{Data}}
 \label{sec:plotting}
 
