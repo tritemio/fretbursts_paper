@@ -6,7 +6,7 @@ In this section, we introduce some general concepts and notations used in FRETBu
 \subsection{Photon Streams}
 \label{sec:ph_streams}
 
-The raw data collected during a smFRET experiment is one or more arrays of photon timestamps, whose temporal resolution is set by the acquisition hardware. This resolution typically ranges from less than a nanosecond to a few tens of nanoseconds.
+The raw data collected during a smFRET experiment consists in one or more arrays of photon timestamps, whose temporal resolution is set by the acquisition hardware. This resolution typically ranges from less than a nanosecond to a few tens of nanoseconds.
 In single-spot measurements, all timestamps are stored in a single array. In multispot
 measurements~\cite{Ingargiola_2013}, there are as many timestamps arrays
 as excitation spots.
@@ -128,12 +128,12 @@ background.
 
 
 \paragraph{Python details}
-Many \verb|Data| attributes are list of arrays (or scalars) with list-length
-equal to the number of excitation spots. This means that, in
-single-spot measurements, to access an array of burst-data
-we always have to specify the index 0, for example \verb|Data.nd[0]|.
+Many \verb|Data| attributes are lists of arrays (or scalars) with the length of the lists
+equal to the number of excitation spots. This means that in
+single-spot measurements, an array of burst-data
+is accessed by specifying the index as 0, for example \verb|Data.nd[0]|.
 \verb|Data| implements a shortcut syntax to access the first element of a list
-with an underscore, so we can type equivalently use
+with an underscore, so that an equivalently syntax is
 \verb|Data.nd_| instead of \verb|Data.nd[0]|.
 
 \subsection{Introduction to Burst Search}
@@ -152,43 +152,42 @@ practice to manually adjust those parameters for each specific measurement.
 
 A more general approach consists in taking into account the background rate of
 the specific measurements and in choosing a rate threshold that is $F$ times
-larger than the background rate. This approach assures that all the resulting bursts
+larger than the background rate. This approach ensures that all resulting bursts
 have a signal-to-background ratio (SBR) larger than
 $(F-1)$~\cite{Michalet_2012}. A consistent criterion for choosing the threshold is
 particularly important when comparing different measurements with different background
 rates, when the background significantly varies during measurements or in
 multi-spot measurements where each spot has a different background rate.
-
+% as I am arguing (and you have before) in the revised version of the multispot paper, I am not so sure that the minimum SBR criterion is always the best. I suppose you have a way to specify a search using a constant threshold (or better yet, although I don't discuss it in the manuscript, a constant rate above background)?
 A second important aspect of burst search is the choice of photon stream used
 to perform the search.
 In most cases, for instance when identifying FRET sub-populations,
-the burst search should use all photons (i.e. ACBS). In some other cases, when focusing on
+the burst search should use all photons (i.e. APBS). In some other cases, when focusing on
 donor-only or acceptor only populations, it is better to perform the search using
 only donor or acceptor signal.
 In order to handle the general case and to provide flexibility,
-FRETBursts allows to perform the burst search on arbitrary selections of photons.
-(see section~\ref{sec:ph_streams} for more info on photon stream definitions).
+FRETBursts allows performing the burst search on arbitrary selections of photons.
+(see section~\ref{sec:ph_streams} for more information on photon stream definitions).
 
-Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS, which can help
-to mitigate artifacts due to photo-physical effects such as blinking.
-During DCBS, a search is performed independently on two photon streams
-and bursts are marked only when both photon streams exhibit a rate higher than
-the threshold, implementing a sort of AND-gate logic.
+Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS ('dual-channel burst search'), which can help mitigating artifacts due to photophysics effects such as blinking.
+During DCBS, a search is performed in parallel on two photon streams
+and bursts are defined as periods during which both photon streams exhibit a rate higher than
+the threshold, implementing the equivalent of an AND logic operation.
 Conventionally, the term DCBS refers to a burst search where the two photon streams
 are (1) all photons during donor excitation (\verb|Ph_sel(Dex='DAem')|) and
 (2) acceptor channel photons during acceptor excitation (\verb|Ph_sel(Aex='Aem')|).
-In FRETBursts the user can choose arbitrary photon streams as input, an in general
-we call this kind of search AND-gate burst search.
+In FRETBursts, the user can choose arbitrary photon streams as input, an in general
+this kind of search is called a 'AND-gate burst search'.
 
 After burst search, it is necessary to select
-bursts having a minimum number of photons (burst size). In the most
+bursts, for instance by specifying a minimum number of photons (or burst size). In the most
 basic form, this selection can be performed during burst search by discarding
 bursts with size smaller than a threshold $L$, as originally proposed by
 Eggeling~\textit{et al.}~\cite{Eggeling_1998}.
 This method, however, neglects the effect
 of background and γ factor on the burst size and can lead to a selection
-bias of certain channels and/or sub-populations.
-For this reason we suggest performing a burst size selection after background
+bias for some channels and/or sub-populations.
+For this reason, we suggest performing a burst size selection after background
 correction, taking into account the γ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
 In special cases, users may choose to replace (or combine)
@@ -220,8 +219,9 @@ The factor γ takes into account
 different fluorescence quantum yields of donor and acceptor fluorophores and different
 photon detection efficiencies between donor and acceptor detection
 channels~\cite{Lee_2005}.
-Eq.~\ref{eq:burstsize_dex} includes only photons during donor excitation periods,
-while eq.~\ref{eq:burstsize_allph} includes all photons.
+% this is definitely not the paper that introduced gamma. Maybe Denis et al?
+Eq.~\ref{eq:burstsize_dex} includes counts collected during donor excitation periods only,
+while eq.~\ref{eq:burstsize_allph} includes all counts.
 Burst sizes computed according to eq.~\ref{eq:burstsize_dex}
 or~\ref{eq:burstsize_allph} are called γ-corrected burst sizes.
 
@@ -229,14 +229,15 @@ The burst search algorithm yields a set of bursts whose sizes
 approximately follow an exponential distribution.
 Compared to bursts with smaller sizes, bursts with large sizes are less frequent, 
 but contain most of the information (having lower shot-noise).
-
-Therefore, selecting bursts by size is a critically important step (see section~\ref{sec:burstsel}).
+%rephrase. There is MORE shot-noise contribution in large bursts. It is only its RELATIVE contribution which is lower. As far as information goes, I am not sure it is correct to say that there is less information in small bursts, especially considering their exponentially larger number.
+Therefore, selecting bursts by size is an important step (see section~\ref{sec:burstsel}).
 A threshold set too low may result in unresolvable sub-populations
 because of broadening of FRET peaks and appearance of shot-noise artifacts
 in the FRET (and S) distribution.
-Conversely, a too high threshold may result in a too low number of bursts
-and in poor statistics in the empirical FRET distribution.
-
+% what artifacts do you have in mind?
+Conversely, too large a threshold may result in too low a number of bursts
+and poor statistical significance of the computed FRET distribution.
+% essentially you mean low count sample twice. Maybe drop the second part of that sentence?
 Additionally, especially when computing fractions of sub-population 
 (e.g. ratio of number of bursts in each sub-population),
 it is important to use γ-corrected burst sizes,
@@ -254,7 +255,7 @@ burst size threshold affects the shape of the burst distribution to a lesser ext
 therefore lower thresholds can be used (yielding to better statistics)
 without broadening the peaks of sub-populations (yielding to better
 population identification).
-
+%please check my analysis of this operation in the Supporting Material. I show that choosing a weight of S is equivalent to choosing a particular threshold, while choosing other weights ie equivalent to choosing different thresholds... You may want to include this insight here.
 \paragraph{Python details}
 FRETBursts has the option to weight bursts using γ-corrected
 burst sizes which optionally include acceptor excitation photons \verb|naa|.
@@ -265,7 +266,7 @@ the weighted E or S distributions (see section~\ref{sec:fretfit}).
 Several other weighting functions (for example quadratical) are listed in the
 \verb|fret_fit.get_weights| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
-
+%you may want to discuss stoichiometry-corrected burst size (as I do in the corresponding Appendix)
 \subsection{Plotting \texttt{Data}}
 \label{sec:plotting}
 
