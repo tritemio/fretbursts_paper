@@ -10,16 +10,17 @@ after background correction), the following command is used:
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size, th1=30)
 \end{lstlisting}
+%why is the parameter called th1?
 
 The previous command creates a new \textit{Data} variable (\verb|ds|) containing
 the selected bursts.
-As mentioned before the new object will share the photon data
-arrays with the original object (\verb|d|) in order to minimize the RAM use.
+As mentioned before, the new object will share the photon data
+arrays with the original object (\verb|d|) in order to minimize the amount of memory used to store these objects.
 
 The first argument of \verb|select_bursts|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#burst-selection-methods}{link})
 is a python function implementing the "selection rule" (\verb|select_bursts.size| in this example);
-all the remaining arguments (only \verb|th1| in this case) are parameters of the selection rule.
+all remaining arguments (only \verb|th1| in this case) are parameters of the selection rule.
 The \verb|select_bursts| module
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html}{link})
 contains numerous built-in selection functions
@@ -30,13 +31,14 @@ is used to select a region on the E-S ALEX histogram,
 \verb|select_bursts.width|
 to select bursts based on their duration.
 New criteria can be easily implemented by defining a new selection function,
-which requires not more than a couple of lines of code in most cases (see the
+which requires as few as a couple of lines of code in most cases (see the
 \verb|select_bursts| module's source code
 for several examples,
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{link}).
+% a couple means 2. I suppose that's what you mean?
 
-Finally, different criteria can be combined by applying them sequentially.
-For example, with the following commands:
+Finally, different criteria can be combined sequentially.
+For example, the following commands:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
@@ -44,15 +46,16 @@ ds = d.select_bursts(select_bursts.size,
 dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
 \end{lstlisting}
+%I guess this answers my question about the meaning of th1. Maybe it would be worth to spell it out above?
 
-we apply a combined burst size and duration selection, in which bursts
+apply both a burst size and a burst duration selection criterion, in which bursts
 have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \subsubsection{γ-corrected Burst Size Selection}
 
-In the previous section, we selected bursts by size using only photons
-detected by donor and acceptor channel during donor excitation.
-Conversely, we can apply a threshold on the all-photon burst size
+In the previous section, we selected bursts by size, using only photons
+detected in the  donor and acceptor channels during donor excitation.
+Alternatively, a threshold on the total burst size (including all photons) can be applied
 (section~\ref{sec:burstsizeweights}) by adding $n_{aa}$ to the burst size
 as in eq.~\ref{eq:burstsize_allph}. This is achieved
 by passing \verb|add_naa=True| to the selection function. When \verb|add_naa| is not specified,
@@ -65,18 +68,18 @@ ds = d.select_bursts(select_bursts.size,
                      th1=30, add_naa=True)
 \end{lstlisting}
 
-\noindent and the resulting selection is plotted in figure~\ref{fig:alex_jointplot}.
+\noindent The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
 
 Another important parameter for defining the burst size is the γ-factor, i.e.
-the imbalance between the donor and the acceptor channels. As noted in
+the imbalance between the donor and the acceptor channel signals. As noted in
 section~\ref{sec:burstsizeweights}, the γ-factor is
 used to compensate bias for the different fluorescence quantum yields of the D and A
 fluorophores as well as the different photon-detection efficiencies of the D and A channels.
-When γ-factor is not 1, neglecting its effect on burst size leads to
-over-representing (in terms of number of bursts) one population versus to the others.
+When γ is significantly different from 1, neglecting its effect on burst size leads to
+over-representing (in terms of number of bursts) one population versus the others.
 
-When the γ factor is known, users can pass the argument
-\verb|gamma| during burst selection:
+When the γ factor is known, the argument
+\verb|gamma| can be passed during burst selection:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
@@ -85,7 +88,7 @@ ds = d.select_bursts(select_bursts.size,
 
 When not specified, $\gamma=1$ is assumed.
 
-For more information on burst size selection refer to the
+For more information on burst size selection, see the
 \verb|select_bursts.size| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}).
 
@@ -99,24 +102,27 @@ In smFRET-ALEX experiments, in addition to one or more FRET populations, there a
 donor-only (D-only) and acceptor-only (A-only) populations.
 In most cases, these additional populations are not of interest and need to be filtered out.
 
-In principle, using the E-S representation, we can exclude D-only and A-only bursts
-by selecting bursts within a range of $S$ values (e.g. S=0.2-0.8). 
+In principle, using the E-S representation, D-only and A-only bursts
+can be excluded by selecting bursts within a range of $S$ values (e.g. S=0.2-0.8). 
 This approach, however, simply truncates the burst distribution with arbitrary
 thresholds and is therefore not recommended for quantitative assessment of FRET
 populations.
+% I don't think that is a very strong statement, in the sense that it is just as ad hoc as the E-S selection method
+% and leaves dubious intermediate bursts in the final result
 
-A better approach consists in applying two selection filters one after the other.
-First, we filter out the A-only population
-by applying a threshold on number of photons during donor excitation.
-Second, we exclude the D-only population by
-by applying a threshold on number of photons during acceptor excitation.
-The commands for this combined selections are:
+An alternative approach consists in applying two selection filters sequentially.
+First, the A-only population is filtered out
+%some FRET burst are also filtered out this way
+by applying a threshold on the number of photons during donor excitation.
+Second, the D-only population is fitlered out by applying a threshold on the number of photons during acceptor excitation.
+%same comment as previously
+The commands for these combined selections are:
 
 \begin{lstlisting}
 ds1 = d.select_bursts(select_bursts.size, th1=15)
 ds2 = ds1.select_bursts(select_bursts.naa, th1=15)
 \end{lstlisting}
 
-Here, the variable \verb|ds2| contains the composite selection of bursts.
+Here, variable \verb|ds2| contains the combined burst selection.
 Figure~\ref{fig:alex_jointplot_fretsel} shows the resulting pure FRET
 population obtained with the previous selection.
