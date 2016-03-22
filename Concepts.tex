@@ -18,13 +18,13 @@ sets of photons are called ``photon streams'' and are
 specified with a \verb|Ph_sel| object
 (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link}).
 In non-ALEX smFRET data, there are 3 photon streams
-(table~\ref{tab:ph_sel_smfret}), while in ALEX data, there are 5 (table~\ref{tab:ph_sel_alex}).
+(table~\ref{tab:ph_sel_smfret}), while in ALEX data, there are 5 streams (table~\ref{tab:ph_sel_alex}).
 
 The \verb|Ph_sel| class (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link})
-allows the expression of any combination of photon streams.
+allows the specification of any combination of photon streams.
 For example, in ALEX measurements, the D-emission during A-excitation stream is
-usually excluded because it does not contain any useful signal~\cite{Lee_2005}.
-To indicate all but the photons in this photon stream we write
+usually ignored because it does not contain any useful signal~\cite{Lee_2005}.
+To indicate all but photons in this photon stream, the valid syntax is
 \verb|Ph_sel(Dex='DAem', Aex='Aem')|, which indicates selection of donor
 and acceptor photons (\verb|DAem|) during donor excitation (\verb|Dex|) and only acceptor
 photons (\verb|Aem|) during acceptor excitation (\verb|Aex|).
