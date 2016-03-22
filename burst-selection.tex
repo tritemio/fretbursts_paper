@@ -2,11 +2,10 @@
 \label{sec:burstsel}
 
 After burst search, it is common to select bursts according to different
-criteria. One of the most common is the burst size.
+criteria. One of the most common is burst size.
 
-For instance, to select bursts with more than 30 photons (computed
-after background correction) detected during the donor excitation
-we use:
+For instance, to select bursts with more than 30 photons detected during the donor excitation (computed
+after background correction), the following command is used:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size, th1=30)
