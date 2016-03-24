@@ -55,12 +55,20 @@ scientific enterprise~\cite{Ince_2012,Vihinen_2015}.
 %(\href{https://www.mozillascience.org/effective-code-review-for-journals}{Mills 2015})
 %(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
 
-Recently, a few publications have included software implementation of methods used to analyze
-surface immobilized single-molecule experiments~\cite{Bronson_2009,Greenfeld_2012, K_nig_2013}.
-In the field of freely-diffusing smFRET, although it is common to find mention of "code available from the authors upon request" in publications, there is a dearth of such open source code, with, to our knowledge, the notable exception of a single example~\cite{Murphy2014}.
+Other disciplines have started tackling this issue 
+(cite http://biorxiv.org/content/early/2016/03/24/045104 once doi activated),
+and even in the single-molecule field a few recent publications have included or presented 
+open source software  
+for analysis of surface immobilized experiments~\cite{Bronson_2009,Greenfeld_2012, K_nig_2013}.
+For freely-diffusing smFRET experiments, although it is common to find mention of 
+"code available from the authors upon request" in publications, there is a dearth 
+of such open source code, with, to our knowledge, the notable exception of a single 
+example~\cite{Murphy2014}.
 To address this issue, we have developed FRETBursts,
-an open source Python software for the analysis of freely diffusing single-molecule FRET bursts.
-FRETBursts can be used, inspected and modified by anyone interested in using state-of-the art smFRET analysis method or implementing modifications or completely new techniques. FRETBursts therefore represents an ideal platform
+an open source Python software for analysis of freely diffusing single-molecule FRET measurement.
+FRETBursts can be used, inspected and modified by anyone interested in using 
+state-of-the art smFRET analysis methods or implementing modifications or completely new techniques. 
+FRETBursts therefore represents an ideal platform
 for quantitative comparison of different methods for smFRET burst analysis.
 Technically, a strong emphasis has been given to the reproducibility of complete analysis
 workflows. FRETBursts uses Jupyter Notebooks~\cite{Shen_2014},
@@ -69,7 +77,8 @@ code, and computational results (tables, plots, etc.). A notebook thus captures 
 in a document which is easy to share and execute.
 To minimize the possibility of bugs being introduced inadvertently~\cite{Soergel_2015} 
 we employ modern software engineering techniques
-such as unit testing and continuous integration~\cite{Wilson_2014}.
+such as unit testing and continuous integration~\cite{Wilson_2014}
+(cite http://biorxiv.org/content/early/2016/03/24/045104 once doi activated).
 FRETBursts is hosted on GitHub~\cite{Blischak_2016,Prli__2012},
 where users can write comments, report issues or contribute code.
 In a related effort, we recently introduced Photon-HDF5~\cite{Ingargiola2016},
