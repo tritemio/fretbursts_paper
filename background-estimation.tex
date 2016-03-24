@@ -11,23 +11,21 @@ d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
 
 The first argument (\verb|bg.exp_fit|) is the function used to fit the
 background rate for each photon stream (see section~\ref{sec:bg_intro}).
-%we used to define a photon stream by its excitation period and channel. 
 The function
 \verb|bg.exp_fit| estimates the background using a maximum likelihood estimation
 (MLE) of the delays distribution.
-%where is the fitting method specified? Is it implicit in the choice of method?
 Additional fitting functions are available in
 \verb|bg| namespace 
 (i.e. the \verb|background| module, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
 {link}). The second argument, \verb|time_s|, is the duration of the
 \textit{background period} (section~\ref{sec:bg_intro}) and the third, \verb|tail_min_us|,
 is the minimum inter-photon delay to use when fitting the distribution to the specified model function.
-%so there is only an exponential model then?
 It is possible to use different thresholds for each photon stream, passing a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
 Finally, it is possible to use a heuristic estimation of the threshold using
-\verb|tail_min_us='auto'|. For more details refer to the \verb|Data.calc_bg| documentation
-(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.calc_bg}{link}).
+\verb|tail_min_us='auto'|. For more details refer to \textit{Background estimation} 
+section of the μs-ALEX tutorial 
+(\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb#Background-estimation}{link}).
 
 FRETBursts provides two kinds of plots to represent the background. One is the histograms
 of inter-photon delays compared to the fitted exponential distribution, shown in 
