@@ -33,10 +33,10 @@ figure~\ref{fig:bg_dist_all}) (see section~\ref{sec:bg_intro} for details on the
 This plot is created with the command:
 
 \begin{lstlisting}
-dplot(d, hist_bg, bp=0)
+dplot(d, hist_bg, period=0)
 \end{lstlisting}
 
-The argument \verb|bp| is an integer specifying the background period to be plotted.
+The argument \verb|period| is an integer specifying the background period to be plotted.
 When omitted, the default is 0, i.e. the first period is chosen.
 Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where the 
 background fitting procedure returns unreasonable values. 
