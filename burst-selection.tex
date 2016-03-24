@@ -4,16 +4,18 @@
 After burst search, it is common to select bursts according to different
 criteria. One of the most common is burst size.
 
-For instance, to select bursts with more than 30 photons detected during the donor excitation (computed
-after background correction), the following command is used:
+For instance, to select bursts with more than 30 photons detected during the donor excitation 
+(computed after background correction), the following command is used:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size, th1=30)
 \end{lstlisting}
-%why is the parameter called th1?
 
 The previous command creates a new \textit{Data} variable (\verb|ds|) containing
-the selected bursts.
+the selected bursts. \verb|th1| defines the lower bound for burst size, while 
+\verb|th2| (not shown here) defines the upper bound (when not specified 
+the upper bound is $+\infty$).
+
 As mentioned before, the new object will share the photon data
 arrays with the original object (\verb|d|) in order to minimize the amount of memory used to store these objects.
 
@@ -35,7 +37,6 @@ which requires as few as a couple of lines of code in most cases (see the
 \verb|select_bursts| module's source code
 for several examples,
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{link}).
-% a couple means 2. I suppose that's what you mean?
 
 Finally, different criteria can be combined sequentially.
 For example, the following commands:
@@ -46,12 +47,11 @@ ds = d.select_bursts(select_bursts.size,
 dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
 \end{lstlisting}
-%I guess this answers my question about the meaning of th1. Maybe it would be worth to spell it out above?
 
 apply both a burst size and a burst duration selection criterion, in which bursts
 have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
-\subsubsection{γ-corrected Burst Size Selection}
+\subsubsection{Burst Size Selection}
 
 In the previous section, we selected bursts by size, using only photons
 detected in the  donor and acceptor channels during donor excitation.
