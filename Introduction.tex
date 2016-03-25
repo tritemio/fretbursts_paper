@@ -55,16 +55,15 @@ scientific enterprise~\cite{Ince_2012,Vihinen_2015}.
 %(\href{https://www.mozillascience.org/effective-code-review-for-journals}{Mills 2015})
 %(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
 
-Other disciplines have started tackling this issue 
-(cite http://biorxiv.org/content/early/2016/03/24/045104 once doi activated),
-and even in the single-molecule field a few recent publications have included or presented 
+Other disciplines have started tackling this issue~\cite{Eglen_2016},
+and even in the single-molecule field a few recent publications have provided 
 software for analysis of surface-immobilized experiments~\cite{McKinney_2006,Bronson_2009,Greenfeld_2012,van_de_Meent_2014}.
 For freely-diffusing smFRET experiments, although it is common to find mention of 
 "code available from the authors upon request" in publications, there is a dearth 
 of such open source code, with, to our knowledge, the notable exception of a single 
 example~\cite{Murphy2014}.
 To address this issue, we have developed FRETBursts,
-an open source Python software for analysis of freely diffusing single-molecule FRET measurement.
+an open source Python software for analysis of freely-diffusing single-molecule FRET measurements.
 FRETBursts can be used, inspected and modified by anyone interested in using 
 state-of-the art smFRET analysis methods or implementing modifications or completely new techniques. 
 FRETBursts therefore represents an ideal platform
@@ -76,12 +75,11 @@ code, and computational results (tables, plots, etc.). A notebook thus captures 
 in a document which is easy to share and execute.
 To minimize the possibility of bugs being introduced inadvertently~\cite{Soergel_2015} 
 we employ modern software engineering techniques
-such as unit testing and continuous integration~\cite{Wilson_2014}
-(cite http://biorxiv.org/content/early/2016/03/24/045104 once doi activated).
+such as unit testing and continuous integration~\cite{Wilson_2014,Eglen_2016}.
 FRETBursts is hosted on GitHub~\cite{Blischak_2016,Prli__2012},
 where users can write comments, report issues or contribute code.
 In a related effort, we recently introduced Photon-HDF5~\cite{Ingargiola2016},
-a open file format for timestamp-based single-molecule fluorescence
+an open file format for timestamp-based single-molecule fluorescence
 experiments. An other related open source tool is PyBroMo~\cite{Ingargiola_2016},
 a freely-diffusing smFRET simulator which produces Photon-HDF5 files that are
 directly analyzable with FRETBursts.
@@ -100,7 +98,7 @@ excitation alternation periods (section~\ref{sec:alternation}), (iii) background
 correction (section~\ref{sec:bg_calc}), (iv) burst search (section~\ref{sec:burstsearch}),
 (v) burst selection (section~\ref{sec:burstsel}) and (vi) FRET histogram fitting (section~\ref{sec:fretfit}).
 The aim of this section is to illustrate the specificities and trade-off involved in various approaches
-with sufficient details to enable readers new to the field (or Jupyter Notebooks) 
+with sufficient details to enable readers 
 to customize the analysis for their own needs.
 Section~\ref{sec:bva} walks the reader thorough implementing
 Burst Variance Analysis (BVA)~\cite{Torella_2011}, as an example of implementation 
@@ -115,6 +113,6 @@ In order to make the text more legible,
 we have concentrated Python-specific details in subsections entitled
 \textit{Python details}. These subsections provide deeper insights for readers
 already familiar with Python and can be initially skipped by readers who are not.
-Finally, note that all commands here reported can be found in the
-accompanying notebooks
+Finally, note that all commands and figures in this paper can be regenerated 
+using the accompanying notebooks
 (\href{https://github.com/tritemio/fretbursts_paper}{link}).
