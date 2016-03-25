@@ -9,4 +9,4 @@ To run the code examples and reproduce the figures click on:
 
 [![Binder](http://mybinder.org/badge.svg)](http://mybinder.org/repo/tritemio/fretbursts_paper)
 
-then enter in the notebook folder and run the main notebook.
+then enter in the *notebooks* folder and run the main notebook.
