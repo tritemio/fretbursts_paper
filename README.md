@@ -17,5 +17,4 @@ by using [conda](http://conda.pydata.org/) and the file [environment.yml](https:
 in this repository (e.g. `conda env create --name test --file environment.yml`).
 This will install the **exact version** of FRETBursts and of all its dependencies used for this publication.
 
-For a general-purpose installation of FRETBursts using an updated versions of all software see 
-[FRETBursts's Documentation](http://fretbursts.readthedocs.org/en/latest/getting_started.html).
+To know more about FRETBursts see [FRETBursts Homepage](http://tritemio.github.io/FRETBursts/).
