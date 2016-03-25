@@ -63,8 +63,8 @@ burst search, and correct the raw burst counts by subtraction of background coun
 
 The recorded stream of timestamps is the result of two processes: one characterized
 by a high count rate, due to fluorescence photons of single molecules crossing the
-excitation volume, and another characterized by a lower count rate, due to “background
-counts” originating from detector dark counts, afterpulsing, out-of-focus molecules
+excitation volume, and another characterized by a lower count rate, due to "background
+counts" originating from detector dark counts, afterpulsing, out-of-focus molecules
 and sample scattering and/or impurities~\cite{Gopich_2008}.
 % Gopich provides a theoretical expression for out-of-focus counts, but ignores scattering, impurities, dcr and afterpulsing (which you do not mention). For this reason, I would rather cite an original experimental paper going back to the early FCS works (dealing with exactly the same issues. 
 The signature of these two types of processes can be
@@ -87,10 +87,10 @@ throughout the measurement, in order to account for possible variations.
 Experimentally, we found that when the background is not constant,
 it usually varies
 on time scales of tens of seconds (see figure~\ref{fig:bg_timetrace}).
-FRETBursts divides the data set in constant duration time
+FRETBursts divides the acquisition in constant-duration time
 windows called \textit{background periods} and computes the background rates for
 each of these windows (see section~\ref{sec:bg_calc}).
-Note that FRETBursts uses the same definitions of constant background period windows during burst search, 
+Note that FRETBursts uses these local background rates also during burst search, 
 in order to compute time-dependent burst detection thresholds 
 and for background correction of burst data (see section~\ref{sec:burstsearch}).
 
