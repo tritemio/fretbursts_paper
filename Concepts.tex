@@ -253,16 +253,15 @@ bursts $n_a$ counts are commonly described by binomial random variable with $n_d
 and $E_p$ probability of success. While this model neglects the effect of background, it captures
 the main features of a static population. Under the binomial assumption, the variance of each burst $E_i$ is
 
-$$\operatorname{Var}\left(E_i\right) = $$\operatorname{Var}\left(\frac{n_{ai}}{n_{ti}}\right)
+$$\operatorname{Var}\left( E_i \right) = \operatorname{Var}\left( \frac{n_{ai}}{n_{ti}} \right)
 = \frac{E_p(1-E_p)}{n_{ti}}$$
-
 
 The weighting can be used to build weighted histograms or Kernel Density
 Estimation (KDE) plots. When using weights, the choice of a particular
 burst size threshold affects the shape of the burst distribution to a lesser extent,
 therefore lower threshold (e.g. 20 photons) can be used in a wide variety of cases
-without broadening the peaks of sub-populations (yielding to better
-population identification).
+without broadening the peaks of sub-populations, effectively removing the need to
+an ad-hoc optimization of the burst size threshold for each measurement.
 
 \paragraph{Python details}
 FRETBursts has the option to weight bursts using γ-corrected
