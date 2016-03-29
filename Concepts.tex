@@ -158,7 +158,7 @@ $(F-1)$~\cite{Michalet_2012}. A consistent criterion for choosing the threshold 
 particularly important when comparing different measurements with different background
 rates, when the background significantly varies during measurements or in
 multi-spot measurements where each spot has a different background rate.
-% as I am arguing (and you have before) in the revised version of the multispot paper, I am not so sure that the minimum SBR criterion is always the best. I suppose you have a way to specify a search using a constant threshold (or better yet, although I don't discuss it in the manuscript, a constant rate above background)?
+
 A second important aspect of burst search is the choice of photon stream used
 to perform the search.
 In most cases, for instance when identifying FRET sub-populations,
@@ -246,13 +246,24 @@ A simple way to mitigate the dependence of the FRET distribution on
 the burst size selection threshold is weighting bursts according to their size 
 (i.e. their information content)
 so that the bursts with largest sizes will have the largest weights.
+In statistics, weights proportional to the inverse of the variance are used 
+in the context of least-squares fitting to take into account samples
+with different variances. In the case of a burst population with fixed FRET efficiency $E_p$, 
+bursts $n_a$ counts are commonly described by binomial random variable with $n_d + n_a$ trials 
+and $E_p$ probability of success. While this model neglects the effect of background, it captures
+the main features of a static population. Under the binomial assumption, the variance of each burst $E_i$ is
+
+$$\operatorname{Var}\left(E_i\right) = $$\operatorname{Var}\left(\frac{n_{ai}}{n_{ti}}\right)
+= \frac{E_p(1-E_p)}{n_{ti}}$$
+
+
 The weighting can be used to build weighted histograms or Kernel Density
 Estimation (KDE) plots. When using weights, the choice of a particular
 burst size threshold affects the shape of the burst distribution to a lesser extent,
-therefore lower thresholds can be used (yielding to better statistics)
+therefore lower threshold (e.g. 20 photons) can be used in a wide variety of cases
 without broadening the peaks of sub-populations (yielding to better
 population identification).
-%please check my analysis of this operation in the Supporting Material. I show that choosing a weight of S is equivalent to choosing a particular threshold, while choosing other weights ie equivalent to choosing different thresholds... You may want to include this insight here.
+
 \paragraph{Python details}
 FRETBursts has the option to weight bursts using γ-corrected
 burst sizes which optionally include acceptor excitation photons \verb|naa|.
@@ -263,8 +274,7 @@ the weighted E or S distributions (see section~\ref{sec:fretfit}).
 Several other weighting functions (for example quadratical) are listed in the
 \verb|fret_fit.get_weights| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
-%you may want to discuss stoichiometry-corrected burst size (as I do in the corresponding Appendix)
-% add some discussion
+
 \subsection{Plotting \texttt{Data}}
 \label{sec:plotting}
 
