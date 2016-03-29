@@ -252,12 +252,13 @@ with different variances. In the case of a burst population with fixed FRET effi
 $n_a$ counts are commonly described by binomial random variable with $n_d + n_a$ trials 
 and $E_p$ probability of success. While this model neglects the effect of background, it captures
 the main features of a static FRET population. Under the binomial assumption,
-the variance of each burst $E_i$ is inversely proportional to the burst size $n_{ti}$,
+the variance of each burst $E_i$ is inversely proportional to the burst size $n_{ti}$ 
+(where $i$ is the index of the burst),
 as reported in eq.~\ref{eq:var_e}.
 
 \begin{equation}
 \label{eq:var_e}
-\operatorname{Var}\left( E_i \right) = 
+\operatorname{Var}\left( E_i \right)
 = \frac{E_p(1-E_p)}{n_{ti}}
 \end{equation}
 
