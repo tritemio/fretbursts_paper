@@ -263,12 +263,12 @@ as reported in eq.~\ref{eq:var_e}.
 \end{equation}
 
 Therefore weights proportional to $n_{ti}$ represent a natural choice (see SI XXX).
-In general, weighting schemes are used for building efficient estimators for a population
-parameter (e.g. $E_p$). But it can be also used to build weighted histograms or Kernel Density
-Estimation (KDE) plots which will exhibit FRET subpopulations with optimal width,
-yielding more accurate fit of peaks positions and better resolving nearby peaks
+In general, such a weighting scheme is used for building efficient estimators for a population
+parameter (e.g. $E_p$). But, it can also be used to build weighted histograms or Kernel Density
+Estimation (KDE) plots which exhibit FRET subpopulations with optimal width,
+yielding more accurate fit of peaks positions and better resolution of nearby peaks
 (compared to corresponding non-weighted plots using the same burst-size threshold).
-Traditionally, without using weights, for optimal results, the width of 
+Traditionally, for optimal results when not using weights, the width of 
 FRET subpopulations peaks are manually optimized by finding an ad-hoc (high) 
 size-threshold which selects only bursts with the highest size (and thus lowest variance).
 This procedure, needs to balance reduction in fitting error due to using bigger bursts
