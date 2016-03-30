@@ -1,7 +1,8 @@
 \section{Conclusions}
 \label{sec:conclusions}
 
-FRETBursts is an open source implementation of established smFRET burst analysis methods
+FRETBursts is an open source and openly developed (see SI~\ref{sec:dev}) implementation 
+of established smFRET burst analysis methods
 made available to the single-molecule community.
 It implements several novel concepts which improve the analysis results, such as
 time-dependent background estimation, background-dependent burst search threshold,
@@ -9,7 +10,6 @@ burst weighting and γ-corrected burst size selection.
 More importantly, FRETBursts provides a library of thoroughly-tested functions
 for timestamps and burst manipulation, making it an ideal platform for
 developing and comparing new analytical techniques.
-
 
 We envision FRETBursts both as a state-of-the-art burst analysis
 software as well as a platform for development and assessment of novel algorithms.
@@ -21,6 +21,8 @@ to reduce duplication and KISS principle
 to reduce over-engineering. Furthermore, to minimize the number software errors,
 we employ defensive programming~\cite{Prli__2012} which includes code readability,
 unit and regression testing and continuous integration~\cite{Eglen_2016}.
+Finally, being open source, any individual can inspect the source code,
+fix errors, adapt it to its own needs.
 
 We believe that, in the single-molecule community,
 standard open source software implementations, such as FRETBursts, can enhance
