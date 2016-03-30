@@ -262,7 +262,7 @@ as reported in eq.~\ref{eq:var_e}.
 = \frac{E_p(1-E_p)}{n_{ti}}
 \end{equation}
 
-Therefore weights proportional to $n_{ti}$ represent a natural choice (see SI XXX).
+Therefore weights proportional to $n_{ti}$ represent a natural choice (see SI~\ref{sec:burstweights_theory}).
 In general, such a weighting scheme is used for building efficient estimators for a population
 parameter (e.g. $E_p$). But, it can also be used to build weighted histograms or Kernel Density
 Estimation (KDE) plots which exhibit FRET subpopulations with minimal width,
@@ -276,7 +276,7 @@ with the increase in statistical noise due to the reduction in number of bursts.
 Conversely, the use of size weights allows a more efficient use of burst information.
 For example, by fixing the burst size threshold to a low value (e.g. 20 photons) is possible 
 to obtain optimal-width FRET sub-populations peaks without any need to search
-for an optimal burst-size threshold.
+for an optimal burst-size threshold (see SI~\ref{sec:burstweights_theory}).
 
 \paragraph{Python details}
 FRETBursts has the option to weight bursts using γ-corrected
