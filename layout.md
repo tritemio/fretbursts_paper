@@ -20,3 +20,4 @@ Conclusions.tex
 Supporting_Information.tex
 plotting_data.tex
 subsection_Background_Estimation_With_Optimal__.tex
+subsection_Theoretical_foundation_of_burst__.tex
