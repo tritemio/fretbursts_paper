@@ -47,12 +47,12 @@ The only approximation done here is neglecting the presence background
 very small fraction of the total counts). 
 We refer the interested reader to~\cite{Torella_2011} for further discussion.
 
-If $N_a$ follows a binomial distribution, the random variable $E_{sub} = N_a/n$,
+If $N_a$ follows a binomial distribution, the random variable $E_{\textrm{sub}} = N_a/n$,
 has a standard deviation reported in eq.~\ref{eq:binom_std}. 
 
 \begin{equation}
 \label{eq:binom_std}
-\operatorname{Std(\textit{E})} = {\sqrt{\frac{E(1 - E)}{n}}}
+\operatorname{Std(\textit{E_{\textrm{sub}}})} = {\sqrt{\frac{E(1 - E)}{n}}}
 \end{equation}
 
 BVA analysis consists of four steps: 1) dividing bursts into consecutive burst chunks containing a constant number of consecutive photons,~\textit{n}, 2) computing the FRET efficiencies of each burst chunk, 3) calculating the empirical standard deviation ($s_E$) of burst chunks FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}).
