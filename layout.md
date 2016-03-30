@@ -19,3 +19,4 @@ figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
 Conclusions.tex
 Supporting_Information.tex
 plotting_data.tex
+subsection_Background_Estimation_With_Optimal__.tex
