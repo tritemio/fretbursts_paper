@@ -2,7 +2,7 @@
 \label{sec:bg_calc}
 
 The first step of smFRET analysis involves estimating background rates.
-For example, to compute the background every 30 s, using a minimal inter-photon
+For example, to compute the background every 30~s, using a minimal inter-photon
 delay threshold of 2~ms for the photon stream comprising all photons, the corresponding command is:
 
 \begin{lstlisting}
@@ -14,20 +14,17 @@ background rate for each photon stream (see section~\ref{sec:bg_intro}).
 The function
 \verb|bg.exp_fit| estimates the background using a maximum likelihood estimation
 (MLE) of the delays distribution.
-Additional fitting functions are available in
-\verb|bg| namespace 
-(i.e. the \verb|background| module, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
-{link}). The second argument, \verb|time_s|, is the duration of the
+The second argument, \verb|time_s|, is the duration of the
 \textit{background period} (section~\ref{sec:bg_intro}) and the third, \verb|tail_min_us|,
 is the minimum inter-photon delay to use when fitting the distribution to the specified model function.
 To use different thresholds for each photon stream we pass a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
 The recommended approach is however automating the choice of threshold using
-\verb|tail_min_us='auto'| using an quick heuristic algorithm which is described in 
+\verb|tail_min_us='auto'| using an heuristic algorithm which is described in 
 \textit{Background estimation} section of the μs-ALEX tutorial 
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb#Background-estimation}{link}).
-Finally, it is possible to use a slow but rigorous approach to find the optimal
-threshold as described in SI XXX.
+Finally, it is possible to use a slower but rigorous approach to find the optimal
+threshold as described in SI~\ref{sec:bg_opt_th}.
 
 FRETBursts provides two kinds of plots to represent the background. One is the histograms
 of inter-photon delays compared to the fitted exponential distribution, shown in 
@@ -44,7 +41,7 @@ Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where
 background fitting procedure returns unreasonable values. 
 
 The second background-related plot represents a timetrace of background rates, 
-as shown in figure~\ref{fig:bg_timetrace}. This plot allows monitoring background rate variationss
+as shown in figure~\ref{fig:bg_timetrace}. This plot allows monitoring background rate variations
 occurring during the measurement and is obtained with the command:
 
 \begin{lstlisting}
@@ -55,9 +52,9 @@ Normally, samples should have a fairly constant background rate as a function of
 as in figure~\ref{fig:bg_timetrace}(a). However, sometimes, non-ideal
 experimental conditions can yield a time-varying background rate, as illustrated in
 figure~\ref{fig:bg_timetrace}(b).
-A possible reason for the observed behavior could be buffer evaporation from a poorly sealed (or open) sample observation chamber. Alternatively,
-cover-glass impurities can contribute to the background even when focusing 
-deep into the sample (10μm or more).
+A possible reason for the observed behavior could be buffer evaporation from an open sample 
+(or poorly sealed) observation chamber. Alternatively,
+cover-glass impurities can contribute to the background.
 These impurities tend to bleach on timescales of minutes resulting in
 background variations during the course of the measurement.
 
@@ -69,3 +66,7 @@ streams \verb|Ph_sel(Dex='Dem')|, \verb|Ph_sel(Dex='Aem')| and \verb|Ph_sel(Aex=
 respectively.
 These attributes are lists of arrays (one array per excitation spot).
 The arrays contain the estimated background rates in the different time trace windows.
+Additional background fitting functions (e.g. least-square fitting of inter-photon delay
+histogram) are available in \verb|bg| namespace 
+(i.e. the \verb|background| module, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
+{link}). 
