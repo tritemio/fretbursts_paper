@@ -20,4 +20,4 @@ Conclusions.tex
 Supporting_Information.tex
 plotting_data.tex
 Optimal_Background_Threshold.tex
-subsection_Theoretical_foundation_of_burst__.tex
+Burst_Weights_Theory.tex
