@@ -20,12 +20,14 @@ Additional fitting functions are available in
 {link}). The second argument, \verb|time_s|, is the duration of the
 \textit{background period} (section~\ref{sec:bg_intro}) and the third, \verb|tail_min_us|,
 is the minimum inter-photon delay to use when fitting the distribution to the specified model function.
-It is possible to use different thresholds for each photon stream, passing a
+To use different thresholds for each photon stream we pass a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
-Finally, it is possible to use a heuristic estimation of the threshold using
-\verb|tail_min_us='auto'|. For more details refer to \textit{Background estimation} 
-section of the μs-ALEX tutorial 
+The recommended approach is however automating the choice of threshold using
+\verb|tail_min_us='auto'| using an quick heuristic algorithm which is described in 
+\textit{Background estimation} section of the μs-ALEX tutorial 
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb#Background-estimation}{link}).
+Finally, it is possible to use a slow but rigorous approach to find the optimal
+threshold as described in SI XXX.
 
 FRETBursts provides two kinds of plots to represent the background. One is the histograms
 of inter-photon delays compared to the fitted exponential distribution, shown in 
@@ -58,39 +60,12 @@ cover-glass impurities can contribute to the background even when focusing
 deep into the sample (10μm or more).
 These impurities tend to bleach on timescales of minutes resulting in
 background variations during the course of the measurement.
-%I don't understand this. 10 um is NOT deep. If anything, you would have to assume increasing adsorption of fluorescent molecules (or impurities) to account for an increase in background rate.
-\paragraph{Python details} For ALEX measurements, the tuple passed to
-\verb|tail_min_us| in order to define the thresholds needs to contain  
-5 values corresponding the 5 distinct photon streams define in section XXX.
-%don't remember which section and photon streams. I suggest repeating them here.
-The photon streams order can be obtained from
-the \verb|Data.ph_streams| attribute (i.e. \verb|d.ph_streams| in our example).
-% what is the stream order?
+
+\paragraph{Python details} 
+
 The estimated background rates are stored in the \verb|Data| attributes
 \verb|bg_dd|, \verb|bg_ad| and \verb|bg_aa|, corresponding to photon
 streams \verb|Ph_sel(Dex='Dem')|, \verb|Ph_sel(Dex='Aem')| and \verb|Ph_sel(Aex='Aem')|
 respectively.
-% that's 3. Where are the others?
 These attributes are lists of arrays (one array per excitation spot).
 The arrays contain the estimated background rates in the different time trace windows.
-
-\subsubsection{Error Metrics and Optimal Threshold}
-%that sounds like advanced information which might not belong to this introductory paper. If this is discussed in the manual, maybe refer to it?
-
-The functions used to fit the background provide also a goodness-of-fit estimator 
-computed on the basis of the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}. 
-The ``distance'' between the EDF and the theoretical (i.e. exponential) cumulative distribution
-represents and indicator of the quality of fit.
-Two different distance metrics can be returned by the background fitting functions.
-The first is the Kolgomorov-Smirnov statistics, which uses the maximum of the difference 
-between the EDF and the theoretical distribution. The second is the Cramér von Mises
-statistics corresponding to the integral of the squared residuals
-(see the code for more details,
-\href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/background.py#L43}{link}).
-
-In principle, the optimal inter-photon delay threshold will minimize
-the error metric. This approach is implemented by the function \verb|calc_bg_brute|
-(\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.calc_bg_brute}{link}) which performs a brute-force search in order to find the optimal threshold.
-This optimization is not necessary under typical experimental conditions, 
-because the estimated rates normally change only a by a few per-cent 
-in most practical cases.
