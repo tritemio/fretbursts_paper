@@ -35,7 +35,10 @@ This plot is created with the command:
 dplot(d, hist_bg, period=0)
 \end{lstlisting}
 
-The argument \verb|period| is an integer specifying the background period to be plotted.
+This command reflects the general form of plotting commands in FRETBursts 
+as described in SI~\ref{sec:plotting}.
+Here we only note that the argument \verb|period| is an integer specifying the background 
+period to be plotted.
 When omitted, the default is 0, i.e. the first period is chosen.
 Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where the 
 background fitting procedure returns unreasonable values. 
@@ -68,5 +71,5 @@ These attributes are lists of arrays (one array per excitation spot).
 The arrays contain the estimated background rates in the different time trace windows.
 Additional background fitting functions (e.g. least-square fitting of inter-photon delay
 histogram) are available in \verb|bg| namespace 
-(i.e. the \verb|background| module, \href{http://fretbursts.readthedocs.org/en/latest/background.html}
-{link}). 
+(i.e. the \verb|background| module, 
+\href{http://fretbursts.readthedocs.org/en/latest/background.html}{link}). 
