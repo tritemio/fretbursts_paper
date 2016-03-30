@@ -1,7 +1,8 @@
 \subsection{Background Estimation With Optimal Threshold}
 \label{sec:bg_opt_th}
-The functions used to fit the background provide also a goodness-of-fit estimator 
-computed on the basis of the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}. 
+The functions used to fit the background (i.e. \verb|bg.exp_fit| and other functions in \verb|bg| module)
+provide also a goodness-of-fit estimator 
+computed from the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}. 
 The ``distance'' between the EDF and the theoretical (i.e. exponential) cumulative distribution
 represents and indicator of the quality of fit.
 Two different distance metrics can be returned by the background fitting functions.
@@ -16,4 +17,4 @@ the error metric. This approach is implemented by the function \verb|calc_bg_bru
 (\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.calc_bg_brute}{link}) which performs a brute-force search in order to find the optimal threshold.
 This optimization is not necessary under typical experimental conditions, 
 because the estimated rates normally change only a by a few per-cent 
-in most practical cases.
+compared to the heuristic threshold selection used by default.
