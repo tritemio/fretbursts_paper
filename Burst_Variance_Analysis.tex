@@ -55,13 +55,18 @@ has a standard deviation reported in eq.~\ref{eq:binom_std}.
 \operatorname{Std}(E_{\textrm{sub}}) = \left( \frac{E_p\,(1 - E_p)}{n} \right)^{1/2}
 \end{equation}
 
-BVA analysis consists of four steps: 1) dividing bursts into consecutive burst chunks containing a constant number of consecutive photons,~\textit{n}, 2) computing the FRET efficiencies of each burst chunk, 3) calculating the empirical standard deviation ($s_E$) of burst chunks FRET efficiencies over the whole burst, and 4) comparing $s_E$ to the expected standard deviation of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}).
+BVA analysis consists of four steps: 1) dividing bursts into consecutive sub-bursts 
+containing a constant number of consecutive photons~\textit{n}, 2) computing the PR 
+of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-bursts
+PR over the whole burst, and 4) comparing $s_E$ to the expected standard deviation 
+of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}).
 If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
 originates from a static mixture of sub-populations (of different 
 non-interconverting molecules) characterized by distinct FRET efficiencies, 
-$s_E$ of each burst is only affected by shot noise and will follow the expected standard deviation curve based on eq.~\ref{eq:binom_std}. 
-Conversely, if the observed distribution originates from biomolecules belonging to a single specie, which 
-interconverts between different FRET sub-populations (over times comparable to the diffusion 
+$s_E$ of each burst is only affected by shot noise and will follow the expected 
+standard deviation curve based on eq.~\ref{eq:binom_std}. 
+Conversely, if the observed distribution originates from biomolecules belonging to a single specie, 
+which interconverts between different FRET sub-populations (over times comparable to the diffusion 
 time), as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected 
 shot-noise-limited standard deviation, and will be located above the shot-noise standard 
 deviation curve (right panel of figure~\ref{fig:bva_dynamic}).
@@ -104,7 +109,7 @@ Here, \verb|ph_d| contains the Dex timestamps, \verb|bursts| the original burst 
 \verb|bursts_d| the burst data with start-stop indexes relative to \verb|ph_d|.
 
 Finally, with the previous variables at hand, the BVA algorithm
-can be easily implrement by computing the $s_E$ quantity for each burst:
+can be easily implemented by computing the $s_E$ quantity for each burst:
 
 \begin{lstlisting}
 n = 7
