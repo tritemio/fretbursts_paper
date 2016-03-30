@@ -107,15 +107,12 @@ can be excluded by selecting bursts within a range of $S$ values (e.g. S=0.2-0.8
 This approach, however, simply truncates the burst distribution with arbitrary
 thresholds and is therefore not recommended for quantitative assessment of FRET
 populations.
-% I don't think that is a very strong statement, in the sense that it is just as ad hoc as the E-S selection method
-% and leaves dubious intermediate bursts in the final result
 
 An alternative approach consists in applying two selection filters sequentially.
 First, the A-only population is filtered out
-%some FRET burst are also filtered out this way
 by applying a threshold on the number of photons during donor excitation.
-Second, the D-only population is fitlered out by applying a threshold on the number of photons during acceptor excitation.
-%same comment as previously
+Second, the D-only population is filtered out by applying a threshold on 
+the number of photons during acceptor excitation.
 The commands for these combined selections are:
 
 \begin{lstlisting}
