@@ -5,7 +5,8 @@
 \label{sec:dataload}
 While FRETBursts can load several data files formats,
 we encourage users to adopt the recently introduced Photon-HDF5 file format~\cite{Ingargiola2016}.
-Photon-HDF5 is an HDF5-based, open format, specifically designed for freely-diffusing smFRET and other timestamp-based experiments.
+Photon-HDF5 is an HDF5-based, open format, specifically designed for freely-diffusing smFRET and 
+other timestamp-based experiments.
 Photon-HDF5 is a self-documented, platform- and language-independent binary format,
 which supports compression and allows saving photon data (e.g. timestamps) and measurement-specific metadata
 (e.g. setup and sample information, authors, provenance, etc.).
@@ -42,19 +43,16 @@ can be found in the \verb|loader| module's documentation
 \subsection{Alternation Parameters}
 \label{sec:alternation}
 
-For µs-ALEX and ns-ALEX data, it is necessary to specify the
+For µs-ALEX and ns-ALEX data, Photon-HDF5 normally stores parameters defining
 alternation periods corresponding to donor and acceptor laser excitation.
-% maybe mention that a Photon-HDF5 file may already provide this information. What happens then?
-- In µs-ALEX measurements,
-%insert ref
+At load time, a user can plot these parameters and change them if deemed necessary.
+In µs-ALEX measurements~\cite{Kapanidis_2004},
 CW laser lines are alternated on timescales of the order of 10 to 100~µs.
 Plotting an histogram of timestamps modulo the alternation period, it
 is possible to identify the donor and acceptor excitation periods (see figure~\ref{fig:altern_hist_double}a).
-- In ns-ALEX measurements,
-%insert refs
- pulsed lasers with equal repetition rates are delayed with respect to one another with typical delays of 10 to 100~ns.
-In this case, forming an histogram of nanotimes
-%which haven't been defined so far
+In ns-ALEX measurements,
+pulsed lasers with equal repetition rates are delayed with respect to one another with typical delays of 10 to 100~ns.
+In this case, forming an histogram of TCSPC times (nanotimes)
 will allow 
 the definition of the period of fluorescence after excitation of either the donor or the acceptor
 (see figure~\ref{fig:altern_hist_double}b).
