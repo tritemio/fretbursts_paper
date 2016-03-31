@@ -11,3 +11,19 @@ number of trials, therefore the variance is:
 \operatorname{Var} (E_i) = \frac{E_p\,(1 - E_p)}{n_{ti}}
 \end{equation}
 
+For any random variables, a general result is the
+Cramer-Rao bound, which states that the Fisher information sets a lower bound on the
+variance of any statistics according to eq.~\ref{eq:cramer_rao}
+\begin{equation}
+\label{eq:cramer_rao}
+\operatorname{Var}\left(\hat{p}\right) \ge \frac{1}{\mathcal{I}(\theta)}
+\end{equation}
+
+In eq.~\ref{eq:cramer_rao}, $\hat{p}$ is any statistics of the random variable $\theta$,
+and $\mathcal{I}(\theta)$ is the Fisher information of $\theta$. When the statistics is
+an unbiased estimator of a distribution parameter and the equality holds in eq.~\ref{eq:cramer_rao},
+the estimator is a minimum-variance unbiased estimator (MVUB).
+
+we know that any statistics
+has a 
+sets a lower bound
