@@ -39,11 +39,22 @@ parameter).
 
 A population of $N$ bursts can be modeled by a set of $N$ binomial
 variables with same success probability $E_p$ and varying number of successes
-equal to the burst size. From this set, the population PR can be estimated
-as in eq.~\ref{eq:E_estim}.
+equal to the burst size. Now, notice that the sum of binomial r.v. with same 
+success probability is still a binomial (with number of trial equal to the sum of the number of trials).
+Therefore we can build an estimator for $E_p$ by taking the binomial r.v. resulting from summing all bursts
+and computing the proportion of successes as in eq.~\ref{eq:E_estim}.
 
 \begin{equation}
 \label{eq:E_estim}
 \hat{E} = \frac{\sum_i n_{ai}}{\sum_i n_{ti}}
 \end{equation}
 
+The variance of $\hat{E}$ (eq.~\ref{eq:E_var}) is equal to the inverse of 
+the Fisher information $\mathcal{I}{\hat{E}$ and therefore $\hat{E}$ is a MVUB estimator for $E_p$.
+
+\begin{equation}
+\label{eq:E_var}
+\operatorname{Var}(\hat{E}) = \frac{E_p\,(1 - E_p)}{\sum_i n_{ti}} = \frac{1}{\mathcal{I}{\hat{E}}
+\end{equation}
+
+We can also verify that $hat{E}$
