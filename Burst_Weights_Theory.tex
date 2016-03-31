@@ -1,4 +1,13 @@
 \subsection{Theoretical foundation of burst weights}
 \label{sec:burstweights_theory}
-Burst counts in the acceptor channel are usually modeled with a binomial distribution
-where the success probability is the PR and the number of trials is $n_d + n_a$.
+In homogenuous FRET population, burst counts in the acceptor channel can be
+modeled as a binomial random variable with success probability equal to the
+population PR and number of trials equal to the burst size $n_d + n_a$.
+Similarly, the PR of each burst $E_i$ ($i$ being the burst index) is simply a binomial divided by the 
+number of trials, therefore the variance is:
+
+\begin{equation}
+\label{eq:E_var}
+\operatorname{Var} (E_i) = \frac{E_p\,(1-E_p)}{n_ti}
+\end{equation}
+
