@@ -1,10 +1,10 @@
 \subsection{Theoretical foundation of burst weights}
 \label{sec:burstweights_theory}
 In homogenuous FRET population, burst counts in the acceptor channel can be
-modeled as a binomial random variable with success probability equal to the
+modeled as a binomial random variable (RV) with success probability equal to the
 population PR and number of trials equal to the burst size $n_d + n_a$.
-Similarly, the PR of each burst $E_i$ ($i$ being the burst index) is simply a binomial divided by the 
-number of trials, therefore the variance is:
+Similarly, the PR of each burst $E_i$ ($i$ being the burst index) is 
+simply a binomial divided by the number of trials, therefore the variance is:
 
 \begin{equation}
 \label{eq:E_var}
@@ -23,7 +23,7 @@ are proportional to the burst size.
 
 According to the Cramer-Rao lower bound (eq.~\ref{eq:cramer_rao}), the 
 Fisher information \mathcal{I}(\theta) sets a lower bound on the
-variance of any statistics $\hat{p}$ of a random variable $theta$.
+variance of any statistics $\hat{p}$ of a RV $theta$.
 
 \begin{equation}
 \label{eq:cramer_rao}
@@ -39,10 +39,12 @@ parameter).
 
 A population of $N$ bursts can be modeled by a set of $N$ binomial
 variables with same success probability $E_p$ and varying number of successes
-equal to the burst size. Now, notice that the sum of binomial r.v. with same 
-success probability is still a binomial (with number of trial equal to the sum of the number of trials).
-Therefore we can build an estimator for $E_p$ by taking the binomial r.v. resulting from summing all bursts
-and computing the proportion of successes as in eq.~\ref{eq:E_estim}.
+equal to the burst size. Now, notice that the sum of binomial RV with same 
+success probability is still a binomial (with number of trial equal to 
+the sum of the number of trials).
+Therefore we can build an estimator for $E_p$ by computing the proportion of
+success from the sum over all bursts of acceptor counts o divided by the total
+number of photons as in eq.~\ref{eq:E_estim}.
 
 \begin{equation}
 \label{eq:E_estim}
@@ -50,11 +52,29 @@ and computing the proportion of successes as in eq.~\ref{eq:E_estim}.
 \end{equation}
 
 The variance of $\hat{E}$ (eq.~\ref{eq:E_var}) is equal to the inverse of 
-the Fisher information $\mathcal{I}(\hat{E})$ and therefore $\hat{E}$ is a MVUB estimator for $E_p$.
+the Fisher information $\mathcal{I}(\hat{E})$ and therefore $\hat{E}$ is a MVUB 
+estimator for $E_p$.
 
 \begin{equation}
 \label{eq:E_var}
 \operatorname{Var}(\hat{E}) = \frac{E_p\,(1 - E_p)}{\sum_i n_{ti}} = \frac{1}{\mathcal{I}(\hat{E})
 \end{equation}
 
-We can also verify that $hat{E}$
+With simple algebra is verify that $hat{E}$ is equal to the weighted average of the bursts
+PR $E_i$ (eq.~ref{}), with weights proportional to the burst size.
+
+\begin{equation}
+\label{eq:weights}
+w_i = \frac{\frac{n_{ti}}{p(1-p)}}{\frac{1}{p(1-p)} \sum_i n_{ti}}
+= \frac{n_{ti}}{\sum_i n_{ti}}
+\end{equation}
+
+\begin{equation}
+\label{eq:E_wmean}
+\hat{E}_w = \frac{1}{N} \sum_i w_i E_i = \frac{1}{N}  \frac{\sum_i n_{ti} E_i}{\sum_i n_{ti}}
+= \frac{1}{N}  \frac{\sum_i n_{ti} \frac{n_{ai}}{n_{ti}} }{\sum_i n_{ti}}
+= \frac{1}{N}  \frac{\sum_i n_{ai}}{\sum_i n_{ti}} = \hat{E}$$
+\end{equation}
+
+
+
