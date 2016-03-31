@@ -85,6 +85,27 @@ $E_p$ with an unweighted average. Conversely, building the FRET histogram
 using the burst size as weights and fitting the peak is equivalent to using
 the MVUB estimator for $E_p$.
 
+\subsubsection{Simulations}
+It is easy to illustrate the results of previous section through simulations.
+In particular we generate a static FRET population of bursts extracting sizes 
+from an exponential (or gamma) distribution and acceptor counts from a binomial
+distribution. By repeatedly fitting the population parameter $E_p$ using a 
+size-weighted and unweighted average, we verified that the former has systematically
+lower variance of the latter as predicted by the theory. Note that this result
+holds for any arbitrary distribution of burst sizes.
 
+\subsubsection{Experiments}
+Figure X show a comparison of a FRET histogram obtained from the same burst
+with and without weights. The burst selection is obtained applying a burst size
+of threshold of 20 counts, in order to filter the extreme low-end of the burst size
+distribution which include background bursts.
 
-
+The use of size-weighted FRET histograms allows to obtain a minimal with of
+the various FRET peaks without the need of using a manually adjusted high
+threshold for burst selection. While an increase in the selection threshold
+reduces the shot-noise of the residual population it also discards the useful 
+information of low and medium size bursts. Necessarly, an unweighted histograms
+with high selection threshold will exhibit an higher statistical noise
+(due to the reduced number of bursts) compared to the size-weighted histogram
+obtained using a low threshold.
+statistical variance
