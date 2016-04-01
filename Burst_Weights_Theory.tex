@@ -1,28 +1,29 @@
 \subsection{Burst Weights}
 \label{sec:burstweights_theory}
 \subsubsection{Theoretical Foundation}
-In homogeneous FRET population, burst counts in the acceptor channel can be
+Freely-diffusing molecules across 
+a Gaussian excitation volume give rise to 
+a burst size distribution that is exponentially distributed.
+In a static FRET population, burst counts in the acceptor channel can be
 modeled as a binomial random variable (RV) with success probability equal to the
 population PR and number of trials equal to the burst size $n_d + n_a$.
 Similarly, the PR of each burst $E_i$ ($i$ being the burst index) is 
-simply a binomial divided by the number of trials, therefore the variance is:
+simply a binomial divided by the number of trials, with variance reported
+in eq.~\ref{eq:E_var}.
 
 \begin{equation}
 \label{eq:E_var}
 \operatorname{Var} (E_i) = \frac{E_p\,(1 - E_p)}{n_{ti}}
 \end{equation}
 
-For a single FRET population, freely-diffusing molecules across 
-a Gaussian excitation volume give rise to 
-a burst size distribution that is exponentially distributed.
-From eq.~\ref{eq:E_var} we see that bursts with larger burst size
-will yield more accurate estimations of the population PR
-(since their variance will be smaller). Therefore, in estimating the 
-population PR we need to "focus" on larger bursts.
+Bursts with higher counts carries a more accurate estimations 
+of the population PR since their variance will be smaller. 
+Therefore, in estimating the population PR we need to "focus" 
+on bigger bursts.
 Traditionally, this is accomplished by merely discarding bursts
 below a size-threshold.
-In the following paragraphs we demonstrate how, by proper weights
-bursts, is possible to obtains better estimates by taking into 
+In the following paragraphs we demonstrate how, by proper weighting
+bursts, is possible to obtains optimal estimates of PR which takes into 
 account the information of the entire burst population.
 
 According to the Cramer-Rao lower bound (eq.~\ref{eq:cramer_rao}), the 
