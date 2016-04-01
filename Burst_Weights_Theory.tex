@@ -124,15 +124,9 @@ an experimental FRET population from measurement of a di-labeled dsDNA sample.
 \subsubsection{Experiments}
 Figure X show a comparison of a FRET histogram obtained from the same burst
 with and without weights. The burst selection is obtained applying a burst size
-of threshold of 20 counts, in order to filter the extreme low-end of the burst size
-distribution which include background bursts.
+of threshold of 10 counts (after background correction), in order to filter 
+the extreme low-end of the burst size distribution.
 
-The use of size-weighted FRET histograms allows to obtain a minimal with of
-the various FRET peaks without the need of using a manually adjusted high
-threshold for burst selection. While an increase in the selection threshold
-reduces the shot-noise of the residual population it also discards the useful 
-information of low and medium size bursts. Necessarly, an unweighted histograms
-with high selection threshold will exhibit an higher statistical noise
-(due to the reduced number of bursts) compared to the size-weighted histogram
-obtained using a low threshold.
-statistical variance
+The use of size-weighted FRET histograms is a simple way to obtain a representation of FRET 
+distribution that is optimal (in the sense of not discarding information) while removing
+the need of using a manually adjusted high threshold for burst selection. 
