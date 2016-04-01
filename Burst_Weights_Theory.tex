@@ -46,18 +46,18 @@ A population of $N$ bursts can be modeled by a set of $N$ binomial
 variables with same success probability $E_p$ and varying number of successes
 equal to the burst size. An estimator for $E_p$ can be constructed
 noticing that the sum of binomial RV with same 
-success probability is still a binomial (with number of trial equal to 
+success probability is still a binomial (with number of trials equal to 
 the sum of the number of trials).
 Taking the sum of acceptor counts over all bursts divided by the total 
 number of photons as in eq.~\ref{eq:E_estim}, we obtain 
-the proportion of successes $\hat{E}$
+the proportion of successes $\hat{E}$.
 
 \begin{equation}
 \label{eq:E_estim}
 \hat{E} = \frac{\sum_i n_{ai}}{\sum_i n_{ti}}
 \end{equation}
 
-The variance of  (eq.~\ref{eq:E_variance}) is equal to the inverse of 
+The variance of $\hat{E}$ (eq.~\ref{eq:E_variance}) is equal to the inverse of 
 the Fisher information $\mathcal{I}(\hat{E})$ and therefore $\hat{E}$ is a MVUB 
 estimator for $E_p$.
 
