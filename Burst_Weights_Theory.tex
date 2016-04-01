@@ -16,8 +16,8 @@ in eq.~\ref{eq:E_var}.
 \operatorname{Var} (E_i) = \frac{E_p\,(1 - E_p)}{n_{ti}}
 \end{equation}
 
-Bursts with higher counts carries a more accurate estimations 
-of the population PR since their variance will be smaller. 
+Bursts with higher counts, provide more accurate estimations 
+of the population PR, since their PR variance is smaller (eq.~\ref{eq:E_var}). 
 Therefore, in estimating the population PR we need to "focus" 
 on bigger bursts.
 Traditionally, this is accomplished by merely discarding bursts
@@ -37,26 +37,27 @@ variance of any statistics $\hat{p}$ of a RV $\theta$.
 
 When the statistics $\hat{p}$ is an unbiased estimator of a distribution 
 parameter and the equality holds in eq.~\ref{eq:cramer_rao},
-the estimator is a minimum-variance unbiased estimator (MVUB)
-and the estimator is said to be efficient (meaning that it does an
+the estimator is a minimum-variance unbiased (MVUB) estimator 
+and it is said to be efficient (meaning that it does an
 optimal use the information contained in the sample to estimate the
 parameter).
 
 A population of $N$ bursts can be modeled by a set of $N$ binomial
 variables with same success probability $E_p$ and varying number of successes
-equal to the burst size. Now, notice that the sum of binomial RV with same 
+equal to the burst size. An estimator for $E_p$ can be constructed
+noticing that the sum of binomial RV with same 
 success probability is still a binomial (with number of trial equal to 
 the sum of the number of trials).
-Therefore we can build an estimator for $E_p$ by computing the proportion of
-success from the sum over all bursts of acceptor counts o divided by the total
-number of photons as in eq.~\ref{eq:E_estim}.
+Taking the sum of acceptor counts over all bursts divided by the total 
+number of photons as in eq.~\ref{eq:E_estim}, we obtain 
+the proportion of successes $\hat{E}$
 
 \begin{equation}
 \label{eq:E_estim}
 \hat{E} = \frac{\sum_i n_{ai}}{\sum_i n_{ti}}
 \end{equation}
 
-The variance of $\hat{E}$ (eq.~\ref{eq:E_variance}) is equal to the inverse of 
+The variance of  (eq.~\ref{eq:E_variance}) is equal to the inverse of 
 the Fisher information $\mathcal{I}(\hat{E})$ and therefore $\hat{E}$ is a MVUB 
 estimator for $E_p$.
 
