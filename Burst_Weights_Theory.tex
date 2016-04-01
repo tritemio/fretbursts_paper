@@ -1,6 +1,6 @@
 \subsection{Burst Weights}
 \label{sec:burstweights_theory}
-\subsubsection{Theoretical Foundation}
+\subsubsection{Theory}
 Freely-diffusing molecules across 
 a Gaussian excitation volume give rise to 
 a burst size distribution that is exponentially distributed.
@@ -66,7 +66,7 @@ estimator for $E_p$.
 \operatorname{Var}(\hat{E}) = \frac{E_p (1 - E_p)}{\sum_i n_{ti}} = \frac{1}{\mathcal{I}(\hat{E})}
 \end{equation}
 
-Finally, we can verify that $\hat{E}$ is equal to the weighted average of the bursts
+We can finally verify that $\hat{E}$ is equal to the weighted average of the bursts
 PR $E_i$ (eq.~\ref{eq:E_wmean}), with weights proportional to the burst size (eq.~\ref{eq:weights}).
 
 \begin{equation}
@@ -83,21 +83,43 @@ w_i
 
 Since $\hat{E}$ is the MVUB estimator, any other estimator of $E_p$ (in particular 
 the unweighted mean of $E_i$) will have a larger variance.
-Finally, we can extend these consideration of optimal weights for 
-the PR estimator to the plot of the actual FRET distribution. Building an
+
+We can extend these consideration of optimal weights for 
+the PR estimator to the FRET distribution plot. Building an
 unweighted histogram and fitting the peak is analogous to estimating the 
 $E_p$ with an unweighted average. Conversely, building the FRET histogram
 using the burst size as weights and fitting the peak is equivalent to using
 the MVUB estimator for $E_p$.
 
-\subsubsection{Simulations}
-It is easy to illustrate the results of previous section through simulations.
-In particular we generate a static FRET population of bursts extracting sizes 
-from an exponential (or gamma) distribution and acceptor counts from a binomial
-distribution. By repeatedly fitting the population parameter $E_p$ using a 
+\subsubsection{Comparison of estimators}
+To illustrate the results of previous section we performed two kinds of simulations.
+
+In the first, is a simple verification of the results of previous section, namely
+that a weighted mean of $E_i$ is the estimator with minimal variance of $E_p$.
+For this purpose, we generated a static FRET population of 200 bursts 
+by simply extracting burst-sizes from an exponential distribution ($\lambda = 50$)
+and acceptor counts from a binomial distribution ($E_p = 0.2$). 
+By repeatedly fitting the population parameter $E_p$ using a 
 size-weighted and unweighted average, we verified that the former has systematically
 lower variance of the latter as predicted by the theory. Note that this result
-holds for any arbitrary distribution of burst sizes.
+holds for any arbitrary distribution of burst sizes. The full simulation is reported in
+the accompanying Jupyter notebook (\href{}{link}).
+
+\subsubsection{Comparison FRET histograms}
+The second simulation, is much more realistic and captures the complexity of 
+experimental smFRET data. Starting from 3-D Brownian motion 
+diffusion of $N$ particles excited by a numerically computed PSF, we simulated timestamps
+of a smFRET experiments with two static FRET populations. Input parameters includes
+the diffusion coefficient, the particle brightness, the two FRET efficiencies,
+as well as detectors DCR. The simulation is performed with the open source software 
+PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files in Photon-HDF5 
+format~\cite{Ingargiola2016}.
+After a burst search, and only a minimal burst size selection of with threshold of 10 photons,
+we obtained the weighted and unweighted FRET histograms reported in figure~\ref{fig:YYY}.
+We notice as the use of the weights results in better definition of FRET peaks.
+
+As a final comparison, we report the weighted and unweighted FRET histogram of 
+an experimental FRET population from measurement of a di-labeled dsDNA sample.
 
 \subsubsection{Experiments}
 Figure X show a comparison of a FRET histogram obtained from the same burst
