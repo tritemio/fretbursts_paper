@@ -18,13 +18,16 @@ a burst size distribution that is exponentially distributed.
 From eq.~\ref{eq:E_var} we see that bursts with larger burst size
 will yield more accurate estimations of the population PR
 (since their variance will be smaller). Therefore, in estimating the 
-population PR we need to put bigger weights on larger bursts.
-In the following paragraphs we demonstrate that the optimal weights
-are proportional to the burst size.
+population PR we need to "focus" on larger bursts.
+Traditionally, this is accomplished by merely discarding bursts
+below a size-threshold.
+In the following paragraphs we demonstrate how, by proper weights
+bursts, is possible to obtains better estimates by taking into 
+account the information of the entire burst population.
 
 According to the Cramer-Rao lower bound (eq.~\ref{eq:cramer_rao}), the 
 Fisher information \mathcal{I}(\theta) sets a lower bound on the
-variance of any statistics $\hat{p}$ of a RV $theta$.
+variance of any statistics $\hat{p}$ of a RV $\theta$.
 
 \begin{equation}
 \label{eq:cramer_rao}
