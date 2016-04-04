@@ -109,11 +109,11 @@ a mixture of two static FRET populations and then with experimental data.
 
 We performed a realistic simulation of a static mixture of two FRET populations
 starting from 3-D Brownian motion diffusion of $N$ particles excited by a 
-numerically-computed (non-Gaussian PSF). Input parameters includes
+numerically computed (non-Gaussian) PSF. Simulation input parameters includes
 the diffusion coefficient, the particle brightness, the two FRET efficiencies,
 as well as detectors DCR. The simulation is performed with the open source software 
-PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files (i.e. timestamps and detectors
-arrays) in Photon-HDF5 format~\cite{Ingargiola2016}.
+PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files (i.e. timestamps 
+and detectors arrays) in Photon-HDF5 format~\cite{Ingargiola2016}.
 The simulated data file is processed with FRETBursts performing burst search, 
 and only a minimal burst size selection of with threshold of 10 photons.
 The resulting weighted and unweighted FRET histograms are reported in figure~\ref{fig:YYY}.
