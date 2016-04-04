@@ -234,44 +234,29 @@ because of broadening of FRET peaks and appearance of shot-noise artifacts
 in the FRET (and S) distribution (i.e. spurious narrow peaks due to E and S being
 computed as the ratio of small integers).
 Conversely, too large a threshold may result in too low a number of bursts
-therefore poor statistical significance of the computed FRET distribution.
-Additionally, especially when computing fractions of sub-population 
+therefore poor representation of the FRET distribution.
+Additionally, especially when computing fractions of sub-populations
 (e.g. ratio of number of bursts in each sub-population),
-it is important to use γ-corrected burst sizes,
+it is important to use γ-corrected burst sizes as selection criterion,
 in order to avoid under-representing some FRET sub-populations
 due to different quantum yields of donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor channels.
 
 A simple way to mitigate the dependence of the FRET distribution on 
 the burst size selection threshold is weighting bursts proportionally to their size 
-(i.e. their Fisher information)
 so that the bursts with largest sizes will have the largest weights.
-In statistics, weights proportional to the inverse of the variance are used 
-in the context of least-squares fitting to take into account samples
-with different variances. In the case of a burst population with fixed FRET efficiency $E_p$, 
-the counts $n_a$ are commonly described by binomial random variable, with $n_d + n_a$ trials 
-and $E_p$ probability of success. While this model neglects the effect of background, it captures
-the main features of a static FRET population. Under the binomial assumption,
-the variance of each burst $E_i$ is inversely proportional to the burst size $n_{ti}$ 
-(where $i$ is the index of the burst),
-as reported in eq.~\ref{eq:var_e}.
+Using size as weights (instead of any other monotonically increasing function
+of size) can be justifies as the bursts PR ($E_i$) have variance
+inversely proportional to the burst size (see SI~\ref{sec:burstweights_theory}). 
 
-\begin{equation}
-\label{eq:var_e}
-\operatorname{Var}\left( E_i \right)
-= \frac{E_p(1-E_p)}{n_{ti}}
-\end{equation}
-
-Therefore weights proportional to $n_{ti}$ represent a natural choice (see SI~\ref{sec:burstweights_theory}).
-In general, such a weighting scheme is used for building efficient estimators for a population
+In general, a weighting scheme is used for building efficient estimators for a population
 parameter (e.g. $E_p$). But, it can also be used to build weighted histograms or Kernel Density
-Estimation (KDE) plots which exhibit FRET subpopulations with minimal width,
-yielding more accurate fit of peaks positions and better resolution of nearby peaks
-(compared to corresponding non-weighted plots using the same burst-size threshold).
-Traditionally, for optimal results when not using weights, the width of 
-FRET subpopulations peaks are manually optimized by finding an ad-hoc (high) 
+Estimation (KDE) plots which emphasize FRET subpopulations peaks 
+without excluding small size bursts.
+Traditionally, for optimal results when not using weights, the 
+FRET histogram is manually adjusted by finding an ad-hoc (high) 
 size-threshold which selects only bursts with the highest size (and thus lowest variance).
-This procedure, needs to balance the reduction in peaks width due to selection of bigger bursts
+By using weights, we automatically balance the reduction in peak width due to selection of bigger bursts
 with the increase in statistical noise due to the reduction in number of bursts.
 Conversely, the use of size weights allows a more efficient use of burst information.
 For example, by fixing the burst size threshold to a low value (e.g. 20 photons) is possible 
