@@ -246,8 +246,8 @@ A simple way to mitigate the dependence of the FRET distribution on
 the burst size selection threshold is weighting bursts proportionally to their size 
 so that the bursts with largest sizes will have the largest weights.
 Using size as weights (instead of any other monotonically increasing function
-of size) can be justifies as the bursts PR ($E_i$) have variance
-inversely proportional to the burst size (see SI~\ref{sec:burstweights_theory}). 
+of size) can be justified noticing that the variance of bursts PR ($E_i$) is
+inversely proportional to the burst size (see SI~\ref{sec:burstweights_theory} for details). 
 
 In general, a weighting scheme is used for building efficient estimators for a population
 parameter (e.g. $E_p$). But, it can also be used to build weighted histograms or Kernel Density
@@ -256,12 +256,12 @@ without excluding small size bursts.
 Traditionally, for optimal results when not using weights, the 
 FRET histogram is manually adjusted by finding an ad-hoc (high) 
 size-threshold which selects only bursts with the highest size (and thus lowest variance).
-By using weights, we automatically balance the reduction in peak width due to selection of bigger bursts
-with the increase in statistical noise due to the reduction in number of bursts.
-Conversely, the use of size weights allows a more efficient use of burst information.
-For example, by fixing the burst size threshold to a low value (e.g. 20 photons) is possible 
-to obtain optimal-width FRET sub-populations peaks without any need to search
-for an optimal burst-size threshold (see SI~\ref{sec:burstweights_theory}).
+Building size-weighted FRET histograms is a simple method to balance 
+the need of reducing the peaks width with the need of including as much bursts
+as possible to reduce statistical noise.
+As a practical example, by fixing the burst size threshold to a low value (e.g. 10-20 photons)
+and using weights, is possible to build a FRET histogram with well-defined FRET sub-populations peaks 
+without the need of searching an optimal burst-size threshold (SI~\ref{sec:burstweights_theory}).
 
 \paragraph{Python details}
 FRETBursts has the option to weight bursts using γ-corrected
