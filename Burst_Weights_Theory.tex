@@ -104,27 +104,30 @@ holds for any arbitrary distribution of burst sizes. The full simulation is repo
 the accompanying Jupyter notebook (\href{}{link}).
 
 \subsubsection{Comparison FRET histograms}
-The second simulation, is much more realistic and captures the complexity of 
-experimental smFRET data. Starting from 3-D Brownian motion 
-diffusion of $N$ particles excited by a numerically computed PSF, we simulated timestamps
-of a smFRET experiments with two static FRET populations. Input parameters includes
+The effect of weighting the FRET histogram is here illustrated with a simulation of
+a mixture of two static FRET populations and then with experimental data.
+
+We performed a realistic simulation of a static mixture of two FRET populations
+starting from 3-D Brownian motion diffusion of $N$ particles excited by a 
+numerically-computed (non-Gaussian PSF). Input parameters includes
 the diffusion coefficient, the particle brightness, the two FRET efficiencies,
 as well as detectors DCR. The simulation is performed with the open source software 
-PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files in Photon-HDF5 
-format~\cite{Ingargiola2016}.
-After a burst search, and only a minimal burst size selection of with threshold of 10 photons,
-we obtained the weighted and unweighted FRET histograms reported in figure~\ref{fig:YYY}.
+PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files (i.e. timestamps and detectors
+arrays) in Photon-HDF5 format~\cite{Ingargiola2016}.
+The simulated data file is processed with FRETBursts performing burst search, 
+and only a minimal burst size selection of with threshold of 10 photons.
+The resulting weighted and unweighted FRET histograms are reported in figure~\ref{fig:YYY}.
 We notice as the use of the weights results in better definition of FRET peaks.
 
 As a final comparison, we report the weighted and unweighted FRET histogram of 
 an experimental FRET population from measurement of a di-labeled dsDNA sample.
 Figure X show a comparison of a FRET histogram obtained from the same burst
 with and without weights. The burst selection is obtained applying a burst size
-of threshold of 10 counts (after background correction), in order to filter 
+threshold of 10 counts (after background correction), in order to filter 
 the extreme low-end of the burst size distribution.
 
 The use of size-weighted FRET histograms is a simple way to obtain a representation of FRET 
-distribution that maintains high power of resolving peaks while including the full burst
+distribution that maintains high power of resolving FRET peaks while including the full burst
 population and thus reducing statistical noise.
 
 As a final remark, note that when increasing the size-threshold for burst selection
