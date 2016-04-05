@@ -99,7 +99,9 @@ by simply extracting burst-sizes from an exponential distribution ($\lambda = 10
 and acceptor counts from a binomial distribution ($E_p = 0.2$). 
 By repeatedly fitting the population parameter $E_p$ using a 
 size-weighted and unweighted average, we verified that the former has systematically
-lower variance of the latter as predicted by the theory. Note that this result
+lower variance of the latter as predicted by the theory
+(in the current example the unweighted estimator has $28.6\,\%$ higher variance). 
+Note that this result
 holds for any arbitrary distribution of burst sizes. The full simulation 
 including exponential and gamma-distributed burst sizes is reported in
 the accompanying Jupyter notebook (\href{http://nbviewer.jupyter.org/github/tritemio/fretbursts_paper/blob/master/notebooks/Figures%20-%20Burst%20Weights.ipynb}{link}).
