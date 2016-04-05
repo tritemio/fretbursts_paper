@@ -94,13 +94,14 @@ the MVUB estimator for $E_p$.
 \subsubsection{Weighted FRET estimator}
 Here we report a simple verification of the results of previous section, namely
 that a weighted mean of $E_i$ is the estimator with minimal variance of $E_p$.
-For this purpose, we generated a static FRET population of 200 bursts 
-by simply extracting burst-sizes from an exponential distribution ($\lambda = 50$)
+For this purpose, we generated a static FRET population of 100 bursts 
+by simply extracting burst-sizes from an exponential distribution ($\lambda = 10$)
 and acceptor counts from a binomial distribution ($E_p = 0.2$). 
 By repeatedly fitting the population parameter $E_p$ using a 
 size-weighted and unweighted average, we verified that the former has systematically
 lower variance of the latter as predicted by the theory. Note that this result
-holds for any arbitrary distribution of burst sizes. The full simulation is reported in
+holds for any arbitrary distribution of burst sizes. The full simulation 
+including exponential and gamma-distributed burst sizes is reported in
 the accompanying Jupyter notebook (\href{}{link}).
 
 \subsubsection{Weighted FRET histogram}
