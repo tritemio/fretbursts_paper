@@ -7,3 +7,5 @@
 *.gz
 *.toc
 .ipynb_checkpoints
+notebooks/data
+notebooks/*.png
