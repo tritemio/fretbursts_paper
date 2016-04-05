@@ -1,4 +1,9 @@
-\label{fig:alex_jointplot} A 2-D ALEX histogram and marginal E and S histograms obtained with \texttt{alex\_jointplot(ds)}. Bursts selected with a burst size threshold of 30 photons, including photons during the acceptor excitation. Three populations are visible: FRET population (middle), D-only population (top left) and A-only population (bottom, $S < 0.2$). Compare with figure~\ref{fig:alex_jointplot_fretsel} where the 
-FRET population has been isolated.
-%if acceptor excitation photons are included, then the doubly-labeled bursts are favored compared to the D-only molecules (cf my comment on brightness and stoichiometry corrected burst size).
-%How are the projections calculated (considering that hexagons are used for the 2D plot?
+\label{fig:alex_jointplot} A 2-D ALEX histogram and marginal E and S histograms for a 40-bp dsDNA 
+with D-A distance of 17 bases (Donor dye: ATTO550, Acceptor dye: ATTO647N). 
+Bursts are selected with a size-threshold of 30 photons, including Aex photons. 
+The plot is obtained with \texttt{alex\_jointplot(ds)}. The 2D E-S distribution plot (join plot)
+is an histogram with hexagonal bins, which reduce the binning artifacts (compared to square bins)
+and naturally resembles a scatter-plot when the burst density is low.
+Three populations are visible: FRET population (middle), D-only population (top left) and 
+A-only population (bottom, $S < 0.2$). Compare with figure~\ref{fig:alex_jointplot_fretsel} 
+where the FRET population has been isolated.
