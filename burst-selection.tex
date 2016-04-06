@@ -53,15 +53,15 @@ have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \subsubsection{Burst Size Selection}
 
-In the previous section, we selected bursts by size, using only photons
-detected in the  donor and acceptor channels during donor excitation.
-Alternatively, a threshold on the total burst size (including all photons) can be applied
-(section~\ref{sec:burstsizeweights}) by adding $n_{aa}$ to the burst size
-as in eq.~\ref{eq:burstsize_allph}. This is achieved
+In the previous section, we selected bursts by size, using only Dex photons
+(i.e. photons detected in both D and A channels during D excitation, as in eq.~\ref{eq:burstsize_dex}).
+Alternatively, a threshold on the burst size computed including all photons 
+can be applied by adding $n_{aa}$ to the burst size (see eq.~\ref{eq:burstsize_allph}). 
+This is achieved
 by passing \verb|add_naa=True| to the selection function. When \verb|add_naa| is not specified,
 as in the previous section, the default \verb|add_naa=False| is used
-(i.e. use only photons during donor excitation). The complete selection command
-is:
+(i.e. computed size using only Dex photons). 
+The complete selection command is:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
@@ -78,8 +78,9 @@ fluorophores as well as the different photon-detection efficiencies of the D and
 When γ is significantly different from 1, neglecting its effect on burst size leads to
 over-representing (in terms of number of bursts) one population versus the others.
 
-When the γ factor is known, the argument
-\verb|gamma| can be passed during burst selection:
+When the γ factor is known, a more unbiased selection of different FRET
+populations can be achieved passing the argument \verb|gamma| to the 
+section function:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
@@ -88,13 +89,15 @@ ds = d.select_bursts(select_bursts.size,
 
 When not specified, $\gamma=1$ is assumed.
 
-For more information on burst size selection, see the
+For more details on burst size selection, see the
 \verb|select_bursts.size| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}).
 
-\paragraph{Python details} The method \verb|Data.burst_sizes|
+\paragraph{Python details} 
+To compute γ-corrected burst sizes (with or without addition of \verb|naa|) 
+the method \verb|Data.burst_sizes|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link})
-computes and returns γ-corrected burst sizes with or without addition of \verb|naa|.
+is used.
 
 \subsubsection{Select the FRET Populations}
 
