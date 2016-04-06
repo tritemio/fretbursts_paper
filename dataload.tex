@@ -14,9 +14,8 @@ Moreover, Photon-HDF5 is designed for long-term data preservation and aims to fa
 between different software and research groups.
 All example data files provided with FRETBursts use the Photon-HDF5 format.
 
-To load data from a Photon-HDF5 file, the function \verb|loader.photon_hdf5|
-(\href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.photon_hdf5}{link})
-is used:
+To load data from a Photon-HDF5 file, we use the function \verb|loader.photon_hdf5|
+(\href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.photon_hdf5}{link}):
 
 \begin{lstlisting}
 d = loader.photon_hdf5(filename)
@@ -35,12 +34,12 @@ or with any number of excitation spots, are automatically recognized and interpr
 
 FRETBursts also supports loading μs-ALEX data stored in .sm files
 (a custom binary format used in the Weiss lab),
-ns-ALEX data stored in .spc files (a binary format used by TCSPC Becker \& Hickl data acquisition software) 
-and ns-ALEX data in .ht3 files (a binary format used by PicoQuant data acquisition software).
-Alternatively, these files can be converted into Photon-HDF5 files using phconvert, 
-a file conversion utility developed to facilitate the adoption of Photon-HDF5 
-(\href{http://photon-hdf5.github.io/phconvert/}{link}), prior to their processing with FRETBursts.
-More information on loading these and other file formats 
+ns-ALEX data stored in .spc files (a binary format used by TCSPC Becker \& Hickl acquisition hardware).
+Alternatively, these and other formats (such as ht3, a binary format used by PicoQuant hardware) 
+can be converted into Photon-HDF5 files using phconvert, 
+a file conversion library and utility for Photon-HDF5 
+(\href{http://photon-hdf5.github.io/phconvert/}{link}).
+More information on loading different file formats 
 can be found in the \verb|loader| module's documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{link}).
 
@@ -66,7 +65,7 @@ In both cases, the function
 will plot the relevant alternation histogram (figure~\ref{fig:altern_hist_double}) 
 using currently selected (or default) values for donor and acceptor excitation periods.
 
-To change the period definitions, the user can type:
+To change the period definitions, we can type:
 
 \begin{lstlisting}
 d.add(D_ON=(2100, 3900), A_ON=(100, 1900))
@@ -78,8 +77,8 @@ The previous command works for both µs-ALEX and ns-ALEX measurements.
 After changing the parameters, a new alternation plot will show the updated 
 period definitions.
 
-When the alternation period definition is specified, it can
-be used using the function \verb|loader.alex_apply_period|
+The alternation period definition can be applied to the data 
+using the function \verb|loader.alex_apply_period|
 (\href{http://fretbursts.readthedocs.org/en/latest/loader.html#fretbursts.loader.alex_apply_period}{link}):
 
 \begin{lstlisting}
