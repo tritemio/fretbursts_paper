@@ -84,7 +84,7 @@ These corrections can be applied by simply assigning values to the respective \v
 
 \begin{lstlisting}
 d.gamma = 0.85
-d.leakage = 0.04
+d.leakage = 0.15
 d.dir_ex = 0.08
 \end{lstlisting}
 
@@ -94,10 +94,10 @@ correction parameters.
 
 These correction factors can be used to display corrected FRET distributions.
 However, when the goal is to fit the FRET efficiency of sub-populations, 
-it is more accurate to fit the uncorrected FRET histogram (i.e. background-corrected
+it is simpler to fit the uncorrected FRET histogram (i.e. background-corrected
 proximity ratio) and then correct the fitted FRET efficiency (see SI in~\cite{Lee_2005}, SI).
-This procedure avoids 
-distortion of the FRET distributions due to the corrections, and keeps peaks of
+Correctiong the PR after fitting (instead of correcting the full burst data) 
+avoids distortion of the FRET distribution and keeps peaks of
 static FRET subpopulations closer to the ideal Binomial statistics~\cite{Gopich_2007}.
 
 FRETBursts implements the correction formulas for $E$ and $S$ in the functions
