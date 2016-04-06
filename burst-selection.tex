@@ -11,11 +11,11 @@ For instance, to select bursts with more than 30 photons detected during the don
 ds = d.select_bursts(select_bursts.size, th1=30)
 \end{lstlisting}
 
-The previous command creates a new \textit{Data} variable (\verb|ds|) containing
+The previous command creates a new \verb|Data| variable (\verb|ds|) containing
 the selected bursts. \verb|th1| defines the lower bound for burst size, while 
 \verb|th2| defines the upper bound (when not specified, as in the previous example,
 the upper bound is $+\infty$).
-As mentioned before, the new object will share the photon data
+As before, the new object will share the photon data
 arrays with the original object (\verb|d|) in order to minimize the amount 
 of used memory.
 
