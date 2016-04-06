@@ -5,7 +5,7 @@ After burst search, it is common to select bursts according to different
 criteria. One of the most common is burst size.
 
 For instance, to select bursts with more than 30 photons detected during the donor excitation 
-(computed after background correction), the following command is used:
+(computed after background correction), we use following command:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size, th1=30)
@@ -32,10 +32,9 @@ For example,
 is used to select a region on the E-S ALEX histogram,
 \verb|select_bursts.width|
 to select bursts based on their duration.
-New criteria can be easily implemented by defining a new selection function,
+New custom criteria can be readily implemented by defining a new selection function,
 which requires only a couple of lines of code (see the
-\verb|select_bursts| module's source code
-for several examples,
+\verb|select_bursts| module's source code for examples,
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{link}).
 
 Finally, different criteria can be combined sequentially.
@@ -76,11 +75,11 @@ section~\ref{sec:burstsizeweights}, the γ-factor is
 used to compensate bias for the different fluorescence quantum yields of the D and A
 fluorophores as well as the different photon-detection efficiencies of the D and A channels.
 When γ is significantly different from 1, neglecting its effect on burst size leads to
-over-representing (in terms of number of bursts) one population versus the others.
+over-representing (in terms of number of bursts) one FRET population versus the others.
 
 When the γ factor is known, a more unbiased selection of different FRET
 populations can be achieved passing the argument \verb|gamma| to the 
-section function:
+selection function:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
@@ -113,9 +112,9 @@ populations.
 
 An alternative approach consists in applying two selection filters sequentially.
 First, the A-only population is filtered out
-by applying a threshold on the number of photons during donor excitation.
+by applying a threshold on the number of photons during D excitation.
 Second, the D-only population is filtered out by applying a threshold on 
-the number of photons during acceptor excitation.
+the number of photons during A excitation.
 The commands for these combined selections are:
 
 \begin{lstlisting}
