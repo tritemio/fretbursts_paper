@@ -24,18 +24,22 @@ d = loader.photon_hdf5(filename)
 
 \noindent
 where \verb|filename| is a string containing the file path.
-This command loads all measurement data into the variable \verb|d|, 
+This command loads the measurement data into the variable \verb|d|, 
 a \verb|Data| object (see section~\ref{sec:data_intro}).
 
-This command can load data from a variety of smFRET measurements supported
+The same command can load data from a variety of smFRET measurements supported
 by the Photon-HDF5 format, taking advantage of the rich metadata included with each file.
-For instance, data generated using different excitation schemes such as CW excitation or pulsed excitation, single-laser vs two alternating lasers, etc., or with any number of excitation spots, are automatically recognized and interpreted accordingly.
+For instance, data generated using different excitation schemes such as CW excitation 
+or pulsed excitation, single-laser vs two alternating lasers, etc., 
+or with any number of excitation spots, are automatically recognized and interpreted accordingly.
 
 FRETBursts also supports loading μs-ALEX data stored in .sm files
 (a custom binary format used in the Weiss lab),
-ns-ALEX data stored in .spc files (a binary format used by TCSPC Becker \& Hickl data acquisition software) and
-ns-ALEX data in .ht3 files (a binary format used by PicoQuant data acquisition software).
-Alternatively, these files can be converted into Photon-HDF5 files using phconvert, a file conversion utility developed to facilitate the adoption of Photon-HDF5 (\href{http://photon-hdf5.github.io/phconvert/}{link}), prior to their processing with FRETBursts.
+ns-ALEX data stored in .spc files (a binary format used by TCSPC Becker \& Hickl data acquisition software) 
+and ns-ALEX data in .ht3 files (a binary format used by PicoQuant data acquisition software).
+Alternatively, these files can be converted into Photon-HDF5 files using phconvert, 
+a file conversion utility developed to facilitate the adoption of Photon-HDF5 
+(\href{http://photon-hdf5.github.io/phconvert/}{link}), prior to their processing with FRETBursts.
 More information on loading these and other file formats 
 can be found in the \verb|loader| module's documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{link}).
@@ -51,12 +55,11 @@ CW laser lines are alternated on timescales of the order of 10 to 100~µs.
 Plotting an histogram of timestamps modulo the alternation period, it
 is possible to identify the donor and acceptor excitation periods (see figure~\ref{fig:altern_hist_double}a).
 In ns-ALEX measurements~\cite{Laurence_2005},
-pulsed lasers with equal repetition rates are delayed with respect to one another with typical delays of 10 to 100~ns.
-In this case, forming an histogram of TCSPC times (nanotimes)
-will allow 
-the definition of the period of fluorescence after excitation of either the donor or the acceptor
-(see figure~\ref{fig:altern_hist_double}b).
-%this could be rephrased, since there could be several excitation periods within a TAC window.
+pulsed lasers with equal repetition rates are delayed with respect 
+to one another with typical delays of 10 to 100~ns.
+In this case, forming an histogram of TCSPC times (nanotimes) will allow 
+the definition of periods of fluorescence after excitation 
+of either the donor or the acceptor (see figure~\ref{fig:altern_hist_double}b).
 In both cases, the function
 \verb|plot_alternation_hist| 
 (\href{http://fretbursts.readthedocs.org/en/latest/plots.html#fretbursts.burst_plot.plot_alternation_hist}{link})
@@ -72,7 +75,6 @@ d.add(D_ON=(2100, 3900), A_ON=(100, 1900))
 where \verb|D_ON| and \verb|A_ON| are tuples (pairs of numbers) representing
 the \textit{start} and \textit{stop} values for D or A excitation periods.
 The previous command works for both µs-ALEX and ns-ALEX measurements.
-%give an example with multiple alternation periods per TAC  window?
 After changing the parameters, a new alternation plot will show the updated 
 period definitions.
 
@@ -85,4 +87,5 @@ loader.alex_apply_period(d)
 \end{lstlisting}
 
 After this command, \verb|d| will contain only photons inside the defined excitation periods.
-If the user needs to update the periods definition, the data file will need to be reloaded and the steps above repeated as described.
+If the user needs to update the periods definition, the data file will need to be 
+reloaded and the steps above repeated as described.
