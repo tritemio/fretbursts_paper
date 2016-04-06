@@ -29,7 +29,7 @@ dynamics on the millisecond time-scale~\cite{Torella_2011, Robb_2013}.
 The basic idea behind BVA is to subdivide bursts into contiguous burst chunks (sub-bursts)
 comprising a fixed number $n$ of photons,
 and to compare the empirical variance of acceptor counts across all sub-bursts in a burst 
-with the theoretical shot-noise limited variance, as expected from a binomial distribution.
+with the theoretical shot-noise-limited variance, as expected from a binomial distribution.
 An empirical variance of sub-bursts larger than the shot-noise limited value indicates
 the presence of dynamics. Since the estimation of the sub-bursts variance is affected
 by uncertainty, BVA analysis provides and indication of an higher or lower probability
@@ -58,12 +58,12 @@ has a standard deviation reported in eq.~\ref{eq:binom_std}.
 BVA analysis consists of four steps: 1) dividing bursts into consecutive sub-bursts 
 containing a constant number of consecutive photons~\textit{n}, 2) computing the PR 
 of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-bursts
-PR over the whole burst, and 4) comparing $s_E$ to the expected standard deviation 
-of a shot-noise limited distribution~(eq.~\ref{eq:binom_std}).
+PR in each burst, and 4) comparing $s_E$ to the expected standard deviation 
+of a shot-noise-limited distribution~(eq.~\ref{eq:binom_std}).
 If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
 originates from a static mixture of sub-populations (of different 
 non-interconverting molecules) characterized by distinct FRET efficiencies, 
-$s_E$ of each burst is only affected by shot noise and will follow the expected 
+$s_E$ of each burst is only affected by shot-noise and will follow the expected 
 standard deviation curve based on eq.~\ref{eq:binom_std}. 
 Conversely, if the observed distribution originates from biomolecules belonging to a single specie, 
 which interconverts between different FRET sub-populations (over times comparable to the diffusion 
@@ -90,14 +90,14 @@ DexAem_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem'))
 DexAem_mask_d = AemDex_mask[Dex_mask]
 \end{lstlisting}
 
-Here, the first two variables (\verb|Dex_mask| and \verb|DexAem_mask|) are used to
+Here, the first two variables (\verb|Dex_mask| and \verb|DexAem_mask|)
 select photon from the all-photons timestamps array,
 while \verb|DexAem_mask_d|, selects A-emitted photons from the
 array of photons emitted during D-excitation. As shown below, 
 the latter is needed to count acceptor photons in burst chunks.
 
-Next, the burst data relative to the D-excitation photon stream is needed (by default 
-burst start-stop index refer to all-photons timestamps array):
+Next, we need to express bursts start-stop data as indexes of the D-excitation photon stream 
+(by default burst start-stop indexes refer to all-photons timestamps array):
 
 \begin{lstlisting}
 ph_d = ds_FRET.get_ph_times(ph_sel=Ph_sel(Dex='DAem'))
@@ -126,12 +126,12 @@ for burst in bursts_d:
 \end{lstlisting}
 
 Here, \verb|n| is the BVA parameter defining the number of photons in each burst chunk. 
-The outer loop iterates through bursts, while the inner loop iterates through burst chunks.
+The outer loop iterates through bursts, while the inner loop iterates through sub-bursts.
 The variables \verb|startlist| and \verb|stoplist| are the list of start-stop indexes for
-all burst chunks in current burst.
+all sub-bursts in current burst.
 In the inner loop, \verb|A_D| and \verb|E| contain the number of acceptor photons and 
-FRET efficiency for the current burst chunk. Finally, for each burst, the standard deviation 
-of \verb|E| is appended to \verb|E_sub_std|.
+FRET efficiency for the current sub-burst. Finally, for each burst, the standard deviation 
+of \verb|E| is appended to the list \verb|E_sub_std|.
 
 By plotting the 2D distribution of $s_E$ (i.e. \verb|E_sub_std|) versus the average (uncorrected) E 
 we obtain the BVA plots of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}.
