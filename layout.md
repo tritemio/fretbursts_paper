@@ -20,7 +20,7 @@ Conclusions.tex
 Supporting_Information.tex
 timestamps_and_burst_data.tex
 plotting_data.tex
-Optimal_Background_Threshold.tex
+optimal_background_threshold.tex
 Burst_Weights_Theory.tex
 figures/weight_fret_hist_sim_mixture/weight_fret_hist_sim_mixture.png
 figures/weight_fret_hist_measurement/weight_fret_hist_measurement.png
