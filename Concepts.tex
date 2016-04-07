@@ -185,10 +185,10 @@ basic form, this selection can be performed during burst search by discarding
 bursts with size smaller than a threshold $L$, as originally proposed by
 Eggeling~\textit{et al.}~\cite{Eggeling_1998}.
 This method, however, neglects the effect
-of background and γ factor on the burst size and can lead to a selection
+of background and $\gamma$ factor on the burst size and can lead to a selection
 bias for some channels and/or sub-populations.
 For this reason, we suggest performing a burst size selection after background
-correction, taking into account the γ factor, as discussed in
+correction, taking into account the $\gamma$ factor, as discussed in
 sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
 In special cases, users may choose to replace (or combine)
 the burst selection based on burst size
@@ -215,14 +215,14 @@ n_t = n_a + \gamma\,n_d + n_{aa}
 \noindent where $n_d$, $n_a$ and $n_{aa}$ are, similarly to the attributes
 in table~\ref{tab:data_n}, the background-corrected
 burst counts in different channels and excitation periods.
-The factor γ takes into account
+The factor $\gamma$ takes into account
 different fluorescence quantum yields of donor and acceptor fluorophores and different
 photon detection efficiencies between donor and acceptor detection
 channels~\cite{Deniz_1999,Lee_2005}.
 Eq.~\ref{eq:burstsize_dex} includes counts collected during donor excitation periods only,
 while eq.~\ref{eq:burstsize_allph} includes all counts.
 Burst sizes computed according to eq.~\ref{eq:burstsize_dex}
-or~\ref{eq:burstsize_allph} are called γ-corrected burst sizes.
+or~\ref{eq:burstsize_allph} are called $\gamma$-corrected burst sizes.
 
 The burst search algorithm yields a set of bursts whose sizes
 approximately follow an exponential distribution.
@@ -237,7 +237,7 @@ Conversely, too large a threshold may result in too low a number of bursts
 therefore poor representation of the FRET distribution.
 Additionally, especially when computing fractions of sub-populations
 (e.g. ratio of number of bursts in each sub-population),
-it is important to use γ-corrected burst sizes as selection criterion,
+it is important to use $\gamma$-corrected burst sizes as selection criterion,
 in order to avoid under-representing some FRET sub-populations
 due to different quantum yields of donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor channels.
@@ -264,7 +264,7 @@ and using weights, is possible to build a FRET histogram with well-defined FRET 
 without the need of searching an optimal burst-size threshold (SI~\ref{sec:burstweights_theory}).
 
 \paragraph{Python details}
-FRETBursts has the option to weight bursts using γ-corrected
+FRETBursts has the option to weight bursts using $\gamma$-corrected
 burst sizes which optionally include acceptor excitation photons \verb|naa|.
 A weight proportional to the burst size is applied by passing the argument
 \verb|weights='size'| to histogram or KDE plot functions. The \verb|weights|
