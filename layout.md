@@ -18,6 +18,7 @@ figures/ALEX_BVA_static/ALEX_BVA_static.png
 figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
 Conclusions.tex
 Supporting_Information.tex
+subsection_Timestamps_and_Burst_Data__.tex
 plotting_data.tex
 Optimal_Background_Threshold.tex
 Burst_Weights_Theory.tex
