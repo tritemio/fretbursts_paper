@@ -46,11 +46,10 @@ not only makes it a more transparent, reviewable platform
 for scientific data analysis, but also allows
 to leverage state-of-the-art online services such as GitHub (\href{http://https://github.com}{link}) for hosting,
 issues tracking and code reviews, TravisCI
-(\href{https://travis-ci.org}{link}) for continuous integration
+(\href{https://travis-ci.org}{link}) and AppVeyor (\href{http://www.appveyor.com/}{link}) for continuous integration
 (i.e. automated test suite execution on multiple platforms after each commit)
 and \href{https://readthedocs.org/}{ReadTheDocs.org} for automatic documentation building and hosting.
-All these services would be extremely costly, if available \textit{tout court},
-%I am French and I don't even understand what this is supposed to mean...
+All these services would be extremely costly, if available at all,
 for a proprietary software or platform~\cite{Freeman_2015}.
 
 We highly value source code readability, a property which can
@@ -67,8 +66,8 @@ On each commit, documentation is automatically built and deployed on
 
 Unit tests cover most of the core algorithms, ensuring consistency and
 minimizing the probability of introducing bugs.
-The TravisCI (\href{http://travis-ci.org}{link}) continuous integration service,
-executes the full test suite on each commit, immediately reporting errors.
+The continuous integration services, execute the full test suite 
+on each commit on multiple platforms, immediately reporting errors.
 As a rule, whenever a bug is discovered, the  fix also includes a new test
 to ensure that the same bug does not happen in the future.
 In addition to the unit tests, we include a regression-test notebook
