@@ -1,0 +1,195 @@
+
+It is advisable to monitor the background as a function of time
+throughout the measurement, in order to account for possible variations.
+Experimentally, we found that when the background is not constant,
+it usually varies
+on time scales of tens of seconds (see figure~\ref{fig:bg_timetrace}).
+FRETBursts divides the acquisition in constant-duration time
+windows called \textit{background periods} and computes the background rates for
+each of these windows (see section~\ref{sec:bg_calc}).
+Note that FRETBursts uses these local background rates also during burst search, 
+in order to compute time-dependent burst detection thresholds 
+and for background correction of burst data (see section~\ref{sec:burstsearch}).
+
+\subsection{The \texttt{Data} Class}
+\label{sec:data_intro}
+
+The \verb|Data| class
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html}{link})
+is the fundamental data container in FRETBursts. It contains the
+measurement data and parameters (attributes) as well as several methods
+for data analysis (background estimation, burst search, etc...).
+All analysis results (bursts data, estimated parameters) are also stored
+as \verb|Data| attributes.
+
+There are 3 important ``burst counts'' attributes which contain
+the number of photons detected in the donor or the acceptor channel
+during donor or acceptor excitation (table~\ref{tab:data_n}).
+The attributes in table~\ref{tab:data_n} are background-corrected by default.
+Furthermore, \verb|na| is corrected for leakage and direct excitation
+(section~\ref{sec:corrcoeff}) if the relative coefficients are specified
+(by default they are 0).
+There is also a closely related attribute named \verb|nda| for donor photons
+during acceptor excitation. \verb|nda| is normally neglected as it only contains
+background.
+
+\begin{table}
+\begin{tabular}{l p{0.8\columnwidth}}
+  Name  & Description \\
+  \hline
+  \verb|nd| & number of photons detected by the donor channel (during donor excitation period in ALEX case)\\
+  \verb|na| & number of photons detected by the acceptor channel (during donor excitation period in ALEX case)\\
+  \verb|naa| & number of photons detected by the acceptor channel during acceptor excitation period (present only in ALEX measurements)\\
+\end{tabular}
+\caption{\label{tab:data_n}\texttt{Data} attributes names and descriptions for burst photon counts in different photon streams.}
+\end{table}
+
+
+\paragraph{Python details}
+Many \verb|Data| attributes are lists of arrays (or scalars) with the length of the lists
+equal to the number of excitation spots. This means that in
+single-spot measurements, an array of burst-data
+is accessed by specifying the index as 0, for example \verb|Data.nd[0]|.
+\verb|Data| implements a shortcut syntax to access the first element of a list
+with an underscore, so that an equivalently syntax is
+\verb|Data.nd_| instead of \verb|Data.nd[0]|.
+
+\subsection{Introduction to Burst Search}
+\label{sec:burstsearch_intro}
+
+Identifying single-molecule fluorescence bursts in the stream of photons is
+one of the most crucial steps in the analysis of freely-diffusing single-molecule FRET data.
+The widely used ``sliding window'' algorithm, introduced by the Seidel group in 1998
+(\cite{Eggeling_1998}, \cite{Fries_1998}), involves searching for
+$m$ consecutive photons detected during a period shorter than
+$\Delta t$. In other words, bursts are regions of the photon stream where the
+local rate (computed using $m$ photons) is above a minimum threshold rate.
+Since a universal criterion to choose the rate threshold and
+the number of photons $m$ is, as of today, lacking, it has become a common
+practice to manually adjust those parameters for each specific measurement.
+
+A more general approach consists in taking into account the background rate of
+the specific measurements and in choosing a rate threshold that is $F$ times
+larger than the background rate. This approach ensures that all resulting bursts
+have a signal-to-background ratio (SBR) larger than
+$(F-1)$~\cite{Michalet_2012}. A consistent criterion for choosing the threshold is
+particularly important when comparing different measurements with different background
+rates, when the background significantly varies during measurements or in
+multi-spot measurements where each spot has a different background rate.
+
+A second important aspect of burst search is the choice of photon stream used
+to perform the search.
+In most cases, for instance when identifying FRET sub-populations,
+the burst search should use all photons (i.e. APBS). In some other cases, when focusing on
+donor-only or acceptor only populations, it is better to perform the search using
+only donor or acceptor signal.
+In order to handle the general case and to provide flexibility,
+FRETBursts allows performing the burst search on arbitrary selections of photons.
+(see section~\ref{sec:ph_streams} for more information on photon stream definitions).
+
+Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS ('dual-channel burst search'), which can help mitigating artifacts due to photophysics effects such as blinking.
+During DCBS, a search is performed in parallel on two photon streams
+and bursts are defined as periods during which both photon streams exhibit a rate higher than
+the threshold, implementing the equivalent of an AND logic operation.
+Conventionally, the term DCBS refers to a burst search where the two photon streams
+are (1) all photons during donor excitation (\verb|Ph_sel(Dex='DAem')|) and
+(2) acceptor channel photons during acceptor excitation (\verb|Ph_sel(Aex='Aem')|).
+In FRETBursts, the user can choose arbitrary photon streams as input, an in general
+this kind of search is called a 'AND-gate burst search'.
+
+After burst search, it is necessary to select
+bursts, for instance by specifying a minimum number of photons (or burst size). In the most
+basic form, this selection can be performed during burst search by discarding
+bursts with size smaller than a threshold $L$, as originally proposed by
+Eggeling~\textit{et al.}~\cite{Eggeling_1998}.
+This method, however, neglects the effect
+of background and $\gamma$ factor on the burst size and can lead to a selection
+bias for some channels and/or sub-populations.
+For this reason, we suggest performing a burst size selection after background
+correction, taking into account the $\gamma$ factor, as discussed in
+sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
+In special cases, users may choose to replace (or combine)
+the burst selection based on burst size
+with another criterion such as burst duration or brightness (see section~\ref{sec:burstsel}).
+
+\subsection{Corrected Burst Sizes and Weights}
+\label{sec:burstsizeweights}
+
+The number of photons detected during a burst --the ``burst size''--
+is computed using either all photons, or photons detected
+during donor excitation period. To compute the burst size, FRETBursts uses
+one of the following formulas:
+
+\begin{equation}
+\label{eq:burstsize_dex}
+n_{dex} = n_a + \gamma\,n_d
+\end{equation}
+
+\begin{equation}
+\label{eq:burstsize_allph}
+n_t = n_a + \gamma\,n_d + n_{aa}
+\end{equation}
+
+\noindent where $n_d$, $n_a$ and $n_{aa}$ are, similarly to the attributes
+in table~\ref{tab:data_n}, the background-corrected
+burst counts in different channels and excitation periods.
+The factor $\gamma$ takes into account
+different fluorescence quantum yields of donor and acceptor fluorophores and different
+photon detection efficiencies between donor and acceptor detection
+channels~\cite{Deniz_1999,Lee_2005}.
+Eq.~\ref{eq:burstsize_dex} includes counts collected during donor excitation periods only,
+while eq.~\ref{eq:burstsize_allph} includes all counts.
+Burst sizes computed according to eq.~\ref{eq:burstsize_dex}
+or~\ref{eq:burstsize_allph} are called $\gamma$-corrected burst sizes.
+
+The burst search algorithm yields a set of bursts whose sizes
+approximately follow an exponential distribution.
+Compared to bursts with smaller sizes, bursts with large sizes are less frequent, 
+but contain more information per-burst (having higher SNR).
+Therefore, selecting bursts by size is an important step (see section~\ref{sec:burstsel}).
+A threshold set too low may result in unresolvable sub-populations
+because of broadening of FRET peaks and appearance of shot-noise artifacts
+in the FRET (and S) distribution (i.e. spurious narrow peaks due to E and S being
+computed as the ratio of small integers).
+Conversely, too large a threshold may result in too low a number of bursts
+therefore poor representation of the FRET distribution.
+Additionally, especially when computing fractions of sub-populations
+(e.g. ratio of number of bursts in each sub-population),
+it is important to use $\gamma$-corrected burst sizes as selection criterion,
+in order to avoid under-representing some FRET sub-populations
+due to different quantum yields of donor and acceptor dyes and/or
+different photon detection efficiencies of donor and acceptor channels.
+
+A simple way to mitigate the dependence of the FRET distribution on 
+the burst size selection threshold is weighting bursts proportionally to their size 
+so that the bursts with largest sizes will have the largest weights.
+Using size as weights (instead of any other monotonically increasing function
+of size) can be justified noticing that the variance of bursts PR ($E_i$) is
+inversely proportional to the burst size (see SI~\ref{sec:burstweights_theory} for details). 
+
+In general, a weighting scheme is used for building efficient estimators for a population
+parameter (e.g. $E_p$). But, it can also be used to build weighted histograms or Kernel Density
+Estimation (KDE) plots which emphasize FRET subpopulations peaks 
+without excluding small size bursts.
+Traditionally, for optimal results when not using weights, the 
+FRET histogram is manually adjusted by finding an ad-hoc (high) 
+size-threshold which selects only bursts with the highest size (and thus lowest variance).
+Building size-weighted FRET histograms is a simple method to balance 
+the need of reducing the peaks width with the need of including as much bursts
+as possible to reduce statistical noise.
+As a practical example, by fixing the burst size threshold to a low value (e.g. 10-20 photons)
+and using weights, is possible to build a FRET histogram with well-defined FRET sub-populations peaks 
+without the need of searching an optimal burst-size threshold (SI~\ref{sec:burstweights_theory}).
+
+\paragraph{Python details}
+FRETBursts has the option to weight bursts using $\gamma$-corrected
+burst sizes which optionally include acceptor excitation photons \verb|naa|.
+A weight proportional to the burst size is applied by passing the argument
+\verb|weights='size'| to histogram or KDE plot functions. The \verb|weights|
+keyword can be also passed to fitting functions in order to fit
+the weighted E or S distributions (see section~\ref{sec:fretfit}).
+Other weighting functions (for example depending quadratically on the size) 
+are listed in the \verb|fret_fit.get_weights| documentation
+(\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
+However, using weights different from the size is not recommended 
+due to their less efficient use of burst information.
