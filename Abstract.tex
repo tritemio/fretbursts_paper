@@ -1,23 +1,44 @@
-Single-molecule Förster Resonance Energy Transfer (smFRET) allows probing intermolecular interactions
-and conformational changes in biomacromolecules, and represents an 
-invaluable tool in studying cellular processes at the molecular 
-scale~\cite{Kapanidis_2006}. smFRET experiments can detect the distance between 
-two fluorescent labels (\textit{donor} and \textit{acceptor}) in the 
-3-10~nm range. In the commonly employed confocal geometry, molecules are free 
-to diffuse in solution. When a molecule traverses the excitation volume, it 
-emits a burst of photons, which can be detected by single-photon avalanche diode (SPAD) detectors. 
-The intensities of donor and acceptor fluorescence 
-can then be related to the distance between the two fluorophores.
+Single-molecule Förster Resonance Energy Transfer (smFRET) allows
+probing intermolecular interactions and conformational changes in
+biomacromolecules, and represents an invaluable tool for studying
+cellular processes at the molecular scale. smFRET experiments can
+detect the distance between two fluorescent labels (donor and acceptor)
+in the 3-10~nm range. In the commonly employed confocal geometry,
+molecules are free to diffuse in solution. When a molecule traverses
+the excitation volume, it emits a burst of photons, which can be detected
+by single-photon avalanche diode (SPAD) detectors. The intensities of
+donor and acceptor fluorescence can then be related to the distance
+between the two fluorophores.
 
-The analysis of smFRET experiments involves identifying photon bursts from 
-single-molecules in a continuous stream of photons, estimating the 
-background and other correction factors, filtering and finally extracting the corrected 
-FRET efficiencies for each sub-population in the sample. In this paper we introduce FRETBursts,
-a software for confocal smFRET data analysis, which 
-allows executing a complete burst analysis pipeline by using state-of-the-art algorithms.
-FRETBursts is an open source Python package, which we propose as both a toolkit 
-for research and new developments in burst analysis, and as a reference implementation of commonly employed algorithms.
-We follow the highest standard in software development to ensure that 
-the source is easy to read, well documented and thoroughly tested. 
-Moreover, in an effort to lower the barriers to computational reproducibility, 
-we embrace a modern workflow based on Jupyter notebooks, which allows capturing the whole analysis process from reading raw data to generating publication-ready figures within a single document.
+While in recent years we observed a growing number of contributions
+proposing improvements or new techniques in smFRET data analysis,
+rarely those publications were accompanied by a software implementation.
+Remarkably, given the widespread application of smFRET, no complete
+software package for smFRET burst analysis is freely available to date.
+
+In this paper, we introduce FRETBursts, an open source software
+for analysis of freely-diffusing smFRET data.
+Fundamental steps in the analysis involve identifying photon bursts
+from single molecules in a continuous stream of photons, estimating
+background and other correction factors, filtering bursts and extracting
+the corrected FRET efficiencies for each sub-population.
+FRETBursts allows executing all these steps using both state-of-the-art
+algorithms and improved techniques.
+FRETBursts provides an open, robust and well-documented
+implementation for commonly employed algorithms and represents
+an ideal platform for comparison and development of new methods
+in burst analysis.
+
+We employed modern software engineering best-practices in order to
+minimize the chance of bugs and facilitate long-term maintainability.
+Furthermore, we place a strong focus on reproducibility by relying on
+Jupyter notebooks for the execution of FRETBursts workflows.
+Notebooks are executable documents capturing all the steps of the
+analysis (including data files, input parameters, and results) and can
+be easily shared to replicate complete FRETBursts workflows.
+This execution model allows beginners to execute complex workflows
+and advanced users to customize the analysis for their own need.
+By standardizing both execution and description of the analysis by
+using Jupyter notebooks, FRETBursts enables the single-molecule
+community to seamless share and report reproducible workflows of
+smFRET analyses.
