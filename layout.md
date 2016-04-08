@@ -2,14 +2,14 @@ Abstract.tex
 Introduction.tex
 Overview.tex
 Concepts.tex
+figures/ph_delays_distrib_all/ph_delays_distrib_all.png
 Concepts_2.tex
+figures/background_timetrace/background_timetrace.png
 Concepts_3.tex
 dataload.tex
 figures/ALEX_alternation_double/ALEX_alternation_double.png
 Dataload_2.tex
 background-estimation.tex
-figures/ph_delays_distrib_all/ph_delays_distrib_all.png
-figures/background_timetrace/background_timetrace.png
 burst-search.tex
 burst-selection.tex
 figures/alex_jointplot/alex_jointplot.png
