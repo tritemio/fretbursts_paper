@@ -2,6 +2,7 @@ Abstract.tex
 Introduction.tex
 Overview.tex
 Concepts.tex
+It_is_advisable_to_monitor__.tex
 dataload.tex
 figures/ALEX_alternation_double/ALEX_alternation_double.png
 background-estimation.tex
