@@ -13,7 +13,7 @@ background-estimation.tex
 burst-search.tex
 burst-selection.tex
 figures/alex_jointplot/alex_jointplot.png
-Another_important_parameter_for_defining__.tex
+Burst-selection_2.tex
 figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
 figures/hist_fit/hist_fit.png
