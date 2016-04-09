@@ -21,7 +21,7 @@ fitting_2.tex
 Burst_Variance_Analysis.tex
 figures/ALEX_BVA_static/ALEX_BVA_static.png
 figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
-subsection_BVA_Implementation_The_following__.tex
+Burst_Variance_Analysis_2.tex
 Conclusions.tex
 Supporting_Information.tex
 timestamps_and_burst_data.tex
