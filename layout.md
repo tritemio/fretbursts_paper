@@ -17,7 +17,7 @@ Burst-selection_2.tex
 figures/alex_jointplot_fretsel/alex_jointplot_fretsel.png
 Fitting.tex
 figures/hist_fit/hist_fit.png
-For_more_examples_on_fitting__.tex
+fitting_2.tex
 Burst_Variance_Analysis.tex
 figures/ALEX_BVA_static/ALEX_BVA_static.png
 figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
