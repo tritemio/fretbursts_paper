@@ -43,7 +43,7 @@ makes it impossible to review and validate the software's correctness
 and prevents improvements and extensions by other scientists.
 This situation, common in many disciplines,
 represents a real impediment to the scientific progress.
-Since pioneering work of Donoho group in the 90's~\cite{Buckheit_1995},
+Since the pioneering work of the Donoho group in the 90's~\cite{Buckheit_1995},
 it has become evident that developing and maintaining open source scientific software
 for reproducible research is a critical requirement of the modern
 scientific enterprise~\cite{Ince_2012,Vihinen_2015}.
@@ -73,7 +73,7 @@ workflows. FRETBursts uses Jupyter Notebooks~\cite{Shen_2014},
 an interactive and executable document containing textual narrative, input parameters, 
 code, and computational results (tables, plots, etc.). A notebook thus captures the various analysis steps
 in a document which is easy to share and execute.
-To minimize the possibility of bugs being introduced inadvertently~\cite{Soergel_2015} 
+To minimize the possibility of bugs being introduced inadvertently~\cite{Soergel_2015}, 
 we employ modern software engineering techniques
 such as unit testing and continuous integration~\cite{Wilson_2014,Eglen_2016}.
 FRETBursts is hosted on GitHub~\cite{Blischak_2016,Prli__2012},
@@ -87,24 +87,29 @@ Together with all the aforementioned tools, FRETBursts contributes to the growin
 ecosystem of open tools for reproducible science in the single-molecule field.
 
 \subsection{Paper Overview}
-This paper is written as an introduction to smFRET burst analysis and its implementation in FRETBursts.
+This paper is written as an introduction to smFRET burst analysis and 
+its implementation in FRETBursts.
 After a brief overview of FRETBursts features (section~\ref{sec:overview}),
 we introduce essential concepts and terminology for smFRET burst analysis 
 (section~\ref{sec:concepts}).
 
 In section~\ref{sec:analysis}, we illustrate the steps involved
-in smFRET burst analysis: (i) data loading (section~\ref{sec:dataload}), (ii) definition of the
-excitation alternation periods (section~\ref{sec:alternation}), (iii) background
-correction (section~\ref{sec:bg_calc}), (iv) burst search (section~\ref{sec:burstsearch}),
-(v) burst selection (section~\ref{sec:burstsel}) and (vi) FRET histogram fitting (section~\ref{sec:fretfit}).
-The aim of this section is to illustrate the specificities and trade-off involved in various approaches
+in smFRET burst analysis: (i) data loading (section~\ref{sec:dataload}), 
+(ii) definition of the excitation alternation periods 
+(section~\ref{sec:alternation}), (iii) background correction 
+(section~\ref{sec:bg_calc}), (iv) burst search 
+(section~\ref{sec:burstsearch}),
+(v) burst selection (section~\ref{sec:burstsel}) and 
+(vi) FRET histogram fitting (section~\ref{sec:fretfit}).
+The aim of this section is to illustrate the specificities and 
+trade-offs involved in various approaches
 with sufficient details to enable readers 
 to customize the analysis for their own needs.
 Section~\ref{sec:bva} walks the reader thorough implementing
-Burst Variance Analysis (BVA)~\cite{Torella_2011}, as an example of implementation 
-of an advanced data processing technique.
-Finally, section~\ref{sec:conclusions} summarizes what we believe to be
-the strengths of FRETBursts software.
+Burst Variance Analysis (BVA)~\cite{Torella_2011}, as an example 
+of implementation of an advanced data processing technique.
+Finally, section~\ref{sec:conclusions} summarizes what we believe 
+to be the strengths of FRETBursts software.
 
 Throughout this paper,
 links to relevant sections of documentation and other web resources
