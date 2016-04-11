@@ -454,9 +454,9 @@ FRETBursts is hosted and openly developed on GitHub. FRETBursts homepage
 contains links to the various resources. Installation instructions can be found in the
 Reference Documentation (\href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{link}).
 A description of FRETBursts execution using Jupyter notebooks is reported
-in~\ref{sec:notebook}.
+in~\ref{sec:notebook}. % SI_link
 Detailed information on development style, testing strategies and
-contributions guidelines are reported in~\ref{sec:dev}.
+contributions guidelines are reported in~\ref{sec:dev}. % SI_link
 Finally, to facilitate evaluation and comparison with other software,
 we set up an on-line services allowing to execute FRETBursts
 without requiring any installation on the user's computer (\href{https://github.com/tritemio/FRETBursts_notebooks#run-online}{link}).
@@ -747,7 +747,7 @@ the burst size selection threshold is weighting bursts proportionally to their s
 so that the bursts with largest sizes will have the largest weights.
 Using size as weights (instead of any other monotonically increasing function
 of size) can be justified noticing that the variance of bursts proximity ratio (PR) is
-inversely proportional to the burst size (see~\ref{sec:burstweights_theory} for details).
+inversely proportional to the burst size (see~\ref{sec:burstweights_theory} for details). % SI_link
 
 In general, a weighting scheme is used for building efficient estimators for a population
 parameter (e.g. the population FRET efficiency $E_p$).
@@ -924,7 +924,7 @@ The recommended approach is however automating the choice of threshold using
 \textit{Background estimation} section of the μs-ALEX tutorial
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb#Background-estimation}{link}).
 Finally, it is possible to use a slower but rigorous approach for finding the optimal
-threshold as described in~\ref{sec:bg_opt_th}.
+threshold as described in~\ref{sec:bg_opt_th}. % SI_link
 
 FRETBursts provides two kinds of plots to represent the background. One shows the histograms
 of inter-photon delays compared to the fitted exponential distribution, shown in
@@ -936,7 +936,7 @@ dplot(d, hist_bg, period=0)
 \end{lstlisting}
 
 This command reflects the general form of plotting commands in FRETBursts
-as described in~\ref{sec:plotting}.
+as described in~\ref{sec:plotting}. % SI_link
 Here we only note that the argument \verb|period| is an integer specifying the background
 period to be plotted (when omitted, the default is 0, i.e. the first period).
 Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where the
@@ -1514,7 +1514,7 @@ we obtain the BVA plots of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}
 \section{Conclusions}
 \label{sec:conclusions}
 
-FRETBursts is an open source and openly developed (see~\ref{sec:dev}) implementation
+FRETBursts is an open source and openly developed (see~\ref{sec:dev}) implementation % SI_link
 of established smFRET burst analysis methods
 made available to the single-molecule community.
 It implements several novel concepts which improve the analysis results, such as
@@ -1552,390 +1552,36 @@ reported here. The work at UCLA was conducted in Dr. Weiss's Laboratory.
 \beginsupplement
 \section{Supporting Information}
 
-\subsection{Notebook Workflow}
+
+\paragraph*{S1 Appendix.}
 \label{sec:notebook}
+{\bf Notebook Workflow.} A description of the notebook workflow used by FRETBursts.
 
-FRETBursts has been developed with the goal of facilitating computational reproducibility
-of the performed data analysis~\cite{Buckheit_1995}. For this reason,
-the preferential way of using FRETBursts is by executing one of the tutorials
-which are in the form of Jupyter notebooks~\cite{Shen_2014}.
-Jupyter (formerly IPython) notebooks are web-based documents which contain both
-code and rich text (including equations, hyperlinks, figures, etc...).
-FRETBursts tutorials are notebooks which can be re-executed,
-modified or used to process new data files with minimal modifications.
-The ``notebook workflow''~\cite{Shen_2014} not only facilitates
-the description of the analysis (by integrating the code in a rich document)
-but also greatly enhances its reproducibility by storing an execution trail
-that includes software versions, input files, parameters, commands and all
-the analysis results (text, figures, tables, etc.).
-
-The Jupyter Notebook environment streamlines FRETBursts execution (compared to
-a traditional script and terminal based approach) and allows
-FRETBursts to be used even without prior python knowledge.
-The user only needs to get familiar with the
-notebook graphical environment, in order to be able to navigate and run the notebooks.
-A list of all FRETBursts notebooks can be found in the
-\verb|FRETBursts_notebooks| repository on GitHub
-(\href{https://github.com/tritemio/FRETBursts_notebooks}{link}).
-Finally, we provide a service to run FRETBursts notebooks online,
-without requiring any software installation
-(\href{https://github.com/tritemio/FRETBursts_notebooks#run-online}{link}).
-
-\subsection{Development and Contributions}
+\paragraph*{S2 Appendix.}
 \label{sec:dev}
-Errors are an inevitable reality in any reasonably complex software~\cite{Merali_2010,Soergel_2015}. It is
-therefore critical to implement countermeasures to
-minimize the probability of introducing bugs and their potential impact~\cite{Prli__2012, Wilson_2014}.
-We strove to follow modern software development best-practices, which are summarized
-below.
+{\bf Development and Contributions.} A description of development philosophy and techniques
+as well as how to contribute to the FRETBursts project.
 
-FRETBursts (and the entire python ecosystem it depends on) is open source
-and the source code is fully available for any scientist to study,
-review and modify.
-The open source nature of FRETBursts and of the python ecosystem,
-not only makes it a more transparent, reviewable platform
-for scientific data analysis, but also allows
-to leverage state-of-the-art online services such as GitHub (\href{http://https://github.com}{link}) for hosting,
-issues tracking and code reviews, TravisCI
-(\href{https://travis-ci.org}{link}) and AppVeyor (\href{http://www.appveyor.com/}{link}) for continuous integration
-(i.e. automated test suite execution on multiple platforms after each commit)
-and \href{https://readthedocs.org/}{ReadTheDocs.org} for automatic documentation building and hosting.
-All these services would be extremely costly, if available at all,
-for a proprietary software or platform~\cite{Freeman_2015}.
-
-We highly value source code readability, a property which can
-reduce the number of bugs by facilitating understanding and verifying the code.
-For this purpose, FRETBursts code-base is well commented (with comments representing over 35\%
-of the source code),
-follows the PEP8 python code style rules (\href{https://www.python.org/dev/peps/pep-0008/}{link}),
-and has docstrings in napoleon format (\href{http://sphinxcontrib-napoleon.readthedocs.org/}{link}).
-
-Reference documentation is built with Sphinx (\href{http://sphinx-doc.org/}{sphinx-doc.org})
-and all API documents are automatically generated from docstrings.
-On each commit, documentation is automatically built and deployed on
-\href{https://readthedocs.org/}{ReadTheDocs.org}.
-
-Unit tests cover most of the core algorithms, ensuring consistency and
-minimizing the probability of introducing bugs.
-The continuous integration services, execute the full test suite
-on each commit on multiple platforms, immediately reporting errors.
-As a rule, whenever a bug is discovered, the  fix also includes a new test
-to ensure that the same bug does not happen in the future.
-In addition to the unit tests, we include a regression-test notebook
-(\href{https://github.com/tritemio/FRETBursts/blob/master/notebooks/dev/tests/FRETBursts%20-%20Regression%20tests.ipynb}{link})
-to easily compares numerical results between two versions of FRETBursts.
-Additionally, the tutorials themselves are executed before each release as
-an additional test layer to ensure that no errors or regressions are introduced.
-
-FRETBursts is openly developed using the GitHub platform.
-The authors encourage users to use GitHub issues for questions, discussions
-and bug reports, and to submit patches through GitHub pull requests.
-Contributors of any level of expertise are welcome in the projects
-and publicly acknowledged.
-Contributions can be as simple as pointing out deficiencies in the
-documentation but can also be bug reports or corrections to
-the documentation or code. Users willing to implement
-new features are encouraged to open an Issue on GitHub and to submit
-a Pull Request. The open source nature of FRETBursts guarantees that
-contributions will become available to the entire single-molecule
-community.
-
-
-\subsection{Timestamps and Burst Data}
+\paragraph*{S3 Appendix.}
 \label{sec:burststimes}
+{\bf Timestamps and Burst Data.} General concepts of how timestamps and
+bursts data are stored and handled in FRETBursts.
 
-Beyond providing prepackaged functions for established methods,
-FRETBursts also provides the infrastructure for exploring new analysis approaches.
-Users can easily get timestamps (or selection masks) for any photon stream.
-Core burst data (start and stop times, indexes
-and derived quantities for each burst) are stored in \verb|Bursts| objects
-(\href{http://fretbursts.readthedocs.org/en/latest/burstsearch.html}{link}).
-This object provides a simple and well-tested interface (100 \% unit-test coverage)
-to access and manipulate burst data. \verb|Bursts| are created from a sequence of start/stop
-times and indexes, while all other fields are automatically
-computed. \verb|Bursts|'s methods allow to recompute indexes relative to a different photon
-selection or recompute start and stop times relative to a new timestamps array.
-Additional methods perform fusion of nearby bursts or combination of two set of bursts
-(time intersection or union). This functionality is used for example to implement
-the DCBS.
-In conclusion, \verb|Bursts| efficiently implements all the common operations performed
-with burst data, providing and easy-to-use interface and well tested algorithms.
-Leveraging \verb|Bursts| methods, users can implement new types of analysis without
-wasting time implementing (and debugging) standard manipulation routines.
-Examples of working directly with timestamps, masks (i.e. photon selections) and
-burst data are provided in one of the FRETBursts notebooks (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}).
-Section~\nameref{sec:bva} provides a complete example on using FRETBursts to implement
-custom burst analysis techniques.
-
-\paragraph{Python details}
-Timestamps are stored in the \verb|Data| attribute \verb|ph_times_m|, which is a list
-or arrays, one array per excitation spot. In single-spot measurements the full
-timestamps array is accessed as \verb|Data.ph_times_m[0]|. To get  timestamps
-of arbitrary photon streams, users can call \verb|Data.get_ph_times|
-(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html?highlight=get_ph_times#fretbursts.burstlib.Data.get_ph_times}{link}).
-Photon streams are selected from the full (all-photons) timestamps array using
-boolean masks, which can be obtained calling \verb|Data.get_ph_mask|
-(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html?highlight=get_ph_mask#fretbursts.burstlib.Data.get_ph_mask}{link}).
-All burst data (e.g. start-stop times and indexes, burst duration, etc.) are stored in
-\verb|Bursts| objects. For uniformity, the bursts start-stop
-indexes are always referring to the all-photons timestamps array,
-regardless of the photon stream used for burst search.
-\verb|Bursts| objects
-internally store only start and stop times and indexes.
-The other \verb|Bursts| attributes (duration, photon counts, etc.) are computed on-the-fly
-when requested (using class properties), thus minimizing the object state.
-\verb|Bursts| support iteration
-with performances similar to iterating through rows of 2D row-major numpy arrays.
-
-
-\subsection{Plotting \texttt{Data}}
+\paragraph*{S4 Appendix.}
 \label{sec:plotting}
+{\bf Plotting \texttt{Data}.} A description of the syntax used to perform
+plots in FRETBursts.
 
-FRETBursts uses
-matplotlib~\cite{matplotlib}
-and seaborn~\cite{seaborn}
-to provide a wide range of built-in plot functions
-(\href{http://fretbursts.readthedocs.org/en/latest/plots.html}{link})
-for \verb|Data| objects.
-The plot syntax is the same for both single and multi-spot measurements.
-The majority of plot commands are called through the wrapper function
-\verb|dplot|, for example to plot a timetrace of the photon data, type:
-
-\begin{lstlisting}
-dplot(d, timetrace)
-\end{lstlisting}
-
-The function \verb|dplot| is the generic plot function, which creates figure
-and handles details common to all the plotting functions (for instance, the title).
-\verb|d| is the \verb|Data| variable and \verb|timetrace| is the actual plot
-function, which operates on a single channel. In multispot measurements,
-\verb|dplot| creates one subplot for each spot and calls \verb|timetrace| for
-each channel.
-
-All built-in plot functions which can be passed to
-\verb|dplot| are defined in the
-\verb|burst_plot| module
-(\href{http://fretbursts.readthedocs.org/en/latest/plots.html}{link}).
-
-\paragraph{Python details}
-When FRETBursts is imported, all plot functions are also imported.
-To facilitate finding the plot functions through auto-completion,
-their names start with a standard prefix indicating the
-plot type. The prefixes are: \verb|timetrace| for binned timetraces
-of photon data, \verb|ratetrace| for rates of photons as a function of time (non
-binnned), \verb|hist| for functions plotting histograms and \verb|scatter| for
-scatter plots.
-Additional plots can be easily created directly with matplotlib.
-
-By default, in order to speed-up batch processing, FRETBursts notebooks display plots
-as static images using the \textit{inline} matplotlib backend.
-User can switch to interactive figures inside the browser by activating
-the interactive backend with the command \verb|%matplotlib notebook|.
-Another option is displaying figures in a new standalone window
-using a desktop graphical library such as QT4.
-In this case, the command to be used is \verb|%matplotlib qt|.
-
-A few plot functions, such as \verb|timetrace| and \verb|hist2d_alex|, have interactive features
-which require the QT4 backend. As an example, after switching to the QT4 backend
-the following command:
-
-\begin{lstlisting}
-dplot(d, timetrace, scroll=True, bursts=True)
-\end{lstlisting}
-
-\noindent
-will open a new window with a timetrace plot with overlay of bursts, and an horizontal scroll-bar for quick
-"scrolling" throughout time. The user can click on a burst to have the corresponding burst info
-be printed in the notebook.
-Similarly, calling the \verb|hist2d_alex| function with the QT4 backend allows
-selecting an area on the E-S histogram using the mouse.
-
-\begin{lstlisting}
-dplot(ds, hist2d_alex, gui_sel=True)
-\end{lstlisting}
-
-The values which identify the region are printed in the notebook and can be passed
-to the function \verb|select_bursts.ES| to select bursts inside that region
-(see section~\nameref{sec:burstsel}).
-
-
-\subsection{Background Estimation With Optimal Threshold}
+\paragraph*{S5 Appendix.}
 \label{sec:bg_opt_th}
-The functions used to fit the background (i.e. \verb|bg.exp_fit| and other functions in \verb|bg| module)
-provide also a goodness-of-fit estimator
-computed from the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}.
-The ``distance'' between the EDF and the theoretical (i.e. exponential) cumulative distribution
-represents and indicator of the quality of fit.
-Two different distance metrics can be returned by the background fitting functions.
-The first is the Kolgomorov-Smirnov statistics, which uses the maximum of the difference
-between the EDF and the theoretical distribution. The second is the Cramér von Mises
-statistics corresponding to the integral of the squared residuals
-(see the code for more details,
-\href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/background.py#L43}{link}).
+{\bf Background Estimation With Optimal Threshold.} A description of
+the algorithm used by FRETBursts to compute the
+optimal threshold for background estimation.
 
-In principle, the optimal inter-photon delay threshold will minimize
-the error metric. This approach is implemented by the function \verb|calc_bg_brute|
-(\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.calc_bg_brute}{link}) which performs a brute-force search in order to find the optimal threshold.
-This optimization is not necessary under typical experimental conditions,
-because the estimated rates normally change only a by a few per-cent
-compared to the heuristic threshold selection used by default.
-
-
-\subsection{Burst Weights}
+\paragraph*{S6 Appendix.}
 \label{sec:burstweights_theory}
-\subsubsection{Theory}
-Freely-diffusing molecules across
-a Gaussian excitation volume give rise to
-a burst size distribution that is exponentially distributed.
-In a static FRET population, burst counts in the acceptor channel can be
-modeled as a binomial random variable (RV) with success probability equal to the
-population PR and number of trials equal to the burst size $n_d + n_a$.
-Similarly, the PR of each burst $E_i$ ($i$ being the burst index) is
-simply a binomial divided by the number of trials, with variance reported
-in eq.~\ref{eq:E_var}.
-
-\begin{equation}
-\label{eq:E_var}
-\operatorname{Var} (E_i) = \frac{E_p\,(1 - E_p)}{n_{ti}}
-\end{equation}
-
-Bursts with higher counts, provide more accurate estimations
-of the population PR, since their PR variance is smaller (eq.~\ref{eq:E_var}).
-Therefore, in estimating the population PR we need to "focus"
-on bigger bursts.
-Traditionally, this is accomplished by merely discarding bursts
-below a size-threshold.
-In the following paragraphs we demonstrate how, by proper weighting
-bursts, is possible to obtains optimal estimates of PR which takes into
-account the information of the entire burst population.
-
-According to the Cramer-Rao lower bound (eq.~\ref{eq:cramer_rao}), the
-Fisher information $\mathcal{I}(\theta)$ sets a lower bound on the
-variance of any statistics $\hat{p}$ of a RV $\theta$.
-
-\begin{equation}
-\label{eq:cramer_rao}
-\operatorname{Var}\left(\hat{p}\right) \ge \frac{1}{\mathcal{I}(\theta)}
-\end{equation}
-
-When the statistics $\hat{p}$ is an unbiased estimator of a distribution
-parameter and the equality holds in eq.~\ref{eq:cramer_rao},
-the estimator is a minimum-variance unbiased (MVUB) estimator
-and it is said to be efficient (meaning that it does an
-optimal use the information contained in the sample to estimate the
-parameter).
-
-A population of $N$ bursts can be modeled by a set of $N$ binomial
-variables with same success probability $E_p$ and varying number of successes
-equal to the burst size. An estimator for $E_p$ can be constructed
-noticing that the sum of binomial RV with same
-success probability is still a binomial (with number of trials equal to
-the sum of the number of trials).
-Taking the sum of acceptor counts over all bursts divided by the total
-number of photons as in eq.~\ref{eq:E_estim}, we obtain
-an estimator $\hat{E}$ of the proportion of successes.
-
-\begin{equation}
-\label{eq:E_estim}
-\hat{E} = \frac{\sum_i n_{ai}}{\sum_i n_{ti}}
-\end{equation}
-
-The variance of $\hat{E}$ (eq.~\ref{eq:E_variance}) is equal to the inverse of
-the Fisher information $\mathcal{I}(\hat{E})$ and therefore $\hat{E}$ is a MVUB
-estimator for $E_p$.
-
-\begin{equation}
-\label{eq:E_variance}
-\operatorname{Var}(\hat{E}) = \frac{E_p (1 - E_p)}{\sum_i n_{ti}} = \frac{1}{\mathcal{I}(\hat{E})}
-\end{equation}
-
-We can finally verify that $\hat{E}$ is equal to the weighted average of the bursts
-PR $E_i$ (eq.~\ref{eq:E_wmean}), with weights proportional to the burst size (eq.~\ref{eq:weights}).
-
-\begin{equation}
-\label{eq:weights}
-w_i
-= \frac{n_{ti}}{\sum_i n_{ti}}
-\end{equation}
-
-\begin{equation}
-\label{eq:E_wmean}
-\hat{E}_w = \frac{1}{N} \sum_i w_i E_i
-= \frac{1}{N} \frac{\sum_i n_{ti} \frac{n_{ai}}{n_{ti}} }{\sum_i n_{ti}} = \hat{E}
-\end{equation}
-
-Since $\hat{E}$ is the MVUB estimator, any other estimator of $E_p$ (in particular
-the unweighted mean of $E_i$) will have a larger variance.
-
-We can extend these consideration of optimal weights for
-the PR estimator to the FRET distribution plot (histograms or KDEs). Building an
-unweighted histogram (and fitting the peak) is analogous to estimating the
-$E_p$ with an unweighted average. Conversely, building the FRET histogram
-using the burst size as weights is equivalent to using
-the MVUB estimator for $E_p$.
-
-\subsubsection{Weighted FRET estimator}
-Here we report a simple verification of the results of previous section, namely
-that a weighted mean of $E_i$ is the estimator with minimal variance of $E_p$.
-For this purpose, we generated a static FRET population of 100 bursts
-by simply extracting burst-sizes from an exponential distribution ($\lambda = 10$)
-and acceptor counts from a binomial distribution ($E_p = 0.2$).
-By repeatedly fitting the population parameter $E_p$ using a
-size-weighted and unweighted average, we verified that the former has systematically
-lower variance of the latter as predicted by the theory
-(in the current example the unweighted estimator has $28.6\,\%$ higher variance).
-Note that this result
-holds for any arbitrary distribution of burst sizes. The full simulation
-including exponential and gamma-distributed burst sizes is reported in
-the accompanying Jupyter notebook (\href{http://nbviewer.jupyter.org/github/tritemio/fretbursts_paper/blob/master/notebooks/Figures%20-%20Burst%20Weights.ipynb}{link}).
-
-\subsubsection{Weighted FRET histogram}
-The effect of weighting the FRET histogram is here illustrated with a simulation of
-a mixture of two static FRET populations and then with experimental data.
-
-We performed a realistic simulation of a static mixture of two FRET populations
-starting from 3-D Brownian motion diffusion of $N$ particles excited by a
-numerically computed (non-Gaussian) PSF. Input parameters of the simulation include
-diffusion coefficient, particle brightness, the two FRET efficiencies,
-as well as detectors DCR. The simulation is performed with the open source software
-PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files (i.e. timestamps
-and detectors arrays) in Photon-HDF5 format~\cite{Ingargiola2016}.
-The simulated data file is processed with FRETBursts performing burst search,
-and only a minimal burst size selection of with threshold of 10 photons.
-The resulting weighted and unweighted FRET histograms are reported in figure~\ref{fig:weight_fret_sim}.
-We notice that the use of the weights results in better definition of FRET peaks.
-
-As a final comparison, we report the weighted and unweighted FRET histogram of
-an experimental FRET population from measurement of a di-labeled dsDNA sample.
-Figure~\ref{fig:weight_fret_meas} show a comparison of a FRET histogram obtained from the same burst
-with and without weights. The burst selection is obtained applying a burst size
-threshold of 10 counts (after background correction), in order to filter
-the extreme low-end of the burst size distribution.
-
-The use of size-weighted FRET histograms is a simple way to obtain a representation of FRET
-distribution that maintains high power of resolving FRET peaks while including the full burst
-population and thus reducing statistical noise.
-
-As a final remark, note that when increasing the size-threshold for burst selection
-the difference between weighted and unweighted FRET histograms tends to zero because
-the relative difference in burst weights in the selected burst becomes smaller
-(i.e. tends to 1, meaning equal weights).
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=0.49\columnwidth]{figures/weight_fret_hist_sim_mixture/weight_fret_hist_sim_mixture}
-\caption{\label{fig:weight_fret_sim} Comparison of unweighted and size-weighted FRET histograms for a simulated mixtures of static FRET populations. In both cases bursts are selected with a size threshold of 10 photons (after background correction).%
-}
-\end{center}
-\end{figure}
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=0.49\columnwidth]{figures/weight_fret_hist_measurement/weight_fret_hist_measurement}
-\caption{\label{fig:weight_fret_meas} Comparison of unweighted and size-weighted FRET histograms for a smFRET measurement of a static FRET sample (di-labeled dsDNA). In both cases bursts are selected with a size threshold of 10 photons (after background correction).%
-}
-\end{center}
-\end{figure}
+{\bf Burst Weights.} Theory underpinning the choice of using burst size
+as weights for FRET estimation.
 
 \nolinenumbers
 \bibliography{bibliography/converted_to_latex.bib%
