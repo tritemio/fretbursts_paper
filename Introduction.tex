@@ -10,7 +10,7 @@ smFRET unique feature is its ability to very straightforwardly resolve conformat
 changes of biomolecules or measure binding-unbinding kinetics in heterogeneous 
 samples~\cite{Selvin_2000,Roy_2008,Schuler_2008,Sisamakis_2010,Haran_2012}.
 smFRET measurements on freely diffusing molecules (the focus of this paper) 
-have the additional advantage over measurements performed on immobilized molecules, 
+have the additional advantage, over measurements performed on immobilized molecules, 
 of allowing to probe molecules and processes without perturbation from surface
 immobilization or additional functionalization needed for surface 
 attachment~\cite{Eggeling_1998,Dahan_1999}.
@@ -59,7 +59,7 @@ Other disciplines have started tackling this issue~\cite{Eglen_2016},
 and even in the single-molecule field a few recent publications have provided 
 software for analysis of surface-immobilized experiments~\cite{McKinney_2006,Bronson_2009,Greenfeld_2012,K_nig_2013,van_de_Meent_2014}.
 For freely-diffusing smFRET experiments, although it is common to find mention of 
-"code available from the authors upon request" in publications, there is a dearth 
+``code available from the authors upon reques'' in publications, there is a dearth 
 of such open source code, with, to our knowledge, the notable exception of a single 
 example~\cite{Murphy2014}.
 To address this issue, we have developed FRETBursts,
@@ -89,10 +89,14 @@ ecosystem of open tools for reproducible science in the single-molecule field.
 \subsection{Paper Overview}
 This paper is written as an introduction to smFRET burst analysis and 
 its implementation in FRETBursts.
+The aim is illustrating the specificities and 
+trade-offs involved in various approaches
+with sufficient details to enable readers 
+to customize the analysis for their own needs.
+
 After a brief overview of FRETBursts features (section~\ref{sec:overview}),
 we introduce essential concepts and terminology for smFRET burst analysis 
 (section~\ref{sec:concepts}).
-
 In section~\ref{sec:analysis}, we illustrate the steps involved
 in smFRET burst analysis: (i) data loading (section~\ref{sec:dataload}), 
 (ii) definition of the excitation alternation periods 
@@ -101,13 +105,10 @@ in smFRET burst analysis: (i) data loading (section~\ref{sec:dataload}),
 (section~\ref{sec:burstsearch}),
 (v) burst selection (section~\ref{sec:burstsel}) and 
 (vi) FRET histogram fitting (section~\ref{sec:fretfit}).
-The aim of this section is to illustrate the specificities and 
-trade-offs involved in various approaches
-with sufficient details to enable readers 
-to customize the analysis for their own needs.
-Section~\ref{sec:bva} walks the reader thorough implementing
-Burst Variance Analysis (BVA)~\cite{Torella_2011}, as an example 
-of implementation of an advanced data processing technique.
+As an example 
+of implementation of an advanced data processing technique,
+section~\ref{sec:bva} walks the reader thorough implementing
+Burst Variance Analysis (BVA)~\cite{Torella_2011}.
 Finally, section~\ref{sec:conclusions} summarizes what we believe 
 to be the strengths of FRETBursts software.
 
@@ -115,7 +116,7 @@ Throughout this paper,
 links to relevant sections of documentation and other web resources
 are displayed as ``(link)''.
 In order to make the text more legible,
-we have concentrated Python-specific details in subsections entitled
+we have concentrated Python-specific details in paragraphs titled
 \textit{Python details}. These subsections provide deeper insights for readers
 already familiar with Python and can be initially skipped by readers who are not.
 Finally, note that all commands and figures in this paper can be regenerated 
