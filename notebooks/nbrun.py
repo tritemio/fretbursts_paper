@@ -60,6 +60,6 @@ if __name__ == '__main__':
     print('Executing notebooks in current folder ... ')
     pathlist = list(Path('.').glob('*.ipynb'))
     for nbpath in pathlist:
-        if not nbpath.stem.endswith('-out'):
+        if not (nbpath.stem.endswith('-out') or nbpath.stem.startswith('_')):
             print(flush=True)
             run_notebook(nbpath)
