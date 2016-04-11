@@ -15,7 +15,7 @@ The previous command creates a new \verb|Data| variable (\verb|ds|) containing
 the selected bursts. \verb|th1| defines the lower bound for burst size, while 
 \verb|th2| defines the upper bound (when not specified, as in the previous example,
 the upper bound is $+\infty$).
-As before, the new object will share the photon data
+As before, the new object (\verb|ds|) will share the photon data
 arrays with the original object (\verb|d|) in order to minimize the amount 
 of used memory.
 
@@ -38,7 +38,7 @@ which requires only a couple of lines of code (see the
 \href{https://github.com/tritemio/FRETBursts/blob/master/fretbursts/select_bursts.py}{link}).
 
 Finally, different criteria can be combined sequentially.
-For example, the following commands:
+For example, with the following commands:
 
 \begin{lstlisting}
 ds = d.select_bursts(select_bursts.size,
@@ -47,18 +47,17 @@ dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
 \end{lstlisting}
 
-apply both a burst size and a burst duration selection criterion, in which bursts
-have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
+bursts in \verb|dsw|
+will have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \paragraph{Burst Size Selection}
-In the previous section, we selected bursts by size, using only Dex photons
-(i.e. photons detected in both D and A channels during D excitation, as in eq.~\ref{eq:burstsize_dex}).
+In the previous section, we selected bursts by size, using only 
+photons detected in both D and A channels during D excitation (i.e. Dex photons), 
+as in eq.~\ref{eq:burstsize_dex}.
 Alternatively, a threshold on the burst size computed including all photons 
 can be applied by adding $n_{aa}$ to the burst size (see eq.~\ref{eq:burstsize_allph}). 
 This is achieved
-by passing \verb|add_naa=True| to the selection function. When \verb|add_naa| is not specified,
-as in the previous section, the default \verb|add_naa=False| is used
-(i.e. computed size using only Dex photons). 
+by passing \verb|add_naa=True| to the selection function. 
 The complete selection command is:
 
 \begin{lstlisting}
@@ -67,3 +66,6 @@ ds = d.select_bursts(select_bursts.size,
 \end{lstlisting}
 
 \noindent The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
+When \verb|add_naa| is not specified,
+as in the previous section, the default is \verb|add_naa=False|
+(i.e. compute size using only Dex photons). 
