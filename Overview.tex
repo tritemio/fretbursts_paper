@@ -6,20 +6,20 @@
 FRETBursts can analyze smFRET measurements
 from one or multiple excitation spots~\cite{Ingargiola_2013}. The supported
 excitation schemes include single laser, alternating laser excitation (ALEX)
-with either CW lasers (\usalex \cite{Kapanidis_2005})
+with either CW lasers (μs-ALEX~\cite{Kapanidis_2005})
 or pulsed lasers (ns-ALEX~\cite{Laurence_2005} or
 pulsed-interleaved excitation (PIE)~\cite{M_ller_2005}).
 
 The software implements both standard and novel algorithms for smFRET data analysis
 including background estimation as a function of time (including background accuracy
-metrics), sliding-window burst search~\cite{Eggeling_1998}, 
+metrics), sliding-window burst search~\cite{Eggeling_1998},
 dual-channel burst search (DCBS)~\cite{Nir_2006} and
 modular burst selection methods based on user-defined criteria
 (including a large set of pre-defined selection rules). Novel features include burst size
-selection with $\gamma$-corrected burst sizes, burst weighting, burst search with 
-background-dependent threshold (in order to guarantee a minimal signal-to-background 
+selection with $\gamma$-corrected burst sizes, burst weighting, burst search with
+background-dependent threshold (in order to guarantee a minimal signal-to-background
 ratio~\cite{Michalet_2012}).
-Moreover, FRETBursts provides a large set of fitting options to characterize FRET subpopulations. 
+Moreover, FRETBursts provides a large set of fitting options to characterize FRET subpopulations.
 In particular, distributions of burst quantities (such as $E$ or $S$) can be assessed
 through (1) histogram fitting (with arbitrary model functions),
 (2) non-parametric weighted kernel density estimation (KDE), (3) weighted
@@ -28,20 +28,20 @@ or Poisson statistic. Finally FRETBursts includes a large number of
 predefined and customizable plot functions which (thanks to the \textit{matplotlib}
 graphic library) produce publication quality plots in a wide range of formats.
 
-Additionally, implementations of population dynamics analysis such 
-as Burst Variance Analysis (BVA)~\cite{Torella_2011} and two-channel 
-kernel density distribution estimator (2CDE)~\cite{Tomov_2012} 
+Additionally, implementations of population dynamics analysis such
+as Burst Variance Analysis (BVA)~\cite{Torella_2011} and two-channel
+kernel density distribution estimator (2CDE)~\cite{Tomov_2012}
 are available as FRETBursts notebooks.
 
 \subsection{Software Availability}
-FRETBursts is hosted and openly developed on GitHub. FRETBursts homepage 
+FRETBursts is hosted and openly developed on GitHub. FRETBursts homepage
 (\href{http://tritemio.github.io/FRETBursts}{link})
 contains links to the various resources. Installation instructions can be found in the
-Reference Documentation (\href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{link}). 
-A description of FRETBursts execution using Jupyter notebooks is reported 
+Reference Documentation (\href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{link}).
+A description of FRETBursts execution using Jupyter notebooks is reported
 in SI~\ref{sec:notebook}.
-Detailed information on development style, testing strategies and 
+Detailed information on development style, testing strategies and
 contributions guidelines are reported in SI~\ref{sec:dev}.
-Finally, to facilitate evaluation and comparison with other software, 
-we setup an on-line services allowing to execute FRETBursts 
+Finally, to facilitate evaluation and comparison with other software,
+we set up an on-line services allowing to execute FRETBursts
 without requiring any installation on the user's computer (\href{https://github.com/tritemio/FRETBursts_notebooks#run-online}{link}).

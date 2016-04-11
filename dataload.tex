@@ -32,8 +32,8 @@ For instance, data generated using different excitation schemes such as CW excit
 or pulsed excitation, single-laser vs two alternating lasers, etc.,
 or with any number of excitation spots, are automatically recognized and interpreted accordingly.
 
-FRETBursts also supports loading \usalex data stored in .sm files
-(a custom binary format used in the Weiss lab),
+FRETBursts also supports loading μs-ALEX data stored in .sm files
+(a custom binary format used in the Weiss lab) and
 ns-ALEX data stored in .spc files (a binary format used by TCSPC Becker \& Hickl acquisition hardware).
 Alternatively, these and other formats (such as ht3, a binary format used by PicoQuant hardware)
 can be converted into Photon-HDF5 files using phconvert,
@@ -46,10 +46,10 @@ can be found in the \verb|loader| module's documentation
 \subsection{Alternation Parameters}
 \label{sec:alternation}
 
-For \usalex and ns-ALEX data, Photon-HDF5 normally stores parameters defining
+For μs-ALEX and ns-ALEX data, Photon-HDF5 normally stores parameters defining
 alternation periods corresponding to donor and acceptor laser excitation.
 At load time, a user can plot these parameters and change them if deemed necessary.
-In \usalex measurements~\cite{Kapanidis_2004},
+In μs-ALEX measurements~\cite{Kapanidis_2004},
 CW laser lines are alternated on timescales of the order of 10 to 100~\us.
 Plotting an histogram of timestamps modulo the alternation period, it
 is possible to identify the donor and acceptor excitation periods (see figure~\ref{fig:altern_hist_double}a).

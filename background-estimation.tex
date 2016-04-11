@@ -20,29 +20,29 @@ is the minimum inter-photon delay to use when fitting the distribution to the sp
 To use different thresholds for each photon stream we pass a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
 The recommended approach is however automating the choice of threshold using
-\verb|tail_min_us='auto'| using an heuristic algorithm which is described in 
-\textit{Background estimation} section of the \usalex tutorial 
+\verb|tail_min_us='auto'| using an heuristic algorithm which is described in
+\textit{Background estimation} section of the μs-ALEX tutorial 
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb#Background-estimation}{link}).
 Finally, it is possible to use a slower but rigorous approach for finding the optimal
 threshold as described in SI~\ref{sec:bg_opt_th}.
 
 FRETBursts provides two kinds of plots to represent the background. One shows the histograms
-of inter-photon delays compared to the fitted exponential distribution, shown in 
-figure~\ref{fig:bg_dist_all}) (see section~\ref{sec:bg_intro} for details on the inter-photon distribution). 
+of inter-photon delays compared to the fitted exponential distribution, shown in
+figure~\ref{fig:bg_dist_all}) (see section~\ref{sec:bg_intro} for details on the inter-photon distribution).
 This plot is created with the command:
 
 \begin{lstlisting}
 dplot(d, hist_bg, period=0)
 \end{lstlisting}
 
-This command reflects the general form of plotting commands in FRETBursts 
+This command reflects the general form of plotting commands in FRETBursts
 as described in SI~\ref{sec:plotting}.
-Here we only note that the argument \verb|period| is an integer specifying the background 
+Here we only note that the argument \verb|period| is an integer specifying the background
 period to be plotted (When omitted, the default is 0, i.e. the first period).
-Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where the 
-background fitting procedure returns unreasonable values. 
+Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where the
+background fitting procedure returns unreasonable values.
 
-The second background-related plot represents a timetrace of background rates, 
+The second background-related plot represents a timetrace of background rates,
 as shown in figure~\ref{fig:bg_timetrace}. This plot allows monitoring background rate variations
 occurring during the measurement and is obtained with the command:
 
@@ -54,13 +54,13 @@ Normally, samples should have a fairly constant background rate as a function of
 as in figure~\ref{fig:bg_timetrace}(a). However, sometimes, non-ideal
 experimental conditions can yield a time-varying background rate, as illustrated in
 figure~\ref{fig:bg_timetrace}(b).
-A possible reason for the observed behavior could be buffer evaporation from an open sample 
+A possible reason for the observed behavior could be buffer evaporation from an open sample
 or poorly sealed observation chamber. Alternatively,
 cover-glass impurities can contribute to the background.
 These impurities tend to bleach on timescales of minutes resulting in
 background variations during the course of the measurement.
 
-\paragraph{Python details} 
+\paragraph{Python details}
 
 The estimated background rates are stored in the \verb|Data| attributes
 \verb|bg_dd|, \verb|bg_ad| and \verb|bg_aa|, corresponding to photon
@@ -70,6 +70,6 @@ These attributes are lists of arrays (one array per excitation spot).
 The arrays contain the estimated background rates in the different time windows
 (background periods).
 Additional background fitting functions (e.g. least-square fitting of inter-photon delay
-histogram) are available in \verb|bg| namespace 
-(i.e. the \verb|background| module, 
-\href{http://fretbursts.readthedocs.org/en/latest/background.html}{link}). 
+histogram) are available in \verb|bg| namespace
+(i.e. the \verb|background| module,
+\href{http://fretbursts.readthedocs.org/en/latest/background.html}{link}).
