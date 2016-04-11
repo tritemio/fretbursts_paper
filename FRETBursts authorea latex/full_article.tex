@@ -188,7 +188,16 @@
 }
 \hyphenation{smFRET}
 \hyphenation{FRETBursts}
+\renewcommand{\thesection}{\hspace*{-1.0em}}%
+\renewcommand{\thesubsection}{\hspace*{-1.0em}}%
 
+\newcommand{\beginsupplement}{%
+        \setcounter{table}{0}
+        \renewcommand{\thetable}{S\arabic{table}}%
+        \setcounter{figure}{0}
+        \renewcommand{\thefigure}{S\arabic{figure}}%
+        \renewcommand{\thesubsection}{S\arabic{subsection} Appendix}%
+     }
 
 %% END MACROS SECTION
 
@@ -1534,7 +1543,7 @@ grant R01-GM95904 and R01-GM069709. Dr. Weiss discloses equity in
 Nesher Technologies and intellectual property used in the research
 reported here. The work at UCLA was conducted in Dr. Weiss'\selectlanguage{english}s Laboratory. 
 
-
+\beginsupplement
 \section{Supporting Information}
 
 \subsection{Notebook Workflow}
