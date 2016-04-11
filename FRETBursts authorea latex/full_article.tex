@@ -242,12 +242,12 @@ by single-photon avalanche diode (SPAD) detectors. The intensities of
 donor and acceptor fluorescence can then be related to the distance
 between the two fluorophores.
 
-While recent years have seen a growing number of contributions 
-proposing improvements or new techniques in smFRET data analysis, 
-rarely have those publications been accompanied by software implementation. 
-In particular, despite the widespread application of smFRET, no complete 
+While recent years have seen a growing number of contributions
+proposing improvements or new techniques in smFRET data analysis,
+rarely have those publications been accompanied by software implementation.
+In particular, despite the widespread application of smFRET, no complete
 software package for smFRET burst analysis is freely available to date.
- 
+
 In this paper, we introduce FRETBursts, an open source software
 for analysis of freely-diffusing smFRET data.
 FRETBursts allows executing all the fundamental steps of smFRET bursts
@@ -265,7 +265,7 @@ analysis (including data files, input parameters, and results) and can
 be easily shared to replicate complete smFRET analyzes.
 Notebooks allow beginners to execute complex workflows
 and advanced users to customize the analysis for their own needs.
-By bundling analysis description, code and results in a single document, 
+By bundling analysis description, code and results in a single document,
 FRETBursts allows to seamless share analysis workflows
 and results, encourages reproducibility and facilitates collaboration
 among researchers in the single-molecule community.
@@ -287,28 +287,28 @@ among researchers in the single-molecule community.
 
 Over the past 20 years, single molecule FRET (smFRET) has grown into one of the most
 useful techniques in single-molecule spectroscopy~\cite{Weiss_1999,Hohlbein_2014}.
-While it is possible to extract information on sub-populations using ensemble measurements 
+While it is possible to extract information on sub-populations using ensemble measurements
 (e.g. ~\cite{Lerner_2014,Rahamim_2015}),
 smFRET unique feature is its ability to very straightforwardly resolve conformational
-changes of biomolecules or measure binding-unbinding kinetics in heterogeneous 
+changes of biomolecules or measure binding-unbinding kinetics in heterogeneous
 samples~\cite{Selvin_2000,Roy_2008,Schuler_2008,Sisamakis_2010,Haran_2012}.
-smFRET measurements on freely diffusing molecules (the focus of this paper) 
-have the additional advantage, over measurements performed on immobilized molecules, 
+smFRET measurements on freely diffusing molecules (the focus of this paper)
+have the additional advantage, over measurements performed on immobilized molecules,
 of allowing to probe molecules and processes without perturbation from surface
-immobilization or additional functionalization needed for surface 
+immobilization or additional functionalization needed for surface
 attachment~\cite{Eggeling_1998,Dahan_1999}.
 
-The increasing amount of work using freely-diffusing smFRET has motivated 
-a growing number of theoretical contributions to the specific topic of data 
-analysis~\cite{Fries_1998,Eggeling_2001,Zhang_2005,Gopich_2005,Lee_2005,Nir_2006,Antonik2006,Gopich_2007,Gopich_2008,Camley_2009,Santoso_2010,Torella_2011,Tomov_2012}. 
-Despite this profusion of publications, most research groups still rely on 
-their own implementation of a limited number of methods, with very little 
-collaboration or code sharing. 
-To clarify this statement, let us point that our own group's past smFRET papers 
-merely mention the use of custom-made software without additional details~\cite{Lee_2005,Nir_2006}. 
-Even though some of these software tools are made available upon request, 
-or sometimes shared publicly on websites, 
-it remains hard to reproduce and validate results from different groups, 
+The increasing amount of work using freely-diffusing smFRET has motivated
+a growing number of theoretical contributions to the specific topic of data
+analysis~\cite{Fries_1998,Eggeling_2001,Zhang_2005,Gopich_2005,Lee_2005,Nir_2006,Antonik2006,Gopich_2007,Gopich_2008,Camley_2009,Santoso_2010,Torella_2011,Tomov_2012}.
+Despite this profusion of publications, most research groups still rely on
+their own implementation of a limited number of methods, with very little
+collaboration or code sharing.
+To clarify this statement, let us point that our own group's past smFRET papers
+merely mention the use of custom-made software without additional details~\cite{Lee_2005,Nir_2006}.
+Even though some of these software tools are made available upon request,
+or sometimes shared publicly on websites,
+it remains hard to reproduce and validate results from different groups,
 let alone build upon them.
 Additionally, as new methods are proposed in literature,
 it is generally difficult to quantify their performance compared to other methods.
@@ -339,24 +339,24 @@ scientific enterprise~\cite{Ince_2012,Vihinen_2015}.
 %(\href{http://ivory.idyll.org/blog/2015-we-live-in-a-bubble.html}{Brown 2015} and \href{http://ivory.idyll.org/blog/on-code-review-of-scientific-code.html}{2013}).
 
 Other disciplines have started tackling this issue~\cite{Eglen_2016},
-and even in the single-molecule field a few recent publications have provided 
+and even in the single-molecule field a few recent publications have provided
 software for analysis of surface-immobilized experiments~\cite{McKinney_2006,Bronson_2009,Greenfeld_2012,K_nig_2013,van_de_Meent_2014}.
-For freely-diffusing smFRET experiments, although it is common to find mention of 
-``code available from the authors upon reques'' in publications, there is a dearth 
-of such open source code, with, to our knowledge, the notable exception of a single 
+For freely-diffusing smFRET experiments, although it is common to find mention of
+``code available from the authors upon reques'' in publications, there is a dearth
+of such open source code, with, to our knowledge, the notable exception of a single
 example~\cite{Murphy2014}.
 To address this issue, we have developed FRETBursts,
 an open source Python software for analysis of freely-diffusing single-molecule FRET measurements.
-FRETBursts can be used, inspected and modified by anyone interested in using 
-state-of-the art smFRET analysis methods or implementing modifications or completely new techniques. 
+FRETBursts can be used, inspected and modified by anyone interested in using
+state-of-the art smFRET analysis methods or implementing modifications or completely new techniques.
 FRETBursts therefore represents an ideal platform
 for quantitative comparison of different methods for smFRET burst analysis.
 Technically, a strong emphasis has been given to the reproducibility of complete analysis
 workflows. FRETBursts uses Jupyter Notebooks~\cite{Shen_2014},
-an interactive and executable document containing textual narrative, input parameters, 
+an interactive and executable document containing textual narrative, input parameters,
 code, and computational results (tables, plots, etc.). A notebook thus captures the various analysis steps
 in a document which is easy to share and execute.
-To minimize the possibility of bugs being introduced inadvertently~\cite{Soergel_2015}, 
+To minimize the possibility of bugs being introduced inadvertently~\cite{Soergel_2015},
 we employ modern software engineering techniques
 such as unit testing and continuous integration~\cite{Wilson_2014,Eglen_2016}.
 FRETBursts is hosted on GitHub~\cite{Blischak_2016,Prli__2012},
@@ -366,33 +366,33 @@ an open file format for timestamp-based single-molecule fluorescence
 experiments. An other related open source tool is PyBroMo~\cite{Ingargiola_2016},
 a freely-diffusing smFRET simulator which produces Photon-HDF5 files that are
 directly analyzable with FRETBursts.
-Together with all the aforementioned tools, FRETBursts contributes to the growing 
+Together with all the aforementioned tools, FRETBursts contributes to the growing
 ecosystem of open tools for reproducible science in the single-molecule field.
 
 \subsection{Paper Overview}
-This paper is written as an introduction to smFRET burst analysis and 
+This paper is written as an introduction to smFRET burst analysis and
 its implementation in FRETBursts.
-The aim is illustrating the specificities and 
+The aim is illustrating the specificities and
 trade-offs involved in various approaches
-with sufficient details to enable readers 
+with sufficient details to enable readers
 to customize the analysis for their own needs.
 
-After a brief overview of FRETBursts features (section~\ref{sec:overview}),
-we introduce essential concepts and terminology for smFRET burst analysis 
-(section~\ref{sec:concepts}).
-In section~\ref{sec:analysis}, we illustrate the steps involved
-in smFRET burst analysis: (i) data loading (section~\ref{sec:dataload}), 
-(ii) definition of the excitation alternation periods 
-(section~\ref{sec:alternation}), (iii) background correction 
-(section~\ref{sec:bg_calc}), (iv) burst search 
-(section~\ref{sec:burstsearch}),
-(v) burst selection (section~\ref{sec:burstsel}) and 
-(vi) FRET histogram fitting (section~\ref{sec:fretfit}).
-As an example 
+After a brief overview of FRETBursts features (section~\nameref{sec:overview}),
+we introduce essential concepts and terminology for smFRET burst analysis
+(section~\nameref{sec:concepts}).
+In section~\nameref{sec:analysis}, we illustrate the steps involved
+in smFRET burst analysis: (i) data loading (section~\nameref{sec:dataload}),
+(ii) definition of the excitation alternation periods
+(section~\nameref{sec:alternation}), (iii) background correction
+(section~\nameref{sec:bg_calc}), (iv) burst search
+(section~\nameref{sec:burstsearch}),
+(v) burst selection (section~\nameref{sec:burstsel}) and
+(vi) FRET histogram fitting (section~\nameref{sec:fretfit}).
+As an example
 of implementation of an advanced data processing technique,
-section~\ref{sec:bva} walks the reader thorough implementing
+section~\nameref{sec:bva} walks the reader thorough implementing
 Burst Variance Analysis (BVA)~\cite{Torella_2011}.
-Finally, section~\ref{sec:conclusions} summarizes what we believe 
+Finally, section~\nameref{sec:conclusions} summarizes what we believe
 to be the strengths of FRETBursts software.
 
 Throughout this paper,
@@ -402,7 +402,7 @@ In order to make the text more legible,
 we have concentrated Python-specific details in paragraphs titled
 \textit{Python details}. These subsections provide deeper insights for readers
 already familiar with Python and can be initially skipped by readers who are not.
-Finally, note that all commands and figures in this paper can be regenerated 
+Finally, note that all commands and figures in this paper can be regenerated
 using the accompanying notebooks
 (\href{https://github.com/tritemio/fretbursts_paper}{link}).
 
@@ -448,9 +448,9 @@ FRETBursts is hosted and openly developed on GitHub. FRETBursts homepage
 contains links to the various resources. Installation instructions can be found in the
 Reference Documentation (\href{http://fretbursts.readthedocs.org/en/latest/getting_started.html}{link}).
 A description of FRETBursts execution using Jupyter notebooks is reported
-in SI~\ref{sec:notebook}.
+in~\ref{sec:notebook}.
 Detailed information on development style, testing strategies and
-contributions guidelines are reported in SI~\ref{sec:dev}.
+contributions guidelines are reported in~\ref{sec:dev}.
 Finally, to facilitate evaluation and comparison with other software,
 we set up an on-line services allowing to execute FRETBursts
 without requiring any installation on the user's computer (\href{https://github.com/tritemio/FRETBursts_notebooks#run-online}{link}).
@@ -459,21 +459,21 @@ without requiring any installation on the user's computer (\href{https://github.
 \section{Architecture and Concepts}
 \label{sec:concepts}
 
-In this section, we introduce some general burst analysis concepts 
+In this section, we introduce some general burst analysis concepts
 and notations used in FRETBursts.
 
 \subsection{Photon Streams}
 \label{sec:ph_streams}
 
-The raw data collected during a smFRET experiment consists in one or more arrays of 
-photon timestamps, whose temporal resolution is set by the acquisition hardware, 
+The raw data collected during a smFRET experiment consists in one or more arrays of
+photon timestamps, whose temporal resolution is set by the acquisition hardware,
 typically between 10 and 50 ns.
 In single-spot measurements, all timestamps are stored in a single array. In multispot
 measurements~\cite{Ingargiola_2013}, there are as many timestamps arrays
 as excitation spots.
 Each array contains timestamps from both donor (D) and acceptor (A) channels.
-When alternating excitation lasers are used (ALEX measurements)~\cite{Lee_2005}, 
-a further distinction between photons emitted during the D or A excitation periods can be made. 
+When alternating excitation lasers are used (ALEX measurements)~\cite{Lee_2005},
+a further distinction between photons emitted during the D or A excitation periods can be made.
 
 In FRETBursts, the corresponding sets of photons are called ``photon streams'' and are
 specified with a \verb|Ph_sel| object
@@ -537,14 +537,14 @@ To estimate the background rate (i.e. the inverse of the exponential time consta
 it is necessary to define a time-delay threshold above which the distribution
 can be considered exponential.
 Finally, a parameter estimation method needs to be specified, such as Maximum
-Likelihood Estimation (MLE) or non-linear least squares curve fitting of 
+Likelihood Estimation (MLE) or non-linear least squares curve fitting of
 the time-delay histogram (both supported in FRETBursts).
 
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.77\columnwidth]{figures/ph_delays_distrib_all/ph_delays_distrib_all}
-\caption{\label{fig:bg_dist_all} \textbf{Inter-photon delays fitted with and exponential function.} 
+\caption{\label{fig:bg_dist_all} \textbf{Inter-photon delays fitted with and exponential function.}
 Experimental distributions of inter-photon delays (\textit{dots}) and
 corresponding fits of the exponential tail (\textit{solid lines}).
 (\textit{Panel a}) An example of inter-photon delays distribution (\textit{red dots}) and an exponential fit
@@ -562,17 +562,17 @@ it usually varies
 on time scales of tens of seconds (see figure~\ref{fig:bg_timetrace}).
 FRETBursts divides the acquisition in constant-duration time
 windows called \textit{background periods} and computes the background rates for
-each of these windows (see section~\ref{sec:bg_calc}).
-Note that FRETBursts uses these local background rates also during burst search, 
-in order to compute time-dependent burst detection thresholds 
-and for background correction of burst data (see section~\ref{sec:burstsearch}).
+each of these windows (see section~\nameref{sec:bg_calc}).
+Note that FRETBursts uses these local background rates also during burst search,
+in order to compute time-dependent burst detection thresholds
+and for background correction of burst data (see section~\nameref{sec:burstsearch}).
 
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.91\columnwidth]{figures/background_timetrace/background_timetrace}
 \selectlanguage{greek}\caption{\label{fig:bg_timetrace} \textbf{Background rates as a function of time.}
-Estimated background rate as a function of time for two μs-ALEX measurements. 
+Estimated background rate as a function of time for two μs-ALEX measurements.
 Different colors represent different photon streams.
 (\textit{Panel a}) A measurement performed with a sealed sample chamber
 exhibiting constant a background as a function of time.
@@ -603,7 +603,7 @@ the number of photons detected in the donor or the acceptor channel
 during donor or acceptor excitation (table~\ref{tab:data_n}).
 The attributes in table~\ref{tab:data_n} are background-corrected by default.
 Furthermore, \verb|na| is corrected for leakage and direct excitation
-(section~\ref{sec:corrcoeff}) if the relative coefficients are specified
+(section~\nameref{sec:corrcoeff}) if the relative coefficients are specified
 (by default they are 0).
 There is also a closely related attribute named \verb|nda| for donor photons
 during acceptor excitation. \verb|nda| is normally neglected as it only contains
@@ -635,7 +635,7 @@ with an underscore, so that an equivalently syntax is
 
 Identifying single-molecule fluorescence bursts in the stream of photons is
 one of the most crucial steps in the analysis of freely-diffusing single-molecule FRET data.
-The widely used ``sliding window'' algorithm, introduced by the Seidel group in 
+The widely used ``sliding window'' algorithm, introduced by the Seidel group in
 1998~\cite{Eggeling_1998,Fries_1998}, involves searching for
 $m$ consecutive photons detected during a period shorter than
 $\Delta t$. In other words, bursts are regions of the photon stream where the
@@ -661,7 +661,7 @@ donor-only or acceptor only populations, it is better to perform the search usin
 only donor or acceptor signal.
 In order to handle the general case and to provide flexibility,
 FRETBursts allows performing the burst search on arbitrary selections of photons.
-(see section~\ref{sec:ph_streams} for more information on photon stream definitions).
+(see section~\nameref{sec:ph_streams} for more information on photon stream definitions).
 
 Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS (``dual-channel burst search''), which can help mitigating artifacts due to photophysics effects such as blinking.
 During DCBS, a search is performed in parallel on two photon streams
@@ -683,10 +683,10 @@ of background and $\gamma$ factor on the burst size and can lead to a selection
 bias for some channels and/or sub-populations.
 For this reason, we suggest performing a burst size selection after background
 correction, taking into account the $\gamma$ factor, as discussed in
-sections~\ref{sec:burstsizeweights} and~\ref{sec:burstsel}.
+sections~\nameref{sec:burstsizeweights} and~\nameref{sec:burstsel}.
 In special cases, users may choose to replace (or combine)
 the burst selection based on burst size
-with another criterion such as burst duration or brightness (see section~\ref{sec:burstsel}).
+with another criterion such as burst duration or brightness (see section~\nameref{sec:burstsel}).
 
 \subsection{Corrected Burst Sizes and Weights}
 \label{sec:burstsizeweights}
@@ -720,9 +720,9 @@ or~\ref{eq:burstsize_allph} are called $\gamma$-corrected burst sizes.
 
 The burst search algorithm yields a set of bursts whose sizes
 approximately follow an exponential distribution.
-Compared to bursts with smaller sizes, bursts with large sizes are less frequent, 
+Compared to bursts with smaller sizes, bursts with large sizes are less frequent,
 but contain more information per-burst (having higher SNR).
-Therefore, selecting bursts by size is an important step (see section~\ref{sec:burstsel}).
+Therefore, selecting bursts by size is an important step (see section~\nameref{sec:burstsel}).
 A threshold set too low may result in unresolvable sub-populations
 because of broadening of FRET peaks and appearance of shot-noise artifacts
 in the FRET (and S) distribution (i.e. spurious narrow peaks due to E and S being
@@ -736,27 +736,27 @@ in order to avoid under-representing some FRET sub-populations
 due to different quantum yields of donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor channels.
 
-A simple way to mitigate the dependence of the FRET distribution on 
-the burst size selection threshold is weighting bursts proportionally to their size 
+A simple way to mitigate the dependence of the FRET distribution on
+the burst size selection threshold is weighting bursts proportionally to their size
 so that the bursts with largest sizes will have the largest weights.
 Using size as weights (instead of any other monotonically increasing function
 of size) can be justified noticing that the variance of bursts proximity ratio (PR) is
-inversely proportional to the burst size (see SI~\ref{sec:burstweights_theory} for details). 
+inversely proportional to the burst size (see~\ref{sec:burstweights_theory} for details).
 
 In general, a weighting scheme is used for building efficient estimators for a population
-parameter (e.g. the population FRET efficiency $E_p$). 
+parameter (e.g. the population FRET efficiency $E_p$).
 But, it can also be used to build weighted histograms or Kernel Density
-Estimation (KDE) plots which emphasize FRET subpopulations peaks 
+Estimation (KDE) plots which emphasize FRET subpopulations peaks
 without excluding small size bursts.
-Traditionally, for optimal results when not using weights, the 
-FRET histogram is manually adjusted by finding an ad-hoc (high) 
+Traditionally, for optimal results when not using weights, the
+FRET histogram is manually adjusted by finding an ad-hoc (high)
 size-threshold which selects only bursts with the highest size (and thus lowest variance).
-Building size-weighted FRET histograms is a simple method to balance 
+Building size-weighted FRET histograms is a simple method to balance
 the need of reducing the peaks width with the need of including as much bursts
 as possible to reduce statistical noise.
 As a practical example, by fixing the burst size threshold to a low value (e.g. 10-20 photons)
-and using weights, is possible to build a FRET histogram with well-defined FRET sub-populations peaks 
-without the need of searching an optimal burst-size threshold (SI~\ref{sec:burstweights_theory}).
+and using weights, is possible to build a FRET histogram with well-defined FRET sub-populations peaks
+without the need of searching an optimal burst-size threshold (\ref{sec:burstweights_theory}).
 
 \paragraph{Python details}
 FRETBursts has the option to weight bursts using $\gamma$-corrected
@@ -764,11 +764,11 @@ burst sizes which optionally include acceptor excitation photons \verb|naa|.
 A weight proportional to the burst size is applied by passing the argument
 \verb|weights='size'| to histogram or KDE plot functions. The \verb|weights|
 keyword can be also passed to fitting functions in order to fit
-the weighted E or S distributions (see section~\ref{sec:fretfit}).
-Other weighting functions (for example depending quadratically on the size) 
+the weighted E or S distributions (see section~\nameref{sec:fretfit}).
+Other weighting functions (for example depending quadratically on the size)
 are listed in the \verb|fret_fit.get_weights| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
-However, using weights different from the size is not recommended 
+However, using weights different from the size is not recommended
 due to their less efficient use of burst information.
 
 \section{smFRET Burst Analysis}
@@ -801,7 +801,7 @@ d = loader.photon_hdf5(filename)
 \noindent
 where \verb|filename| is a string containing the file path.
 This command loads the measurement data into the variable \verb|d|,
-a \verb|Data| object (see section~\ref{sec:data_intro}).
+a \verb|Data| object (see section~\nameref{sec:data_intro}).
 
 The same command can load data from a variety of smFRET measurements supported
 by the Photon-HDF5 format, taking advantage of the rich metadata included with each file.
@@ -846,20 +846,20 @@ using currently selected (or default) values for donor and acceptor excitation p
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=1\columnwidth]{figures/ALEX_alternation_double/ALEX_alternation_double}
-\selectlanguage{greek}\caption{\label{fig:altern_hist_double} 
+\selectlanguage{greek}\caption{\label{fig:altern_hist_double}
 \textbf{Alternation histograms for μs-ALEX and ns-ALEX measurements.}
 Histograms used for the selection/determination
 of the alternation periods for two typical smFRET-ALEX experiments.
-Distributions of photons detected by donor channel are in \textit{green}, 
+Distributions of photons detected by donor channel are in \textit{green},
 and by acceptor channel in \textit{red}.
-The light \textit{green} and \textit{red} shaded areas indicate the donor 
+The light \textit{green} and \textit{red} shaded areas indicate the donor
 and acceptor period definitions.
-(a) μs-ALEX alternation histogram, i.e. histogram of timestamps \textit{modulo} 
-the alternation period for a smFRET measurement. 
+(a) μs-ALEX alternation histogram, i.e. histogram of timestamps \textit{modulo}
+the alternation period for a smFRET measurement.
 (b) ns-ALEX TCSPC nanotime histogram for a smFRET measurement.
-Both plots have been generated by the same plot function 
+Both plots have been generated by the same plot function
 (\texttt{plot\_alternation\_hist()}).
-Additional information on these specific measurements can be found in the 
+Additional information on these specific measurements can be found in the
 attached notebook
 (\href{http://nbviewer.jupyter.org/github/tritemio/fretbursts_paper/blob/master/notebooks/Figures\%20-\%20ALEX\%20histograms.ipynb}{link}).%
 }\selectlanguage{english}
@@ -904,25 +904,25 @@ d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
 \end{lstlisting}
 
 The first argument (\verb|bg.exp_fit|) is the function used to fit the
-background rate for each photon stream (see section~\ref{sec:bg_intro}).
+background rate for each photon stream (see section~\nameref{sec:bg_intro}).
 The function
 \verb|bg.exp_fit| estimates the background using a maximum likelihood estimation
 (MLE) of the delays distribution.
 The second argument, \verb|time_s|, is the duration of the
-\textit{background period} (section~\ref{sec:bg_intro}) and the third, \verb|tail_min_us|,
+\textit{background period} (section~\nameref{sec:bg_intro}) and the third, \verb|tail_min_us|,
 is the minimum inter-photon delay to use when fitting the distribution to the specified model function.
 To use different thresholds for each photon stream we pass a
 tuple (i.e. a comma-separated list of values, \href{https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences}{link}) instead of a scalar.
 The recommended approach is however automating the choice of threshold using
 \verb|tail_min_us='auto'| using an heuristic algorithm which is described in
-\textit{Background estimation} section of the \selectlanguage{greek}μ\selectlanguage{english}s-ALEX tutorial 
+\textit{Background estimation} section of the \selectlanguage{greek}μ\selectlanguage{english}s-ALEX tutorial
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/FRETBursts%20-%20us-ALEX%20smFRET%20burst%20analysis.ipynb#Background-estimation}{link}).
 Finally, it is possible to use a slower but rigorous approach for finding the optimal
-threshold as described in SI~\ref{sec:bg_opt_th}.
+threshold as described in~\ref{sec:bg_opt_th}.
 
 FRETBursts provides two kinds of plots to represent the background. One shows the histograms
 of inter-photon delays compared to the fitted exponential distribution, shown in
-figure~\ref{fig:bg_dist_all}) (see section~\ref{sec:bg_intro} for details on the inter-photon distribution).
+figure~\ref{fig:bg_dist_all}) (see section~\nameref{sec:bg_intro} for details on the inter-photon distribution).
 This plot is created with the command:
 
 \begin{lstlisting}
@@ -930,7 +930,7 @@ dplot(d, hist_bg, period=0)
 \end{lstlisting}
 
 This command reflects the general form of plotting commands in FRETBursts
-as described in SI~\ref{sec:plotting}.
+as described in~\ref{sec:plotting}.
 Here we only note that the argument \verb|period| is an integer specifying the background
 period to be plotted (when omitted, the default is 0, i.e. the first period).
 Figure~\ref{fig:bg_dist_all} allows to quickly identify pathological cases where the
@@ -978,7 +978,7 @@ histogram) are available in \verb|bg| namespace
 Following background estimation, burst search is the next step of
 the analysis.
 In FRETBursts, a standard burst search using a single photon stream
-(see section~\ref{sec:burstsearch_intro}) is performed by calling the
+(see section~\nameref{sec:burstsearch_intro}) is performed by calling the
 \verb|Data.burst_search| method
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_search}{link}).
 For example, the following command:
@@ -1001,7 +1001,7 @@ Note that the previous burst search does not perform any burst size selection
 An additional parameter $L$ can be passed to impose a minimum burst
 size before any correction.
 However, it is recommended to select bursts only after background corrections
-are applied, as discussed in the next section~\ref{sec:burstsel}.
+are applied, as discussed in the next section~\nameref{sec:burstsel}.
 
 It might sometimes be useful to specify a fixed photon-rate threshold, instead
 of a threshold depending on the background rate, as in the previous example. In
@@ -1015,7 +1015,7 @@ d.burst_search(min_rate_cps=50e3, m=10,
 \end{lstlisting}
 
 Finally, to perform a DCBS burst search (or in general an AND gate burst search,
-see section~\ref{sec:burstsearch_intro}) we use the function
+see section~\nameref{sec:burstsearch_intro}) we use the function
 \verb|burst_search_and_gate|
 (\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.burst_search_and_gate}{link}),
 as illustrated in the following example:
@@ -1038,7 +1038,7 @@ taking a \verb|Data| object as a first argument and returning a new
 
 The function \verb|burst_search_and_gate| accepts optional arguments,
 \verb|ph_sel1| and \verb|ph_sel2|, whose default values correspond to the
-classical DCBS photon stream selection (see section~\ref{sec:burstsearch_intro}).
+classical DCBS photon stream selection (see section~\nameref{sec:burstsearch_intro}).
 These arguments can be specified to select different photon streams than those used in
 a classical DCBS.
 
@@ -1049,10 +1049,10 @@ for processing \verb|Data| objects.
 \subsection{Bursts Corrections}
 \label{sec:corrcoeff}
 
-In \selectlanguage{greek}μ\selectlanguage{english}s-ALEX, there are 3 important correction parameters: $\gamma$-factor, 
+In \selectlanguage{greek}μ\selectlanguage{english}s-ALEX, there are 3 important correction parameters: $\gamma$-factor,
 donor leakage into the acceptor channel
 and acceptor direct excitation by the donor excitation laser~\cite{Lee_2005}.
-These corrections can be applied to burst data by simply assigning values 
+These corrections can be applied to burst data by simply assigning values
 to the respective \verb|Data| attributes:
 
 \begin{lstlisting}
@@ -1086,7 +1086,7 @@ can be found online as an interactive notebook (\href{http://nbviewer.jupyter.or
 After burst search, it is common to select bursts according to different
 criteria. One of the most common is burst size.
 
-For instance, to select bursts with more than 30 photons detected during the donor excitation 
+For instance, to select bursts with more than 30 photons detected during the donor excitation
 (computed after background correction), we use following command:
 
 \begin{lstlisting}
@@ -1094,11 +1094,11 @@ ds = d.select_bursts(select_bursts.size, th1=30)
 \end{lstlisting}
 
 The previous command creates a new \verb|Data| variable (\verb|ds|) containing
-the selected bursts. \verb|th1| defines the lower bound for burst size, while 
+the selected bursts. \verb|th1| defines the lower bound for burst size, while
 \verb|th2| defines the upper bound (when not specified, as in the previous example,
 the upper bound is $+\infty$).
 As before, the new object (\verb|ds|) will share the photon data
-arrays with the original object (\verb|d|) in order to minimize the amount 
+arrays with the original object (\verb|d|) in order to minimize the amount
 of used memory.
 
 The first argument of \verb|select_bursts|
@@ -1133,13 +1133,13 @@ bursts in \verb|dsw|
 will have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \paragraph{Burst Size Selection}
-In the previous section, we selected bursts by size, using only 
-photons detected in both D and A channels during D excitation (i.e. Dex photons), 
+In the previous section, we selected bursts by size, using only
+photons detected in both D and A channels during D excitation (i.e. Dex photons),
 as in eq.~\ref{eq:burstsize_dex}.
-Alternatively, a threshold on the burst size computed including all photons 
-can be applied by adding $n_{aa}$ to the burst size (see eq.~\ref{eq:burstsize_allph}). 
+Alternatively, a threshold on the burst size computed including all photons
+can be applied by adding $n_{aa}$ to the burst size (see eq.~\ref{eq:burstsize_allph}).
 This is achieved
-by passing \verb|add_naa=True| to the selection function. 
+by passing \verb|add_naa=True| to the selection function.
 The complete selection command is:
 
 \begin{lstlisting}
@@ -1150,20 +1150,20 @@ ds = d.select_bursts(select_bursts.size,
 \noindent The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
 When \verb|add_naa| is not specified,
 as in the previous section, the default is \verb|add_naa=False|
-(i.e. compute size using only Dex photons). 
+(i.e. compute size using only Dex photons).
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.7\columnwidth]{figures/alex_jointplot/alex_jointplot}
 \caption{\label{fig:alex_jointplot} \textbf{E-S histogram showing FRET, D-only and A-only populations.}
-A 2-D ALEX histogram and marginal E and S histograms for a 40-bp dsDNA 
-with D-A distance of 17 bases (Donor dye: ATTO550, Acceptor dye: ATTO647N). 
-Bursts are selected with a size-threshold of 30 photons, including Aex photons. 
+A 2-D ALEX histogram and marginal E and S histograms for a 40-bp dsDNA
+with D-A distance of 17 bases (Donor dye: ATTO550, Acceptor dye: ATTO647N).
+Bursts are selected with a size-threshold of 30 photons, including Aex photons.
 The plot is obtained with \texttt{alex\_jointplot(ds)}. The 2D E-S distribution plot (join plot)
 is an histogram with hexagonal bins, which reduce the binning artifacts (compared to square bins)
 and naturally resembles a scatter-plot when the burst density is low.
-Three populations are visible: FRET population (middle), D-only population (top left) and 
-A-only population (bottom, $S < 0.2$). Compare with figure~\ref{fig:alex_jointplot_fretsel} 
+Three populations are visible: FRET population (middle), D-only population (top left) and
+A-only population (bottom, $S < 0.2$). Compare with figure~\ref{fig:alex_jointplot_fretsel}
 where the FRET population has been isolated.%
 }
 \end{center}
@@ -1172,14 +1172,14 @@ where the FRET population has been isolated.%
 
 Another important parameter for defining the burst size is the $\gamma$-factor, i.e.
 the imbalance between the donor and the acceptor channel signals. As noted in
-section~\ref{sec:burstsizeweights}, the $\gamma$-factor is
+section~\nameref{sec:burstsizeweights}, the $\gamma$-factor is
 used to compensate bias for the different fluorescence quantum yields of the D and A
 fluorophores as well as the different photon-detection efficiencies of the D and A channels.
 When $\gamma$ is significantly different from 1, neglecting its effect on burst size leads to
 over-representing (in terms of number of bursts) one FRET population versus the others.
 
 When the $\gamma$ factor is known, a more unbiased selection of different FRET
-populations can be achieved passing the argument \verb|gamma| to the 
+populations can be achieved passing the argument \verb|gamma| to the
 selection function:
 
 \begin{lstlisting}
@@ -1193,8 +1193,8 @@ For more details on burst size selection, see the
 \verb|select_bursts.size| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}).
 
-\paragraph{Python details} 
-To compute $\gamma$-corrected burst sizes (with or without addition of \verb|naa|) 
+\paragraph{Python details}
+To compute $\gamma$-corrected burst sizes (with or without addition of \verb|naa|)
 the method \verb|Data.burst_sizes|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link})
 is used.
@@ -1206,7 +1206,7 @@ donor-only (D-only) and acceptor-only (A-only) populations.
 In most cases, these additional populations are not of interest and need to be filtered out.
 
 In principle, using the E-S representation, D-only and A-only bursts
-can be excluded by selecting bursts within a range of $S$ values (e.g. S=0.2-0.8). 
+can be excluded by selecting bursts within a range of $S$ values (e.g. S=0.2-0.8).
 This approach, however, simply truncates the burst distribution with arbitrary
 thresholds and is therefore not recommended for quantitative assessment of FRET
 populations.
@@ -1214,7 +1214,7 @@ populations.
 An alternative approach consists in applying two selection filters sequentially.
 First, the A-only population is filtered out
 by applying a threshold on the number of photons during D excitation (Dex).
-Second, the D-only population is filtered out by applying a threshold on 
+Second, the D-only population is filtered out by applying a threshold on
 the number of A photons during A excitation (AemAex).
 The commands for these combined selections are:
 
@@ -1233,11 +1233,11 @@ population obtained with the previous selection.
 \includegraphics[width=0.7\columnwidth]{figures/alex_jointplot_fretsel/alex_jointplot_fretsel}
 \caption{\label{fig:alex_jointplot_fretsel}
 \textbf{E-S histogram after filtering out D-only and A-only populations.}
-2-D ALEX histogram after selection of FRET population 
-using the composition of two burst selection filters: 
+2-D ALEX histogram after selection of FRET population
+using the composition of two burst selection filters:
 (1) selection of bursts with counts in Dex stream larger than 15;
 (2) selection of bursts with counts in AemAex stream larger than 15.
-Compare to figure~\ref{fig:alex_jointplot} where all burst populations 
+Compare to figure~\ref{fig:alex_jointplot} where all burst populations
 (FRET, D-only and A-only) are reported.%
 }
 \end{center}
@@ -1288,10 +1288,10 @@ fit_res = ds.E_fitter.fit_res[0]
 print(fit_res.fit_report())
 \end{lstlisting}
 
-Finally, to plot the fitted model together with the FRET histogram, 
+Finally, to plot the fitted model together with the FRET histogram,
 as shown in figure~\ref{fig:histfit}, we pass the parameter \verb|show_model=True|
 to the \verb|hist_fret| function as follows
-(see section~\ref{sec:plotting} for an introduction to plotting in FRETBursts):
+(see section~\nameref{sec:plotting} for an introduction to plotting in FRETBursts):
 
 \begin{lstlisting}
 dplot(ds, hist_fret, show_model=True)
@@ -1303,7 +1303,7 @@ dplot(ds, hist_fret, show_model=True)
 \includegraphics[width=0.49\columnwidth]{figures/hist_fit/hist_fit}
 \caption{\label{fig:histfit} \textbf{FRET histogram fitted with two Gaussians.}
 Example of a FRET histogram fitted with a 2-Gaussian model.
-After performing the fit (see main text), the plot is generated 
+After performing the fit (see main text), the plot is generated
 with \texttt{dplot(ds, hist\_fret, show\_model=True)}.%
 }
 \end{center}
@@ -1349,29 +1349,29 @@ Users can also refer to the comprehensive lmfit's documentation
 \section{Implementing Burst Variance Analysis}
 
 \label{sec:bva}
-In this section, we describe how to implement burst variance analysis (BVA) 
+In this section, we describe how to implement burst variance analysis (BVA)
 as described in~\cite{Torella_2011}.
-FRETBursts provides well-tested, general-purpose functions for timestamps and burst data 
+FRETBursts provides well-tested, general-purpose functions for timestamps and burst data
 manipulation and therefore simplifies implementing custom burst analysis algorithms such as BVA.
 
 \subsection{BVA Overview}
-Single-molecule FRET histograms show more information than just mean FRET efficiencies. 
-While in general the presence of several peaks clearly indicates the existence of 
-multiple subpopulations, a single peak cannot a priori be associated with 
-a single population defined by a unique FRET efficiency without further analysis 
+Single-molecule FRET histograms show more information than just mean FRET efficiencies.
+While in general the presence of several peaks clearly indicates the existence of
+multiple subpopulations, a single peak cannot a priori be associated with
+a single population defined by a unique FRET efficiency without further analysis
 (such as, for instance, shot-noise analysis~\cite{Nir_2006,Antonik2006}).
 
-The FRET histogram of a single FRET population has a minimum width set by shot noise 
-(i.e. the width is caused by the statistics of discrete photon-detection events). 
-FRET distributions broader than the shot noise limit, 
-can be ascribed to either a static mixture of species with slightly different FRET efficiencies, 
+The FRET histogram of a single FRET population has a minimum width set by shot noise
+(i.e. the width is caused by the statistics of discrete photon-detection events).
+FRET distributions broader than the shot noise limit,
+can be ascribed to either a static mixture of species with slightly different FRET efficiencies,
 or to a specie undergoing dynamic transitions (e.g. interconversion between multiple states,
 diffusion in a continuum of conformations, binding-unbinding events, etc.).
-When the single peak of a FRET distribution is wider than predicted from shot-noise, 
+When the single peak of a FRET distribution is wider than predicted from shot-noise,
 it is not possible to discriminate between the static and dynamic case without further analysis.
-The BVA method has been developed to address this issue, namely identifying the presence of dynamics 
-in FRET distributions~\cite{Torella_2011}, 
-and has been successfully applied to identify biomolecular processes with 
+The BVA method has been developed to address this issue, namely identifying the presence of dynamics
+in FRET distributions~\cite{Torella_2011},
+and has been successfully applied to identify biomolecular processes with
 dynamics on the millisecond time-scale~\cite{Torella_2011, Robb_2013}.
 
 The basic idea behind BVA is to subdivide bursts into contiguous burst chunks (sub-bursts)
@@ -1384,39 +1384,39 @@ by uncertainty, BVA analysis provides and indication of an higher or lower proba
 of observing dynamics.
 
 In a FRET (sub-)population originating from a single static FRET efficiency,
-the sub-bursts acceptor counts $n_a$ can be modeled as a binomial-distributed random variable 
-$N_a \sim \operatorname{B}(n, E_p)$, where $n$ is the number of photons in each sub-burst and 
-$E_p$ is the estimated population proximity-ratio (PR). 
-Note that we can use the PR because, regardless of the molecular FRET efficiency, 
+the sub-bursts acceptor counts $n_a$ can be modeled as a binomial-distributed random variable
+$N_a \sim \operatorname{B}(n, E_p)$, where $n$ is the number of photons in each sub-burst and
+$E_p$ is the estimated population proximity-ratio (PR).
+Note that we can use the PR because, regardless of the molecular FRET efficiency,
 the detected counts are partitioned between donor and acceptor channels according to
 a binomial distribution with success probability equal to the PR.
 The only approximation done here is neglecting the presence of background
-(a reasonable approximation since the backgrounds counts are in general a 
-very small fraction of the total counts). 
+(a reasonable approximation since the backgrounds counts are in general a
+very small fraction of the total counts).
 We refer the interested reader to~\cite{Torella_2011} for further discussion.
 
 If $N_a$ follows a binomial distribution, the random variable $E_{\textrm{sub}} = N_a/n$,
-has a standard deviation reported in eq.~\ref{eq:binom_std}. 
+has a standard deviation reported in eq.~\ref{eq:binom_std}.
 
 \begin{equation}
 \label{eq:binom_std}
 \operatorname{Std}(E_{\textrm{sub}}) = \left( \frac{E_p\,(1 - E_p)}{n} \right)^{1/2}
 \end{equation}
 
-BVA analysis consists of four steps: 1) dividing bursts into consecutive sub-bursts 
-containing a constant number of consecutive photons~\textit{n}, 2) computing the PR 
+BVA analysis consists of four steps: 1) dividing bursts into consecutive sub-bursts
+containing a constant number of consecutive photons~\textit{n}, 2) computing the PR
 of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-bursts
-PR in each burst, and 4) comparing $s_E$ to the expected standard deviation 
+PR in each burst, and 4) comparing $s_E$ to the expected standard deviation
 of a shot-noise-limited distribution~(eq.~\ref{eq:binom_std}).
-If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution 
-originates from a static mixture of sub-populations (of different 
-non-interconverting molecules) characterized by distinct FRET efficiencies, 
-$s_E$ of each burst is only affected by shot-noise and will follow the expected 
-standard deviation curve based on eq.~\ref{eq:binom_std}. 
-Conversely, if the observed distribution originates from biomolecules belonging to a single specie, 
-which interconverts between different FRET sub-populations (over times comparable to the diffusion 
-time), as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected 
-shot-noise-limited standard deviation, and will be located above the shot-noise standard 
+If, as in figure~\ref{fig:bva_static}, the observed FRET efficiency distribution
+originates from a static mixture of sub-populations (of different
+non-interconverting molecules) characterized by distinct FRET efficiencies,
+$s_E$ of each burst is only affected by shot-noise and will follow the expected
+standard deviation curve based on eq.~\ref{eq:binom_std}.
+Conversely, if the observed distribution originates from biomolecules belonging to a single specie,
+which interconverts between different FRET sub-populations (over times comparable to the diffusion
+time), as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected
+shot-noise-limited standard deviation, and will be located above the shot-noise standard
 deviation curve (right panel of figure~\ref{fig:bva_dynamic}).
 
 
@@ -1446,13 +1446,13 @@ For a ready-to-use BVA implementation users can refer to the corresponding noteb
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{link}).
 
 \paragraph{Python details}
-For BVA implementation, two photon streams are needed: all-photons during donor excitation (Dex) 
-and acceptor photons during donor excitation (DexAem). 
-These photon stream selections are obtained by computing boolean masks as follows 
-(see section~\ref{sec:burststimes}):
+For BVA implementation, two photon streams are needed: all-photons during donor excitation (Dex)
+and acceptor photons during donor excitation (DexAem).
+These photon stream selections are obtained by computing boolean masks as follows
+(see section~\nameref{sec:burststimes}):
 
 \begin{lstlisting}
-Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))   
+Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))
 DexAem_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='Aem'))
 DexAem_mask_d = AemDex_mask[Dex_mask]
 \end{lstlisting}
@@ -1460,19 +1460,19 @@ DexAem_mask_d = AemDex_mask[Dex_mask]
 Here, the first two variables (\verb|Dex_mask| and \verb|DexAem_mask|)
 select photon from the all-photons timestamps array,
 while \verb|DexAem_mask_d|, selects A-emitted photons from the
-array of photons emitted during D-excitation. As shown below, 
+array of photons emitted during D-excitation. As shown below,
 the latter is needed to count acceptor photons in burst chunks.
 
-Next, we need to express bursts start-stop data as indexes of the D-excitation photon stream 
+Next, we need to express bursts start-stop data as indexes of the D-excitation photon stream
 (by default burst start-stop indexes refer to all-photons timestamps array):
 
 \begin{lstlisting}
 ph_d = ds_FRET.get_ph_times(ph_sel=Ph_sel(Dex='DAem'))
-bursts = ds_FRET.mburst[0] 
+bursts = ds_FRET.mburst[0]
 bursts_d = bursts.recompute_index_reduce(ph_d)
 \end{lstlisting}
 
-Here, \verb|ph_d| contains the Dex timestamps, \verb|bursts| the original burst data and 
+Here, \verb|ph_d| contains the Dex timestamps, \verb|bursts| the original burst data and
 \verb|bursts_d| the burst data with start-stop indexes relative to \verb|ph_d|.
 
 Finally, with the previous variables at hand, the BVA algorithm
@@ -1485,22 +1485,22 @@ for burst in bursts_d:
     E_sub = []
     startlist = range(burst.istart, burst.istop + 2 - n, n)
     stoplist = [i + n for i in startlist]
-    for start, stop in zip(startlist, stoplist): 
+    for start, stop in zip(startlist, stoplist):
         A_D = DexAem_mask_d[start:stop].sum()
         E = A_D / n
         E_sub.append(E)
     E_sub_std.append(np.std(E_sub))
 \end{lstlisting}
 
-Here, \verb|n| is the BVA parameter defining the number of photons in each burst chunk. 
+Here, \verb|n| is the BVA parameter defining the number of photons in each burst chunk.
 The outer loop iterates through bursts, while the inner loop iterates through sub-bursts.
 The variables \verb|startlist| and \verb|stoplist| are the list of start-stop indexes for
 all sub-bursts in current burst.
-In the inner loop, \verb|A_D| and \verb|E| contain the number of acceptor photons and 
-FRET efficiency for the current sub-burst. Finally, for each burst, the standard deviation 
+In the inner loop, \verb|A_D| and \verb|E| contain the number of acceptor photons and
+FRET efficiency for the current sub-burst. Finally, for each burst, the standard deviation
 of \verb|E| is appended to the list \verb|E_sub_std|.
 
-By plotting the 2D distribution of $s_E$ (i.e. \verb|E_sub_std|) versus the average (uncorrected) E 
+By plotting the 2D distribution of $s_E$ (i.e. \verb|E_sub_std|) versus the average (uncorrected) E
 we obtain the BVA plots of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}.
 
 
@@ -1508,7 +1508,7 @@ we obtain the BVA plots of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}
 \section{Conclusions}
 \label{sec:conclusions}
 
-FRETBursts is an open source and openly developed (see SI~\ref{sec:dev}) implementation
+FRETBursts is an open source and openly developed (see~\ref{sec:dev}) implementation
 of established smFRET burst analysis methods
 made available to the single-molecule community.
 It implements several novel concepts which improve the analysis results, such as
@@ -1541,7 +1541,7 @@ We thank Dr. Eyal Nir and Dr. Toma Tomov for support in the implementation of th
 This work was supported by National Institutes of Health (NIH)
 grant R01-GM95904 and R01-GM069709. Dr. Weiss discloses equity in
 Nesher Technologies and intellectual property used in the research
-reported here. The work at UCLA was conducted in Dr. Weiss'\selectlanguage{english}s Laboratory. 
+reported here. The work at UCLA was conducted in Dr. Weiss'\selectlanguage{english}s Laboratory.
 
 \beginsupplement
 \section{Supporting Information}
@@ -1572,7 +1572,7 @@ A list of all FRETBursts notebooks can be found in the
 \verb|FRETBursts_notebooks| repository on GitHub
 (\href{https://github.com/tritemio/FRETBursts_notebooks}{link}).
 Finally, we provide a service to run FRETBursts notebooks online,
-without requiring any software installation 
+without requiring any software installation
 (\href{https://github.com/tritemio/FRETBursts_notebooks#run-online}{link}).
 
 \subsection{Development and Contributions}
@@ -1611,7 +1611,7 @@ On each commit, documentation is automatically built and deployed on
 
 Unit tests cover most of the core algorithms, ensuring consistency and
 minimizing the probability of introducing bugs.
-The continuous integration services, execute the full test suite 
+The continuous integration services, execute the full test suite
 on each commit on multiple platforms, immediately reporting errors.
 As a rule, whenever a bug is discovered, the  fix also includes a new test
 to ensure that the same bug does not happen in the future.
@@ -1658,7 +1658,7 @@ Leveraging \verb|Bursts| methods, users can implement new types of analysis with
 wasting time implementing (and debugging) standard manipulation routines.
 Examples of working directly with timestamps, masks (i.e. photon selections) and
 burst data are provided in one of the FRETBursts notebooks (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}).
-Section~\ref{sec:bva} provides a complete example on using FRETBursts to implement 
+Section~\nameref{sec:bva} provides a complete example on using FRETBursts to implement
 custom burst analysis techniques.
 
 \paragraph{Python details}
@@ -1750,18 +1750,18 @@ dplot(ds, hist2d_alex, gui_sel=True)
 
 The values which identify the region are printed in the notebook and can be passed
 to the function \verb|select_bursts.ES| to select bursts inside that region
-(see section~\ref{sec:burstsel}).
+(see section~\nameref{sec:burstsel}).
 
 
 \subsection{Background Estimation With Optimal Threshold}
 \label{sec:bg_opt_th}
 The functions used to fit the background (i.e. \verb|bg.exp_fit| and other functions in \verb|bg| module)
-provide also a goodness-of-fit estimator 
-computed from the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}. 
+provide also a goodness-of-fit estimator
+computed from the empirical distribution function (EDF)~\cite{Stephens1974,Parr1980}.
 The ``distance'' between the EDF and the theoretical (i.e. exponential) cumulative distribution
 represents and indicator of the quality of fit.
 Two different distance metrics can be returned by the background fitting functions.
-The first is the Kolgomorov-Smirnov statistics, which uses the maximum of the difference 
+The first is the Kolgomorov-Smirnov statistics, which uses the maximum of the difference
 between the EDF and the theoretical distribution. The second is the Cram\selectlanguage{ngerman}é\selectlanguage{english}r von Mises
 statistics corresponding to the integral of the squared residuals
 (see the code for more details,
@@ -1770,21 +1770,21 @@ statistics corresponding to the integral of the squared residuals
 In principle, the optimal inter-photon delay threshold will minimize
 the error metric. This approach is implemented by the function \verb|calc_bg_brute|
 (\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.calc_bg_brute}{link}) which performs a brute-force search in order to find the optimal threshold.
-This optimization is not necessary under typical experimental conditions, 
-because the estimated rates normally change only a by a few per-cent 
+This optimization is not necessary under typical experimental conditions,
+because the estimated rates normally change only a by a few per-cent
 compared to the heuristic threshold selection used by default.
 
 
 \subsection{Burst Weights}
 \label{sec:burstweights_theory}
 \subsubsection{Theory}
-Freely-diffusing molecules across 
-a Gaussian excitation volume give rise to 
+Freely-diffusing molecules across
+a Gaussian excitation volume give rise to
 a burst size distribution that is exponentially distributed.
 In a static FRET population, burst counts in the acceptor channel can be
 modeled as a binomial random variable (RV) with success probability equal to the
 population PR and number of trials equal to the burst size $n_d + n_a$.
-Similarly, the PR of each burst $E_i$ ($i$ being the burst index) is 
+Similarly, the PR of each burst $E_i$ ($i$ being the burst index) is
 simply a binomial divided by the number of trials, with variance reported
 in eq.~\ref{eq:E_var}.
 
@@ -1793,17 +1793,17 @@ in eq.~\ref{eq:E_var}.
 \operatorname{Var} (E_i) = \frac{E_p\,(1 - E_p)}{n_{ti}}
 \end{equation}
 
-Bursts with higher counts, provide more accurate estimations 
-of the population PR, since their PR variance is smaller (eq.~\ref{eq:E_var}). 
-Therefore, in estimating the population PR we need to "focus" 
+Bursts with higher counts, provide more accurate estimations
+of the population PR, since their PR variance is smaller (eq.~\ref{eq:E_var}).
+Therefore, in estimating the population PR we need to "focus"
 on bigger bursts.
 Traditionally, this is accomplished by merely discarding bursts
 below a size-threshold.
 In the following paragraphs we demonstrate how, by proper weighting
-bursts, is possible to obtains optimal estimates of PR which takes into 
+bursts, is possible to obtains optimal estimates of PR which takes into
 account the information of the entire burst population.
 
-According to the Cramer-Rao lower bound (eq.~\ref{eq:cramer_rao}), the 
+According to the Cramer-Rao lower bound (eq.~\ref{eq:cramer_rao}), the
 Fisher information $\mathcal{I}(\theta)$ sets a lower bound on the
 variance of any statistics $\hat{p}$ of a RV $\theta$.
 
@@ -1812,9 +1812,9 @@ variance of any statistics $\hat{p}$ of a RV $\theta$.
 \operatorname{Var}\left(\hat{p}\right) \ge \frac{1}{\mathcal{I}(\theta)}
 \end{equation}
 
-When the statistics $\hat{p}$ is an unbiased estimator of a distribution 
+When the statistics $\hat{p}$ is an unbiased estimator of a distribution
 parameter and the equality holds in eq.~\ref{eq:cramer_rao},
-the estimator is a minimum-variance unbiased (MVUB) estimator 
+the estimator is a minimum-variance unbiased (MVUB) estimator
 and it is said to be efficient (meaning that it does an
 optimal use the information contained in the sample to estimate the
 parameter).
@@ -1822,11 +1822,11 @@ parameter).
 A population of $N$ bursts can be modeled by a set of $N$ binomial
 variables with same success probability $E_p$ and varying number of successes
 equal to the burst size. An estimator for $E_p$ can be constructed
-noticing that the sum of binomial RV with same 
-success probability is still a binomial (with number of trials equal to 
+noticing that the sum of binomial RV with same
+success probability is still a binomial (with number of trials equal to
 the sum of the number of trials).
-Taking the sum of acceptor counts over all bursts divided by the total 
-number of photons as in eq.~\ref{eq:E_estim}, we obtain 
+Taking the sum of acceptor counts over all bursts divided by the total
+number of photons as in eq.~\ref{eq:E_estim}, we obtain
 an estimator $\hat{E}$ of the proportion of successes.
 
 \begin{equation}
@@ -1834,8 +1834,8 @@ an estimator $\hat{E}$ of the proportion of successes.
 \hat{E} = \frac{\sum_i n_{ai}}{\sum_i n_{ti}}
 \end{equation}
 
-The variance of $\hat{E}$ (eq.~\ref{eq:E_variance}) is equal to the inverse of 
-the Fisher information $\mathcal{I}(\hat{E})$ and therefore $\hat{E}$ is a MVUB 
+The variance of $\hat{E}$ (eq.~\ref{eq:E_variance}) is equal to the inverse of
+the Fisher information $\mathcal{I}(\hat{E})$ and therefore $\hat{E}$ is a MVUB
 estimator for $E_p$.
 
 \begin{equation}
@@ -1854,16 +1854,16 @@ w_i
 
 \begin{equation}
 \label{eq:E_wmean}
-\hat{E}_w = \frac{1}{N} \sum_i w_i E_i 
+\hat{E}_w = \frac{1}{N} \sum_i w_i E_i
 = \frac{1}{N} \frac{\sum_i n_{ti} \frac{n_{ai}}{n_{ti}} }{\sum_i n_{ti}} = \hat{E}
 \end{equation}
 
-Since $\hat{E}$ is the MVUB estimator, any other estimator of $E_p$ (in particular 
+Since $\hat{E}$ is the MVUB estimator, any other estimator of $E_p$ (in particular
 the unweighted mean of $E_i$) will have a larger variance.
 
-We can extend these consideration of optimal weights for 
+We can extend these consideration of optimal weights for
 the PR estimator to the FRET distribution plot (histograms or KDEs). Building an
-unweighted histogram (and fitting the peak) is analogous to estimating the 
+unweighted histogram (and fitting the peak) is analogous to estimating the
 $E_p$ with an unweighted average. Conversely, building the FRET histogram
 using the burst size as weights is equivalent to using
 the MVUB estimator for $E_p$.
@@ -1871,15 +1871,15 @@ the MVUB estimator for $E_p$.
 \subsubsection{Weighted FRET estimator}
 Here we report a simple verification of the results of previous section, namely
 that a weighted mean of $E_i$ is the estimator with minimal variance of $E_p$.
-For this purpose, we generated a static FRET population of 100 bursts 
+For this purpose, we generated a static FRET population of 100 bursts
 by simply extracting burst-sizes from an exponential distribution ($\lambda = 10$)
-and acceptor counts from a binomial distribution ($E_p = 0.2$). 
-By repeatedly fitting the population parameter $E_p$ using a 
+and acceptor counts from a binomial distribution ($E_p = 0.2$).
+By repeatedly fitting the population parameter $E_p$ using a
 size-weighted and unweighted average, we verified that the former has systematically
 lower variance of the latter as predicted by the theory
-(in the current example the unweighted estimator has $28.6\,\%$ higher variance). 
+(in the current example the unweighted estimator has $28.6\,\%$ higher variance).
 Note that this result
-holds for any arbitrary distribution of burst sizes. The full simulation 
+holds for any arbitrary distribution of burst sizes. The full simulation
 including exponential and gamma-distributed burst sizes is reported in
 the accompanying Jupyter notebook (\href{http://nbviewer.jupyter.org/github/tritemio/fretbursts_paper/blob/master/notebooks/Figures%20-%20Burst%20Weights.ipynb}{link}).
 
@@ -1888,31 +1888,31 @@ The effect of weighting the FRET histogram is here illustrated with a simulation
 a mixture of two static FRET populations and then with experimental data.
 
 We performed a realistic simulation of a static mixture of two FRET populations
-starting from 3-D Brownian motion diffusion of $N$ particles excited by a 
+starting from 3-D Brownian motion diffusion of $N$ particles excited by a
 numerically computed (non-Gaussian) PSF. Input parameters of the simulation include
 diffusion coefficient, particle brightness, the two FRET efficiencies,
-as well as detectors DCR. The simulation is performed with the open source software 
-PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files (i.e. timestamps 
+as well as detectors DCR. The simulation is performed with the open source software
+PyBroMo~\cite{Ingargiola_2016} which creates smFRET data files (i.e. timestamps
 and detectors arrays) in Photon-HDF5 format~\cite{Ingargiola2016}.
-The simulated data file is processed with FRETBursts performing burst search, 
+The simulated data file is processed with FRETBursts performing burst search,
 and only a minimal burst size selection of with threshold of 10 photons.
 The resulting weighted and unweighted FRET histograms are reported in figure~\ref{fig:weight_fret_sim}.
 We notice that the use of the weights results in better definition of FRET peaks.
 
-As a final comparison, we report the weighted and unweighted FRET histogram of 
+As a final comparison, we report the weighted and unweighted FRET histogram of
 an experimental FRET population from measurement of a di-labeled dsDNA sample.
 Figure~\ref{fig:weight_fret_meas} show a comparison of a FRET histogram obtained from the same burst
 with and without weights. The burst selection is obtained applying a burst size
-threshold of 10 counts (after background correction), in order to filter 
+threshold of 10 counts (after background correction), in order to filter
 the extreme low-end of the burst size distribution.
 
-The use of size-weighted FRET histograms is a simple way to obtain a representation of FRET 
+The use of size-weighted FRET histograms is a simple way to obtain a representation of FRET
 distribution that maintains high power of resolving FRET peaks while including the full burst
 population and thus reducing statistical noise.
 
 As a final remark, note that when increasing the size-threshold for burst selection
 the difference between weighted and unweighted FRET histograms tends to zero because
-the relative difference in burst weights in the selected burst becomes smaller 
+the relative difference in burst weights in the selected burst becomes smaller
 (i.e. tends to 1, meaning equal weights).
 
 \begin{figure}[h!]
@@ -1936,4 +1936,3 @@ the relative difference in burst weights in the selected burst becomes smaller
 }
 
 \end{document}
-
