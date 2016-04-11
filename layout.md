@@ -25,6 +25,7 @@ Burst_Variance_Analysis_2.tex
 Conclusions.tex
 Supporting_Information.tex
 subsection_Notebook_Workflow_label_sec__.tex
+subsection_Development_and_Contributions_label__.tex
 timestamps_and_burst_data.tex
 plotting_data.tex
 optimal_background_threshold.tex
