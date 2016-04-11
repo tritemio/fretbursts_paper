@@ -28,8 +28,8 @@ dynamics on the millisecond time-scale~\cite{Torella_2011, Robb_2013}.
 
 The basic idea behind BVA is to subdivide bursts into contiguous burst chunks (sub-bursts)
 comprising a fixed number $n$ of photons,
-and to compare the empirical variance of acceptor counts across all sub-bursts in a burst 
-with the theoretical shot-noise-limited variance, as expected from a binomial distribution.
+and to compare the empirical variance of acceptor counts of all sub-bursts in a burst,
+with the theoretical shot-noise-limited variance.
 An empirical variance of sub-bursts larger than the shot-noise limited value indicates
 the presence of dynamics. Since the estimation of the sub-bursts variance is affected
 by uncertainty, BVA analysis provides and indication of an higher or lower probability
@@ -38,7 +38,7 @@ of observing dynamics.
 In a FRET (sub-)population originating from a single static FRET efficiency,
 the sub-bursts acceptor counts $n_a$ can be modeled as a binomial-distributed random variable 
 $N_a \sim \operatorname{B}(n, E_p)$, where $n$ is the number of photons in each sub-burst and 
-$E_p$ is the estimated population proximity-ratio. 
+$E_p$ is the estimated population proximity-ratio (PR). 
 Note that we can use the PR because, regardless of the molecular FRET efficiency, 
 the detected counts are partitioned between donor and acceptor channels according to
 a binomial distribution with success probability equal to the PR.
