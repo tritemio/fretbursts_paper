@@ -1,5 +1,11 @@
 # Copyright (c) 2015 Antonino Ingargiola
 # License: MIT
+"""
+Script to execute notebooks in current folder, unless their name
+starts with '_' or ends with '-out'.
+
+The executed notebooks are saved with a '-out' suffix.
+"""
 
 import os
 import time
