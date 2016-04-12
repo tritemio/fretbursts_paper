@@ -1287,7 +1287,7 @@ print(fit_res.fit_report())
 Finally, to plot the fitted model together with the FRET histogram,
 as shown in figure~\ref{fig:histfit}, we pass the parameter \verb|show_model=True|
 to the \verb|hist_fret| function as follows
-(see section~\nameref{sec:plotting} for an introduction to plotting in FRETBursts):
+(see~\nameref{sec:plotting} for an introduction to plotting in FRETBursts):
 
 \begin{lstlisting}
 dplot(ds, hist_fret, show_model=True)
@@ -1445,7 +1445,7 @@ For a ready-to-use BVA implementation users can refer to the corresponding noteb
 For BVA implementation, two photon streams are needed: all-photons during donor excitation (Dex)
 and acceptor photons during donor excitation (DexAem).
 These photon stream selections are obtained by computing boolean masks as follows
-(see section~\nameref{sec:burststimes}):
+(see~\nameref{sec:burststimes}):
 
 \begin{lstlisting}
 Dex_mask = ds.get_ph_mask(ph_sel=Ph_sel(Dex='DAem'))
