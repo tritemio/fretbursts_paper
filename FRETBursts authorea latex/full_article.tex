@@ -28,7 +28,7 @@
 %
 % Please do not include colors or graphics in the text.
 %
-% Please do not create a heading level below \subsection. For 3rd level headings, use \paragraph{}.
+% Please do not create a heading level below \subsection. For 3rd level headings, use \paragraph*{}.
 %
 % % % % % % % % % % % % % % % % % % % % % % %
 %
@@ -194,16 +194,6 @@
 }
 \hyphenation{smFRET}
 \hyphenation{FRETBursts}
-\renewcommand{\thesection}{\hspace*{-1.0em}}%
-\renewcommand{\thesubsection}{\hspace*{-1.0em}}%
-
-\newcommand{\beginsupplement}{%
-        \setcounter{table}{0}
-        \renewcommand{\thetable}{S\arabic{table}}%
-        \setcounter{figure}{0}
-        \renewcommand{\thefigure}{S\arabic{figure}}%
-        \renewcommand{\thesubsection}{S\arabic{subsection} Appendix}%
-     }
 
 %% END MACROS SECTION
 
@@ -287,9 +277,9 @@ among researchers in the single-molecule community.
 
 
 
-\section{Introduction}
+\section*{Introduction}
 
-\subsection{Open Science and Reproducibility}
+\subsection*{Open Science and Reproducibility}
 
 Over the past 20 years, single molecule FRET (smFRET) has grown into one of the most
 useful techniques in single-molecule spectroscopy~\cite{Weiss_1999,Hohlbein_2014}.
@@ -375,7 +365,7 @@ directly analyzable with FRETBursts.
 Together with all the aforementioned tools, FRETBursts contributes to the growing
 ecosystem of open tools for reproducible science in the single-molecule field.
 
-\subsection{Paper Overview}
+\subsection*{Paper Overview}
 This paper is written as an introduction to smFRET burst analysis and
 its implementation in FRETBursts.
 The aim is illustrating the specificities and
@@ -413,10 +403,10 @@ using the accompanying notebooks
 (\href{https://github.com/tritemio/fretbursts_paper}{link}).
 
 
-\section{FRETBursts Overview}
+\section*{FRETBursts Overview}
 \label{sec:overview}
 
-\subsection{Technical Features}
+\subsection*{Technical Features}
 
 FRETBursts can analyze smFRET measurements
 from one or multiple excitation spots~\cite{Ingargiola_2013}. The supported
@@ -448,7 +438,7 @@ as Burst Variance Analysis (BVA)~\cite{Torella_2011} and two-channel
 kernel density distribution estimator (2CDE)~\cite{Tomov_2012}
 are available as FRETBursts notebooks.
 
-\subsection{Software Availability}
+\subsection*{Software Availability}
 FRETBursts is hosted and openly developed on GitHub. FRETBursts homepage
 (\href{http://tritemio.github.io/FRETBursts}{link})
 contains links to the various resources. Installation instructions can be found in the
@@ -462,13 +452,13 @@ we set up an on-line services allowing to execute FRETBursts
 without requiring any installation on the user's computer (\href{https://github.com/tritemio/FRETBursts_notebooks#run-online}{link}).
 
 
-\section{Architecture and Concepts}
+\section*{Architecture and Concepts}
 \label{sec:concepts}
 
 In this section, we introduce some general burst analysis concepts
 and notations used in FRETBursts.
 
-\subsection{Photon Streams}
+\subsection*{Photon Streams}
 \label{sec:ph_streams}
 
 The raw data collected during a smFRET experiment consists in one or more arrays of
@@ -520,7 +510,7 @@ photons (\verb|Aem|) during acceptor excitation (\verb|Aex|).
 \caption{\label{tab:ph_sel_alex}Photon selection syntax (ALEX)}
 \end{table}
 
-\subsection{Background Definitions}
+\subsection*{Background Definitions}
 \label{sec:bg_intro}
 
 An estimation of the background rates is needed to both select a proper threshold for
@@ -593,7 +583,7 @@ Each data point in these figures is computed for a 30~s time window.%
 \end{figure}
 
 
-\subsection{The \texttt{Data} Class}
+\subsection*{The \texttt{Data} Class}
 \label{sec:data_intro}
 
 The \verb|Data| class
@@ -627,7 +617,7 @@ background.
 \end{table}
 
 
-\paragraph{Python details}
+\paragraph*{Python details}
 Many \verb|Data| attributes are lists of arrays (or scalars) with the length of the lists
 equal to the number of excitation spots. This means that in
 single-spot measurements, an array of burst-data
@@ -636,7 +626,7 @@ is accessed by specifying the index as 0, for example \verb|Data.nd[0]|.
 with an underscore, so that an equivalently syntax is
 \verb|Data.nd_| instead of \verb|Data.nd[0]|.
 
-\subsection{Introduction to Burst Search}
+\subsection*{Introduction to Burst Search}
 \label{sec:burstsearch_intro}
 
 Identifying single-molecule fluorescence bursts in the stream of photons is
@@ -694,7 +684,7 @@ In special cases, users may choose to replace (or combine)
 the burst selection based on burst size
 with another criterion such as burst duration or brightness (see section~\nameref{sec:burstsel}).
 
-\subsection{Corrected Burst Sizes and Weights}
+\subsection*{Corrected Burst Sizes and Weights}
 \label{sec:burstsizeweights}
 
 The number of photons detected during a burst --the ``burst size''--
@@ -764,7 +754,7 @@ As a practical example, by fixing the burst size threshold to a low value (e.g. 
 and using weights, is possible to build a FRET histogram with well-defined FRET sub-populations peaks
 without the need of searching an optimal burst-size threshold (\nameref{sec:burstweights_theory}).
 
-\paragraph{Python details}
+\paragraph*{Python details}
 FRETBursts has the option to weight bursts using $\gamma$-corrected
 burst sizes which optionally include acceptor excitation photons \verb|naa|.
 A weight proportional to the burst size is applied by passing the argument
@@ -777,10 +767,10 @@ are listed in the \verb|fret_fit.get_weights| documentation
 However, using weights different from the size is not recommended
 due to their less efficient use of burst information.
 
-\section{smFRET Burst Analysis}
+\section*{smFRET Burst Analysis}
 \label{sec:analysis}
 
-\subsection{Loading the Data}
+\subsection*{Loading the Data}
 \label{sec:dataload}
 While FRETBursts can load several data files formats,
 we encourage users to adopt the recently introduced Photon-HDF5
@@ -826,7 +816,7 @@ More information on loading different file formats
 can be found in the \verb|loader| module's documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/loader.html}{link}).
 
-\subsection{Alternation Parameters}
+\subsection*{Alternation Parameters}
 \label{sec:alternation}
 
 For μs-ALEX and ns-ALEX data, Photon-HDF5 normally stores parameters defining
@@ -898,7 +888,7 @@ If the user needs to update the periods definition, the data file will need to b
 reloaded and the steps above repeated as described.
 
 
-\subsection{Background Estimation}
+\subsection*{Background Estimation}
 \label{sec:bg_calc}
 
 The first step of smFRET analysis involves estimating background rates.
@@ -960,7 +950,7 @@ cover-glass impurities can contribute to the background.
 These impurities tend to bleach on timescales of minutes resulting in
 background variations during the course of the measurement.
 
-\paragraph{Python details}
+\paragraph*{Python details}
 
 The estimated background rates are stored in the \verb|Data| attributes
 \verb|bg_dd|, \verb|bg_ad| and \verb|bg_aa|, corresponding to photon
@@ -975,10 +965,10 @@ histogram) are available in \verb|bg| namespace
 \href{http://fretbursts.readthedocs.org/en/latest/background.html}{link}).
 
 
-\subsection{Burst Search}
+\subsection*{Burst Search}
 \label{sec:burstsearch}
 
-%\subsubsection{Burst Search in FRETBursts}
+%\subsubsection*{Burst Search in FRETBursts}
 %\label{sec:burstsearch_code}
 
 Following background estimation, burst search is the next step of
@@ -1036,7 +1026,7 @@ Since FRETBursts shares the timestamps and detectors arrays between
 different copies of \verb|Data| objects, the memory usage is minimized, even when
 several copies are created.
 
-\paragraph{Python details}
+\paragraph*{Python details}
 Note that, while \verb|.burst_search()| is a method of \verb|Data|,
 \verb|burst_search_and_gate| is a function in the \verb|bext| module
 taking a \verb|Data| object as a first argument and returning a new
@@ -1052,7 +1042,7 @@ The \verb|bext| module (\href{http://fretbursts.readthedocs.org/en/latest/plugin
 collects ``plugin'' functions that provides additional algorithms
 for processing \verb|Data| objects.
 
-\subsection{Bursts Corrections}
+\subsection*{Bursts Corrections}
 \label{sec:corrcoeff}
 
 In μs-ALEX, there are 3 important correction parameters: $\gamma$-factor,
@@ -1086,7 +1076,7 @@ A derivation of these correction formulas (using computer-assisted algebra)
 can be found online as an interactive notebook (\href{http://nbviewer.jupyter.org/github/tritemio/notebooks/blob/master/Derivation%20of%20FRET%20and%20S%20correction%20formulas.ipynb}{link}).
 
 
-\subsection{Burst Selection}
+\subsection*{Burst Selection}
 \label{sec:burstsel}
 
 After burst search, it is common to select bursts according to different
@@ -1138,7 +1128,7 @@ dsw = ds.select_bursts(select_bursts.width,
 bursts in \verb|dsw|
 will have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
-\paragraph{Burst Size Selection}
+\paragraph*{Burst Size Selection}
 In the previous section, we selected bursts by size, using only
 photons detected in both D and A channels during D excitation (i.e. Dex photons),
 as in eq.~\ref{eq:burstsize_dex}.
@@ -1199,13 +1189,13 @@ For more details on burst size selection, see the
 \verb|select_bursts.size| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}).
 
-\paragraph{Python details}
+\paragraph*{Python details}
 To compute $\gamma$-corrected burst sizes (with or without addition of \verb|naa|)
 the method \verb|Data.burst_sizes|
 (\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link})
 is used.
 
-\paragraph{Select the FRET Populations}
+\paragraph*{Select the FRET Populations}
 
 In smFRET-ALEX experiments, in addition to one or more FRET populations, there are always
 donor-only (D-only) and acceptor-only (A-only) populations.
@@ -1249,7 +1239,7 @@ Compare to figure~\ref{fig:alex_jointplot} where all burst populations
 \end{center}
 \end{figure}
 
-\subsection{Population Analysis}
+\subsection*{Population Analysis}
 \label{sec:fretfit}
 
 Typically, after bursts selection, E or S histograms are fitted to a model.
@@ -1322,7 +1312,7 @@ the \textit{Fitting Framework} section of the documentation
 as well as the documentation for \verb|bursts_fitter| function
 (\href{http://fretbursts.readthedocs.org/en/latest/plugins.html#fretbursts.burstlib_ext.bursts_fitter}{link}).
 
-\paragraph{Python details}
+\paragraph*{Python details}
 
 Models returned by FRETBursts's factory functions (\verb|mfit.factory_*|)
 are \verb|lmfit.Model| objects (\href{https://lmfit.github.io/lmfit-py/model.html}{link}).
@@ -1352,7 +1342,7 @@ Users can also refer to the comprehensive lmfit's documentation
 (\href{http://lmfit.github.io/lmfit-py/}{link}).
 
 
-\section{Implementing Burst Variance Analysis}
+\section*{Implementing Burst Variance Analysis}
 
 \label{sec:bva}
 In this section, we describe how to implement burst variance analysis (BVA)
@@ -1360,7 +1350,7 @@ as described in~\cite{Torella_2011}.
 FRETBursts provides well-tested, general-purpose functions for timestamps and burst data
 manipulation and therefore simplifies implementing custom burst analysis algorithms such as BVA.
 
-\subsection{BVA Overview}
+\subsection*{BVA Overview}
 Single-molecule FRET histograms show more information than just mean FRET efficiencies.
 While in general the presence of several peaks clearly indicates the existence of
 multiple subpopulations, a single peak cannot a priori be associated with
@@ -1444,14 +1434,14 @@ The left panel shows the E-S histogram for a single stranded DNA sample ($A_{31}
 \end{center}
 \end{figure}
 
-\subsection{BVA Implementation}
+\subsection*{BVA Implementation}
 
 The following paragraphs describe the low-level details involved in implementing the BVA using FRETBursts.
 The main goal is to illustrate a real-world example of accessing and manipulating timestamps and burst data.
 For a ready-to-use BVA implementation users can refer to the corresponding notebook included with FRETBursts
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{link}).
 
-\paragraph{Python details}
+\paragraph*{Python details}
 For BVA implementation, two photon streams are needed: all-photons during donor excitation (Dex)
 and acceptor photons during donor excitation (DexAem).
 These photon stream selections are obtained by computing boolean masks as follows
@@ -1511,7 +1501,7 @@ we obtain the BVA plots of figure~\ref{fig:bva_static} and~\ref{fig:bva_dynamic}
 
 
 
-\section{Conclusions}
+\section*{Conclusions}
 \label{sec:conclusions}
 
 FRETBursts is an open source and openly developed (see~\nameref{sec:dev}) implementation % SI_link
@@ -1549,8 +1539,7 @@ grant R01-GM95904 and R01-GM069709. Dr. Weiss discloses equity in
 Nesher Technologies and intellectual property used in the research
 reported here. The work at UCLA was conducted in Dr. Weiss's Laboratory.
 
-\beginsupplement
-\section{Supporting Information}
+\section*{Supporting Information}
 
 
 \paragraph*{S1 Appendix.}
