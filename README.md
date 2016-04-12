@@ -1,6 +1,6 @@
 This repository contains the sources for the paper:
 
->#### FRETBursts: Open Source Burst Analysis Toolkit for Confocal Single-Molecule FRET
+>#### FRETBursts: An Open Source Toolkit for Analysis of Freely-Diffusing Single-Molecule FRET
 >Antonino Ingargiola, Eitan Lerner, SangYoon Chung, Shimon Weiss, Xavier Michalet
 >
 >doi: http://dx.doi.org/10.1101/039198
