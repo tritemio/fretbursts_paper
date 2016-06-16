@@ -267,7 +267,6 @@ and results, encourages reproducibility and facilitates collaboration
 among researchers in the single-molecule community.
 
 
-
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step.
 % Author Summary not valid for PLOS ONE submissions.
@@ -1373,31 +1372,32 @@ the time binning and FRET histogramming step).
 Hoffman~\cite{hoffmann_quantifying_2011} extended the
 timescale of detectable kinetics by considering multiple subsequent bursts
 and computing the probability that two nearby bursts are originating from
-the same molecules.
-Other two related methods are Burst Variance Analysis
-(BVA)~\cite{Torella_2011} and
-kernel density distribution estimator (2CDE)~\cite{Tomov_2012}
-which allow to discriminate between static heterogeneity
-and sub-millisecond dynamics by extracting information
-from the photon distribution within each burst.
+the same molecule.
+Other two related methods for discriminating between static heterogeneity
+and sub-millisecond dynamics are Burst Variance Analysis
+(BVA) proposed by Torella~\cite{Torella_2011} and
+kernel density distribution estimator (2CDE) proposed by 
+Tomov~\cite{Tomov_2012}.
 
 The last two methods, BVA and 2CDE, are implemented
 in two notebooks included with FRETBursts
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{BVA link},
 \href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%202CDE%20Method.ipynb}{2CDE link}).
-The other methods are not currently implemented in FRETBursts.
+The other methods mentioned in this section are not currently 
+implemented in FRETBursts.
 However, motivated users can implement their favorite method
-leveraging the burst manipulation functions in FRETBursts
-and the standard scientific Python libraries. We encourage researchers
-coding new methods with FRETBursts to share their contributions and
-to integrate their work in FRETBursts in order to benefit the entire community.
-The next section, takes the BVA method as an example for showing how to
-perform low-level manipulation of timestamps and bursts data.
+by leveraging the functions in FRETBursts
+and the standard scientific Python libraries. 
+To this end, in the next section, we show how to perform low-level 
+analysis of timestamps and bursts data by implementing the BVA
+method from scratch.
 An additional example showing how to split bursts in constant time-bins
 can be found in the respective FRETBursts notebook
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}).
-These examples server as a guide for implementing new methods
-using FRETBursts.
+These examples server as a guide for implementing new methods.
+We encourage researchers implementing new methods with FRETBursts 
+to share their work and to integrate it in FRETBursts in order 
+to benefit the entire community.
 
 
 \section*{Implementing Burst Variance Analysis}
