@@ -436,7 +436,9 @@ graphic library) produce publication quality plots in a wide range of formats.
 Additionally, implementations of population dynamics analysis such
 as Burst Variance Analysis (BVA)~\cite{Torella_2011} and two-channel
 kernel density distribution estimator (2CDE)~\cite{Tomov_2012}
-are available as FRETBursts notebooks.
+are available as FRETBursts notebooks
+(\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{BVA link},
+\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%202CDE%20Method.ipynb}{2CDE link}).
 
 \subsection*{Software Availability}
 FRETBursts is hosted and openly developed on GitHub. FRETBursts homepage
@@ -1348,50 +1350,54 @@ Users can also refer to the comprehensive lmfit's documentation
 
 FRET peaks resolved from FRET histograms correspond to different FRET
 populations. However determining whether these populations are due to static
-heterogeneity (different D-A distances, Förster radius, etc.) or a 
-dynamic equilibrium, requires further analysis. 
+heterogeneity (different D-A distances, Förster radius, etc.) or a
+dynamic equilibrium, requires further analysis.
 
-Shot-noise analysis (SNA)~\cite{Nir_2006} or probability 
+Shot-noise analysis (SNA)~\cite{Nir_2006} or probability
 distribution analysis (PDA)~\cite{Antonik2006} allow to compute
 the minimal width of a FRET peak originating from a single
-FRET efficiency. Typically, several mechanisms 
-contribute to the broadening of the experimental FRET peak 
-beyond the shot-noise limit. For example, heterogeneities in the sample 
-(resulting a distribution of Förster radiuses)
+FRET efficiency. Typically, several mechanisms
+contribute to the broadening of the experimental FRET peak
+beyond the shot-noise limit. For example, heterogeneities in the sample
+(resulting in a distribution of Förster radiuses)
 or actual conformational changes (resulting in a distribution
-of D-A distances)~\cite{sisamakis_accurate_2010} can cause
-FRET peak broadening.
+of D-A distances) can cause FRET peak broadening~\cite{sisamakis_accurate_2010}.
 
-Kalinin~\cite{Kalinin2010} and Santoso~\cite{santoso_probing_2009} 
-extended the PDA approach to estimate conversion rates between different 
-states by comparing FRET histograms as a function of the time-bin size. 
-Gopich and Szabo~\cite{Gopich2009, gopich_theory_2011} developed 
-a related method to compute conversion rates using 
+Kalinin~\cite{Kalinin2010} and Santoso~\cite{santoso_probing_2009}
+extended the PDA approach to estimate conversion rates between different
+states by comparing FRET histograms as a function of the time-bin size.
+Gopich and Szabo~\cite{Gopich2009, gopich_theory_2011} developed
+a related method to compute conversion rates using
 a likelihood function which depends on photon timestamps (overcoming
 the time binning and FRET histogramming step).
-Hoffman~\cite{hoffmann_quantifying_2011} extended the 
-timescale of detectable kinetics by considering multible subsequent bursts
+Hoffman~\cite{hoffmann_quantifying_2011} extended the
+timescale of detectable kinetics by considering multiple subsequent bursts
 and computing the probability that two nearby bursts are originating from
 the same molecules.
-Other two related methods are Burst Variance Analysis (BVA)~\cite{Torella_2011}
-and 2CDE~\cite{Tomov_2012} allows to discriminate between static heterogeneity
-and dynamics by extracting information from the photon distribution
-within each burst. 
+Other two related methods are Burst Variance Analysis
+(BVA)~\cite{Torella_2011} and
+kernel density distribution estimator (2CDE)~\cite{Tomov_2012}
+which allow to discriminate between static heterogeneity
+and sub-millisecond dynamics by extracting information
+from the photon distribution within each burst.
 
-The last two methods, BVA and 2CDE, are implemented 
-in two notebooks included with FRETBursts.
+The last two methods, BVA and 2CDE, are implemented
+in two notebooks included with FRETBursts
+(\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{BVA link},
+\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%202CDE%20Method.ipynb}{2CDE link}).
 The other methods are not currently implemented in FRETBursts.
-However, motivated users can implemement their favorite method 
-leveraging the burst manipulation functions in FRETBursts 
+However, motivated users can implement their favorite method
+leveraging the burst manipulation functions in FRETBursts
 and the standard scientific Python libraries. We encourage researchers
-coding new methods using FRETBursts to share their contributions and
-to integrate their work in FRETBursts for benefit of the entire community.
-The next section, takes the BVA method as an example to show how to perform
-low-level manipulation of timestamps and bursts data typically needed 
-when implementing most of the previously mentioned methods. 
-An additional example showing how to split bursts in constant time-bins 
-can be found in the respective FRETBursts notebook 
+coding new methods with FRETBursts to share their contributions and
+to integrate their work in FRETBursts in order to benefit the entire community.
+The next section, takes the BVA method as an example for showing how to
+perform low-level manipulation of timestamps and bursts data.
+An additional example showing how to split bursts in constant time-bins
+can be found in the respective FRETBursts notebook
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}).
+These examples server as a guide for implementing new methods
+using FRETBursts.
 
 
 \section*{Implementing Burst Variance Analysis}
