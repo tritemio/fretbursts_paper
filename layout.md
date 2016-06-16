@@ -24,6 +24,8 @@ figures/ALEX_BVA_dynamic/ALEX_BVA_dynamic.png
 Burst_Variance_Analysis_2.tex
 Conclusions.tex
 Supporting_Information.tex
+notebook_workflow.tex
+development_contributions.tex
 timestamps_and_burst_data.tex
 plotting_data.tex
 optimal_background_threshold.tex
