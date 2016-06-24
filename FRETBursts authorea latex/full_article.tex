@@ -474,11 +474,12 @@ Each array contains timestamps from both donor (D) and acceptor (A) channels.
 When alternating excitation lasers are used (ALEX measurements)~\cite{Lee_2005},
 a further distinction between photons emitted during the D or A excitation periods can be made.
 
-In FRETBursts, the corresponding sets of photons are called ``photon streams'' and are
-specified with a \verb|Ph_sel| object
+In FRETBursts, the corresponding sets of photons are called ``photon streams'' 
+and are specified with a \verb|Ph_sel| object
 (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link}).
 In non-ALEX smFRET data, there are 3 photon streams
-(table~\ref{tab:ph_sel_smfret}), while in ALEX data, there are 5 streams (table~\ref{tab:ph_sel_alex}).
+(table~\ref{tab:ph_sel_smfret}), while in two-color ALEX data, 
+there are 5 streams (table~\ref{tab:ph_sel_alex}).
 
 The \verb|Ph_sel| class (\href{http://fretbursts.readthedocs.org/en/latest/ph_sel.html}{link})
 allows the specification of any combination of photon streams.
