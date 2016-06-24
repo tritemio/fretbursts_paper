@@ -1338,10 +1338,14 @@ single-spot measurement \verb|d|, we use the following command:
 d.E_fitter.fit_res[0].redchi
 \end{lstlisting}
 
-Other useful attributes are \verb|aic| and \verb|bic| which contain the
-Akaike information criterion (AIC) and the Bayes Information criterion (BIC).
-AIC and BIC allow comparing different models and
-selecting the most appropriate for the data at hand.
+Other useful attributes are \verb|aic| and \verb|bic| which contain
+respectively the Akaike information criterion (AIC)~\cite{akaike_new_1974} 
+and the Bayes Information criterion (BIC)~\cite{schwarz_estimating_1978}.
+AIC and BIC are general-purpose statistical criteria for comparing 
+models and selecting the most appropriate for a given dataset.
+By penalizing models with higher number of parameters, these criteria 
+strike a balance between the need of achieving high goodness of fit 
+with the need of keeping the model complexity low to avoid overfitting.
 
 Examples of definition and modification of fit models are provided in
 the aforementioned μs-ALEX notebook
