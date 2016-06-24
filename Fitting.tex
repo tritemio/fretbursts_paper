@@ -9,16 +9,21 @@ and optional constraints for these parameters. This concept of model
 is taken from \textit{lmfit}~\cite{lmfit}, the underlying library used by
 FRETBursts to perform the fits.
 
-Models can be created from arbitrary functions. By default,
-FRETBursts allows using predefined models such as 1 to 3 Gaussian
-peaks or 2-Gaussian connected by a ``bridge''.
+Models can be created from arbitrary functions. 
+FRETBursts includes predefined (i.e. built-in) models 
+such as 1 to 3 Gaussian peaks or 2-Gaussian connected by a flat plateau.
+The latter is an empirical model that
+can be used to more accurately fit the center values of two populations
+when the peaks are connected by intermediate-FRET bursts
+(for the analytical definition of this function see the documentation, 
+\href{http://fretbursts.readthedocs.io/en/latest/mfit.html#fretbursts.mfit.factory_two_gaussians}{link}).
 Built-in models are created by calling a corresponding factory function
-(names starting with \verb|mfit.factory_|) which initializes the parameters
+(whose names start with \verb|mfit.factory_|) which initializes the parameters
 with values and constraints suitable for E and S histograms fits.
 (see \textit{Factory Functions} documentation,
 \href{http://fretbursts.readthedocs.org/en/latest/mfit.html#model-factory-functions}{link}).
 
-As an example, we fit the E histogram of bursts in the
+As an example, we can fit the E histogram of bursts in the
 \verb|ds| variable with two Gaussian peaks with the following command:
 
 \begin{lstlisting}
