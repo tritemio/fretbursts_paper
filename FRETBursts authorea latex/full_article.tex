@@ -896,8 +896,25 @@ reloaded and the steps above repeated as described.
 \label{sec:bg_calc}
 
 The first step of smFRET analysis involves estimating background rates.
-For example, to compute the background every 30~s, using a minimal inter-photon
-delay fixed threshold of 2~ms for the all photon streams, the corresponding command is:
+For example, the following command:
+
+% Don't split command on two lines for PLOS
+\begin{lstlisting}
+d.calc_bg(bg.exp_fit, time_s=30, tail_min_us='auto')
+\end{lstlisting}
+
+\noindent estimates the background rates in windows of 30~s
+using the default iterative algorithm for choosing the
+fitting threshold (section \ref{sec:bg_intro}).  % remove tilde for PLOS
+Beginner users can simply use the previous command and 
+proceed to burst search (section~\ref{sec:burstsearch}).
+For more advanced users, this section provides details on 
+the different background estimation and plotting functions 
+provided by FRETBursts.
+
+As a start, we show how to estimate the background every 30~s, 
+using a fixed inter-photon delay threshold of 2~ms 
+(the same for all the photon streams):
 
 \begin{lstlisting}
 d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
