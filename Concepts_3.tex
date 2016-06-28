@@ -68,9 +68,11 @@ multi-spot measurements where each spot has a different background rate.
 A second important aspect of burst search is the choice of photon stream used
 to perform the search.
 In most cases, for instance when identifying FRET sub-populations,
-the burst search should use all photons (i.e. APBS). In some other cases, when focusing on
-donor-only or acceptor only populations, it is better to perform the search using
-only donor or acceptor signal.
+the burst search should use all the photons, the so called
+all-photon burst search (APBS)~\cite{Eggeling_1998,Fries_1998,Nir_2006}.
+In other cases, for example when focusing on
+donor-only or acceptor-only populations, it is better to perform 
+the search using only donor or acceptor signal.
 In order to handle the general case and to provide flexibility,
 FRETBursts allows performing the burst search on arbitrary selections of photons.
 (see section~\ref{sec:ph_streams} for more information on photon stream definitions).
