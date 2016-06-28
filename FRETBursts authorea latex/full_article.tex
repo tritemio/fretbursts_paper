@@ -643,10 +643,12 @@ local rate (computed using $m$ photons) is above a minimum threshold rate.
 Since a universal criterion to choose the rate threshold and
 the number of photons $m$ is, as of today, lacking, it has become a common
 practice to manually adjust those parameters for each specific measurement.
+Commonly employed values for $m$ are between 5 and 15 photons.
 
 A more general approach consists in taking into account the background rate of
 the specific measurements and in choosing a rate threshold that is $F$ times
-larger than the background rate. This approach ensures that all resulting bursts
+larger than the background rate (typical values for $F$ are between 4 and 9). 
+This approach ensures that all resulting bursts
 have a signal-to-background ratio (SBR) larger than
 $(F-1)$~\cite{Michalet_2012}. A consistent criterion for choosing the threshold is
 particularly important when comparing different measurements with different background
@@ -678,7 +680,8 @@ this kind of search is called a ``AND-gate burst search''.
 After burst search, it is necessary to select
 bursts, for instance by specifying a minimum number of photons (or burst size). In the most
 basic form, this selection can be performed during burst search by discarding
-bursts with size smaller than a threshold $L$, as originally proposed by
+bursts with size smaller than a threshold $L$ (typically 30 or higher), 
+as originally proposed by
 Eggeling~\textit{et al.}~\cite{Eggeling_1998}.
 This method, however, neglects the effect
 of background and $\gamma$ factor on the burst size and can lead to a selection
