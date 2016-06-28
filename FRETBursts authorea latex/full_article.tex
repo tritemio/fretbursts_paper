@@ -740,6 +740,14 @@ it is important to use $\gamma$-corrected burst sizes as selection criterion,
 in order to avoid under-representing some FRET sub-populations
 due to different quantum yields of donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor channels.
+An alternative method to apply the $\gamma$ correction is to randomly
+discard a fixed fraction of photons from either the DexDem or DexAem
+photon stream as proposed by~\cite{tsukanov_detailed_2013}. This 
+simple and elegant method transforms the measurement data in order to
+achieve $\gamma=1$, overcoming issues of selection bias between populations. 
+The only drawback of this method is that, by discarding a fraction of photons,
+it leads to information loss and therefore to potentially decreased sensitivity 
+and/or accuracy.
 
 A simple way to mitigate the dependence of the FRET distribution on
 the burst size selection threshold is weighting bursts proportionally to their size
