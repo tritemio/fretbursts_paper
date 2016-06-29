@@ -1420,6 +1420,9 @@ a related method to compute conversion rates using
 a likelihood function which depends on photon timestamps (overcoming
 the time binning and FRET histogramming step and directly applicable 
 to freely-diffusing data).
+In case of measurement including lifetime, the multiparameter fluorescence
+detection (MFD) method allows to identify dynamics from the deviation 
+from the linear relation between lifetime and E~\cite{sisamakis_accurate_2010}.
 Hoffman~\cite{hoffmann_quantifying_2011} proposed a method 
 called RASP (recurrence analysis of single particles) to extend 
 the timescale of detectable kinetics.
@@ -1427,7 +1430,12 @@ Hoffman computes the probability that two nearby bursts are due to
 the same molecule and therefore allows setting a time-threshold
 for considering consecutive bursts as the same single-molecule event.
 
-Other two related methods for discriminating between static heterogeneity
+Another very interesting approach consist in combining smFRET and FCS 
+for detecting and quantify kinetics on timescales much shorter 
+than the diffusion 
+time~\cite{laurence_correlation_2007,torres_measuring_2007,nettels_unfolded_2008}.
+
+Finally, two related methods for discriminating between static heterogeneity
 and sub-millisecond dynamics are Burst Variance Analysis
 (BVA) proposed by Torella~\cite{Torella_2011} and
 kernel density distribution estimator (2CDE) proposed by 
@@ -1443,7 +1451,7 @@ detect the occurrence of dynamics. In particular the 2CDE method
 builds, for each burst, a quantity $(E)_D$ (or $(1-E)_A$) which is equal 
 to the burst average $E$ when no dynamics is present, but it is biased 
 toward an higher (or lower) value in presence of dynamics. From these
-quantitied a burst ``estimator'' 
+quantities a burst ``estimator'' 
 (called FRET-2CDE) is derived. For a user the 2CDE method consists
 in plotting the 2-D histogram of $E$ versus FRET-2CDE 
 in assessing the vertical position of the various populations: 
