@@ -91,15 +91,15 @@ to compute KDE of photon timestamps in the \verb|phrates| module,
 From time variations of local rates is possible to
 detect the occurrence of dynamics. In particular the 2CDE method
 builds, for each burst, a quantity $(E)_D$ (or $(1-E)_A$) which is equal 
-to the burst average E when no dynamics is present, but it is biased 
+to the burst average $E$ when no dynamics is present, but it is biased 
 toward an higher (or lower) value in presence of dynamics. From these
-quantitied a burst "estimator" 
-(called FRET-2CDE) is derived. To use the 2CDE method, a user can
-simply plot the 2-D histogram of E versus FRET-2CDE and detect the
-occurrence of dynamics by assessing the vertical position of 
-the various populations (populations centered around FRET-2CDE=10 have
+quantitied a burst ``estimator'' 
+(called FRET-2CDE) is derived. For a user the 2CDE method consists
+in plotting the 2-D histogram of $E$ versus FRET-2CDE 
+in assessing the vertical position of the various populations: 
+populations centered around FRET-2CDE=10 have
 no dynamics while population biased towards higher FRET-2CDE values 
-have dynamics).
+have dynamics.
 
 The BVA and 2CDE methods are implemented 
 in two notebooks included with FRETBursts
