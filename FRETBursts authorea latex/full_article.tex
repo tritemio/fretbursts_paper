@@ -1406,19 +1406,26 @@ beyond the shot-noise limit. For example, heterogeneities in the sample
 or actual conformational changes (resulting in a distribution
 of D-A distances) can cause FRET peak broadening~\cite{sisamakis_accurate_2010}.
 
-Kalinin~\cite{Kalinin2010} and Santoso~\cite{santoso_probing_2009}
+Gopich and Szabo developed an elegant analytical model 
+for the FRET distribution of $M$ interconverting states  
+based on superposition of Gaussian peaks~\cite{gopich_fret_2010}.
+Unfortunately, the method is not of straightforward application for 
+freely-diffusing data as it requires a special selection 
+criterion for filtering bursts with quasi-Poisson rates.
+Santoso~\cite{santoso_probing_2009} and Kalinin~\cite{Kalinin2010}
 extended the PDA approach to estimate conversion rates between different
 states by comparing FRET histograms as a function of the time-bin size.
-Gopich and Szabo~\cite{Gopich2009, gopich_theory_2011} developed
+In addition, Gopich and Szabo~\cite{Gopich2009, gopich_theory_2011} developed
 a related method to compute conversion rates using
 a likelihood function which depends on photon timestamps (overcoming
-the time binning and FRET histogramming step).
+the time binning and FRET histogramming step and directly applicable 
+to freely-diffusing data).
 Hoffman~\cite{hoffmann_quantifying_2011} proposed a method 
 called RASP (recurrence analysis of single particles) to extend 
 the timescale of detectable kinetics.
-Hoffman computes the probability that two nearby bursts are originating from
-the same molecule and therefore allows to set a time-threshold
-for considering consecutive bursts as originating from the same molecule.
+Hoffman computes the probability that two nearby bursts are due to
+the same molecule and therefore allows setting a time-threshold
+for considering consecutive bursts as the same single-molecule event.
 
 Other two related methods for discriminating between static heterogeneity
 and sub-millisecond dynamics are Burst Variance Analysis
