@@ -66,4 +66,46 @@ dplot(ds, hist2d_alex, gui_sel=True)
 
 The values which identify the region are printed in the notebook and can be passed
 to the function \verb|select_bursts.ES| to select bursts inside that region
-(see section~\ref{sec:burstsel}).
+(see section \textit{Burst Selection} in the main text).
+
+\subsection*{Plotting ALEX histograms}
+E-S histograms are traditionally computed using a bin size of 0.02-0.04, 
+and cover a range slightly larger than the [0, 1] interval in which ratios of 
+quantities not corrected for background would normally fall. 
+FRETBursts allows plotting the square-bin 2-D E-S histogram using the plot
+function \verb|hist2d_alex| as shown in the previous example.
+The histogram can be ``smothed'' via bicubic interpolation between bin centers
+(default) or plotted with raw square bins (pass the argument 
+\verb|interpolation='none'|). Additionally, a scatter plot of E-S
+points is by default overlayed and it can be useful for observing
+the burst distribution in sparse regions. However, the different layers
+make this plot hard to read. 
+
+A more elegant approach for effectively representing E-S histograms with minimal
+clutter and high information content is using an hexbin plot 
+(as used by the FRETBursts function \verb|alex_jointplot|). The hexbin plot 
+is a 2-D histograms using hexagonal bins that reduces
+gridding artifacts of square bins. In addition, in sparse regions, the hexbin 
+plot naturally resembles a scatter plot (with hexagonal markers).
+The use of hexagonal bins for 2D distributions 
+has been pioneered by Dan Carr in S-PLUS and then popularized by Nicholas Lewin-Koh
+which wrote the R language port. Later, hexbin has been implemented in the 
+matplotlib python library (which is what FRETBursts uses). The advantages of 
+hexagonal bins have been extensively studied and can be summarized with 
+Nicholas Lewin-Koh words (\href{https://cran.r-project.org/web/packages/hexbin/vignettes/hexagon_binning.pdf}{link}):
+
+\begin{quote}
+Why hexagons? There are many reasons for using hexagons, at least over squares. 
+Hexagons have symmetry of nearest neighbors which is lacking in square bins. 
+Hexagons are the maximum number of sides a polygon can have for a regular 
+tesselation of the plane, so in terms of packing a hexagon is 13\% more 
+efficient for covering the plane than squares. This property translates into 
+better sampling efficiency at least for elliptical shapes. Lastly hexagons are 
+visually less biased for displaying densities than other regular tesselations. 
+\end{quote}
+
+The function \verb|alex_jointplot| plots a 3-panels plots with a central
+hexbin plot of E-S values and marginal E and S histograms represented in
+top and right panel (see figure~4 and 5 in the main text). Note that
+unlike other plot functions in FRETBursts, \verb|alex_jointplot| 
+is called directly and not through the \verb|dplot| wrapper.
