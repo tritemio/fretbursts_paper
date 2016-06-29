@@ -742,7 +742,7 @@ due to different quantum yields of donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor channels.
 An alternative method to apply the $\gamma$ correction is to randomly
 discard a constant fraction of photons chosen randomly from either 
-the DexDem or DexAem photon stream~\cite{Nir_2006}. This 
+the D\textsubscript{ex}D\textsubscript{em} or D\textsubscript{ex}A\textsubscript{em} photon stream~\cite{Nir_2006}. This 
 simple and elegant method transforms the measurement data in order to
 achieve $\gamma=1$, overcoming the issue of selection bias between populations.
 This approach has also the advantage of preserving
@@ -1168,7 +1168,7 @@ will have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \paragraph*{Burst Size Selection}
 In the previous section, we selected bursts by size, using only
-photons detected in both D and A channels during D excitation (i.e. Dex photons),
+photons detected in both D and A channels during D excitation (i.e. D\textsubscript{ex} photons),
 as in eq.~\ref{eq:burstsize_dex}.
 Alternatively, a threshold on the burst size computed including all photons
 can be applied by adding $n_{aa}$ to the burst size (see eq.~\ref{eq:burstsize_allph}).
@@ -1184,7 +1184,7 @@ ds = d.select_bursts(select_bursts.size,
 \noindent The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
 When \verb|add_naa| is not specified,
 as in the previous section, the default is \verb|add_naa=False|
-(i.e. compute size using only Dex photons).
+(i.e. compute size using only D\textsubscript{ex} photons).
 
 \begin{figure}[h!]
 \begin{center}
@@ -1192,7 +1192,7 @@ as in the previous section, the default is \verb|add_naa=False|
 \caption{\label{fig:alex_jointplot} \textbf{E-S histogram showing FRET, D-only and A-only populations.}
 A 2-D ALEX histogram and marginal E and S histograms for a 40-bp dsDNA
 with D-A distance of 17 bases (Donor dye: ATTO550, Acceptor dye: ATTO647N).
-Bursts are selected with a size-threshold of 30 photons, including Aex photons.
+Bursts are selected with a size-threshold of 30 photons, including A\textsubscript{ex} photons.
 The plot is obtained with \texttt{alex\_jointplot(ds)}. The 2D E-S distribution plot (join plot)
 is an histogram with hexagonal bins, which reduce the binning artifacts (compared to square bins)
 and naturally resembles a scatter-plot when the burst density is low.
@@ -1247,9 +1247,9 @@ populations.
 
 An alternative approach consists in applying two selection filters sequentially.
 First, the A-only population is filtered out
-by applying a threshold on the number of photons during D excitation (Dex).
+by applying a threshold on the number of photons during D excitation (D\textsubscript{ex}).
 Second, the D-only population is filtered out by applying a threshold on
-the number of A photons during A excitation (AexAem).
+the number of A photons during A excitation (A\textsubscript{ex}A\textsubscript{em}).
 The commands for these combined selections are:
 
 \begin{lstlisting}
@@ -1269,8 +1269,8 @@ population obtained with the previous selection.
 \textbf{E-S histogram after filtering out D-only and A-only populations.}
 2-D ALEX histogram after selection of FRET population
 using the composition of two burst selection filters:
-(1) selection of bursts with counts in Dex stream larger than 15;
-(2) selection of bursts with counts in AexAem stream larger than 15.
+(1) selection of bursts with counts in D\textsubscript{ex} stream larger than 15;
+(2) selection of bursts with counts in A\textsubscript{ex}A\textsubscript{em} stream larger than 15.
 Compare to figure~\ref{fig:alex_jointplot} where all burst populations
 (FRET, D-only and A-only) are reported.%
 }
@@ -1583,8 +1583,8 @@ For a ready-to-use BVA implementation users can refer to the corresponding noteb
 (\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{link}).
 
 \paragraph*{Python details}
-For BVA implementation, two photon streams are needed: all-photons during donor excitation (Dex)
-and acceptor photons during donor excitation (DexAem).
+For BVA implementation, two photon streams are needed: all-photons during donor excitation (D\textsubscript{ex})
+and acceptor photons during donor excitation (D\textsubscript{ex}A\textsubscript{em}).
 These photon stream selections are obtained by computing boolean masks as follows
 (see~\nameref{sec:burststimes}):
 
@@ -1609,7 +1609,7 @@ bursts = ds_FRET.mburst[0]
 bursts_d = bursts.recompute_index_reduce(ph_d)
 \end{lstlisting}
 
-Here, \verb|ph_d| contains the Dex timestamps, \verb|bursts| the original burst data and
+Here, \verb|ph_d| contains the D\textsubscript{ex} timestamps, \verb|bursts| the original burst data and
 \verb|bursts_d| the burst data with start-stop indexes relative to \verb|ph_d|.
 
 Finally, with the previous variables at hand, the BVA algorithm
