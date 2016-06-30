@@ -1391,20 +1391,21 @@ Users can also refer to the comprehensive lmfit's documentation
 \subsection*{FRET Dynamics}
 \label{sec:dynamics}
 
-FRET peaks resolved from FRET histograms correspond to different FRET
-populations. However determining whether these populations are due to static
-heterogeneity (different D-A distances, Förster radius, etc.) or a
-dynamic equilibrium, requires further analysis.
+Single-molecule FRET histograms show more information than just mean FRET efficiencies.
+While in general the presence of several peaks clearly indicates the existence of
+multiple subpopulations, a single peak cannot a priori be associated with
+a single population defined by a unique FRET efficiency without further analysis.
 
-Shot-noise analysis (SNA)~\cite{Nir_2006} or probability
-distribution analysis (PDA)~\cite{Antonik2006,kalinin_probability_2007} allow to compute
-the minimal width of a FRET peak originating from a single
-FRET efficiency. Typically, several mechanisms
+Shot-noise analysis~\cite{Nir_2006} or probability
+distribution analysis (PDA)~\cite{Antonik2006,kalinin_probability_2007}
+allow to compute the minimum width of a static FRET population
+(i.e. caused by the statistics of discrete photon-detection events).
+Typically, several mechanisms
 contribute to the broadening of the experimental FRET peak
-beyond the shot-noise limit. For example, heterogeneities in the sample
-(resulting in a distribution of Förster radiuses)
-or actual conformational changes (resulting in a distribution
-of D-A distances) can cause FRET peak broadening~\cite{sisamakis_accurate_2010}.
+beyond the shot-noise limit. These include heterogeneities in the sample
+resulting in a distribution of Förster radiuses,
+or actual conformational changes giving rise to a distribution
+of D-A distances~\cite{sisamakis_accurate_2010}.
 
 Gopich and Szabo developed an elegant analytical model 
 for the FRET distribution of $M$ interconverting states  
@@ -1494,21 +1495,7 @@ FRETBursts provides well-tested, general-purpose functions for timestamps and bu
 manipulation and therefore simplifies implementing custom burst analysis algorithms such as BVA.
 
 \subsection*{BVA Overview}
-Single-molecule FRET histograms show more information than just mean FRET efficiencies.
-While in general the presence of several peaks clearly indicates the existence of
-multiple subpopulations, a single peak cannot a priori be associated with
-a single population defined by a unique FRET efficiency without further analysis
-(such as, for instance, shot-noise analysis~\cite{Nir_2006,Antonik2006}).
-
-The FRET histogram of a single FRET population has a minimum width set by shot noise
-(i.e. the width is caused by the statistics of discrete photon-detection events).
-FRET distributions broader than the shot noise limit,
-can be ascribed to either a static mixture of species with slightly different FRET efficiencies,
-or to a specie undergoing dynamic transitions (e.g. interconversion between multiple states,
-diffusion in a continuum of conformations, binding-unbinding events, etc.).
-When the single peak of a FRET distribution is wider than predicted from shot-noise,
-it is not possible to discriminate between the static and dynamic case without further analysis.
-The BVA method has been developed to address this issue, namely identifying the presence of dynamics
+The BVA method has been developed to identify the presence of dynamics
 in FRET distributions~\cite{Torella_2011},
 and has been successfully applied to identify biomolecular processes with
 dynamics on the millisecond time-scale~\cite{Torella_2011, Robb_2013}.

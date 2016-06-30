@@ -41,20 +41,21 @@ Users can also refer to the comprehensive lmfit's documentation
 \subsection{FRET Dynamics}
 \label{sec:dynamics}
 
-FRET peaks resolved from FRET histograms correspond to different FRET
-populations. However determining whether these populations are due to static
-heterogeneity (different D-A distances, Förster radius, etc.) or a
-dynamic equilibrium, requires further analysis.
+Single-molecule FRET histograms show more information than just mean FRET efficiencies.
+While in general the presence of several peaks clearly indicates the existence of
+multiple subpopulations, a single peak cannot a priori be associated with
+a single population defined by a unique FRET efficiency without further analysis.
 
-Shot-noise analysis (SNA)~\cite{Nir_2006} or probability
-distribution analysis (PDA)~\cite{Antonik2006,kalinin_probability_2007} allow to compute
-the minimal width of a FRET peak originating from a single
-FRET efficiency. Typically, several mechanisms
+Shot-noise analysis~\cite{Nir_2006} or probability
+distribution analysis (PDA)~\cite{Antonik2006,kalinin_probability_2007}
+allow to compute the minimum width of a static FRET population
+(i.e. caused by the statistics of discrete photon-detection events).
+Typically, several mechanisms
 contribute to the broadening of the experimental FRET peak
-beyond the shot-noise limit. For example, heterogeneities in the sample
-(resulting in a distribution of Förster radiuses)
-or actual conformational changes (resulting in a distribution
-of D-A distances) can cause FRET peak broadening~\cite{sisamakis_accurate_2010}.
+beyond the shot-noise limit. These include heterogeneities in the sample
+resulting in a distribution of Förster radiuses,
+or actual conformational changes giving rise to a distribution
+of D-A distances~\cite{sisamakis_accurate_2010}.
 
 Gopich and Szabo developed an elegant analytical model 
 for the FRET distribution of $M$ interconverting states  
