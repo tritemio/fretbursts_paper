@@ -47,7 +47,7 @@ dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
 \end{lstlisting}
 
-bursts in \verb|dsw|
+\noindent bursts in \verb|dsw|
 will have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \paragraph{Burst Size Selection}
@@ -65,7 +65,7 @@ ds = d.select_bursts(select_bursts.size,
                      th1=30, add_naa=True)
 \end{lstlisting}
 
-\noindent The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
+The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
 When \verb|add_naa| is not specified,
 as in the previous section, the default is \verb|add_naa=False|
 (i.e. compute size using only Dex photons). 

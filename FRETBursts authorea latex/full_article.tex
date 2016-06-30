@@ -518,7 +518,7 @@ photons (\verb|Aem|) during acceptor excitation (\verb|Aex|).
 \label{sec:bg_intro}
 
 An estimation of the background rates is needed to both select a proper threshold for
-burst search, and to correct the raw burst counts by subtraction of background counts.
+burst search, and to correct the raw burst counts by subtracting background counts.
 
 The recorded stream of timestamps is the result of two processes: one characterized
 by a high count rate, due to fluorescence photons of single molecules crossing the
@@ -667,9 +667,12 @@ In order to handle the general case and to provide flexibility,
 FRETBursts allows performing the burst search on arbitrary selections of photons.
 (see section~\nameref{sec:ph_streams} for more information on photon stream definitions).
 
-Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS (``dual-channel burst search''), which can help mitigating artifacts due to photophysics effects such as blinking.
-During DCBS, a search is performed in parallel on two photon streams
-and bursts are defined as periods during which both photon streams exhibit a rate higher than
+Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a dual-channel 
+burst search (DCBS) 
+which can help mitigating artifacts due to photophysics effects such as blinking.
+During DCBS, a search is performed on two photon streams
+and bursts are defined as periods during which both photon streams 
+exhibit a rate higher than
 the threshold, implementing the equivalent of an AND logic operation.
 Conventionally, the term DCBS refers to a burst search where the two photon streams
 are (1) all photons during donor excitation (\verb|Ph_sel(Dex='DAem')|) and
@@ -725,12 +728,12 @@ or~\ref{eq:burstsize_allph} are called $\gamma$-corrected burst sizes.
 
 The burst search algorithm yields a set of bursts whose sizes
 approximately follow an exponential distribution.
-Compared to bursts with smaller sizes, bursts with large sizes are less frequent,
+Compared to bursts with smaller sizes, bursts with large sizes are less frequent, 
 but contain more information per-burst (having higher SNR).
-Therefore, selecting bursts by size is an important step (see section~\nameref{sec:burstsel}).
+Therefore, selecting bursts by size is an important step (see \nameref{sec:burstsel}).
 A threshold set too low may result in unresolvable sub-populations
 because of broadening of FRET peaks and appearance of shot-noise artifacts
-in the FRET (and S) distribution (i.e. spurious narrow peaks due to E and S being
+in the FRET (and $S$) distribution (i.e. spurious narrow peaks due to $E$ and $S$ being
 computed as the ratio of small integers).
 Conversely, too large a threshold may result in too low a number of bursts
 therefore poor representation of the FRET distribution.
@@ -740,10 +743,11 @@ it is important to use $\gamma$-corrected burst sizes as selection criterion,
 in order to avoid under-representing some FRET sub-populations
 due to different quantum yields of donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor channels.
+
 An alternative method to apply the $\gamma$ correction is to randomly
 discard a constant fraction of photons chosen randomly from either 
-the D\textsubscript{ex}D\textsubscript{em} or D\textsubscript{ex}A\textsubscript{em} photon stream~\cite{Nir_2006}. This 
-simple and elegant method transforms the measurement data in order to
+the Dem or Aem photon stream~\cite{Nir_2006}. This 
+simple method transforms the measurement data in order to
 achieve $\gamma=1$, overcoming the issue of selection bias between populations.
 This approach has also the advantage of preserving
 the binomial distribution of D and A photons in each burst, so that peaks
@@ -785,7 +789,8 @@ Other weighting functions (for example depending quadratically on the size)
 are listed in the \verb|fret_fit.get_weights| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
 However, using weights different from the size is not recommended
-due to their less efficient use of burst information.
+due to their less efficient use of burst information 
+(\nameref{sec:burstweights_theory}).
 
 \section*{smFRET Burst Analysis}
 \label{sec:analysis}
@@ -889,7 +894,7 @@ To change the period definitions, we can type:
 d.add(D_ON=(2100, 3900), A_ON=(100, 1900))
 \end{lstlisting}
 
-where \verb|D_ON| and \verb|A_ON| are tuples (pairs of numbers) representing
+\noindent where \verb|D_ON| and \verb|A_ON| are tuples (pairs of numbers) representing
 the \textit{start} and \textit{stop} values for D or A excitation periods.
 The previous command works for both μs-ALEX and ns-ALEX measurements.
 After changing the parameters, a new alternation plot will show the updated
@@ -982,7 +987,7 @@ as in figure~\ref{fig:bg_timetrace}(a). However, sometimes, non-ideal
 experimental conditions can yield a time-varying background rate, as illustrated in
 figure~\ref{fig:bg_timetrace}(b).
 A possible reason for the observed behavior could be buffer evaporation from an open sample
-or poorly sealed observation chamber (we strongly recommend using a sealed 
+(we strongly recommend using a sealed 
 observation chamber whenever possible). Additionally,
 cover-glass impurities can contribute to the background.
 These impurities tend to bleach on timescales of minutes resulting in
@@ -1021,7 +1026,7 @@ For example, the following command:
 d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
 \end{lstlisting}
 
-performs a burst search on all photons
+\noindent performs a burst search on all photons
 (\verb|ph_sel=Ph_sel('all')|), with a count rate threshold equal to 6 times the
 local background rate (\verb|F=6|), using 10 consecutive photons to compute the
 local count rate (\verb|m=10|).
@@ -1034,8 +1039,8 @@ Note that the previous burst search does not perform any burst size selection
 (however, by definition, the minimum bursts size is effectively $m$).
 An additional parameter $L$ can be passed to impose a minimum burst
 size before any correction.
-However, it is recommended to select bursts only after background corrections
-are applied, as discussed in the next section~\nameref{sec:burstsel}.
+However, it is recommended to select bursts only after applying background 
+corrections, as discussed in the next section~\nameref{sec:burstsel}.
 
 It might sometimes be useful to specify a fixed photon-rate threshold, instead
 of a threshold depending on the background rate, as in the previous example. In
@@ -1058,15 +1063,16 @@ as illustrated in the following example:
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 \end{lstlisting}
 
-The last command puts the burst search results in a new copy of the \verb|Data| variable \verb|d|
-(in this example, the copy is called \verb|d_dcbs|).
+The last command puts the burst search results in a new copy of the 
+\verb|Data| variable \verb|d|
+(in this example the copy is called \verb|d_dcbs|).
 Since FRETBursts shares the timestamps and detectors arrays between
 different copies of \verb|Data| objects, the memory usage is minimized, even when
 several copies are created.
 
 \paragraph*{Python details}
-Note that, while \verb|.burst_search()| is a method of \verb|Data|,
-\verb|burst_search_and_gate| is a function in the \verb|bext| module
+Note that, while \verb|d.burst_search()| is a method of \verb|Data|,
+\verb|bext.burst_search_and_gate()| is a function in the \verb|bext| module
 taking a \verb|Data| object as a first argument and returning a new
 \verb|Data| object.
 
@@ -1105,7 +1111,7 @@ it is simpler to fit the background-corrected
 PR histogram and then correct the population-level PR value (see SI in~\cite{Lee_2005}).
 Correcting PR of each population (instead of correcting the data in each burst)
 avoids distortion of the FRET distribution and keeps peaks of
-static FRET subpopulations closer to the ideal Binomial statistics~\cite{Gopich_2007}.
+static FRET subpopulations closer to the ideal binomial statistics~\cite{Gopich_2007}.
 
 FRETBursts implements the correction formulas for $E$ and $S$ in the functions
 \verb|fretmath.correct_E_gamma_leak_dir| and \verb|fretmath.correct_S|
@@ -1163,7 +1169,7 @@ dsw = ds.select_bursts(select_bursts.width,
                        th1=0.5e-3, th2=3e-3)
 \end{lstlisting}
 
-bursts in \verb|dsw|
+\noindent bursts in \verb|dsw|
 will have sizes between 50 and 200 photons, and duration between 0.5 and 3~ms.
 
 \paragraph*{Burst Size Selection}
@@ -1181,7 +1187,7 @@ ds = d.select_bursts(select_bursts.size,
                      th1=30, add_naa=True)
 \end{lstlisting}
 
-\noindent The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
+The result of this selection is plotted in figure~\ref{fig:alex_jointplot}.
 When \verb|add_naa| is not specified,
 as in the previous section, the default is \verb|add_naa=False|
 (i.e. compute size using only D\textsubscript{ex} photons).
@@ -1195,7 +1201,8 @@ with D-A distance of 17 bases (Donor dye: ATTO550, Acceptor dye: ATTO647N).
 Bursts are selected with a size-threshold of 30 photons, including A\textsubscript{ex} photons.
 The plot is obtained with \texttt{alex\_jointplot(ds)}. The 2D E-S distribution plot (join plot)
 is an histogram with hexagonal bins, which reduce the binning artifacts (compared to square bins)
-and naturally resembles a scatter-plot when the burst density is low.
+and naturally resembles a scatter-plot when the burst density is low
+(\nameref{sec:plotting}).
 Three populations are visible: FRET population (middle), D-only population (top left) and
 A-only population (bottom, $S < 0.2$). Compare with figure~\ref{fig:alex_jointplot_fretsel}
 where the FRET population has been isolated.%
@@ -1212,7 +1219,7 @@ fluorophores as well as the different photon-detection efficiencies of the D and
 When $\gamma$ is significantly different from 1, neglecting its effect on burst size leads to
 over-representing (in terms of number of bursts) one FRET population versus the others.
 
-When the $\gamma$ factor is known, a more unbiased selection of different FRET
+When the $\gamma$ factor is known (and $\ne 1$), a more unbiased selection of different FRET
 populations can be achieved passing the argument \verb|gamma| to the
 selection function:
 
@@ -1222,16 +1229,15 @@ ds = d.select_bursts(select_bursts.size,
 \end{lstlisting}
 
 When not specified, $\gamma=1$ is assumed.
-
 For more details on burst size selection, see the
 \verb|select_bursts.size| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}).
 
 \paragraph*{Python details}
-To compute $\gamma$-corrected burst sizes (with or without addition of \verb|naa|)
-the method \verb|Data.burst_sizes|
-(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link})
-is used.
+The method to compute $\gamma$-corrected burst sizes (with 
+or without addition of \verb|naa|)
+is \verb|Data.burst_sizes|
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link}).
 
 \paragraph*{Select the FRET Populations}
 
@@ -1257,7 +1263,7 @@ ds1 = d.select_bursts(select_bursts.size, th1=15)
 ds2 = ds1.select_bursts(select_bursts.naa, th1=15)
 \end{lstlisting}
 
-Here, variable \verb|ds2| contains the combined burst selection.
+Here, the variable \verb|ds2| contains the combined burst selection.
 Figure~\ref{fig:alex_jointplot_fretsel} shows the resulting pure FRET
 population obtained with the previous selection.
 
@@ -1320,7 +1326,7 @@ are stored in the \verb|E_fitter| (or \verb|S_fitter|)
 attributes of the \verb|Data| variable (named \verb|ds| here).
 To print a comprehensive summary of the fit results, including
 uncertainties, reduced $\chi^2$ and correlation between parameters,
-the we use the following command:
+we can use the following command:
 
 \begin{lstlisting}
 fit_res = ds.E_fitter.fit_res[0]
@@ -1329,7 +1335,7 @@ print(fit_res.fit_report())
 
 Finally, to plot the fitted model together with the FRET histogram,
 as shown in figure~\ref{fig:histfit}, we pass the parameter \verb|show_model=True|
-to the \verb|hist_fret| function as follows
+to the \verb|hist_fret| function 
 (see~\nameref{sec:plotting} for an introduction to plotting in FRETBursts):
 
 \begin{lstlisting}

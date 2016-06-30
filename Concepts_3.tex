@@ -79,9 +79,12 @@ In order to handle the general case and to provide flexibility,
 FRETBursts allows performing the burst search on arbitrary selections of photons.
 (see section~\ref{sec:ph_streams} for more information on photon stream definitions).
 
-Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed DCBS (``dual-channel burst search''), which can help mitigating artifacts due to photophysics effects such as blinking.
-During DCBS, a search is performed in parallel on two photon streams
-and bursts are defined as periods during which both photon streams exhibit a rate higher than
+Additionally, Nir~\textit{et al.}~\cite{Nir_2006} proposed a dual-channel 
+burst search (DCBS) 
+which can help mitigating artifacts due to photophysics effects such as blinking.
+During DCBS, a search is performed on two photon streams
+and bursts are defined as periods during which both photon streams 
+exhibit a rate higher than
 the threshold, implementing the equivalent of an AND logic operation.
 Conventionally, the term DCBS refers to a burst search where the two photon streams
 are (1) all photons during donor excitation (\verb|Ph_sel(Dex='DAem')|) and
@@ -142,7 +145,7 @@ but contain more information per-burst (having higher SNR).
 Therefore, selecting bursts by size is an important step (see section~\ref{sec:burstsel}).
 A threshold set too low may result in unresolvable sub-populations
 because of broadening of FRET peaks and appearance of shot-noise artifacts
-in the FRET (and S) distribution (i.e. spurious narrow peaks due to E and S being
+in the FRET (and $S$) distribution (i.e. spurious narrow peaks due to $E$ and $S$ being
 computed as the ratio of small integers).
 Conversely, too large a threshold may result in too low a number of bursts
 therefore poor representation of the FRET distribution.
@@ -152,10 +155,11 @@ it is important to use $\gamma$-corrected burst sizes as selection criterion,
 in order to avoid under-representing some FRET sub-populations
 due to different quantum yields of donor and acceptor dyes and/or
 different photon detection efficiencies of donor and acceptor channels.
+
 An alternative method to apply the $\gamma$ correction is to randomly
 discard a constant fraction of photons chosen randomly from either 
-the DexDem or DexAem photon stream~\cite{Nir_2006}. This 
-simple and elegant method transforms the measurement data in order to
+the Dem or Aem photon stream~\cite{Nir_2006}. This 
+simple method transforms the measurement data in order to
 achieve $\gamma=1$, overcoming the issue of selection bias between populations.
 This approach has also the advantage of preserving
 the binomial distribution of D and A photons in each burst, so that peaks
@@ -163,7 +167,6 @@ of FRET populations are easier to model statistically.
 The only drawback is that, by discarding a fraction of photons,
 this method leads to information loss and therefore to a potential 
 decrease in sensitivity and/or accuracy.
-
 
 A simple way to mitigate the dependence of the FRET distribution on 
 the burst size selection threshold is weighting bursts proportionally to their size 
@@ -198,4 +201,5 @@ Other weighting functions (for example depending quadratically on the size)
 are listed in the \verb|fret_fit.get_weights| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/fret_fit.html#fretbursts.fret_fit.get_weights}{link}).
 However, using weights different from the size is not recommended 
-due to their less efficient use of burst information.
+due to their less efficient use of burst information
+(SI~\ref{sec:burstweights_theory}).

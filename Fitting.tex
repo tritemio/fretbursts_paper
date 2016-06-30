@@ -41,16 +41,16 @@ are stored in the \verb|E_fitter| (or \verb|S_fitter|)
 attributes of the \verb|Data| variable (named \verb|ds| here).
 To print a comprehensive summary of the fit results, including
 uncertainties, reduced $\chi^2$ and correlation between parameters,
-the we use the following command:
+we can use the following command:
 
 \begin{lstlisting}
 fit_res = ds.E_fitter.fit_res[0]
 print(fit_res.fit_report())
 \end{lstlisting}
 
-Finally, to plot the fitted model together with the FRET histogram, 
+Finally, to plot the fitted model together with the FRET histogram,
 as shown in figure~\ref{fig:histfit}, we pass the parameter \verb|show_model=True|
-to the \verb|hist_fret| function as follows
+to the \verb|hist_fret| function 
 (see section~\ref{sec:plotting} for an introduction to plotting in FRETBursts):
 
 \begin{lstlisting}

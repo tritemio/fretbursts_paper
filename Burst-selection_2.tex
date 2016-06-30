@@ -7,7 +7,7 @@ fluorophores as well as the different photon-detection efficiencies of the D and
 When $\gamma$ is significantly different from 1, neglecting its effect on burst size leads to
 over-representing (in terms of number of bursts) one FRET population versus the others.
 
-When the $\gamma$ factor is known, a more unbiased selection of different FRET
+When the $\gamma$ factor is known (and $\ne 1$), a more unbiased selection of different FRET
 populations can be achieved passing the argument \verb|gamma| to the
 selection function:
 
@@ -17,16 +17,15 @@ ds = d.select_bursts(select_bursts.size,
 \end{lstlisting}
 
 When not specified, $\gamma=1$ is assumed.
-
 For more details on burst size selection, see the
 \verb|select_bursts.size| documentation
 (\href{http://fretbursts.readthedocs.org/en/latest/burst_selection.html#fretbursts.select_bursts.size}{link}).
 
-\paragraph{Python details}
-To compute $\gamma$-corrected burst sizes (with or without addition of \verb|naa|)
-the method \verb|Data.burst_sizes|
-(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link})
-is used.
+\paragraph*{Python details}
+The method to compute $\gamma$-corrected burst sizes (with 
+or without addition of \verb|naa|)
+is \verb|Data.burst_sizes|
+(\href{http://fretbursts.readthedocs.org/en/latest/data_class.html#fretbursts.burstlib.Data.burst_sizes}{link}).
 
 \paragraph{Select the FRET Populations}
 
@@ -52,6 +51,6 @@ ds1 = d.select_bursts(select_bursts.size, th1=15)
 ds2 = ds1.select_bursts(select_bursts.naa, th1=15)
 \end{lstlisting}
 
-Here, variable \verb|ds2| contains the combined burst selection.
+Here, the variable \verb|ds2| contains the combined burst selection.
 Figure~\ref{fig:alex_jointplot_fretsel} shows the resulting pure FRET
 population obtained with the previous selection.

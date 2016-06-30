@@ -16,7 +16,7 @@ For example, the following command:
 d.burst_search(F=6, m=10, ph_sel=Ph_sel('all'))
 \end{lstlisting}
 
-performs a burst search on all photons
+\noindent performs a burst search on all photons
 (\verb|ph_sel=Ph_sel('all')|), with a count rate threshold equal to 6 times the
 local background rate (\verb|F=6|), using 10 consecutive photons to compute the
 local count rate (\verb|m=10|).
@@ -29,8 +29,8 @@ Note that the previous burst search does not perform any burst size selection
 (however, by definition, the minimum bursts size is effectively $m$).
 An additional parameter $L$ can be passed to impose a minimum burst
 size before any correction.
-However, it is recommended to select bursts only after background corrections
-are applied, as discussed in the next section~\ref{sec:burstsel}.
+However, it is recommended to select bursts only after applying background 
+corrections, as discussed in the next section~\ref{sec:burstsel}.
 
 It might sometimes be useful to specify a fixed photon-rate threshold, instead
 of a threshold depending on the background rate, as in the previous example. In
@@ -53,15 +53,16 @@ as illustrated in the following example:
 d_dcbs = bext.burst_search_and_gate(d, F=6, m=10)
 \end{lstlisting}
 
-The last command puts the burst search results in a new copy of the \verb|Data| variable \verb|d|
-(in this example, the copy is called \verb|d_dcbs|).
+The last command puts the burst search results in a new copy of the 
+\verb|Data| variable \verb|d|
+(in this example the copy is called \verb|d_dcbs|).
 Since FRETBursts shares the timestamps and detectors arrays between
 different copies of \verb|Data| objects, the memory usage is minimized, even when
 several copies are created.
 
-\paragraph{Python details}
-Note that, while \verb|.burst_search()| is a method of \verb|Data|,
-\verb|burst_search_and_gate| is a function in the \verb|bext| module
+\paragraph*{Python details}
+Note that, while \verb|d.burst_search()| is a method of \verb|Data|,
+\verb|bext.burst_search_and_gate()| is a function in the \verb|bext| module
 taking a \verb|Data| object as a first argument and returning a new
 \verb|Data| object.
 
@@ -100,7 +101,7 @@ it is simpler to fit the background-corrected
 PR histogram and then correct the population-level PR value (see SI in~\cite{Lee_2005}).
 Correcting PR of each population (instead of correcting the data in each burst)
 avoids distortion of the FRET distribution and keeps peaks of
-static FRET subpopulations closer to the ideal Binomial statistics~\cite{Gopich_2007}.
+static FRET subpopulations closer to the ideal binomial statistics~\cite{Gopich_2007}.
 
 FRETBursts implements the correction formulas for $E$ and $S$ in the functions
 \verb|fretmath.correct_E_gamma_leak_dir| and \verb|fretmath.correct_S|
