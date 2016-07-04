@@ -19,9 +19,9 @@ For more advanced users, this section provides details on
 the different background estimation and plotting functions 
 provided by FRETBursts.
 
-As a start, we show how to estimate the background every 30~s, 
+First, we show how to estimate the background every 30~s, 
 using a fixed inter-photon delay threshold of 2~ms 
-(the same for all the photon streams):
+(the same for all photon streams):
 
 \begin{lstlisting}
 d.calc_bg(bg.exp_fit, time_s=30, tail_min_us=2000)
