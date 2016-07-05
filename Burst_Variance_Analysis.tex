@@ -16,10 +16,8 @@ The basic idea behind BVA is to subdivide bursts into contiguous burst chunks (s
 comprising a fixed number $n$ of photons,
 and to compare the empirical variance of acceptor counts of all sub-bursts in a burst,
 with the theoretical shot-noise-limited variance.
-An empirical variance of sub-bursts larger than the shot-noise limited value indicates
-the presence of dynamics. Since the estimation of the sub-bursts variance is affected
-by uncertainty, BVA analysis provides and indication of an higher or lower probability
-of observing dynamics.
+An empirical variance of sub-bursts larger than the shot-noise-limited value indicates
+the presence of dynamics.
 
 In a FRET (sub-)population originating from a single static FRET efficiency,
 the sub-bursts acceptor counts $n_a$ can be modeled as a binomial-distributed random variable 
@@ -41,7 +39,7 @@ has a standard deviation reported in eq.~\ref{eq:binom_std}.
 \operatorname{Std}(E_{\textrm{sub}}) = \left( \frac{E_p\,(1 - E_p)}{n} \right)^{1/2}
 \end{equation}
 
-BVA analysis consists of four steps: 1) dividing bursts into consecutive sub-bursts 
+BVA analysis consists in four steps: 1) dividing bursts into consecutive sub-bursts 
 containing a constant number of consecutive photons~\textit{n}, 2) computing the PR 
 of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-bursts
 PR in each burst, and 4) comparing $s_E$ to the expected standard deviation 
@@ -51,7 +49,7 @@ originates from a static mixture of sub-populations (of different
 non-interconverting molecules) characterized by distinct FRET efficiencies, 
 $s_E$ of each burst is only affected by shot-noise and will follow the expected 
 standard deviation curve based on eq.~\ref{eq:binom_std}. 
-Conversely, if the observed distribution originates from biomolecules belonging to a single specie, 
+Conversely, if the observed distribution originates from biomolecules belonging to a single species, 
 which interconverts between different FRET sub-populations (over times comparable to the diffusion 
 time), as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected 
 shot-noise-limited standard deviation, and will be located above the shot-noise standard 
