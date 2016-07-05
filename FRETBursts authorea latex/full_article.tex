@@ -1418,7 +1418,7 @@ based on superposition of Gaussian peaks~\cite{gopich_fret_2010}.
 Unfortunately, the method is not of straightforward application for 
 freely-diffusing data as it requires a special selection 
 criterion for filtering bursts with quasi-Poisson rates.
-Santoso~\cite{santoso_probing_2009} and Kalinin~\cite{Kalinin2010}
+Santoso et al.~\cite{santoso_probing_2009} and Kalinin et al.~\cite{Kalinin2010}
 extended the PDA approach to estimate conversion rates between different
 states by comparing FRET histograms as a function of the time-bin size.
 In addition, Gopich and Szabo~\cite{Gopich2009, gopich_theory_2011} developed
@@ -1429,10 +1429,10 @@ to freely-diffusing data).
 In case of measurement including lifetime, the multiparameter fluorescence
 detection (MFD) method allows to identify dynamics from the deviation 
 from the linear relation between lifetime and E~\cite{sisamakis_accurate_2010}.
-Hoffman~\cite{hoffmann_quantifying_2011} proposed a method 
+Hoffman et al.~\cite{hoffmann_quantifying_2011} proposed a method 
 called RASP (recurrence analysis of single particles) to extend 
 the timescale of detectable kinetics.
-Hoffman computes the probability that two nearby bursts are due to
+Hoffman et al. compute the probability that two nearby bursts are due to
 the same molecule and therefore allows setting a time-threshold
 for considering consecutive bursts as the same single-molecule event.
 
@@ -1445,27 +1445,26 @@ populations~\cite{devore_classic_2012,murphy_bayesian_2014}, or to study dynamic
 
 Finally, two related methods for discriminating between static heterogeneity
 and sub-millisecond dynamics are Burst Variance Analysis
-(BVA) proposed by Torella~\cite{Torella_2011} and
+(BVA) proposed by Torella et al.~\cite{Torella_2011} and
 two-channel kernel density estimator (2CDE) proposed by 
-Tomov~\cite{Tomov_2012}. The BVA method is described in the next section.
+Tomov et al.~\cite{Tomov_2012}. The BVA method is described in the next section.
 The 2CDE method, which has been implemented in FRETBursts, computes local
 photon rates from timestamps within bursts using
 Kernel Density Estimation (KDE)
 (FRETBursts includes general-purpose functions
 to compute KDE of photon timestamps in the \verb|phrates| module, 
 (\href{http://fretbursts.readthedocs.io/en/latest/phrates.html}{link})).
-From time variations of local rates is possible to
-detect the occurrence of dynamics. In particular the 2CDE method
-builds, for each burst, a quantity $(E)_D$ (or $(1-E)_A$) which is equal 
-to the burst average $E$ when no dynamics is present, but it is biased 
+From time variations of local rates, it is possible to
+infer the presence of some dynamics. In particular, the 2CDE method
+builds, for each burst, a quantity $(E)_D$ (or $(1-E)_A$), which is equal 
+to the burst average $E$ when no dynamics is present, but is biased 
 toward an higher (or lower) value in presence of dynamics. From these
-quantities a burst ``estimator'' 
-(called FRET-2CDE) is derived. For a user the 2CDE method consists
-in plotting the 2-D histogram of $E$ versus FRET-2CDE 
-in assessing the vertical position of the various populations: 
-populations centered around FRET-2CDE=10 have
-no dynamics while population biased towards higher FRET-2CDE values 
-have dynamics.
+quantities, a burst ``estimator'' 
+(called FRET-2CDE) is derived. For a user, the 2CDE method amounts
+to plotting the 2-D histogram of $E$ versus FRET-2CDE, and assessing the vertical position of the various populations: 
+populations centered around FRET-2CDE=10 undergo
+no dynamics, while population biased towards higher FRET-2CDE values 
+undergo dynamics.
 
 The BVA and 2CDE methods are implemented 
 in two notebooks included with FRETBursts
@@ -1509,10 +1508,8 @@ The basic idea behind BVA is to subdivide bursts into contiguous burst chunks (s
 comprising a fixed number $n$ of photons,
 and to compare the empirical variance of acceptor counts of all sub-bursts in a burst,
 with the theoretical shot-noise-limited variance.
-An empirical variance of sub-bursts larger than the shot-noise limited value indicates
-the presence of dynamics. Since the estimation of the sub-bursts variance is affected
-by uncertainty, BVA analysis provides and indication of an higher or lower probability
-of observing dynamics.
+An empirical variance of sub-bursts larger than the shot-noise-limited value indicates
+the presence of dynamics. 
 
 In a FRET (sub-)population originating from a single static FRET efficiency,
 the sub-bursts acceptor counts $n_a$ can be modeled as a binomial-distributed random variable
@@ -1534,7 +1531,7 @@ has a standard deviation reported in eq.~\ref{eq:binom_std}.
 \operatorname{Std}(E_{\textrm{sub}}) = \left( \frac{E_p\,(1 - E_p)}{n} \right)^{1/2}
 \end{equation}
 
-BVA analysis consists of four steps: 1) dividing bursts into consecutive sub-bursts
+BVA analysis consists of four steps: 1) dividing bursts into consecutive sub-bursts 
 containing a constant number of consecutive photons~\textit{n}, 2) computing the PR
 of each sub-burst, 3) calculating the empirical standard deviation ($s_E$) of sub-bursts
 PR in each burst, and 4) comparing $s_E$ to the expected standard deviation
@@ -1544,7 +1541,7 @@ originates from a static mixture of sub-populations (of different
 non-interconverting molecules) characterized by distinct FRET efficiencies,
 $s_E$ of each burst is only affected by shot-noise and will follow the expected
 standard deviation curve based on eq.~\ref{eq:binom_std}.
-Conversely, if the observed distribution originates from biomolecules belonging to a single specie,
+Conversely, if the observed distribution originates from biomolecules belonging to a single species, 
 which interconverts between different FRET sub-populations (over times comparable to the diffusion
 time), as in figure~\ref{fig:bva_dynamic}, $s_E$ of each burst will be larger than the expected
 shot-noise-limited standard deviation, and will be located above the shot-noise standard
