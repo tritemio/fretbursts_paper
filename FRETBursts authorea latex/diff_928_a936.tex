@@ -467,9 +467,9 @@ as Burst Variance Analysis (BVA)~\cite{Torella_2011} and two-channel
 kernel density distribution estimator (2CDE)~\cite{Tomov_2012}
 are available as FRETBursts notebooks
 \DIFdelbegin \DIFdel{.
-}\DIFdelend \DIFaddbegin \DIFadd{(}\href{\DIFadd{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%DIF > 20-%20Burst%20Variance%20Analysis.ipynb}{BVA link},
-}\href{\DIFadd{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%DIF > 20-%202CDE%20Method.ipynb}{2CDE link}).
-}\DIFaddend 
+}\DIFdelend \DIFaddbegin \DIFadd{(}\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{BVA link},
+\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%202CDE%20Method.ipynb}{2CDE link}\DIFadd{).
+}\DIFaddend
 
 \subsection*{Software Availability}
 FRETBursts is hosted and openly developed on GitHub. FRETBursts homepage
@@ -965,8 +965,8 @@ For example, \DIFdelbegin \DIFdel{to compute the background }\DIFdelend \DIFaddb
 
 %DIF >  Don't split command on two lines for PLOS
 \begin{lstlisting}
-\DIFadd{d.calc_bg(bg.exp_fit, time_s=30, tail_min_us='auto')
-}\end{lstlisting}
+d.calc_bg(bg.exp_fit, time_s=30, tail_min_us='auto')
+\end{lstlisting}
 
 \noindent \DIFadd{estimates the background rates in windows of 30~s
 using the default iterative algorithm for choosing the
@@ -1460,53 +1460,30 @@ the aforementioned μs-ALEX notebook
 Users can also refer to the comprehensive lmfit's documentation
 (\href{http://lmfit.github.io/lmfit-py/}{link}).
 
-\DIFdelbegin \section*{\DIFdel{Implementing Burst Variance Analysis}}
-%DIFAUXCMD
-\DIFdelend \DIFaddbegin \subsection*{\DIFadd{FRET Dynamics}}
+\DIFaddbegin \subsection*{\DIFadd{FRET Dynamics}}
 \label{sec:dynamics}
 \DIFaddend 
 
-\DIFdelbegin %DIFDELCMD < %DIFDELCMD < \label{sec:bva}%%%
-%DIFDELCMD < %%%
-\DIFdel{In this section, we describe how to implement burst variance analysis (BVA)
-as described in~\mbox{%DIFAUXCMD
-\cite{Torella_2011}}%DIFAUXCMD
-.
-FRETBursts provides well-tested, general-purpose functions for timestamps and burst data
-manipulation and therefore simplifies implementing custom burst analysis algorithms such as BVA.
-}%DIFDELCMD < 
-
-%DIFDELCMD < %%%
-\subsection*{\DIFdel{BVA Overview}}
-%DIFAUXCMD
-\DIFdelend Single-molecule FRET histograms show more information than just mean FRET efficiencies.
+\DIFaddbegin 
+\DIFadd{Single-molecule FRET histograms show more information than just mean FRET efficiencies.
 While in general the presence of several peaks clearly indicates the existence of
 multiple subpopulations, a single peak cannot a priori be associated with
-a single population defined by a unique FRET efficiency without further analysis\DIFdelbegin \DIFdel{(such as, for instance, shot-noise analysis~\mbox{%DIFAUXCMD
-\cite{Nir_2006,Antonik2006}}%DIFAUXCMD
-)}\DIFdelend .
+a single population defined by a unique FRET efficiency without further analysis.
+}\DIFaddend
 
-\DIFdelbegin \DIFdel{The FRET histogram of a single FRET population
-has a minimum width set by shot noise
-}\DIFdelend \DIFaddbegin \DIFadd{Shot-noise analysis~\mbox{%DIFAUXCMD
+\DIFaddbegin \DIFadd{Shot-noise analysis~\mbox{%DIFAUXCMD
 \cite{Nir_2006} }%DIFAUXCMD
 or probability
 distribution analysis (PDA)~\mbox{%DIFAUXCMD
 \cite{Antonik2006,kalinin_probability_2007}
 }%DIFAUXCMD
 allow to compute the minimum width of a static FRET population
-}\DIFaddend (i.e. \DIFdelbegin \DIFdel{the width is }\DIFdelend caused by the statistics of discrete photon-detection events).
-\DIFdelbegin \DIFdel{FRET distributions broader than the shot noise limit,
-can be ascribed to either a static mixture of species with slightly different
-FRET efficiencies, or to }\DIFdelend \DIFaddbegin \DIFadd{Typically, several mechanisms
+(i.e. caused by the statistics of discrete photon-detection events).
+Typically, several mechanisms
 contribute to the broadening of the experimental FRET peak
 beyond the shot-noise limit. These include heterogeneities in the sample
 resulting in a distribution of Förster radii,
-or actual conformational changes giving rise to }\DIFaddend a \DIFdelbegin \DIFdel{specie undergoing dynamic transitions (e.
-g. interconversion between multiple states, diffusion in a continuum of conformations, binding-unbinding events, etc.
-).
-When the single peak of a FRET distribution is wider than predicted from shot-noise, it is not possible to discriminate between the static and dynamic case without further analysis .
-}\DIFdelend \DIFaddbegin \DIFadd{distribution
+or actual conformational changes giving rise to a distribution
 of D-A distances~\mbox{%DIFAUXCMD
 \cite{Sisamakis_2010}}%DIFAUXCMD
 .
@@ -1593,8 +1570,8 @@ undergo dynamics.
 
 \DIFadd{The BVA and 2CDE methods are implemented 
 in two notebooks included with FRETBursts
-(}\href{\DIFadd{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%DIF > 20-%20Burst%20Variance%20Analysis.ipynb}{BVA link},
-}\href{\DIFadd{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%DIF > 20-%202CDE%20Method.ipynb}{2CDE link}).
+(}\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Burst%20Variance%20Analysis.ipynb}{BVA link},
+\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%202CDE%20Method.ipynb}{2CDE link}\DIFadd{).
 To use them, a user needs to download the relevant notebook
 and run the anaysis therein.
 The other methods mentioned in this section are not currently 
@@ -1607,7 +1584,7 @@ we show how to perform low-level analysis of timestamps and bursts data
 by implementing the BVA method from scratch.
 An additional example showing how to split bursts in constant time-bins
 can be found in the respective FRETBursts notebook
-(}\href{\DIFadd{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%DIF > 20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}).
+(}\href{http://nbviewer.jupyter.org/github/tritemio/FRETBursts_notebooks/blob/master/notebooks/Example%20-%20Working%20with%20timestamps%20and%20bursts.ipynb}{link}\DIFadd{).
 These examples serve as a guide for implementing new methods.
 We welcome researchers willing to implement new methods to ask questions
 on GitHub or on the mailing list. 
@@ -1616,19 +1593,16 @@ for the benefit the entire community.
 }
 
 
-\section*{\DIFadd{Implementing Burst Variance Analysis}}
+\section*{Implementing Burst Variance Analysis}
 
 \label{sec:bva}
-\DIFadd{In this section, we describe how to implement burst variance analysis (BVA)
-as described in~\mbox{%DIFAUXCMD
-\cite{Torella_2011}}%DIFAUXCMD
-.
+In this section, we describe how to implement burst variance analysis (BVA)
+as described in~\cite{Torella_2011}.
 FRETBursts provides well-tested, general-purpose functions for timestamps and burst data
 manipulation and therefore simplifies implementing custom burst analysis algorithms such as BVA.
-}
 
-\subsection*{\DIFadd{BVA Overview}}
-\DIFaddend The BVA method has been developed to \DIFdelbegin \DIFdel{address this issue, namely identifying }\DIFdelend \DIFaddbegin \DIFadd{identify }\DIFaddend the presence of dynamics
+\subsection*{BVA Overview}
+The BVA method has been developed to \DIFdelbegin \DIFdel{address this issue, namely identifying }\DIFdelend \DIFaddbegin \DIFadd{identify }\DIFaddend the presence of dynamics
 in FRET distributions~\cite{Torella_2011},
 and has been successfully applied to identify biomolecular processes with
 dynamics on the millisecond time-scale~\cite{Torella_2011, Robb_2013}.
