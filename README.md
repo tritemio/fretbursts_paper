@@ -3,7 +3,11 @@ This repository contains the sources for the paper:
 >#### FRETBursts: An Open Source Toolkit for Analysis of Freely-Diffusing Single-Molecule FRET
 >Antonino Ingargiola, Eitan Lerner, SangYoon Chung, Shimon Weiss, Xavier Michalet
 >
+> Published on **BioRxiv**
 >doi: http://dx.doi.org/10.1101/039198
+>
+> Published on **PLOS ONE**
+>doi: http://dx.doi.org/10.1371/journal.pone.0160716
 
 To run the code examples and reproduce the figures on the cloud click on:
 
